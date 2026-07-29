@@ -148,6 +148,20 @@
     color:var(--teak);
     font-family:'Work Sans', sans-serif;
   }
+  .profile-link{
+    display:inline-block;
+    font-family:'Space Mono', monospace;
+    font-size:0.78rem;
+    letter-spacing:0.05em;
+    text-transform:uppercase;
+    color:var(--oxide);
+    text-decoration:none;
+    border-bottom:1px solid var(--oxide);
+    padding-bottom:2px;
+  }
+  .profile-link:hover{ color:var(--oxide-light); border-color:var(--oxide-light); }
+  .node.has-profile rect{ stroke-width:2px; }
+  .node.has-profile .node-sub{ fill:var(--brass); }
 
   footer{
     text-align:center;
@@ -182,6 +196,7 @@
     <h3 id="panel-name"></h3>
     <div class="dates" id="panel-dates"></div>
     <p id="panel-story"></p>
+    <a id="panel-link" href="#" style="display:none; margin-top:1.1rem;" class="profile-link">View full profile →</a>
   </div>
 </div>
 
@@ -231,7 +246,7 @@ function renderTree(people){
   const node = g.selectAll('.node')
     .data(root.descendants())
     .join('g')
-    .attr('class', 'node')
+    .attr('class', d => 'node' + (d.data.profileUrl ? ' has-profile' : ''))
     .attr('transform', d => `translate(${d.x},${d.y})`)
     .style('cursor', 'pointer')
     .on('click', (event, d) => openPanel(d.data));
@@ -271,6 +286,9 @@ function openPanel(person){
   const img = document.getElementById('panel-photo');
   if(person.photo){ img.src = person.photo; img.style.display = 'block'; }
   else { img.style.display = 'none'; }
+  const link = document.getElementById('panel-link');
+  if(person.profileUrl){ link.href = person.profileUrl; link.style.display = 'inline-block'; }
+  else { link.style.display = 'none'; }
   document.getElementById('overlay').classList.add('open');
 }
 document.getElementById('close-panel').onclick = () => document.getElementById('overlay').classList.remove('open');

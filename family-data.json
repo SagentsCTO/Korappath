@@ -4,7 +4,7 @@
   "note": "This tree follows the Chiyyaram branch. Other Korappath branches split off in earlier generations and are not included here.",
   "people": [
     {
-      "id": "p1",
+      "id": "ancestor",
       "name": "Earliest known ancestor",
       "parentId": null,
       "spouse": "",
@@ -12,29 +12,56 @@
       "died": "",
       "location": "Chiyyaram",
       "story": "Placeholder — replace with the earliest ancestor your family can trace, even if only a name or title is remembered.",
-      "photo": ""
+      "photo": "",
+      "profileUrl": ""
     },
     {
-      "id": "p2",
-      "name": "Second generation — example",
-      "parentId": "p1",
+      "id": "grandfather",
+      "name": "Grandfather — replace with real name",
+      "parentId": "ancestor",
       "spouse": "",
       "born": "",
       "died": "",
       "location": "Chiyyaram",
-      "story": "Placeholder — add a real name, and any story or detail passed down about them.",
-      "photo": ""
+      "story": "Placeholder — this is the shared father of K.R.C. Menon and your father, i.e. your grandfather. Fill in his real name and details.",
+      "photo": "",
+      "profileUrl": ""
     },
     {
-      "id": "p3",
-      "name": "Third generation — example",
-      "parentId": "p2",
+      "id": "krc_menon",
+      "name": "K.R.C. Menon (Korappath Kalappurakkal Ramachandran Menon)",
+      "parentId": "grandfather",
+      "spouse": "",
+      "born": "",
+      "died": "2008",
+      "location": "Thrissur",
+      "story": "Founder Secretary of the Thrissur Pooram Ekopana Samithy, formed in 1988 to bring the participating temples of the Thrissur Pooram festival under one common platform after many had fallen into decline. He is credited with reviving several ailing or nearly extinct constituent Poorams, secured a significant Kerala Tourism Department grant for the Samithy, and served for decades as President of the Pookkattikkara–Karamukku Kshethra Kshema Samithi. He passed away on 2 July 2008. The K.R.C. Menon Memorial Award is presented annually in his honor by the Thrissur Pooram Ekopana Samithy.",
+      "photo": "",
+      "profileUrl": "people/krc-menon.html"
+    },
+    {
+      "id": "father",
+      "name": "Father — replace with real name",
+      "parentId": "grandfather",
       "spouse": "",
       "born": "",
       "died": "",
       "location": "Chiyyaram",
-      "story": "Placeholder — keep adding generations as you gather names. Delete these example entries once real data replaces them.",
-      "photo": ""
+      "story": "Placeholder — K.R.C. Menon's younger brother, your father. Fill in his real name and details.",
+      "photo": "",
+      "profileUrl": ""
+    },
+    {
+      "id": "self",
+      "name": "You — replace with real name",
+      "parentId": "father",
+      "spouse": "",
+      "born": "",
+      "died": "",
+      "location": "",
+      "story": "Placeholder — this is where you'd go, or wherever the tree continues into your generation.",
+      "photo": "",
+      "profileUrl": ""
     }
   ]
 }

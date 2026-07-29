@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Korappath — A Living Archive</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,500;9..144,600&family=Work+Sans:wght@300;400;500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --oxide-dark:#3E1810;
+    --oxide:#6B2A1E;
+    --oxide-light:#8C3E2C;
+    --brass:#C6952F;
+    --brass-light:#E8C776;
+    --ivory:#F1E9D6;
+    --ivory-dim:#D8CBAE;
+    --teak:#2B1D14;
+    --leaf:#4E5E3B;
+    --wing-gap: 2px;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--oxide-dark);
+    color:var(--ivory);
+    font-family:'Work Sans', sans-serif;
+    font-weight:300;
+    line-height:1.6;
+  }
+  h1,h2,h3{
+    font-family:'Fraunces', serif;
+    font-weight:500;
+    letter-spacing:0.01em;
+  }
+  .eyebrow{
+    font-family:'Space Mono', monospace;
+    font-size:0.7rem;
+    letter-spacing:0.18em;
+    text-transform:uppercase;
+    color:var(--brass-light);
+    opacity:0.85;
+  }
+  a{color:inherit;}
+
+  /* ---------- Top bar ---------- */
+  .topbar{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:1.5rem clamp(1.5rem, 5vw, 4rem);
+    border-bottom:1px solid rgba(198,149,47,0.25);
+  }
+  .wordmark{
+    font-family:'Fraunces', serif;
+    font-size:1.15rem;
+    letter-spacing:0.04em;
+  }
+  .wordmark span{color:var(--brass-light);}
+  .topbar nav{
+    display:flex;
+    gap:2rem;
+    font-family:'Space Mono', monospace;
+    font-size:0.72rem;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+  }
+  .topbar nav a{opacity:0.75; text-decoration:none; transition:opacity 0.2s;}
+  .topbar nav a:hover{opacity:1;}
+  @media (max-width:700px){ .topbar nav{display:none;} }
+
+  /* ---------- Hero / Courtyard ---------- */
+  .courtyard{
+    text-align:center;
+    padding:5rem 1.5rem 4rem;
+    position:relative;
+  }
+  .courtyard .eyebrow{display:block; margin-bottom:1.2rem;}
+  .courtyard h1{
+    font-size:clamp(2.4rem, 6vw, 4.2rem);
+    max-width:16ch;
+    margin:0 auto 1rem;
+    line-height:1.08;
+  }
+  .courtyard p.lede{
+    max-width:46ch;
+    margin:0 auto 3rem;
+    color:var(--ivory-dim);
+    font-size:1.02rem;
+  }
+
+  /* Lamp signature element */
+  .lamp-wrap{ display:flex; justify-content:center; margin-bottom:2.5rem; }
+  .flame{ transform-origin: 100px 62px; animation: flicker 2.6s ease-in-out infinite; }
+  @keyframes flicker{
+    0%,100%{ transform:scaleY(1) translateY(0); opacity:1; }
+    30%{ transform:scaleY(1.08) translateY(-1px); opacity:0.92; }
+    55%{ transform:scaleY(0.94) translateY(0.5px); opacity:1; }
+    75%{ transform:scaleY(1.04) translateY(-0.5px); opacity:0.95; }
+  }
+  @media (prefers-reduced-motion: reduce){ .flame{ animation:none; } }
+
+  .cta-row{ display:flex; gap:1rem; justify-content:center; flex-wrap:wrap; }
+  .btn{
+    font-family:'Space Mono', monospace;
+    font-size:0.75rem;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    padding:0.9rem 1.6rem;
+    border-radius:2px;
+    text-decoration:none;
+    display:inline-block;
+    transition:transform 0.15s ease, background 0.2s ease;
+  }
+  .btn:hover{ transform:translateY(-1px); }
+  .btn-primary{ background:var(--brass); color:var(--teak); }
+  .btn-primary:hover{ background:var(--brass-light); }
+  .btn-ghost{ border:1px solid rgba(241,233,214,0.35); color:var(--ivory); }
+  .btn-ghost:hover{ border-color:var(--ivory); }
+
+  /* ---------- Four Wings ---------- */
+  .wings-label{
+    text-align:center;
+    padding:1rem 0 0.5rem;
+  }
+  .wings{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:var(--wing-gap);
+    background:rgba(198,149,47,0.25);
+    margin:1.5rem clamp(1rem, 4vw, 3rem) 0;
+    border:1px solid rgba(198,149,47,0.25);
+  }
+  .wing{
+    background:var(--oxide);
+    padding:clamp(2rem, 4vw, 3.2rem);
+    position:relative;
+    transition:background 0.25s ease;
+    text-decoration:none;
+    color:var(--ivory);
+  }
+  .wing:hover{ background:var(--oxide-light); }
+  .wing .dir{
+    font-family:'Space Mono', monospace;
+    font-size:0.68rem;
+    letter-spacing:0.15em;
+    text-transform:uppercase;
+    color:var(--brass-light);
+    display:block;
+    margin-bottom:0.8rem;
+  }
+  .wing h3{ font-size:1.6rem; margin-bottom:0.6rem; }
+  .wing p{ color:var(--ivory-dim); font-size:0.92rem; max-width:34ch; }
+  .wing .malayalam{ opacity:0.55; font-style:italic; font-size:0.85rem; margin-top:0.4rem; display:block; }
+  @media (max-width:700px){ .wings{ grid-template-columns:1fr; } }
+
+  /* ---------- Contribute strip ---------- */
+  .contribute{
+    margin:4.5rem clamp(1rem,4vw,3rem) 0;
+    padding:clamp(2.5rem,5vw,4rem);
+    background:var(--ivory);
+    color:var(--teak);
+    text-align:center;
+  }
+  .contribute h2{ font-size:clamp(1.6rem,3vw,2.2rem); margin-bottom:0.8rem; }
+  .contribute p{ max-width:50ch; margin:0 auto 1.8rem; color:#5c4a38; }
+  .contribute .btn-primary{ background:var(--oxide); color:var(--ivory); }
+  .contribute .btn-primary:hover{ background:var(--oxide-light); }
+
+  /* ---------- Footer ---------- */
+  footer{
+    text-align:center;
+    padding:3rem 1.5rem 2.5rem;
+    color:var(--ivory-dim);
+    font-size:0.82rem;
+  }
+  footer .eyebrow{ margin-bottom:0.6rem; }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="wordmark">Korappath<span>.</span></div>
+  <nav>
+    <a href="#history">Vadakkini · History</a>
+    <a href="#people">Kizhakkini · People</a>
+    <a href="#house">Thekkini · The House</a>
+    <a href="#gallery">Padinjattini · Gallery</a>
+  </nav>
+</div>
+
+<section class="courtyard">
+  <span class="eyebrow">Thrissur, Kerala — est. unknown, remembered still</span>
+
+  <div class="lamp-wrap">
+    <svg width="120" height="140" viewBox="0 0 200 220" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <ellipse cx="100" cy="205" rx="55" ry="8" fill="#C6952F" opacity="0.15"/>
+      <path d="M100 190 L100 130" stroke="#C6952F" stroke-width="4"/>
+      <path d="M60 190 Q100 175 140 190" stroke="#C6952F" stroke-width="4" fill="none"/>
+      <ellipse cx="100" cy="130" rx="14" ry="6" fill="#C6952F"/>
+      <path d="M88 130 Q100 90 112 130 Z" fill="#C6952F"/>
+      <path d="M100 128 Q94 100 100 62 Q106 100 100 128 Z" fill="#E8C776" class="flame"/>
+      <circle cx="100" cy="80" r="3" fill="#F1E9D6" opacity="0.8" class="flame"/>
+    </svg>
+  </div>
+
+  <h1>A house remembered by everyone who ever ate at its table.</h1>
+  <p class="lede">The Korappath tharavad has stood alongside Thrissur's growth for generations, but its history has only ever lived in memory — until now. This is an archive built by the family, for the family, and anyone tracing their way back to it.</p>
+
+  <div class="cta-row">
+    <a href="#contribute" class="btn btn-primary">Add a memory</a>
+    <a href="#history" class="btn btn-ghost">Walk through the house</a>
+  </div>
+</section>
+
+<div class="wings-label">
+  <span class="eyebrow">Four wings, one courtyard — like the house itself</span>
+</div>
+
+<div class="wings">
+  <a href="#history" class="wing" id="history">
+    <span class="dir">North — Vadakkini</span>
+    <h3>History</h3>
+    <p>Origins of the household, its place in Thrissur's growth, and the events passed down through generations.</p>
+    <span class="malayalam">Where the oldest stories are kept</span>
+  </a>
+
+  <a href="#gallery" class="wing" id="gallery">
+    <span class="dir">West — Padinjattini</span>
+    <h3>Gallery</h3>
+    <p>Photographs, documents, and objects gathered from wherever they've been kept safe — attics, trunks, and drawers.</p>
+    <span class="malayalam">Where the light comes in at dusk</span>
+  </a>
+
+  <a href="#people" class="wing" id="people">
+    <span class="dir">East — Kizhakkini</span>
+    <h3>People</h3>
+    <p>A living family tree — names, branches, and the stories that belong to each person who carried the house forward.</p>
+    <span class="malayalam">Where the day begins</span>
+  </a>
+
+  <a href="#house" class="wing" id="house">
+    <span class="dir">South — Thekkini</span>
+    <h3>The House</h3>
+    <p>The building itself — its architecture, its rooms, and what it looked like across the years it stood.</p>
+    <span class="malayalam">The quiet, private wing</span>
+  </a>
+</div>
+
+<section class="contribute" id="contribute">
+  <span class="eyebrow" style="color:var(--oxide);">Open call</span>
+  <h2>Have a photo, a letter, or a story?</h2>
+  <p>This archive only grows as fast as the family shares. If you have something tucked away — even if you're not sure it matters — it belongs here.</p>
+  <a href="mailto:archive@korappath.com" class="btn btn-primary">Send something in</a>
+</section>
+
+<footer>
+  <span class="eyebrow">Korappath</span>
+  <p>An ongoing family archive — Thrissur, Kerala</p>
+</footer>
+
+</body>
+</html>

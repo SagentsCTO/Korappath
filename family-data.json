@@ -38,7 +38,7 @@
       "spouseStory": "",
       "born": "",
       "died": "2008",
-      "location": "Thrissur",
+      "location": "Chiyyaram",
       "story": "Founder Secretary of the Thrissur Pooram Ekopana Samithy, formed in 1988 to bring the participating temples of the Thrissur Pooram festival under one common platform after many had fallen into decline. He is credited with reviving several ailing or nearly extinct constituent Poorams, secured a significant Kerala Tourism Department grant for the Samithy, and served for decades as President of the Pookkattikkara–Karamukku Kshethra Kshema Samithi. He passed away on 2 July 2008. The K.R.C. Menon Memorial Award is presented annually in his honor by the Thrissur Pooram Ekopana Samithy.",
       "photo": "images/people/krc-menon.jpg",
       "profileUrl": "people/krc-menon.html"
@@ -60,30 +60,30 @@
       "profileUrl": ""
     },
     {
-      "id": "father",
+      "id": "sudhakara_menon",
       "name": "Sudhakara Menon",
       "parentId": "grandfather",
-      "spouse": "",
+      "spouse": "Sreerajini Pooyath",
       "spousePhoto": "",
-      "spouseBorn": "",
+      "spouseBorn": "1949",
       "spouseDied": "",
       "spouseStory": "",
       "born": "1945",
       "died": "",
-      "location": "Chiyyaram",
-      "story": "Youngest of the three brothers. Alive — fill in his spouse's name and details in the spouse fields below, and add any story worth recording about him.",
+      "location": "Nandikkara",
+      "story": "",
       "photo": "",
       "profileUrl": ""
     },
     {
-      "id": "self",
-      "name": "You — replace with real name",
-      "parentId": "father",
+      "id": "sreeraj_menon",
+      "name": "",
+      "parentId": "sudhakara_menon",
       "spouse": "",
       "born": "",
       "died": "",
       "location": "",
-      "story": "Placeholder — this is where you'd go, or wherever the tree continues into your generation.",
+      "story": "",
       "photo": "",
       "profileUrl": ""
     }

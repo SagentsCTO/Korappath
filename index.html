@@ -168,6 +168,52 @@
   .contribute .btn-primary{ background:var(--oxide); color:var(--ivory); }
   .contribute .btn-primary:hover{ background:var(--oxide-light); }
 
+  /* ---------- Archive form ---------- */
+  .archive-form{
+    max-width:520px;
+    margin:0 auto;
+    text-align:left;
+  }
+  .archive-form label{
+    display:block;
+    font-family:'Space Mono', monospace;
+    font-size:0.72rem;
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+    color:#6b5a45;
+    margin-bottom:1.3rem;
+  }
+  .archive-form .optional{
+    text-transform:none;
+    font-family:'Work Sans', sans-serif;
+    letter-spacing:0;
+    opacity:0.65;
+    font-size:0.78rem;
+  }
+  .archive-form input[type="text"],
+  .archive-form input[type="file"],
+  .archive-form select,
+  .archive-form textarea{
+    display:block;
+    width:100%;
+    margin-top:0.5rem;
+    padding:0.7rem 0.8rem;
+    font-family:'Work Sans', sans-serif;
+    font-size:0.95rem;
+    color:var(--teak);
+    background:#fff;
+    border:1px solid rgba(43,29,20,0.2);
+    border-radius:3px;
+  }
+  .archive-form input[type="text"]:focus,
+  .archive-form select:focus,
+  .archive-form textarea:focus{
+    outline:none;
+    border-color:var(--oxide);
+  }
+  .archive-form textarea{ resize:vertical; font-family:'Work Sans', sans-serif; }
+  .archive-form button{ margin-top:0.5rem; cursor:pointer; border:none; }
+
   /* ---------- Footer ---------- */
   footer{
     text-align:center;
@@ -251,8 +297,53 @@
 <section class="contribute" id="contribute">
   <span class="eyebrow" style="color:var(--oxide);">Open call</span>
   <h2>Have a photo, a letter, or a story?</h2>
-  <p>This archive only grows as fast as the family shares. If you have something tucked away — even if you're not sure it matters — it belongs here.</p>
-  <a href="https://docs.google.com/forms/d/e/1FAIpQLSesLv_svkd83UzgZCSmi_jayGJmgUlFid_ai9oh3qW_gD8Npw/viewform" target="_blank" rel="noopener" class="btn btn-primary">Add a memory</a>
+  <p>This archive only grows as fast as the family shares. If you have something tucked away — even if you're not sure it matters — it belongs here. No account needed.</p>
+
+  <!--
+    Replace YOUR_FORM_ID below with your real Formspree endpoint,
+    e.g. if Formspree gives you https://formspree.io/f/abcwxyz1
+    then YOUR_FORM_ID is just: abcwxyz1
+  -->
+  <form class="archive-form" action="https://formspree.io/f/xjgnzory" method="POST" enctype="multipart/form-data">
+    <input type="hidden" name="_subject" value="New Korappath archive submission">
+
+    <label>
+      Your name
+      <input type="text" name="name" required>
+    </label>
+
+    <label>
+      Your relation to the family
+      <input type="text" name="relation" placeholder="e.g. granddaughter of...">
+    </label>
+
+    <label>
+      What are you submitting?
+      <select name="submission_type">
+        <option value="Photo">Photo</option>
+        <option value="Document">Document</option>
+        <option value="Story or memory">Story or memory</option>
+        <option value="Family tree correction">Family tree correction</option>
+      </select>
+    </label>
+
+    <label>
+      Upload a file <span class="optional">(photo or scanned document, optional)</span>
+      <input type="file" name="attachment" accept="image/*,.pdf,.doc,.docx">
+    </label>
+
+    <label>
+      Description or story
+      <textarea name="description" rows="5" placeholder="Names, approximate date, what's happening — or the memory itself"></textarea>
+    </label>
+
+    <label>
+      Where does this belong in the family tree? <span class="optional">(optional)</span>
+      <textarea name="tree_notes" rows="2" placeholder="Names or relationships this connects to"></textarea>
+    </label>
+
+    <button type="submit" class="btn btn-primary">Send it in</button>
+  </form>
 </section>
 
 <footer>

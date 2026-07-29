@@ -1,0 +1,40 @@
+{
+  "familyName": "Korappath",
+  "location": "Chiyyaram, Thrissur District, Kerala",
+  "note": "This tree follows the Chiyyaram branch. Other Korappath branches split off in earlier generations and are not included here.",
+  "people": [
+    {
+      "id": "p1",
+      "name": "Earliest known ancestor",
+      "parentId": null,
+      "spouse": "",
+      "born": "",
+      "died": "",
+      "location": "Chiyyaram",
+      "story": "Placeholder — replace with the earliest ancestor your family can trace, even if only a name or title is remembered.",
+      "photo": ""
+    },
+    {
+      "id": "p2",
+      "name": "Second generation — example",
+      "parentId": "p1",
+      "spouse": "",
+      "born": "",
+      "died": "",
+      "location": "Chiyyaram",
+      "story": "Placeholder — add a real name, and any story or detail passed down about them.",
+      "photo": ""
+    },
+    {
+      "id": "p3",
+      "name": "Third generation — example",
+      "parentId": "p2",
+      "spouse": "",
+      "born": "",
+      "died": "",
+      "location": "Chiyyaram",
+      "story": "Placeholder — keep adding generations as you gather names. Delete these example entries once real data replaces them.",
+      "photo": ""
+    }
+  ]
+}

@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Family Tree — Korappath</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,500;9..144,600&family=Work+Sans:wght@300;400;500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
+<style>
+  :root{
+    --oxide-dark:#3E1810;
+    --oxide:#6B2A1E;
+    --oxide-light:#8C3E2C;
+    --brass:#C6952F;
+    --brass-light:#E8C776;
+    --ivory:#F1E9D6;
+    --ivory-dim:#D8CBAE;
+    --teak:#2B1D14;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{
+    background:var(--oxide-dark);
+    color:var(--ivory);
+    font-family:'Work Sans', sans-serif;
+    font-weight:300;
+  }
+  h1,h2,h3{ font-family:'Fraunces', serif; font-weight:500; }
+  .eyebrow{
+    font-family:'Space Mono', monospace;
+    font-size:0.7rem;
+    letter-spacing:0.15em;
+    text-transform:uppercase;
+    color:var(--brass-light);
+    opacity:0.85;
+  }
+  .topbar{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:1.5rem clamp(1.5rem, 5vw, 4rem);
+    border-bottom:1px solid rgba(198,149,47,0.25);
+  }
+  .wordmark{ font-family:'Fraunces', serif; font-size:1.15rem; }
+  .wordmark span{ color:var(--brass-light); }
+  .topbar a.back{
+    font-family:'Space Mono', monospace;
+    font-size:0.72rem;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:var(--ivory);
+    text-decoration:none;
+    opacity:0.8;
+  }
+  .topbar a.back:hover{ opacity:1; }
+
+  .header{
+    text-align:center;
+    padding:3rem 1.5rem 1rem;
+  }
+  .header h1{ font-size:clamp(2rem, 4vw, 2.8rem); margin:0.6rem 0; }
+  .header p.sub{ color:var(--ivory-dim); max-width:44ch; margin:0 auto; font-size:0.95rem; }
+
+  .tree-wrap{
+    position:relative;
+    width:100%;
+    height:70vh;
+    min-height:480px;
+    margin-top:1.5rem;
+    border-top:1px solid rgba(198,149,47,0.2);
+    border-bottom:1px solid rgba(198,149,47,0.2);
+    overflow:hidden;
+    cursor:grab;
+  }
+  .tree-wrap:active{ cursor:grabbing; }
+  svg{ width:100%; height:100%; display:block; }
+
+  .node rect{
+    fill:var(--oxide);
+    stroke:var(--brass);
+    stroke-width:1px;
+    rx:3;
+  }
+  .node:hover rect{ fill:var(--oxide-light); }
+  .node text{
+    fill:var(--ivory);
+    font-family:'Work Sans', sans-serif;
+    font-size:13px;
+    pointer-events:none;
+  }
+  .node .node-sub{
+    fill:var(--brass-light);
+    font-size:10px;
+    font-family:'Space Mono', monospace;
+    pointer-events:none;
+  }
+  .link{
+    fill:none;
+    stroke:rgba(198,149,47,0.4);
+    stroke-width:1.5px;
+  }
+
+  .hint{
+    text-align:center;
+    padding:0.9rem;
+    font-family:'Space Mono', monospace;
+    font-size:0.7rem;
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+    color:var(--ivory-dim);
+    opacity:0.7;
+  }
+
+  /* Detail panel */
+  .overlay{
+    position:fixed; inset:0;
+    background:rgba(0,0,0,0.5);
+    display:none;
+    align-items:center;
+    justify-content:center;
+    padding:1.5rem;
+    z-index:10;
+  }
+  .overlay.open{ display:flex; }
+  .panel{
+    background:var(--ivory);
+    color:var(--teak);
+    max-width:440px;
+    width:100%;
+    padding:2rem;
+    border-radius:4px;
+    position:relative;
+  }
+  .panel img{ width:100%; border-radius:3px; margin-bottom:1rem; }
+  .panel h3{ font-size:1.5rem; margin-bottom:0.3rem; }
+  .panel .dates{
+    font-family:'Space Mono', monospace;
+    font-size:0.78rem;
+    color:var(--oxide);
+    margin-bottom:0.8rem;
+  }
+  .panel p{ font-size:0.95rem; color:#4a3a2b; }
+  .panel .close{
+    position:absolute; top:0.8rem; right:1rem;
+    background:none; border:none;
+    font-size:1.4rem; cursor:pointer;
+    color:var(--teak);
+    font-family:'Work Sans', sans-serif;
+  }
+
+  footer{
+    text-align:center;
+    padding:2.5rem 1.5rem;
+    color:var(--ivory-dim);
+    font-size:0.82rem;
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="wordmark">Korappath<span>.</span></div>
+  <a href="index.html" class="back">← Back home</a>
+</div>
+
+<div class="header">
+  <span class="eyebrow" id="location-label">Chiyyaram, Thrissur District, Kerala</span>
+  <h1>The Korappath family tree</h1>
+  <p class="sub" id="note-label">A living record, added to as names, dates, and stories are recovered.</p>
+</div>
+
+<div class="tree-wrap" id="tree-wrap">
+  <svg id="tree-svg"></svg>
+</div>
+<p class="hint">Scroll or pinch to zoom · drag to pan · click a name for their story</p>
+
+<div class="overlay" id="overlay">
+  <div class="panel">
+    <button class="close" id="close-panel">×</button>
+    <img id="panel-photo" style="display:none;">
+    <h3 id="panel-name"></h3>
+    <div class="dates" id="panel-dates"></div>
+    <p id="panel-story"></p>
+  </div>
+</div>
+
+<footer>An ongoing family archive — Korappath, Chiyyaram, Thrissur</footer>
+
+<script>
+fetch('family-data.json')
+  .then(r => r.json())
+  .then(data => {
+    document.getElementById('location-label').textContent = data.location || '';
+    if(data.note){ document.getElementById('note-label').textContent = data.note; }
+    renderTree(data.people);
+  })
+  .catch(err => {
+    document.getElementById('tree-wrap').innerHTML =
+      '<p style="padding:2rem;text-align:center;color:var(--ivory-dim)">Could not load family-data.json — if you are opening this file directly from your computer, note that browsers block local file fetches; it will work once uploaded to GitHub Pages.</p>';
+    console.error(err);
+  });
+
+function renderTree(people){
+  const width = document.getElementById('tree-wrap').clientWidth;
+  const height = document.getElementById('tree-wrap').clientHeight;
+
+  const root = d3.stratify()
+    .id(d => d.id)
+    .parentId(d => d.parentId)
+    (people);
+
+  const treeLayout = d3.tree().nodeSize([160, 110]);
+  treeLayout(root);
+
+  const svg = d3.select('#tree-svg');
+  const g = svg.append('g').attr('transform', `translate(${width/2},60)`);
+
+  svg.call(
+    d3.zoom().scaleExtent([0.3, 2]).on('zoom', (event) => {
+      g.attr('transform', event.transform.translate(width/2 / event.transform.k, 60 / event.transform.k));
+    })
+  );
+
+  g.selectAll('.link')
+    .data(root.links())
+    .join('path')
+    .attr('class', 'link')
+    .attr('d', d3.linkVertical().x(d => d.x).y(d => d.y));
+
+  const node = g.selectAll('.node')
+    .data(root.descendants())
+    .join('g')
+    .attr('class', 'node')
+    .attr('transform', d => `translate(${d.x},${d.y})`)
+    .style('cursor', 'pointer')
+    .on('click', (event, d) => openPanel(d.data));
+
+  node.append('rect')
+    .attr('x', -65).attr('y', -22)
+    .attr('width', 130).attr('height', 44);
+
+  node.append('text')
+    .attr('text-anchor', 'middle')
+    .attr('y', -2)
+    .text(d => truncate(d.data.name, 18));
+
+  node.append('text')
+    .attr('class', 'node-sub')
+    .attr('text-anchor', 'middle')
+    .attr('y', 14)
+    .text(d => d.data.spouse ? '& ' + truncate(d.data.spouse, 16) : (d.data.born || d.data.died ? yearRange(d.data) : ''));
+}
+
+function truncate(str, n){
+  if(!str) return '';
+  return str.length > n ? str.slice(0, n - 1) + '…' : str;
+}
+function yearRange(d){
+  if(d.born && d.died) return `${d.born}–${d.died}`;
+  if(d.born) return `b. ${d.born}`;
+  if(d.died) return `d. ${d.died}`;
+  return '';
+}
+
+function openPanel(person){
+  document.getElementById('panel-name').textContent = person.name;
+  document.getElementById('panel-dates').textContent =
+    [yearRange(person), person.location].filter(Boolean).join(' · ');
+  document.getElementById('panel-story').textContent = person.story || 'No story recorded yet.';
+  const img = document.getElementById('panel-photo');
+  if(person.photo){ img.src = person.photo; img.style.display = 'block'; }
+  else { img.style.display = 'none'; }
+  document.getElementById('overlay').classList.add('open');
+}
+document.getElementById('close-panel').onclick = () => document.getElementById('overlay').classList.remove('open');
+document.getElementById('overlay').onclick = (e) => {
+  if(e.target.id === 'overlay') e.target.classList.remove('open');
+};
+</script>
+
+</body>
+</html>

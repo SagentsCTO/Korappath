@@ -148,6 +148,22 @@
     color:var(--teak);
     font-family:'Work Sans', sans-serif;
   }
+  #spouse-block hr{
+    border:none;
+    border-top:1px solid rgba(43,29,20,0.15);
+    margin:1.3rem 0 1rem;
+  }
+  #spouse-block .spouse-label{
+    font-family:'Space Mono', monospace;
+    font-size:0.68rem;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    color:var(--oxide);
+    opacity:0.75;
+    margin-bottom:0.5rem;
+  }
+  #spouse-block img{ width:100%; border-radius:3px; margin-bottom:0.8rem; }
+  #spouse-block h3{ font-size:1.2rem; margin-bottom:0.2rem; }
   .profile-link{
     display:inline-block;
     font-family:'Space Mono', monospace;
@@ -197,6 +213,15 @@
     <div class="dates" id="panel-dates"></div>
     <p id="panel-story"></p>
     <a id="panel-link" href="#" style="display:none; margin-top:1.1rem;" class="profile-link">View full profile →</a>
+
+    <div id="spouse-block" style="display:none;">
+      <hr>
+      <div class="spouse-label">Spouse</div>
+      <img id="spouse-photo" style="display:none;">
+      <h3 id="spouse-name"></h3>
+      <div class="dates" id="spouse-dates"></div>
+      <p id="spouse-story"></p>
+    </div>
   </div>
 </div>
 
@@ -289,6 +314,21 @@ function openPanel(person){
   const link = document.getElementById('panel-link');
   if(person.profileUrl){ link.href = person.profileUrl; link.style.display = 'inline-block'; }
   else { link.style.display = 'none'; }
+
+  const spouseBlock = document.getElementById('spouse-block');
+  if(person.spouse){
+    spouseBlock.style.display = 'block';
+    document.getElementById('spouse-name').textContent = person.spouse;
+    document.getElementById('spouse-dates').textContent =
+      yearRange({born: person.spouseBorn, died: person.spouseDied});
+    document.getElementById('spouse-story').textContent = person.spouseStory || '';
+    const sImg = document.getElementById('spouse-photo');
+    if(person.spousePhoto){ sImg.src = person.spousePhoto; sImg.style.display = 'block'; }
+    else { sImg.style.display = 'none'; }
+  } else {
+    spouseBlock.style.display = 'none';
+  }
+
   document.getElementById('overlay').classList.add('open');
 }
 document.getElementById('close-panel').onclick = () => document.getElementById('overlay').classList.remove('open');

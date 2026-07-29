@@ -250,7 +250,7 @@ function renderTree(people){
     .parentId(d => d.parentId)
     (people);
 
-  const treeLayout = d3.tree().nodeSize([160, 110]);
+  const treeLayout = d3.tree().nodeSize([185, 110]);
   treeLayout(root);
 
   const svg = d3.select('#tree-svg');
@@ -277,19 +277,41 @@ function renderTree(people){
     .on('click', (event, d) => openPanel(d.data));
 
   node.append('rect')
-    .attr('x', -65).attr('y', -22)
-    .attr('width', 130).attr('height', 44);
+    .attr('x', -75).attr('y', -22)
+    .attr('width', 150).attr('height', 44);
+
+  const withPhoto = node.filter(d => d.data.photo);
+
+  withPhoto.append('clipPath')
+    .attr('id', d => 'clip-' + d.data.id)
+    .append('circle')
+    .attr('cx', -58).attr('cy', 0).attr('r', 15);
+
+  withPhoto.append('image')
+    .attr('href', d => d.data.photo)
+    .attr('x', -73).attr('y', -15)
+    .attr('width', 30).attr('height', 30)
+    .attr('preserveAspectRatio', 'xMidYMid slice')
+    .attr('clip-path', d => `url(#clip-${d.data.id})`);
+
+  withPhoto.append('circle')
+    .attr('cx', -58).attr('cy', 0).attr('r', 15)
+    .style('fill', 'none')
+    .style('stroke', 'var(--brass)')
+    .style('stroke-width', '1.5px');
 
   node.append('text')
-    .attr('text-anchor', 'middle')
+    .attr('text-anchor', d => d.data.photo ? 'start' : 'middle')
+    .attr('x', d => d.data.photo ? -35 : 0)
     .attr('y', -2)
-    .text(d => truncate(d.data.name, 18));
+    .text(d => truncate(d.data.name, d.data.photo ? 14 : 18));
 
   node.append('text')
     .attr('class', 'node-sub')
-    .attr('text-anchor', 'middle')
+    .attr('text-anchor', d => d.data.photo ? 'start' : 'middle')
+    .attr('x', d => d.data.photo ? -35 : 0)
     .attr('y', 14)
-    .text(d => d.data.spouse ? '& ' + truncate(d.data.spouse, 16) : (d.data.born || d.data.died ? yearRange(d.data) : ''));
+    .text(d => d.data.spouse ? '& ' + truncate(d.data.spouse, d.data.photo ? 13 : 16) : (d.data.born || d.data.died ? yearRange(d.data) : ''));
 }
 
 function truncate(str, n){

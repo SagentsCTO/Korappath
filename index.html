@@ -305,7 +305,7 @@
     then YOUR_FORM_ID is just: abcwxyz1
   -->
   <form class="archive-form" action="https://formspree.io/f/xjgnzory" method="POST" enctype="multipart/form-data">
-    <input type="hidden" name="_subject" value="New Korappath archive submission">
+    <input type="hidden" name="_subject" value="New Korappath photo/story submission">
 
     <label>
       Your name
@@ -313,33 +313,23 @@
     </label>
 
     <label>
-      Your relation to the family
+      Your email <span class="optional">(so we can reach out if we have questions)</span>
+      <input type="email" name="email" required>
+    </label>
+
+    <label>
+      Your relation to the family <span class="optional">(optional)</span>
       <input type="text" name="relation" placeholder="e.g. granddaughter of...">
     </label>
 
     <label>
-      What are you submitting?
-      <select name="submission_type">
-        <option value="Photo">Photo</option>
-        <option value="Document">Document</option>
-        <option value="Story or memory">Story or memory</option>
-        <option value="Family tree correction">Family tree correction</option>
-      </select>
+      Upload a photo <span class="optional">(optional)</span>
+      <input type="file" name="attachment" accept="image/*">
     </label>
 
     <label>
-      Upload a file <span class="optional">(photo or scanned document, optional)</span>
-      <input type="file" name="attachment" accept="image/*,.pdf,.doc,.docx">
-    </label>
-
-    <label>
-      Description or story
-      <textarea name="description" rows="5" placeholder="Names, approximate date, what's happening — or the memory itself"></textarea>
-    </label>
-
-    <label>
-      Where does this belong in the family tree? <span class="optional">(optional)</span>
-      <textarea name="tree_notes" rows="2" placeholder="Names or relationships this connects to"></textarea>
+      The story <span class="optional">(required — if you've added a photo, please say who's in it and what's happening)</span>
+      <textarea name="description" rows="5" placeholder="Names, approximate date, what's happening — or just the memory itself if there's no photo" required></textarea>
     </label>
 
     <button type="submit" class="btn btn-primary">Send it in</button>

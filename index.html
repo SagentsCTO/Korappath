@@ -168,6 +168,17 @@
   .contribute .btn-primary{ background:var(--oxide); color:var(--ivory); }
   .contribute .btn-primary:hover{ background:var(--oxide-light); }
 
+  /* ---------- Embedded form ---------- */
+  .form-embed{
+    max-width:640px;
+    margin:0 auto;
+    border:1px solid rgba(43,29,20,0.15);
+    border-radius:4px;
+    overflow:hidden;
+    background:#fff;
+  }
+  .form-embed iframe{ display:block; }
+
   /* ---------- Footer ---------- */
   footer{
     text-align:center;
@@ -252,7 +263,23 @@
   <span class="eyebrow" style="color:var(--oxide);">Open call</span>
   <h2>Have a photo, a letter, or a story?</h2>
   <p>This archive only grows as fast as the family shares. If you have something tucked away — even if you're not sure it matters — it belongs here.</p>
-  <a href="mailto:archive@korappath.com" class="btn btn-primary">Send something in</a>
+
+  <!--
+    Replace YOUR_FORM_ID below with your actual Google Form ID.
+    Find it in your form's URL: https://docs.google.com/forms/d/e/YOUR_FORM_ID/viewform
+    Then use that same ID here with "?embedded=true" appended.
+  -->
+  <div class="form-embed">
+    <iframe
+      src="https://docs.google.com/forms/d/e/1FAIpQLSesLv_svkd83UzgZCSmi_jayGJmgUlFid_ai9oh3qW_gD8Npw/viewform?embedded=true"
+      width="100%"
+      height="900"
+      frameborder="0"
+      marginheight="0"
+      marginwidth="0">
+      Loading form…
+    </iframe>
+  </div>
 </section>
 
 <footer>

@@ -132,7 +132,14 @@
     border-radius:4px;
     position:relative;
   }
-  .panel img{ width:100%; border-radius:3px; margin-bottom:1rem; }
+  .panel img{
+    width:110px; height:110px;
+    object-fit:cover;
+    border-radius:50%;
+    border:2px solid var(--brass);
+    display:block;
+    margin:0 auto 1rem;
+  }
   .panel h3{ font-size:1.5rem; margin-bottom:0.3rem; }
   .panel .dates{
     font-family:'Space Mono', monospace;
@@ -162,7 +169,14 @@
     opacity:0.75;
     margin-bottom:0.5rem;
   }
-  #spouse-block img{ width:100%; border-radius:3px; margin-bottom:0.8rem; }
+  #spouse-block img{
+    width:90px; height:90px;
+    object-fit:cover;
+    border-radius:50%;
+    border:2px solid var(--brass);
+    display:block;
+    margin:0 auto 0.8rem;
+  }
   #spouse-block h3{ font-size:1.2rem; margin-bottom:0.2rem; }
   .profile-link{
     display:inline-block;

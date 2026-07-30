@@ -71,6 +71,21 @@
     opacity:0.85;
   }
 
+  .phone-blocker{
+    display:none;
+    max-width:420px;
+    margin:0 auto;
+    text-align:center;
+    padding:2.5rem 1.5rem 3.5rem;
+  }
+  .phone-blocker h2{ font-size:1.4rem; margin:0.8rem 0 0.9rem; }
+  .phone-blocker p{ color:var(--ivory-dim); font-size:0.92rem; margin-bottom:1.6rem; }
+
+  @media (max-width:767px){
+    .explore-wrap, #hint-text, .metrics{ display:none; }
+    .phone-blocker{ display:block; }
+  }
+
   .tree-wrap{
     position:relative;
     width:100%;
@@ -429,7 +444,14 @@
   <div class="metrics" id="metrics"></div>
 </div>
 
-<div class="explore-wrap">
+<div class="phone-blocker" id="phone-blocker">
+  <span class="eyebrow">A bit more room needed</span>
+  <h2>Best explored on a tablet or larger screen</h2>
+  <p>The interactive tree needs more space to pan, zoom, and tap accurately than a phone screen allows. Please revisit this page on a tablet, laptop, or desktop for the full experience.</p>
+  <a href="index.html" class="btn btn-primary">Back home</a>
+</div>
+
+<div class="explore-wrap" id="explore-wrap">
   <div class="tree-wrap" id="tree-wrap">
     <svg id="tree-svg"></svg>
     <div class="zoom-controls">
@@ -474,7 +496,7 @@
   </aside>
 </div>
 
-<p class="hint">Scroll or pinch to zoom · drag to pan · click a name for their story · click the ± to expand or collapse a branch</p>
+<p class="hint" id="hint-text">Scroll or pinch to zoom · drag to pan · click a name for their story · click the ± to expand or collapse a branch</p>
 
 <footer>An ongoing family archive — Korappath, Chiyyaram, Thrissur</footer>
 
@@ -537,21 +559,24 @@ let activeZoom = null;
 let fitTransform = null;
 let didInitialFit = false;
 let allPeopleData = [];
+const isPhoneWidth = window.matchMedia('(max-width: 767px)').matches;
 
-fetch('family-data.json')
-  .then(r => r.json())
-  .then(data => {
-    document.getElementById('location-label').textContent = data.location || '';
-    if(data.note){ document.getElementById('note-label').textContent = data.note; }
-    allPeopleData = data.people;
-    renderMetrics(data);
-    initTree(data.people);
-  })
-  .catch(err => {
-    document.getElementById('tree-wrap').innerHTML =
-      '<p style="padding:2rem;text-align:center;color:var(--ivory-dim)">Could not load family-data.json — if you are opening this file directly from your computer, note that browsers block local file fetches; it will work once uploaded to GitHub Pages.</p>';
-    console.error(err);
-  });
+if(!isPhoneWidth){
+  fetch('family-data.json')
+    .then(r => r.json())
+    .then(data => {
+      document.getElementById('location-label').textContent = data.location || '';
+      if(data.note){ document.getElementById('note-label').textContent = data.note; }
+      allPeopleData = data.people;
+      renderMetrics(data);
+      initTree(data.people);
+    })
+    .catch(err => {
+      document.getElementById('tree-wrap').innerHTML =
+        '<p style="padding:2rem;text-align:center;color:var(--ivory-dim)">Could not load family-data.json — if you are opening this file directly from your computer, note that browsers block local file fetches; it will work once uploaded to GitHub Pages.</p>';
+      console.error(err);
+    });
+}
 
 function renderMetrics(data){
   const count = data.people.length;

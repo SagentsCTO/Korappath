@@ -136,11 +136,24 @@
     background:var(--oxide);
     padding:clamp(2rem, 4vw, 3.2rem);
     position:relative;
-    transition:background 0.25s ease;
+    overflow:hidden;
+    transition:filter 0.25s ease;
     text-decoration:none;
     color:var(--ivory);
   }
-  .wing:hover{ background:var(--oxide-light); }
+  .wing:hover{ filter:brightness(1.12); }
+  .wing .wing-motif{
+    position:absolute;
+    pointer-events:none;
+    opacity:0.09;
+    z-index:0;
+  }
+  .wing > *:not(.wing-motif){ position:relative; z-index:1; }
+
+  #history{ background:linear-gradient(135deg, #4a3d33 0%, var(--oxide) 65%); }
+  #people{ background:linear-gradient(45deg, var(--oxide) 0%, #8c5a2e 55%, #c6952f 100%); }
+  #house{ background:linear-gradient(160deg, var(--oxide) 0%, #2a120c 100%); }
+  #gallery{ background:linear-gradient(225deg, #c6952f 0%, var(--oxide) 45%, #3E1810 100%); }
   .wing .dir{
     font-family:'Space Mono', monospace;
     font-size:0.68rem;
@@ -266,6 +279,11 @@
 
 <div class="wings">
   <div class="wing" id="history">
+    <svg class="wing-motif" width="130" height="90" viewBox="0 0 130 90" style="bottom:-10px; right:-10px;" xmlns="http://www.w3.org/2000/svg">
+      <path d="M5 85 L65 15 L125 85" stroke="var(--ivory)" stroke-width="2" fill="none"/>
+      <path d="M20 85 L65 32 L110 85" stroke="var(--ivory)" stroke-width="2" fill="none"/>
+      <line x1="65" y1="15" x2="65" y2="0" stroke="var(--ivory)" stroke-width="2"/>
+    </svg>
     <span class="dir">North — Vadakkini</span>
     <h3>History</h3>
     <p>Origins of the household in Chiyyaram, its place in Thrissur's growth, and the events passed down through generations. Other Korappath branches trace back to the same root but split off and settled elsewhere — this archive follows the Chiyyaram line.</p>
@@ -273,6 +291,14 @@
   </div>
 
   <div class="wing" id="gallery">
+    <svg class="wing-motif" width="110" height="110" viewBox="0 0 110 110" style="top:-15px; right:-15px;" xmlns="http://www.w3.org/2000/svg">
+      <line x1="0" y1="20" x2="110" y2="20" stroke="var(--ivory)" stroke-width="1.5"/>
+      <line x1="0" y1="50" x2="110" y2="50" stroke="var(--ivory)" stroke-width="1.5"/>
+      <line x1="0" y1="80" x2="110" y2="80" stroke="var(--ivory)" stroke-width="1.5"/>
+      <line x1="20" y1="0" x2="20" y2="110" stroke="var(--ivory)" stroke-width="1.5"/>
+      <line x1="55" y1="0" x2="55" y2="110" stroke="var(--ivory)" stroke-width="1.5"/>
+      <line x1="90" y1="0" x2="90" y2="110" stroke="var(--ivory)" stroke-width="1.5"/>
+    </svg>
     <span class="dir">West — Padinjattini</span>
     <h3>Gallery</h3>
     <p>Photographs, documents, and objects gathered from wherever they've been kept safe — attics, trunks, and drawers.</p>
@@ -280,6 +306,13 @@
   </div>
 
   <a href="family-tree-explore.html" class="wing" id="people">
+    <svg class="wing-motif" width="120" height="90" viewBox="0 0 120 90" style="bottom:-5px; left:-5px;" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="25" cy="65" r="7" fill="none" stroke="var(--ivory)" stroke-width="2"/>
+      <circle cx="60" cy="20" r="7" fill="none" stroke="var(--ivory)" stroke-width="2"/>
+      <circle cx="95" cy="65" r="7" fill="none" stroke="var(--ivory)" stroke-width="2"/>
+      <line x1="30" y1="60" x2="55" y2="26" stroke="var(--ivory)" stroke-width="2"/>
+      <line x1="65" y1="26" x2="90" y2="60" stroke="var(--ivory)" stroke-width="2"/>
+    </svg>
     <span class="dir">East — Kizhakkini</span>
     <h3>People</h3>
     <p>A living family tree — names, branches, and the stories that belong to each person who carried the house forward.</p>
@@ -287,6 +320,10 @@
   </a>
 
   <div class="wing" id="house">
+    <svg class="wing-motif" width="100" height="100" viewBox="0 0 100 100" style="top:-8px; left:-8px;" xmlns="http://www.w3.org/2000/svg">
+      <rect x="8" y="8" width="84" height="84" fill="none" stroke="var(--ivory)" stroke-width="2"/>
+      <rect x="34" y="34" width="32" height="32" fill="none" stroke="var(--ivory)" stroke-width="2"/>
+    </svg>
     <span class="dir">South — Thekkini</span>
     <h3>The House</h3>
     <p>The building itself — its architecture, its rooms, and what it looked like across the years it stood.</p>

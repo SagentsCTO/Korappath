@@ -199,6 +199,63 @@
     color:var(--ivory-dim);
     font-size:0.82rem;
   }
+
+  /* ---------- Add-photo action + modal ---------- */
+  .btn-add-photo{
+    display:block;
+    margin-top:1.3rem;
+    padding:0.7rem 1rem;
+    width:100%;
+    font-family:'Space Mono', monospace;
+    font-size:0.72rem;
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+    background:none;
+    border:1px dashed var(--oxide);
+    color:var(--oxide);
+    border-radius:3px;
+    cursor:pointer;
+  }
+  .btn-add-photo:hover{ background:rgba(107,42,30,0.06); }
+
+  .photo-panel{ max-width:480px; }
+  .photo-subject{ font-size:0.92rem; color:#6b5a45; margin-bottom:1.4rem; }
+  .photo-subject span{ font-weight:600; color:var(--oxide); }
+
+  #photo-form label{
+    display:block;
+    font-family:'Space Mono', monospace;
+    font-size:0.72rem;
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+    color:#6b5a45;
+    margin-bottom:1.1rem;
+  }
+  #photo-form .optional{
+    text-transform:none;
+    font-family:'Work Sans', sans-serif;
+    letter-spacing:0;
+    opacity:0.65;
+    font-size:0.78rem;
+  }
+  #photo-form input[type="text"],
+  #photo-form input[type="email"],
+  #photo-form input[type="file"],
+  #photo-form select,
+  #photo-form textarea{
+    display:block;
+    width:100%;
+    margin-top:0.45rem;
+    padding:0.65rem 0.75rem;
+    font-family:'Work Sans', sans-serif;
+    font-size:0.92rem;
+    color:var(--teak);
+    background:#fff;
+    border:1px solid rgba(43,29,20,0.2);
+    border-radius:3px;
+  }
+  #photo-form textarea{ resize:vertical; }
+  #photo-form button{ margin-top:0.3rem; cursor:pointer; border:none; }
 </style>
 </head>
 <body>
@@ -227,6 +284,7 @@
     <div class="dates" id="panel-dates"></div>
     <p id="panel-story"></p>
     <a id="panel-link" href="#" style="display:none; margin-top:1.1rem;" class="profile-link">View full profile →</a>
+    <button id="add-photo-btn" class="btn-add-photo" onclick="openPhotoModal()">+ Add a photo of them</button>
 
     <div id="spouse-block" style="display:none;">
       <hr>
@@ -242,6 +300,8 @@
 <footer>An ongoing family archive — Korappath, Chiyyaram, Thrissur</footer>
 
 <script>
+let activePerson = null;
+
 fetch('family-data.json')
   .then(r => r.json())
   .then(data => {
@@ -265,6 +325,11 @@ function renderTree(people){
     (people);
 
   const treeLayout = d3.tree().nodeSize([185, 110]);
+  root.each(node => {
+    if(node.children){
+      node.children.sort((a, b) => (a.data.order ?? 999) - (b.data.order ?? 999));
+    }
+  });
   treeLayout(root);
 
   const svg = d3.select('#tree-svg');
@@ -340,6 +405,7 @@ function yearRange(d){
 }
 
 function openPanel(person){
+  activePerson = person;
   document.getElementById('panel-name').textContent = person.name;
   document.getElementById('panel-dates').textContent =
     [yearRange(person), person.location].filter(Boolean).join(' · ');
@@ -371,7 +437,84 @@ document.getElementById('close-panel').onclick = () => document.getElementById('
 document.getElementById('overlay').onclick = (e) => {
   if(e.target.id === 'overlay') e.target.classList.remove('open');
 };
+
+function openPhotoModal(){
+  if(!activePerson) return;
+  document.getElementById('photo-subject-name').textContent = activePerson.name;
+  document.getElementById('photo-person-name').value = activePerson.name;
+  document.getElementById('photo-person-id').value = activePerson.id;
+  document.getElementById('photo-form').reset();
+  document.getElementById('group-detail-label').style.display = 'none';
+  document.getElementById('photo-overlay').classList.add('open');
+}
+function closePhotoModal(){
+  document.getElementById('photo-overlay').classList.remove('open');
+}
+document.getElementById('close-photo-panel').onclick = closePhotoModal;
+document.getElementById('photo-overlay').onclick = (e) => {
+  if(e.target.id === 'photo-overlay') closePhotoModal();
+};
+
+function togglePhotoTypeFields(){
+  const isGroup = document.getElementById('photo-type').value === 'Group photo';
+  const label = document.getElementById('group-detail-label');
+  const field = document.getElementById('group-position');
+  label.style.display = isGroup ? 'block' : 'none';
+  field.required = isGroup;
+  if(!isGroup) field.value = '';
+}
+
 </script>
+
+<div class="overlay" id="photo-overlay">
+  <div class="panel photo-panel">
+    <button class="close" id="close-photo-panel">×</button>
+    <h3>Add a photo</h3>
+    <p class="photo-subject">of <span id="photo-subject-name"></span></p>
+
+    <!-- Replace PHOTO_FORM_ID below with your dedicated tree-photo Formspree endpoint -->
+    <form id="photo-form" action="https://formspree.io/f/xjgnzdyq" method="POST" enctype="multipart/form-data">
+      <input type="hidden" name="_subject" value="New tree photo submission">
+      <input type="hidden" name="person_name" id="photo-person-name">
+      <input type="hidden" name="person_id" id="photo-person-id">
+
+      <label>
+        Your name
+        <input type="text" name="name" required>
+      </label>
+
+      <label>
+        Your email <span class="optional">(so we can reach out if we have questions)</span>
+        <input type="email" name="email" required>
+      </label>
+
+      <label>
+        Upload the photo
+        <input type="file" name="photo" accept="image/*" required>
+      </label>
+
+      <label>
+        Is this a photo of just them, or a group photo?
+        <select id="photo-type" name="photo_type" onchange="togglePhotoTypeFields()">
+          <option value="Just them">Just them</option>
+          <option value="Group photo">Group photo</option>
+        </select>
+      </label>
+
+      <label id="group-detail-label" style="display:none;">
+        Where are they in the photo? <span class="optional">(e.g. "second from left, wearing white")</span>
+        <textarea name="group_position" id="group-position" rows="2"></textarea>
+      </label>
+
+      <label>
+        Anything else about the photo? <span class="optional">(date, occasion, who else is in it — optional)</span>
+        <textarea name="photo_description" rows="3"></textarea>
+      </label>
+
+      <button type="submit" class="btn btn-primary">Send photo</button>
+    </form>
+  </div>
+</div>
 
 </body>
 </html>

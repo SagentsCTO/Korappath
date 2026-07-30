@@ -153,6 +153,10 @@
       <label>Died <input type="text" id="f-died" placeholder="leave blank if living"></label>
     </div>
 
+    <label>Order among siblings <span style="text-transform:none;">(1, 2, 3... — controls left-to-right position under the same parent)</span>
+      <input type="number" id="f-order" min="1" step="1" placeholder="e.g. 1">
+    </label>
+
     <label>Location <input type="text" id="f-location"></label>
 
     <label>Story <textarea id="f-story" rows="4"></textarea></label>
@@ -214,7 +218,9 @@ function renderTree(){
   document.getElementById('empty-note').style.display = state.people.length ? 'none' : 'block';
 
   function buildLevel(parentId){
-    const children = state.people.filter(p => p.parentId === parentId);
+    const children = state.people
+      .filter(p => p.parentId === parentId)
+      .sort((a, b) => (a.order ?? 999) - (b.order ?? 999));
     if(!children.length) return null;
     const ul = document.createElement('ul');
     if(parentId === null){ ul.className = 'tree-list'; ul.style.paddingLeft = '0'; ul.style.border = 'none'; }
@@ -227,7 +233,7 @@ function renderTree(){
       info.className = 'info';
       const nm = document.createElement('span');
       nm.className = 'name';
-      nm.textContent = p.name || '(unnamed)';
+      nm.textContent = (p.order ? `${p.order}. ` : '') + (p.name || '(unnamed)');
       info.appendChild(nm);
       const sub = document.createElement('span');
       sub.className = 'sub';
@@ -298,6 +304,7 @@ function openModal(personId, forcedParentId){
   document.getElementById('f-parentId').value = p ? (p.parentId || '') : (forcedParentId || '');
   document.getElementById('f-born').value = p?.born || '';
   document.getElementById('f-died').value = p?.died || '';
+  document.getElementById('f-order').value = p?.order ?? '';
   document.getElementById('f-location').value = p?.location || '';
   document.getElementById('f-story').value = p?.story || '';
   document.getElementById('f-photo').value = p?.photo || '';
@@ -322,6 +329,7 @@ function savePerson(){
   const data = {
     name,
     parentId,
+    order: document.getElementById('f-order').value ? Number(document.getElementById('f-order').value) : null,
     born: document.getElementById('f-born').value.trim(),
     died: document.getElementById('f-died').value.trim(),
     location: document.getElementById('f-location').value.trim(),

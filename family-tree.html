@@ -256,6 +256,21 @@
   }
   #photo-form textarea{ resize:vertical; }
   #photo-form button{ margin-top:0.3rem; cursor:pointer; border:none; }
+
+  .btn{
+    font-family:'Space Mono', monospace;
+    font-size:0.75rem;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    padding:0.9rem 1.6rem;
+    border-radius:2px;
+    text-decoration:none;
+    display:inline-block;
+    transition:transform 0.15s ease, background 0.2s ease;
+  }
+  .btn:hover{ transform:translateY(-1px); }
+  .btn-primary{ background:var(--oxide); color:var(--ivory); }
+  .btn-primary:hover{ background:var(--oxide-light); }
 </style>
 </head>
 <body>
@@ -298,6 +313,56 @@
 </div>
 
 <footer>An ongoing family archive — Korappath, Chiyyaram, Thrissur</footer>
+
+<div class="overlay" id="photo-overlay">
+  <div class="panel photo-panel">
+    <button class="close" id="close-photo-panel">×</button>
+    <h3>Add a photo</h3>
+    <p class="photo-subject">of <span id="photo-subject-name"></span></p>
+
+    <!-- Replace PHOTO_FORM_ID below with your dedicated tree-photo Formspree endpoint -->
+    <form id="photo-form" action="https://formspree.io/f/xjgnzdyq" method="POST" enctype="multipart/form-data">
+      <input type="hidden" name="_subject" value="New tree photo submission">
+      <input type="hidden" name="person_name" id="photo-person-name">
+      <input type="hidden" name="person_id" id="photo-person-id">
+
+      <label>
+        Your name
+        <input type="text" name="name" required>
+      </label>
+
+      <label>
+        Your email <span class="optional">(so we can reach out if we have questions)</span>
+        <input type="email" name="email" required>
+      </label>
+
+      <label>
+        Upload the photo
+        <input type="file" name="photo" accept="image/*" required>
+      </label>
+
+      <label>
+        Is this a photo of just them, or a group photo?
+        <select id="photo-type" name="photo_type" onchange="togglePhotoTypeFields()">
+          <option value="Just them">Just them</option>
+          <option value="Group photo">Group photo</option>
+        </select>
+      </label>
+
+      <label id="group-detail-label" style="display:none;">
+        Where are they in the photo? <span class="optional">(e.g. "second from left, wearing white")</span>
+        <textarea name="group_position" id="group-position" rows="2"></textarea>
+      </label>
+
+      <label>
+        Anything else about the photo? <span class="optional">(date, occasion, who else is in it — optional)</span>
+        <textarea name="photo_description" rows="3"></textarea>
+      </label>
+
+      <button type="submit" class="btn btn-primary">Send photo</button>
+    </form>
+  </div>
+</div>
 
 <script>
 let activePerson = null;
@@ -463,58 +528,6 @@ function togglePhotoTypeFields(){
   field.required = isGroup;
   if(!isGroup) field.value = '';
 }
-
-</script>
-
-<div class="overlay" id="photo-overlay">
-  <div class="panel photo-panel">
-    <button class="close" id="close-photo-panel">×</button>
-    <h3>Add a photo</h3>
-    <p class="photo-subject">of <span id="photo-subject-name"></span></p>
-
-    <!-- Replace PHOTO_FORM_ID below with your dedicated tree-photo Formspree endpoint -->
-    <form id="photo-form" action="https://formspree.io/f/xjgnzdyq" method="POST" enctype="multipart/form-data">
-      <input type="hidden" name="_subject" value="New tree photo submission">
-      <input type="hidden" name="person_name" id="photo-person-name">
-      <input type="hidden" name="person_id" id="photo-person-id">
-
-      <label>
-        Your name
-        <input type="text" name="name" required>
-      </label>
-
-      <label>
-        Your email <span class="optional">(so we can reach out if we have questions)</span>
-        <input type="email" name="email" required>
-      </label>
-
-      <label>
-        Upload the photo
-        <input type="file" name="photo" accept="image/*" required>
-      </label>
-
-      <label>
-        Is this a photo of just them, or a group photo?
-        <select id="photo-type" name="photo_type" onchange="togglePhotoTypeFields()">
-          <option value="Just them">Just them</option>
-          <option value="Group photo">Group photo</option>
-        </select>
-      </label>
-
-      <label id="group-detail-label" style="display:none;">
-        Where are they in the photo? <span class="optional">(e.g. "second from left, wearing white")</span>
-        <textarea name="group_position" id="group-position" rows="2"></textarea>
-      </label>
-
-      <label>
-        Anything else about the photo? <span class="optional">(date, occasion, who else is in it — optional)</span>
-        <textarea name="photo_description" rows="3"></textarea>
-      </label>
-
-      <button type="submit" class="btn btn-primary">Send photo</button>
-    </form>
-  </div>
-</div>
 
 </body>
 </html>

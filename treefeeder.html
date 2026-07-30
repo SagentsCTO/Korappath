@@ -248,7 +248,7 @@ function renderTree(){
       const sub = document.createElement('span');
       sub.className = 'sub';
       const bits = [];
-      if(p.spouse) bits.push('& ' + p.spouse);
+      if(p.spouse) bits.push('& ' + (p.spouseDeceased ? 'Lt. ' : '') + p.spouse);
       if(p.born || p.died) bits.push(`${p.born || '?'}–${p.died || 'present'}`);
       if(p.profileUrl) bits.push('has profile');
       sub.textContent = bits.join(' · ');

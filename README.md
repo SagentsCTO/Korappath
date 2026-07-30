@@ -33,7 +33,7 @@ You don't need a GitHub account or any technical knowledge to add to this archiv
 
 ## Editing the family tree
 
-The tree at `family-tree.html` renders from `family-data.json`. To add a person, add an object to the `people` array:
+The tree at `family-tree-explore.html` renders from `family-data.json`. To add a person, add an object to the `people` array:
 
 ```json
 {
@@ -50,6 +50,8 @@ The tree at `family-tree.html` renders from `family-data.json`. To add a person,
 ```
 
 The root ancestor should have `"parentId": null`. Everyone else's `parentId` points to their parent's `id`. Spouses aren't separate tree nodes — they're shown attached to their partner's box.
+
+`family-tree.html` and `family-tree-collapsible.html` are earlier iterations kept in the repo for reference — they're not linked from the live site and can be deleted once you're confident `family-tree-explore.html` covers what you need.
 
 ## Tech
 

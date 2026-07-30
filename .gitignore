@@ -1,0 +1,19 @@
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor/IDE
+.vscode/
+.idea/
+*.swp
+
+# Local originals — keep full-res scans/photos here without committing them
+# (move a resized/compressed copy into images/people/ when it's ready for the site)
+raw-photos/
+originals/
+
+# Temp/backup files
+*.bak
+*.tmp
+~$*

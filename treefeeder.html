@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Korappath Tree Editor (offline tool)</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Work+Sans:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --oxide-dark:#3E1810; --oxide:#6B2A1E; --oxide-light:#8C3E2C;
+    --brass:#C6952F; --brass-light:#E8C776;
+    --ivory:#F1E9D6; --ivory-dim:#D8CBAE; --teak:#2B1D14;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0; background:var(--oxide-dark); color:var(--ivory);
+    font-family:'Work Sans', sans-serif; font-weight:300;
+    min-height:100vh;
+  }
+  h1{ font-family:'Fraunces', serif; font-weight:600; font-size:1.6rem; margin:0; }
+  .topbar{
+    padding:1.3rem clamp(1rem,4vw,2.5rem);
+    border-bottom:1px solid rgba(198,149,47,0.25);
+    display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.8rem;
+  }
+  .topbar .note{ font-family:'Space Mono', monospace; font-size:0.72rem; color:var(--ivory-dim); opacity:0.8; }
+
+  .wrap{ max-width:920px; margin:0 auto; padding:2rem clamp(1rem,4vw,2.5rem) 4rem; }
+
+  .btn{
+    font-family:'Space Mono', monospace; font-size:0.72rem; letter-spacing:0.06em; text-transform:uppercase;
+    padding:0.65rem 1.1rem; border-radius:3px; border:none; cursor:pointer;
+  }
+  .btn-brass{ background:var(--brass); color:var(--teak); }
+  .btn-brass:hover{ background:var(--brass-light); }
+  .btn-ghost{ background:none; border:1px solid rgba(241,233,214,0.35); color:var(--ivory); }
+  .btn-ghost:hover{ border-color:var(--ivory); }
+  .btn-danger{ background:none; border:1px solid rgba(220,120,100,0.5); color:#e08c78; }
+  .btn-danger:hover{ background:rgba(220,120,100,0.12); }
+
+  .file-row{ display:flex; gap:0.7rem; flex-wrap:wrap; margin-bottom:1.5rem; }
+  input[type="file"]{ display:none; }
+
+  .meta-fields{
+    display:grid; grid-template-columns:1fr 1fr; gap:1rem;
+    margin-bottom:2rem; padding:1.2rem; border:1px solid rgba(198,149,47,0.2); border-radius:4px;
+  }
+  .meta-fields > div:last-child{ grid-column:1/-1; }
+  label{
+    display:block; font-family:'Space Mono', monospace; font-size:0.68rem; letter-spacing:0.05em;
+    text-transform:uppercase; color:var(--brass-light); opacity:0.85; margin-bottom:1rem;
+  }
+  input[type="text"], input[type="number"], textarea, select{
+    display:block; width:100%; margin-top:0.4rem; padding:0.6rem 0.7rem;
+    font-family:'Work Sans', sans-serif; font-size:0.92rem; color:var(--teak);
+    background:#fff; border:1px solid rgba(43,29,20,0.2); border-radius:3px;
+  }
+  textarea{ resize:vertical; }
+
+  .toolbar{ display:flex; justify-content:space-between; align-items:center; margin-bottom:1rem; flex-wrap:wrap; gap:0.7rem; }
+  .tree-list{ list-style:none; margin:0; padding:0; }
+  .tree-list ul{ list-style:none; margin:0; padding-left:1.6rem; border-left:1px dashed rgba(198,149,47,0.25); }
+  .person-row{
+    display:flex; justify-content:space-between; align-items:center; gap:0.8rem;
+    padding:0.6rem 0.8rem; margin:0.3rem 0;
+    background:var(--oxide); border:1px solid rgba(198,149,47,0.25); border-radius:3px;
+  }
+  .person-row .info{ display:flex; align-items:baseline; gap:0.6rem; flex-wrap:wrap; }
+  .person-row .name{ font-weight:500; }
+  .person-row .sub{ font-family:'Space Mono', monospace; font-size:0.72rem; color:var(--brass-light); opacity:0.85; }
+  .person-row .actions{ display:flex; gap:0.4rem; flex-shrink:0; }
+  .person-row .actions button{
+    font-family:'Space Mono', monospace; font-size:0.65rem; text-transform:uppercase;
+    background:none; border:1px solid rgba(241,233,214,0.3); color:var(--ivory);
+    padding:0.35rem 0.6rem; border-radius:2px; cursor:pointer;
+  }
+  .person-row .actions button:hover{ border-color:var(--brass-light); color:var(--brass-light); }
+  .empty-note{ color:var(--ivory-dim); font-size:0.9rem; padding:1rem 0; }
+
+  /* Modal */
+  .overlay{ position:fixed; inset:0; background:rgba(0,0,0,0.55); display:none; align-items:flex-start; justify-content:center; padding:3rem 1rem; overflow-y:auto; z-index:20; }
+  .overlay.open{ display:flex; }
+  .modal{ background:var(--ivory); color:var(--teak); max-width:560px; width:100%; padding:2rem; border-radius:4px; }
+  .modal h2{ font-family:'Fraunces', serif; font-size:1.4rem; margin:0 0 1.2rem; color:var(--teak); }
+  .modal label{ color:var(--oxide); }
+  .modal .id-preview{ font-family:'Space Mono', monospace; font-size:0.78rem; color:#8a6d4d; margin-top:-0.6rem; margin-bottom:1rem; }
+  .modal-actions{ display:flex; justify-content:flex-end; gap:0.6rem; margin-top:1.5rem; }
+  .modal .btn-brass{ background:var(--oxide); color:var(--ivory); }
+  .modal .btn-brass:hover{ background:var(--oxide-light); }
+  fieldset{ border:1px solid rgba(107,42,30,0.15); border-radius:4px; padding:0.9rem 1rem 0.2rem; margin:1.2rem 0; }
+  legend{ font-family:'Space Mono', monospace; font-size:0.68rem; letter-spacing:0.05em; text-transform:uppercase; color:var(--oxide); padding:0 0.4rem; }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <h1>Korappath Tree Editor</h1>
+  <span class="note">Offline tool — nothing here touches the live site until you upload the downloaded file</span>
+</div>
+
+<div class="wrap">
+
+  <div class="file-row">
+    <button class="btn btn-brass" onclick="document.getElementById('file-input').click()">Load family-data.json</button>
+    <input type="file" id="file-input" accept=".json">
+    <button class="btn btn-ghost" onclick="startFresh()">Start fresh</button>
+    <button class="btn btn-brass" onclick="downloadJson()">Download updated family-data.json</button>
+  </div>
+
+  <div class="meta-fields">
+    <div>
+      <label>Family name
+        <input type="text" id="meta-familyName">
+      </label>
+    </div>
+    <div>
+      <label>Location
+        <input type="text" id="meta-location">
+      </label>
+    </div>
+    <div>
+      <label>Note
+        <textarea id="meta-note" rows="2"></textarea>
+      </label>
+    </div>
+  </div>
+
+  <div class="toolbar">
+    <strong>People</strong>
+    <button class="btn btn-brass" onclick="openModal(null, null)">+ Add root ancestor</button>
+  </div>
+
+  <ul class="tree-list" id="tree-root"></ul>
+  <p class="empty-note" id="empty-note" style="display:none;">No one added yet. Load a file, or add a root ancestor to start.</p>
+
+</div>
+
+<div class="overlay" id="overlay">
+  <div class="modal">
+    <h2 id="modal-title">Add person</h2>
+    <div class="id-preview" id="id-preview"></div>
+
+    <label>Name
+      <input type="text" id="f-name" oninput="updateIdPreview()">
+    </label>
+
+    <label>Parent <span style="text-transform:none;">(leave as "— none —" for a root ancestor)</span>
+      <select id="f-parentId"></select>
+    </label>
+
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:1rem;">
+      <label>Born <input type="text" id="f-born" placeholder="e.g. 1945"></label>
+      <label>Died <input type="text" id="f-died" placeholder="leave blank if living"></label>
+    </div>
+
+    <label>Location <input type="text" id="f-location"></label>
+
+    <label>Story <textarea id="f-story" rows="4"></textarea></label>
+
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:1rem;">
+      <label>Photo path <input type="text" id="f-photo" placeholder="images/people/name.jpg"></label>
+      <label>Profile page <input type="text" id="f-profileUrl" placeholder="people/name.html"></label>
+    </div>
+
+    <fieldset>
+      <legend>Spouse (optional)</legend>
+      <label>Spouse name <input type="text" id="f-spouse"></label>
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:1rem;">
+        <label>Spouse born <input type="text" id="f-spouseBorn"></label>
+        <label>Spouse died <input type="text" id="f-spouseDied"></label>
+      </div>
+      <label>Spouse photo path <input type="text" id="f-spousePhoto"></label>
+      <label>Spouse story <textarea id="f-spouseStory" rows="2"></textarea></label>
+    </fieldset>
+
+    <div class="modal-actions">
+      <button class="btn btn-ghost" onclick="closeModal()">Cancel</button>
+      <button class="btn btn-brass" onclick="savePerson()">Save</button>
+    </div>
+  </div>
+</div>
+
+<script>
+let state = { familyName: "Korappath", location: "", note: "", people: [] };
+let editingId = null;   // null = adding new person
+let presetParentId = null;
+
+function slugify(name){
+  return name.toLowerCase().trim()
+    .replace(/[^a-z0-9\s-]/g, '')
+    .replace(/\s+/g, '-')
+    .replace(/-+/g, '-')
+    .replace(/^-|-$/g, '') || 'person';
+}
+function uniqueId(base, excludeId){
+  let id = base, n = 2;
+  const taken = new Set(state.people.filter(p => p.id !== excludeId).map(p => p.id));
+  while(taken.has(id)){ id = `${base}-${n}`; n++; }
+  return id;
+}
+
+function renderMeta(){
+  document.getElementById('meta-familyName').value = state.familyName || '';
+  document.getElementById('meta-location').value = state.location || '';
+  document.getElementById('meta-note').value = state.note || '';
+}
+document.getElementById('meta-familyName').addEventListener('input', e => state.familyName = e.target.value);
+document.getElementById('meta-location').addEventListener('input', e => state.location = e.target.value);
+document.getElementById('meta-note').addEventListener('input', e => state.note = e.target.value);
+
+function renderTree(){
+  const root = document.getElementById('tree-root');
+  root.innerHTML = '';
+  document.getElementById('empty-note').style.display = state.people.length ? 'none' : 'block';
+
+  function buildLevel(parentId){
+    const children = state.people.filter(p => p.parentId === parentId);
+    if(!children.length) return null;
+    const ul = document.createElement('ul');
+    if(parentId === null){ ul.className = 'tree-list'; ul.style.paddingLeft = '0'; ul.style.border = 'none'; }
+    children.forEach(p => {
+      const li = document.createElement('li');
+      const row = document.createElement('div');
+      row.className = 'person-row';
+
+      const info = document.createElement('div');
+      info.className = 'info';
+      const nm = document.createElement('span');
+      nm.className = 'name';
+      nm.textContent = p.name || '(unnamed)';
+      info.appendChild(nm);
+      const sub = document.createElement('span');
+      sub.className = 'sub';
+      const bits = [];
+      if(p.spouse) bits.push('& ' + p.spouse);
+      if(p.born || p.died) bits.push(`${p.born || '?'}–${p.died || 'present'}`);
+      if(p.profileUrl) bits.push('has profile');
+      sub.textContent = bits.join(' · ');
+      info.appendChild(sub);
+      row.appendChild(info);
+
+      const actions = document.createElement('div');
+      actions.className = 'actions';
+      const editBtn = document.createElement('button');
+      editBtn.textContent = 'Edit';
+      editBtn.onclick = () => openModal(p.id, null);
+      const addChildBtn = document.createElement('button');
+      addChildBtn.textContent = '+ Child';
+      addChildBtn.onclick = () => openModal(null, p.id);
+      const delBtn = document.createElement('button');
+      delBtn.textContent = 'Delete';
+      delBtn.onclick = () => deletePerson(p.id);
+      actions.append(editBtn, addChildBtn, delBtn);
+      row.appendChild(actions);
+
+      li.appendChild(row);
+      const sub_ul = buildLevel(p.id);
+      if(sub_ul) li.appendChild(sub_ul);
+      ul.appendChild(li);
+    });
+    return ul;
+  }
+
+  const built = buildLevel(null);
+  if(built) root.appendChild(built);
+}
+
+function populateParentSelect(excludeId){
+  const sel = document.getElementById('f-parentId');
+  sel.innerHTML = '<option value="">— none (root ancestor) —</option>';
+  state.people.forEach(p => {
+    if(p.id === excludeId) return; // can't be your own parent
+    const opt = document.createElement('option');
+    opt.value = p.id;
+    opt.textContent = p.name || p.id;
+    sel.appendChild(opt);
+  });
+}
+
+function updateIdPreview(){
+  const name = document.getElementById('f-name').value;
+  const preview = document.getElementById('id-preview');
+  if(!name.trim()){ preview.textContent = ''; return; }
+  const base = slugify(name);
+  const id = editingId ? editingId : uniqueId(base, null);
+  preview.textContent = editingId ? `id: ${editingId} (unchanged)` : `id will be: ${id}`;
+}
+
+function openModal(personId, forcedParentId){
+  editingId = personId;
+  presetParentId = forcedParentId;
+  const p = personId ? state.people.find(x => x.id === personId) : null;
+
+  document.getElementById('modal-title').textContent = p ? 'Edit person' : 'Add person';
+  populateParentSelect(personId);
+
+  document.getElementById('f-name').value = p?.name || '';
+  document.getElementById('f-parentId').value = p ? (p.parentId || '') : (forcedParentId || '');
+  document.getElementById('f-born').value = p?.born || '';
+  document.getElementById('f-died').value = p?.died || '';
+  document.getElementById('f-location').value = p?.location || '';
+  document.getElementById('f-story').value = p?.story || '';
+  document.getElementById('f-photo').value = p?.photo || '';
+  document.getElementById('f-profileUrl').value = p?.profileUrl || '';
+  document.getElementById('f-spouse').value = p?.spouse || '';
+  document.getElementById('f-spouseBorn').value = p?.spouseBorn || '';
+  document.getElementById('f-spouseDied').value = p?.spouseDied || '';
+  document.getElementById('f-spousePhoto').value = p?.spousePhoto || '';
+  document.getElementById('f-spouseStory').value = p?.spouseStory || '';
+
+  updateIdPreview();
+  document.getElementById('overlay').classList.add('open');
+}
+function closeModal(){ document.getElementById('overlay').classList.remove('open'); }
+
+function savePerson(){
+  const name = document.getElementById('f-name').value.trim();
+  if(!name){ alert('Name is required.'); return; }
+  const parentIdRaw = document.getElementById('f-parentId').value;
+  const parentId = parentIdRaw === '' ? null : parentIdRaw;
+
+  const data = {
+    name,
+    parentId,
+    born: document.getElementById('f-born').value.trim(),
+    died: document.getElementById('f-died').value.trim(),
+    location: document.getElementById('f-location').value.trim(),
+    story: document.getElementById('f-story').value.trim(),
+    photo: document.getElementById('f-photo').value.trim(),
+    profileUrl: document.getElementById('f-profileUrl').value.trim(),
+    spouse: document.getElementById('f-spouse').value.trim(),
+    spouseBorn: document.getElementById('f-spouseBorn').value.trim(),
+    spouseDied: document.getElementById('f-spouseDied').value.trim(),
+    spousePhoto: document.getElementById('f-spousePhoto').value.trim(),
+    spouseStory: document.getElementById('f-spouseStory').value.trim(),
+  };
+
+  if(editingId){
+    const idx = state.people.findIndex(p => p.id === editingId);
+    state.people[idx] = { id: editingId, ...data };
+  } else {
+    const id = uniqueId(slugify(name), null);
+    state.people.push({ id, ...data });
+  }
+  closeModal();
+  renderTree();
+}
+
+function deletePerson(id){
+  const hasChildren = state.people.some(p => p.parentId === id);
+  if(hasChildren){
+    if(!confirm('This person has children in the tree. Delete them anyway? (Their children will need a new parent afterward — this tool will not reassign them automatically.)')) return;
+  } else {
+    if(!confirm('Delete this person?')) return;
+  }
+  state.people = state.people.filter(p => p.id !== id);
+  renderTree();
+}
+
+function startFresh(){
+  if(!confirm('Clear everything and start a new tree?')) return;
+  state = { familyName: "Korappath", location: "", note: "", people: [] };
+  renderMeta();
+  renderTree();
+}
+
+document.getElementById('file-input').addEventListener('change', (e) => {
+  const file = e.target.files[0];
+  if(!file) return;
+  const reader = new FileReader();
+  reader.onload = (evt) => {
+    try{
+      const parsed = JSON.parse(evt.target.result);
+      state = {
+        familyName: parsed.familyName || "Korappath",
+        location: parsed.location || "",
+        note: parsed.note || "",
+        people: Array.isArray(parsed.people) ? parsed.people : []
+      };
+      renderMeta();
+      renderTree();
+    } catch(err){
+      alert('Could not read that file as valid JSON:\n' + err.message);
+    }
+  };
+  reader.readAsText(file);
+});
+
+function downloadJson(){
+  const out = {
+    familyName: state.familyName,
+    location: state.location,
+    note: state.note,
+    people: state.people
+  };
+  const blob = new Blob([JSON.stringify(out, null, 2)], { type: 'application/json' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = 'family-data.json';
+  a.click();
+  URL.revokeObjectURL(url);
+}
+
+renderMeta();
+renderTree();
+</script>
+
+</body>
+</html>

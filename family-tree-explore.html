@@ -72,6 +72,7 @@
     border-bottom:1px solid rgba(198,149,47,0.2);
     overflow:hidden;
     cursor:grab;
+    background:#FDFCFA;
   }
   .tree-wrap:active{ cursor:grabbing; }
   svg{ width:100%; height:100%; display:block; }
@@ -116,7 +117,7 @@
   }
   .link{
     fill:none;
-    stroke:rgba(198,149,47,0.4);
+    stroke:rgba(107,42,30,0.35);
     stroke-width:1.5px;
   }
 
@@ -684,34 +685,19 @@ function update(){
           .attr('x', -75).attr('y', -22)
           .attr('width', 150).attr('height', 44);
 
-        const withPhoto = g.filter(d => d.data.photo);
-        withPhoto.append('clipPath')
-          .attr('id', d => 'clip-' + d.data.id)
-          .append('circle')
-          .attr('cx', -58).attr('cy', 0).attr('r', 15);
-        withPhoto.append('image')
-          .attr('href', d => d.data.photo)
-          .attr('x', -73).attr('y', -15)
-          .attr('width', 30).attr('height', 30)
-          .attr('preserveAspectRatio', 'xMidYMid slice')
-          .attr('clip-path', d => `url(#clip-${d.data.id})`);
-        withPhoto.append('circle')
-          .attr('cx', -58).attr('cy', 0).attr('r', 15)
-          .style('fill', 'none').style('stroke', 'var(--brass)').style('stroke-width', '1.5px');
-
         g.append('text')
           .attr('class', 'main-label')
-          .attr('text-anchor', d => d.data.photo ? 'start' : 'middle')
-          .attr('x', d => d.data.photo ? -35 : 0)
+          .attr('text-anchor', 'middle')
+          .attr('x', 0)
           .attr('y', -2)
-          .text(d => truncate(displayName(d.data.name, d.data.deceased), d.data.photo ? 14 : 18));
+          .text(d => truncate(displayName(d.data.name, d.data.deceased), 18));
 
         g.append('text')
           .attr('class', 'node-sub')
-          .attr('text-anchor', d => d.data.photo ? 'start' : 'middle')
-          .attr('x', d => d.data.photo ? -35 : 0)
+          .attr('text-anchor', 'middle')
+          .attr('x', 0)
           .attr('y', 14)
-          .text(d => d.data.spouse ? '& ' + truncate(displayName(d.data.spouse, d.data.spouseDeceased), d.data.photo ? 13 : 16) : (d.data.born || d.data.died ? yearRange(d.data) : ''));
+          .text(d => d.data.spouse ? '& ' + truncate(displayName(d.data.spouse, d.data.spouseDeceased), 16) : (d.data.born || d.data.died ? yearRange(d.data) : ''));
 
         // Collapse/expand toggle — only meaningful for nodes with children either way
         const toggle = g.filter(d => d.children || d._children).append('g')
@@ -753,6 +739,15 @@ function toggleNode(d){
     d._children = d.children;
     d.children = null;
   } else {
+    // Expanding this node — fold away any other already-open siblings first,
+    // so only one branch under a shared parent stays open at a time.
+    if(d.parent && d.parent.children){
+      d.parent.children.forEach(sibling => {
+        if(sibling !== d && sibling.children){
+          collapseAll(sibling);
+        }
+      });
+    }
     d.children = d._children;
     d._children = null;
   }

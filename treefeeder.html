@@ -413,6 +413,7 @@ function downloadJson(){
     familyName: state.familyName,
     location: state.location,
     note: state.note,
+    lastUpdated: new Date().toISOString().slice(0, 10),
     people: state.people
   };
   const blob = new Blob([JSON.stringify(out, null, 2)], { type: 'application/json' });

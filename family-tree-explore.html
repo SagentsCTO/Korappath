@@ -61,6 +61,15 @@
   }
   .header h1{ font-size:clamp(2rem, 4vw, 2.8rem); margin:0.6rem 0; }
   .header p.sub{ color:var(--ivory-dim); max-width:44ch; margin:0 auto; font-size:0.95rem; }
+  .metrics{
+    margin-top:1.1rem;
+    font-family:'Space Mono', monospace;
+    font-size:0.72rem;
+    letter-spacing:0.05em;
+    text-transform:uppercase;
+    color:var(--brass-light);
+    opacity:0.85;
+  }
 
   .tree-wrap{
     position:relative;
@@ -212,6 +221,8 @@
   .profile-link:hover{ color:var(--oxide-light); border-color:var(--oxide-light); }
   .node.has-profile rect{ stroke-width:2px; }
   .node.has-profile .node-sub{ fill:var(--brass); }
+  .node.deceased rect{ fill:#6b6258; stroke:rgba(198,149,47,0.55); }
+  .node.deceased .main-label{ fill:var(--ivory-dim); }
 
   .toggle circle{
     fill:var(--oxide-dark);
@@ -415,6 +426,7 @@
   <span class="eyebrow" id="location-label">Chiyyaram, Thrissur District, Kerala</span>
   <h1>The Korappath family tree</h1>
   <p class="sub" id="note-label">A living record, added to as names, dates, and stories are recovered.</p>
+  <div class="metrics" id="metrics"></div>
 </div>
 
 <div class="explore-wrap">
@@ -532,6 +544,7 @@ fetch('family-data.json')
     document.getElementById('location-label').textContent = data.location || '';
     if(data.note){ document.getElementById('note-label').textContent = data.note; }
     allPeopleData = data.people;
+    renderMetrics(data);
     initTree(data.people);
   })
   .catch(err => {
@@ -539,6 +552,23 @@ fetch('family-data.json')
       '<p style="padding:2rem;text-align:center;color:var(--ivory-dim)">Could not load family-data.json — if you are opening this file directly from your computer, note that browsers block local file fetches; it will work once uploaded to GitHub Pages.</p>';
     console.error(err);
   });
+
+function renderMetrics(data){
+  const count = data.people.length;
+  let generations = '?';
+  try{
+    const tempRoot = d3.stratify().id(d => d.id).parentId(d => d.parentId)(data.people);
+    generations = tempRoot.height + 1;
+  } catch(e){ /* leave as ? if the data can't stratify for some reason */ }
+
+  const bits = [`${count} people`, `${generations} generations`];
+  if(data.lastUpdated){
+    const d = new Date(data.lastUpdated);
+    const formatted = isNaN(d) ? data.lastUpdated : d.toLocaleDateString('en-US', { month:'short', day:'numeric', year:'numeric' });
+    bits.push(`Last updated ${formatted}`);
+  }
+  document.getElementById('metrics').textContent = bits.join(' · ');
+}
 
 function initTree(people){
   root = d3.stratify()
@@ -724,7 +754,7 @@ function update(){
       exit => exit.remove()
     );
 
-  node.attr('class', d => 'node' + (d.data.profileUrl ? ' has-profile' : ''))
+  node.attr('class', d => 'node' + (d.data.profileUrl ? ' has-profile' : '') + (d.data.deceased ? ' deceased' : ''))
     .transition().duration(300)
     .attr('transform', d => `translate(${d.x},${d.y})`);
 

@@ -150,8 +150,13 @@
 
     <div style="display:grid; grid-template-columns:1fr 1fr; gap:1rem;">
       <label>Born <input type="text" id="f-born" placeholder="e.g. 1945"></label>
-      <label>Died <input type="text" id="f-died" placeholder="leave blank if living"></label>
+      <label>Died <input type="text" id="f-died" placeholder="leave blank if living or unknown" oninput="if(this.value.trim()) document.getElementById('f-deceased').checked = true;"></label>
     </div>
+
+    <label style="display:flex; align-items:center; gap:0.5rem; text-transform:none;">
+      <input type="checkbox" id="f-deceased" style="width:auto;" onchange="">
+      Deceased <span style="text-transform:none; opacity:0.7;">(prefixes their name with "Lt." wherever it's shown)</span>
+    </label>
 
     <label>Order among siblings <span style="text-transform:none;">(1, 2, 3... — controls left-to-right position under the same parent)</span>
       <input type="number" id="f-order" min="1" step="1" placeholder="e.g. 1">
@@ -169,6 +174,10 @@
     <fieldset>
       <legend>Spouse (optional)</legend>
       <label>Spouse name <input type="text" id="f-spouse"></label>
+      <label style="display:flex; align-items:center; gap:0.5rem; text-transform:none;">
+        <input type="checkbox" id="f-spouseDeceased" style="width:auto;">
+        Spouse deceased
+      </label>
       <div style="display:grid; grid-template-columns:1fr 1fr; gap:1rem;">
         <label>Spouse born <input type="text" id="f-spouseBorn"></label>
         <label>Spouse died <input type="text" id="f-spouseDied"></label>
@@ -233,7 +242,8 @@ function renderTree(){
       info.className = 'info';
       const nm = document.createElement('span');
       nm.className = 'name';
-      nm.textContent = (p.order ? `${p.order}. ` : '') + (p.name || '(unnamed)');
+      const prefix = p.deceased ? 'Lt. ' : '';
+      nm.textContent = (p.order ? `${p.order}. ` : '') + prefix + (p.name || '(unnamed)');
       info.appendChild(nm);
       const sub = document.createElement('span');
       sub.className = 'sub';
@@ -304,12 +314,14 @@ function openModal(personId, forcedParentId){
   document.getElementById('f-parentId').value = p ? (p.parentId || '') : (forcedParentId || '');
   document.getElementById('f-born').value = p?.born || '';
   document.getElementById('f-died').value = p?.died || '';
+  document.getElementById('f-deceased').checked = !!p?.deceased;
   document.getElementById('f-order').value = p?.order ?? '';
   document.getElementById('f-location').value = p?.location || '';
   document.getElementById('f-story').value = p?.story || '';
   document.getElementById('f-photo').value = p?.photo || '';
   document.getElementById('f-profileUrl').value = p?.profileUrl || '';
   document.getElementById('f-spouse').value = p?.spouse || '';
+  document.getElementById('f-spouseDeceased').checked = !!p?.spouseDeceased;
   document.getElementById('f-spouseBorn').value = p?.spouseBorn || '';
   document.getElementById('f-spouseDied').value = p?.spouseDied || '';
   document.getElementById('f-spousePhoto').value = p?.spousePhoto || '';
@@ -332,11 +344,13 @@ function savePerson(){
     order: document.getElementById('f-order').value ? Number(document.getElementById('f-order').value) : null,
     born: document.getElementById('f-born').value.trim(),
     died: document.getElementById('f-died').value.trim(),
+    deceased: document.getElementById('f-deceased').checked,
     location: document.getElementById('f-location').value.trim(),
     story: document.getElementById('f-story').value.trim(),
     photo: document.getElementById('f-photo').value.trim(),
     profileUrl: document.getElementById('f-profileUrl').value.trim(),
     spouse: document.getElementById('f-spouse').value.trim(),
+    spouseDeceased: document.getElementById('f-spouseDeceased').checked,
     spouseBorn: document.getElementById('f-spouseBorn').value.trim(),
     spouseDied: document.getElementById('f-spouseDied').value.trim(),
     spousePhoto: document.getElementById('f-spousePhoto').value.trim(),

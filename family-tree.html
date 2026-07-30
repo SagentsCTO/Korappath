@@ -475,14 +475,14 @@ function renderTree(people){
     .attr('text-anchor', d => d.data.photo ? 'start' : 'middle')
     .attr('x', d => d.data.photo ? -35 : 0)
     .attr('y', -2)
-    .text(d => truncate(d.data.name, d.data.photo ? 14 : 18));
+    .text(d => truncate(displayName(d.data.name, d.data.deceased), d.data.photo ? 14 : 18));
 
   node.append('text')
     .attr('class', 'node-sub')
     .attr('text-anchor', d => d.data.photo ? 'start' : 'middle')
     .attr('x', d => d.data.photo ? -35 : 0)
     .attr('y', 14)
-    .text(d => d.data.spouse ? '& ' + truncate(d.data.spouse, d.data.photo ? 13 : 16) : (d.data.born || d.data.died ? yearRange(d.data) : ''));
+    .text(d => d.data.spouse ? '& ' + truncate(displayName(d.data.spouse, d.data.spouseDeceased), d.data.photo ? 13 : 16) : (d.data.born || d.data.died ? yearRange(d.data) : ''));
 
   // Auto-fit: measure the whole tree's extent and scale/center it to the viewport
   const allNodes = root.descendants();
@@ -505,6 +505,9 @@ function truncate(str, n){
   if(!str) return '';
   return str.length > n ? str.slice(0, n - 1) + '…' : str;
 }
+function displayName(name, isDeceased){
+  return (isDeceased ? 'Lt. ' : '') + (name || '');
+}
 function yearRange(d){
   if(d.born && d.died) return `${d.born}–${d.died}`;
   if(d.born) return `b. ${d.born}`;
@@ -514,7 +517,7 @@ function yearRange(d){
 
 function openPanel(person){
   activePerson = person;
-  document.getElementById('panel-name').textContent = person.name;
+  document.getElementById('panel-name').textContent = displayName(person.name, person.deceased);
   document.getElementById('panel-dates').textContent =
     [yearRange(person), person.location].filter(Boolean).join(' · ');
   document.getElementById('panel-story').textContent = person.story || 'No story recorded yet.';
@@ -528,7 +531,7 @@ function openPanel(person){
   const spouseBlock = document.getElementById('spouse-block');
   if(person.spouse){
     spouseBlock.style.display = 'block';
-    document.getElementById('spouse-name').textContent = person.spouse;
+    document.getElementById('spouse-name').textContent = displayName(person.spouse, person.spouseDeceased);
     document.getElementById('spouse-dates').textContent =
       yearRange({born: person.spouseBorn, died: person.spouseDied});
     document.getElementById('spouse-story').textContent = person.spouseStory || '';
@@ -548,7 +551,7 @@ document.getElementById('overlay').onclick = (e) => {
 
 function openPhotoModal(){
   if(!activePerson) return;
-  document.getElementById('photo-subject-name').textContent = activePerson.name;
+  document.getElementById('photo-subject-name').textContent = displayName(activePerson.name, activePerson.deceased);
   document.getElementById('photo-person-name').value = activePerson.name;
   document.getElementById('photo-person-id').value = activePerson.id;
   document.getElementById('photo-form').reset();

@@ -236,6 +236,71 @@
   .archive-form textarea{ resize:vertical; font-family:'Work Sans', sans-serif; }
   .archive-form button{ margin-top:0.5rem; cursor:pointer; border:none; }
 
+  /* ---------- Access request modal ---------- */
+  .overlay{
+    position:fixed; inset:0;
+    background:rgba(0,0,0,0.55);
+    display:none;
+    align-items:flex-start;
+    justify-content:center;
+    padding:3rem 1rem;
+    overflow-y:auto;
+    z-index:20;
+  }
+  .overlay.open{ display:flex; }
+  .access-panel{
+    background:var(--ivory);
+    color:var(--teak);
+    max-width:480px;
+    width:100%;
+    padding:2.2rem;
+    border-radius:4px;
+    position:relative;
+  }
+  .access-panel .close{
+    position:absolute; top:0.8rem; right:1rem;
+    background:none; border:none;
+    font-size:1.4rem; cursor:pointer;
+    color:var(--teak);
+    font-family:'Work Sans', sans-serif;
+  }
+  .access-panel h3{ font-size:1.4rem; margin-bottom:0.6rem; }
+  .access-panel p.access-copy{ font-size:0.92rem; color:#5c4a38; margin-bottom:1.4rem; }
+  .access-panel .btn-primary{
+    display:block; text-align:center; width:100%;
+    background:var(--oxide); color:var(--ivory);
+  }
+  .access-panel .btn-primary:hover{ background:var(--oxide-light); }
+  .access-divider{
+    display:flex; align-items:center; gap:0.8rem;
+    margin:1.6rem 0; font-family:'Space Mono', monospace;
+    font-size:0.7rem; letter-spacing:0.06em; text-transform:uppercase;
+    color:#8a6d4d;
+  }
+  .access-divider::before, .access-divider::after{
+    content:''; flex:1; height:1px; background:rgba(107,42,30,0.2);
+  }
+  #access-form label{
+    display:block;
+    font-family:'Space Mono', monospace;
+    font-size:0.72rem;
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+    color:#6b5a45;
+    margin-bottom:1rem;
+  }
+  #access-form input[type="text"],
+  #access-form input[type="email"],
+  #access-form textarea{
+    display:block; width:100%; margin-top:0.4rem;
+    padding:0.6rem 0.75rem;
+    font-family:'Work Sans', sans-serif; font-size:0.92rem;
+    color:var(--teak); background:#fff;
+    border:1px solid rgba(43,29,20,0.2); border-radius:3px;
+  }
+  #access-form textarea{ resize:vertical; }
+  #access-form button{ cursor:pointer; border:none; }
+
   /* ---------- Footer ---------- */
   footer{
     text-align:center;
@@ -252,7 +317,7 @@
   <div class="wordmark">Korappath<span>.</span></div>
   <nav>
     <a href="#history">Vadakkini · History</a>
-    <a href="#people">Kizhakkini · People</a>
+    <a href="family-tree-explore.html" onclick="openAccessModal(); return false;">Kizhakkini · People</a>
     <a href="#house">Thekkini · The House</a>
     <a href="#gallery">Padinjattini · Gallery</a>
   </nav>
@@ -278,7 +343,7 @@
 
   <div class="cta-row">
     <a href="#contribute" class="btn btn-primary">Add a memory</a>
-    <a href="family-tree-explore.html" class="btn btn-ghost">Explore the family tree</a>
+    <a href="family-tree-explore.html" class="btn btn-ghost" onclick="openAccessModal(); return false;">Explore the family tree</a>
   </div>
 </section>
 
@@ -314,7 +379,7 @@
     <span class="malayalam">Where the light comes in at dusk</span>
   </div>
 
-  <a href="family-tree-explore.html" class="wing" id="people">
+  <a href="family-tree-explore.html" class="wing" id="people" onclick="openAccessModal(); return false;">
     <svg class="wing-motif" width="120" height="90" viewBox="0 0 120 90" style="bottom:-5px; left:-5px;" xmlns="http://www.w3.org/2000/svg">
       <circle cx="25" cy="65" r="7" fill="none" stroke="var(--ivory)" stroke-width="2"/>
       <circle cx="60" cy="20" r="7" fill="none" stroke="var(--ivory)" stroke-width="2"/>
@@ -386,6 +451,58 @@
   <span class="eyebrow">Korappath</span>
   <p>An ongoing family archive — Thrissur, Kerala</p>
 </footer>
+
+<div class="overlay" id="access-overlay">
+  <div class="access-panel">
+    <button class="close" id="close-access-panel">×</button>
+    <h3>This part of the archive is private</h3>
+    <p class="access-copy">The family tree, photos, and stories are kept behind a simple login so they stay within the family. If you're already approved, go ahead in — if not, request access below and we'll add you.</p>
+
+    <a href="family-tree-explore.html" class="btn btn-primary">I'm approved — enter the tree</a>
+
+    <div class="access-divider">or request access</div>
+
+    <!-- Replace ACCESS_FORM_ID below with your dedicated access-request Formspree endpoint -->
+    <form id="access-form" action="https://formspree.io/f/mzdnqgnb" method="POST">
+      <input type="hidden" name="_subject" value="Korappath tree access request">
+
+      <label>
+        Your name
+        <input type="text" name="name" required>
+      </label>
+
+      <label>
+        Your email <span style="text-transform:none; opacity:0.7;">(the one you'll log in with)</span>
+        <input type="email" name="email" required>
+      </label>
+
+      <label>
+        Your relation to the family
+        <input type="text" name="relation" placeholder="e.g. granddaughter of..." required>
+      </label>
+
+      <label>
+        Anything else? <span style="text-transform:none; opacity:0.7;">(optional)</span>
+        <textarea name="message" rows="2"></textarea>
+      </label>
+
+      <button type="submit" class="btn btn-primary">Request access</button>
+    </form>
+  </div>
+</div>
+
+<script>
+function openAccessModal(){
+  document.getElementById('access-overlay').classList.add('open');
+}
+function closeAccessModal(){
+  document.getElementById('access-overlay').classList.remove('open');
+}
+document.getElementById('close-access-panel').onclick = closeAccessModal;
+document.getElementById('access-overlay').onclick = (e) => {
+  if(e.target.id === 'access-overlay') closeAccessModal();
+};
+</script>
 
 </body>
 </html>

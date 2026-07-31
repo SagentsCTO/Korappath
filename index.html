@@ -402,12 +402,12 @@
 
 <section class="featured-profile">
   <span class="eyebrow" style="color:var(--brass-light); display:block; text-align:center;">A glimpse of the archive</span>
-  <div class="featured-card">
-    <img src="images/people/krc-menon.jpg" alt="Lt. K.R.C. Menon" onerror="this.style.display='none'">
+  <div class="featured-card" id="featured-card">
+    <img id="featured-photo" src="images/people/krc-menon.jpg" alt="" onerror="this.style.display='none'">
     <div class="featured-text">
-      <h3>Lt. K.R.C. Menon</h3>
-      <p>Founder Secretary of the Thrissur Pooram Ekopana Samithy — one of the stories already documented and preserved here.</p>
-      <a href="people/krc-menon.html" class="featured-link">Read his full story →</a>
+      <h3 id="featured-name">Lt. K.R.C. Menon</h3>
+      <p id="featured-blurb">Founder Secretary of the Thrissur Pooram Ekopana Samithy — one of the stories already documented and preserved here.</p>
+      <a href="people/krc-menon.html" id="featured-link" class="featured-link">Read his full story →</a>
     </div>
   </div>
 </section>
@@ -524,10 +524,10 @@
     <p class="access-copy">The family tree, photos, and stories are kept behind a simple login so they stay within the family. If you're already approved, go ahead in — if not, request access below and we'll add you.</p>
 
     <div class="mini-teaser">
-      <img src="images/people/krc-menon.jpg" alt="Lt. K.R.C. Menon" onerror="this.style.display='none'">
+      <img id="mini-teaser-photo" src="images/people/krc-menon.jpg" alt="" onerror="this.style.display='none'">
       <div>
-        <strong>Already documented:</strong> Lt. K.R.C. Menon's story —
-        <a href="people/krc-menon.html">read it →</a>
+        <strong>Already documented:</strong> <span id="mini-teaser-name">Lt. K.R.C. Menon</span>'s story —
+        <a href="people/krc-menon.html" id="mini-teaser-link">read it →</a>
       </div>
     </div>
 
@@ -565,6 +565,26 @@
 </div>
 
 <script>
+fetch('featured-profiles.json')
+  .then(r => r.json())
+  .then(list => {
+    if(!Array.isArray(list) || list.length === 0) return;
+    const pick = list[Math.floor(Math.random() * list.length)];
+    const displayName = (pick.deceased ? 'Lt. ' : '') + pick.name;
+
+    document.getElementById('featured-photo').src = pick.photo;
+    document.getElementById('featured-photo').alt = displayName;
+    document.getElementById('featured-name').textContent = displayName;
+    document.getElementById('featured-blurb').textContent = pick.blurb;
+    document.getElementById('featured-link').href = pick.profileUrl;
+
+    document.getElementById('mini-teaser-photo').src = pick.photo;
+    document.getElementById('mini-teaser-photo').alt = displayName;
+    document.getElementById('mini-teaser-name').textContent = displayName;
+    document.getElementById('mini-teaser-link').href = pick.profileUrl;
+  })
+  .catch(() => { /* fall back silently to the static default already in the HTML */ });
+
 function openAccessModal(){
   document.getElementById('access-overlay').classList.add('open');
 }

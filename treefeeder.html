@@ -104,7 +104,7 @@
     <button class="btn btn-brass" onclick="document.getElementById('file-input').click()">Load family-data.json</button>
     <input type="file" id="file-input" accept=".json">
     <button class="btn btn-ghost" onclick="startFresh()">Start fresh</button>
-    <button class="btn btn-brass" onclick="downloadJson()">Download updated family-data.json</button>
+    <button class="btn btn-brass" onclick="downloadJson()">Download updated files</button>
   </div>
 
   <div class="meta-fields">
@@ -170,6 +170,15 @@
       <label>Photo path <input type="text" id="f-photo" placeholder="images/people/name.jpg"></label>
       <label>Profile page <input type="text" id="f-profileUrl" placeholder="people/name.html"></label>
     </div>
+
+    <label style="display:flex; align-items:center; gap:0.5rem; text-transform:none;">
+      <input type="checkbox" id="f-featured" style="width:auto;">
+      Featured on the public homepage <span style="text-transform:none; opacity:0.7;">(their profile page must also be public, not gated)</span>
+    </label>
+
+    <label>Public blurb <span style="text-transform:none;">(a short one-line hook for the homepage — only needed if featured)</span>
+      <input type="text" id="f-blurb" placeholder="e.g. Founder Secretary of the Thrissur Pooram Ekopana Samithy...">
+    </label>
 
     <fieldset>
       <legend>Spouse (optional)</legend>
@@ -320,6 +329,8 @@ function openModal(personId, forcedParentId){
   document.getElementById('f-story').value = p?.story || '';
   document.getElementById('f-photo').value = p?.photo || '';
   document.getElementById('f-profileUrl').value = p?.profileUrl || '';
+  document.getElementById('f-featured').checked = !!p?.featured;
+  document.getElementById('f-blurb').value = p?.blurb || '';
   document.getElementById('f-spouse').value = p?.spouse || '';
   document.getElementById('f-spouseDeceased').checked = !!p?.spouseDeceased;
   document.getElementById('f-spouseBorn').value = p?.spouseBorn || '';
@@ -349,6 +360,8 @@ function savePerson(){
     story: document.getElementById('f-story').value.trim(),
     photo: document.getElementById('f-photo').value.trim(),
     profileUrl: document.getElementById('f-profileUrl').value.trim(),
+    featured: document.getElementById('f-featured').checked,
+    blurb: document.getElementById('f-blurb').value.trim(),
     spouse: document.getElementById('f-spouse').value.trim(),
     spouseDeceased: document.getElementById('f-spouseDeceased').checked,
     spouseBorn: document.getElementById('f-spouseBorn').value.trim(),
@@ -416,11 +429,31 @@ function downloadJson(){
     lastUpdated: new Date().toISOString().slice(0, 10),
     people: state.people
   };
-  const blob = new Blob([JSON.stringify(out, null, 2)], { type: 'application/json' });
+  downloadBlob(JSON.stringify(out, null, 2), 'family-data.json');
+
+  const featured = state.people
+    .filter(p => p.featured)
+    .map(p => ({
+      id: p.id,
+      name: p.name,
+      deceased: !!p.deceased,
+      photo: p.photo || '',
+      blurb: p.blurb || '',
+      profileUrl: p.profileUrl || ''
+    }));
+  downloadBlob(JSON.stringify(featured, null, 2), 'featured-profiles.json');
+
+  if(featured.length === 0){
+    alert('Note: featured-profiles.json was downloaded empty — no one is currently checked as "Featured on the public homepage."');
+  }
+}
+
+function downloadBlob(content, filename){
+  const blob = new Blob([content], { type: 'application/json' });
   const url = URL.createObjectURL(blob);
   const a = document.createElement('a');
   a.href = url;
-  a.download = 'family-data.json';
+  a.download = filename;
   a.click();
   URL.revokeObjectURL(url);
 }

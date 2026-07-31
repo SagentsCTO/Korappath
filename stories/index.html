@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Stories — Korappath</title>
+<meta name="description" content="Stories from the old days, told by family and preserved here — part of the Korappath family archive.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,500;9..144,600&family=Work+Sans:wght@300;400;500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --oxide-dark:#3E1810; --oxide:#6B2A1E; --oxide-light:#8C3E2C;
+    --brass:#C6952F; --brass-light:#E8C776;
+    --ivory:#F1E9D6; --ivory-dim:#D8CBAE; --teak:#2B1D14;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{ background:var(--oxide-dark); color:var(--ivory); font-family:'Work Sans', sans-serif; font-weight:300; }
+  h1{ font-family:'Fraunces', serif; font-weight:500; }
+  .eyebrow{ font-family:'Space Mono', monospace; font-size:0.7rem; letter-spacing:0.15em; text-transform:uppercase; color:var(--brass-light); opacity:0.85; }
+  .topbar{ display:flex; justify-content:space-between; align-items:center; padding:1.5rem clamp(1.5rem, 5vw, 4rem); border-bottom:1px solid rgba(198,149,47,0.25); }
+  .wordmark{ font-family:'Fraunces', serif; font-size:1.15rem; }
+  .wordmark span{ color:var(--brass-light); }
+  .topbar a.back{ font-family:'Space Mono', monospace; font-size:0.72rem; letter-spacing:0.08em; text-transform:uppercase; color:var(--ivory); text-decoration:none; opacity:0.8; }
+  .topbar a.back:hover{ opacity:1; }
+
+  .header{ text-align:center; padding:3rem 1.5rem 1rem; }
+  .header h1{ font-size:clamp(2rem, 4vw, 2.8rem); margin:0.6rem 0; }
+  .header p{ color:var(--ivory-dim); max-width:44ch; margin:0 auto; font-size:0.95rem; }
+
+  .story-list{ max-width:720px; margin:2.5rem auto 4rem; padding:0 1.5rem; }
+  .story-card{
+    display:block;
+    background:var(--oxide);
+    border:1px solid rgba(198,149,47,0.25);
+    border-radius:4px;
+    padding:1.6rem 1.8rem;
+    margin-bottom:1rem;
+    text-decoration:none;
+    color:var(--ivory);
+    transition:background 0.2s ease;
+  }
+  .story-card:hover{ background:var(--oxide-light); }
+  .story-card h3{ font-family:'Fraunces', serif; font-size:1.3rem; margin-bottom:0.3rem; }
+  .story-card .meta{ font-family:'Space Mono', monospace; font-size:0.72rem; color:var(--brass-light); margin-bottom:0.6rem; }
+  .story-card p{ color:var(--ivory-dim); font-size:0.92rem; }
+
+  .empty-note{ text-align:center; color:var(--ivory-dim); padding:2rem; font-size:0.92rem; }
+
+  footer{ text-align:center; padding:2.5rem 1.5rem; color:var(--ivory-dim); font-size:0.82rem; }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="wordmark">Korappath<span>.</span></div>
+  <a href="../index.html" class="back">← Back home</a>
+</div>
+
+<div class="header">
+  <span class="eyebrow">Vadakkini — History</span>
+  <h1>Stories from the old days</h1>
+  <p>Told by family, recorded before they're lost — each one in the original Malayalam, with an English translation alongside.</p>
+</div>
+
+<div class="story-list" id="story-list">
+  <p class="empty-note">Loading stories…</p>
+</div>
+
+<footer>An ongoing family archive — Korappath, Chiyyaram, Thrissur</footer>
+
+<script>
+fetch('../stories.json')
+  .then(r => r.json())
+  .then(stories => {
+    const list = document.getElementById('story-list');
+    if(!Array.isArray(stories) || stories.length === 0){
+      list.innerHTML = '<p class="empty-note">No stories yet — check back soon.</p>';
+      return;
+    }
+    const sorted = [...stories].sort((a, b) => new Date(b.dateAdded || 0) - new Date(a.dateAdded || 0));
+
+    list.innerHTML = sorted.map(s => {
+      const dateStr = s.dateAdded ? new Date(s.dateAdded).toLocaleDateString('en-US', { month:'short', day:'numeric', year:'numeric' }) : '';
+      return `
+      <a class="story-card" href="../${s.storyUrl}">
+        <h3>${s.titleMl ? s.titleMl + ' — ' : ''}${s.titleEn}</h3>
+        <div class="meta">${s.author}${s.period ? ' · ' + s.period : ''}${dateStr ? ' · Added ' + dateStr : ''}</div>
+        <p>${s.excerptEn}</p>
+      </a>
+    `;
+    }).join('');
+  })
+  .catch(() => {
+    document.getElementById('story-list').innerHTML =
+      '<p class="empty-note">Could not load stories right now.</p>';
+  });
+</script>
+
+</body>
+</html>

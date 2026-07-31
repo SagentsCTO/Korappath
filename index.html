@@ -3,608 +3,98 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Korappath — A Living Archive of a Chiyyaram, Thrissur Family</title>
-<meta name="description" content="A living family history archive for the Korappath household of Chiyyaram, Thrissur, Kerala — photographs, stories, and an interactive family tree collected and preserved by descendants.">
-<link rel="canonical" href="https://korappath.com/">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Korappath — A Living Archive">
-<meta property="og:description" content="A living family history archive for the Korappath household of Chiyyaram, Thrissur, Kerala — photographs, stories, and an interactive family tree.">
-<meta property="og:url" content="https://korappath.com/">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Korappath — A Living Archive">
-<meta name="twitter:description" content="A living family history archive for the Korappath household of Chiyyaram, Thrissur, Kerala.">
+<title>Stories — Korappath</title>
+<meta name="description" content="Stories from the old days, told by family and preserved here — part of the Korappath family archive.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,500;9..144,600&family=Work+Sans:wght@300;400;500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <style>
   :root{
-    --oxide-dark:#3E1810;
-    --oxide:#6B2A1E;
-    --oxide-light:#8C3E2C;
-    --brass:#C6952F;
-    --brass-light:#E8C776;
-    --ivory:#F1E9D6;
-    --ivory-dim:#D8CBAE;
-    --teak:#2B1D14;
-    --leaf:#4E5E3B;
-    --wing-gap: 2px;
+    --oxide-dark:#3E1810; --oxide:#6B2A1E; --oxide-light:#8C3E2C;
+    --brass:#C6952F; --brass-light:#E8C776;
+    --ivory:#F1E9D6; --ivory-dim:#D8CBAE; --teak:#2B1D14;
   }
   *{box-sizing:border-box; margin:0; padding:0;}
-  html{scroll-behavior:smooth;}
-  body{
-    background:var(--oxide-dark);
-    color:var(--ivory);
-    font-family:'Work Sans', sans-serif;
-    font-weight:300;
-    line-height:1.6;
-  }
-  h1,h2,h3{
-    font-family:'Fraunces', serif;
-    font-weight:500;
-    letter-spacing:0.01em;
-  }
-  .eyebrow{
-    font-family:'Space Mono', monospace;
-    font-size:0.7rem;
-    letter-spacing:0.18em;
-    text-transform:uppercase;
-    color:var(--brass-light);
-    opacity:0.85;
-  }
-  a{color:inherit;}
+  body{ background:var(--oxide-dark); color:var(--ivory); font-family:'Work Sans', sans-serif; font-weight:300; }
+  h1{ font-family:'Fraunces', serif; font-weight:500; }
+  .eyebrow{ font-family:'Space Mono', monospace; font-size:0.7rem; letter-spacing:0.15em; text-transform:uppercase; color:var(--brass-light); opacity:0.85; }
+  .topbar{ display:flex; justify-content:space-between; align-items:center; padding:1.5rem clamp(1.5rem, 5vw, 4rem); border-bottom:1px solid rgba(198,149,47,0.25); }
+  .wordmark{ font-family:'Fraunces', serif; font-size:1.15rem; }
+  .wordmark span{ color:var(--brass-light); }
+  .topbar a.back{ font-family:'Space Mono', monospace; font-size:0.72rem; letter-spacing:0.08em; text-transform:uppercase; color:var(--ivory); text-decoration:none; opacity:0.8; }
+  .topbar a.back:hover{ opacity:1; }
 
-  /* ---------- Top bar ---------- */
-  .topbar{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    padding:1.5rem clamp(1.5rem, 5vw, 4rem);
-    border-bottom:1px solid rgba(198,149,47,0.25);
-  }
-  .wordmark{
-    font-family:'Fraunces', serif;
-    font-size:1.15rem;
-    letter-spacing:0.04em;
-  }
-  .wordmark span{color:var(--brass-light);}
-  .topbar nav{
-    display:flex;
-    gap:2rem;
-    font-family:'Space Mono', monospace;
-    font-size:0.72rem;
-    letter-spacing:0.1em;
-    text-transform:uppercase;
-  }
-  .topbar nav a{opacity:0.75; text-decoration:none; transition:opacity 0.2s;}
-  .topbar nav a:hover{opacity:1;}
-  @media (max-width:700px){ .topbar nav{display:none;} }
+  .header{ text-align:center; padding:3rem 1.5rem 1rem; }
+  .header h1{ font-size:clamp(2rem, 4vw, 2.8rem); margin:0.6rem 0; }
+  .header p{ color:var(--ivory-dim); max-width:44ch; margin:0 auto; font-size:0.95rem; }
 
-  /* ---------- Hero / Courtyard ---------- */
-  .courtyard{
-    text-align:center;
-    padding:5rem 1.5rem 4rem;
-    position:relative;
-  }
-  .courtyard .eyebrow{display:block; margin-bottom:1.2rem;}
-  .courtyard h1{
-    font-size:clamp(2.4rem, 6vw, 4.2rem);
-    max-width:16ch;
-    margin:0 auto 1rem;
-    line-height:1.08;
-  }
-  .courtyard p.lede{
-    max-width:46ch;
-    margin:0 auto 3rem;
-    color:var(--ivory-dim);
-    font-size:1.02rem;
-  }
-
-  /* Lamp signature element */
-  .lamp-wrap{ display:flex; justify-content:center; margin-bottom:2.5rem; }
-  .flame{ transform-origin: 100px 62px; animation: flicker 2.6s ease-in-out infinite; }
-  @keyframes flicker{
-    0%,100%{ transform:scaleY(1) translateY(0); opacity:1; }
-    30%{ transform:scaleY(1.08) translateY(-1px); opacity:0.92; }
-    55%{ transform:scaleY(0.94) translateY(0.5px); opacity:1; }
-    75%{ transform:scaleY(1.04) translateY(-0.5px); opacity:0.95; }
-  }
-  @media (prefers-reduced-motion: reduce){ .flame{ animation:none; } }
-
-  .cta-row{ display:flex; gap:1rem; justify-content:center; flex-wrap:wrap; }
-  .btn{
-    font-family:'Space Mono', monospace;
-    font-size:0.75rem;
-    letter-spacing:0.08em;
-    text-transform:uppercase;
-    padding:0.9rem 1.6rem;
-    border-radius:2px;
-    text-decoration:none;
-    display:inline-block;
-    transition:transform 0.15s ease, background 0.2s ease;
-  }
-  .btn:hover{ transform:translateY(-1px); }
-  .btn-primary{ background:var(--brass); color:var(--teak); }
-  .btn-primary:hover{ background:var(--brass-light); }
-  .btn-ghost{ border:1px solid rgba(241,233,214,0.35); color:var(--ivory); }
-  .btn-ghost:hover{ border-color:var(--ivory); }
-
-  /* ---------- Four Wings ---------- */
-  .featured-profile{
-    margin:0 clamp(1rem, 4vw, 3rem) 0;
-    padding-top:0.5rem;
-  }
-  .featured-card{
-    max-width:640px;
-    margin:1.2rem auto 0;
-    background:var(--ivory);
-    color:var(--teak);
-    border-radius:6px;
-    padding:1.6rem;
-    display:flex;
-    align-items:center;
-    gap:1.6rem;
-    flex-wrap:wrap;
-  }
-  .featured-card img{
-    width:110px; height:110px;
-    object-fit:cover;
-    border-radius:4px;
-    border:2px solid var(--oxide);
-    flex-shrink:0;
-  }
-  .featured-text{ flex:1; min-width:220px; }
-  .featured-text h3{ font-family:'Fraunces', serif; font-size:1.3rem; margin-bottom:0.4rem; }
-  .featured-text p{ font-size:0.92rem; color:#5c4a38; margin-bottom:0.7rem; }
-  .featured-link{
-    font-family:'Space Mono', monospace;
-    font-size:0.75rem;
-    letter-spacing:0.06em;
-    text-transform:uppercase;
-    color:var(--oxide);
-    text-decoration:underline;
-  }
-  .late-tag{
-    font-family:'Space Mono', monospace;
-    font-size:0.6em;
-    letter-spacing:0.04em;
-    text-transform:uppercase;
-    color:var(--oxide);
-    opacity:0.75;
-    vertical-align:middle;
-    margin-right:0.3em;
-  }
-
-  .wings-label{
-    text-align:center;
-    padding:1rem 0 0.5rem;
-  }
-  .wings{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:var(--wing-gap);
-    background:rgba(198,149,47,0.25);
-    margin:1.5rem clamp(1rem, 4vw, 3rem) 0;
-    border:1px solid rgba(198,149,47,0.25);
-  }
-  .wing{
+  .story-list{ max-width:720px; margin:2.5rem auto 4rem; padding:0 1.5rem; }
+  .story-card{
+    display:block;
     background:var(--oxide);
-    padding:clamp(2rem, 4vw, 3.2rem);
-    position:relative;
-    overflow:hidden;
-    transition:filter 0.25s ease;
+    border:1px solid rgba(198,149,47,0.25);
+    border-radius:4px;
+    padding:1.6rem 1.8rem;
+    margin-bottom:1rem;
     text-decoration:none;
     color:var(--ivory);
+    transition:background 0.2s ease;
   }
-  .wing:hover{ filter:brightness(1.12); }
-  .wing .wing-motif{
-    position:absolute;
-    pointer-events:none;
-    opacity:0.09;
-    z-index:0;
-  }
-  .wing > *:not(.wing-motif){ position:relative; z-index:1; }
+  .story-card:hover{ background:var(--oxide-light); }
+  .story-card h3{ font-family:'Fraunces', serif; font-size:1.3rem; margin-bottom:0.3rem; }
+  .story-card .meta{ font-family:'Space Mono', monospace; font-size:0.72rem; color:var(--brass-light); margin-bottom:0.6rem; }
+  .story-card p{ color:var(--ivory-dim); font-size:0.92rem; }
 
-  #history{ background:linear-gradient(135deg, #4a3d33 0%, var(--oxide) 65%); }
-  #people{ background:linear-gradient(45deg, var(--oxide) 0%, #8c5a2e 55%, #c6952f 100%); }
-  #house{ background:linear-gradient(160deg, var(--oxide) 0%, #2a120c 100%); }
-  #gallery{ background:linear-gradient(225deg, #c6952f 0%, var(--oxide) 45%, #3E1810 100%); }
-  .wing .dir{
-    font-family:'Space Mono', monospace;
-    font-size:0.68rem;
-    letter-spacing:0.15em;
-    text-transform:uppercase;
-    color:var(--brass-light);
-    display:block;
-    margin-bottom:0.8rem;
-  }
-  .wing h3{ font-size:1.6rem; margin-bottom:0.6rem; }
-  .wing p{ color:var(--ivory-dim); font-size:0.92rem; max-width:34ch; }
-  .wing .malayalam{ opacity:0.55; font-style:italic; font-size:0.85rem; margin-top:0.4rem; display:block; }
-  @media (max-width:700px){ .wings{ grid-template-columns:1fr; } }
+  .empty-note{ text-align:center; color:var(--ivory-dim); padding:2rem; font-size:0.92rem; }
 
-  /* ---------- Contribute strip ---------- */
-  .contribute{
-    margin:4.5rem clamp(1rem,4vw,3rem) 0;
-    padding:clamp(2.5rem,5vw,4rem);
-    background:var(--ivory);
-    color:var(--teak);
-    text-align:center;
-  }
-  .contribute h2{ font-size:clamp(1.6rem,3vw,2.2rem); margin-bottom:0.8rem; }
-  .contribute p{ max-width:50ch; margin:0 auto 1.8rem; color:#5c4a38; }
-  .contribute .btn-primary{ background:var(--oxide); color:var(--ivory); }
-  .contribute .btn-primary:hover{ background:var(--oxide-light); }
-
-  /* ---------- Archive form ---------- */
-  .archive-form{
-    max-width:520px;
-    margin:0 auto;
-    text-align:left;
-  }
-  .archive-form label{
-    display:block;
-    font-family:'Space Mono', monospace;
-    font-size:0.72rem;
-    letter-spacing:0.06em;
-    text-transform:uppercase;
-    color:#6b5a45;
-    margin-bottom:1.3rem;
-  }
-  .archive-form .optional{
-    text-transform:none;
-    font-family:'Work Sans', sans-serif;
-    letter-spacing:0;
-    opacity:0.65;
-    font-size:0.78rem;
-  }
-  .archive-form input[type="text"],
-  .archive-form input[type="file"],
-  .archive-form select,
-  .archive-form textarea{
-    display:block;
-    width:100%;
-    margin-top:0.5rem;
-    padding:0.7rem 0.8rem;
-    font-family:'Work Sans', sans-serif;
-    font-size:0.95rem;
-    color:var(--teak);
-    background:#fff;
-    border:1px solid rgba(43,29,20,0.2);
-    border-radius:3px;
-  }
-  .archive-form input[type="text"]:focus,
-  .archive-form select:focus,
-  .archive-form textarea:focus{
-    outline:none;
-    border-color:var(--oxide);
-  }
-  .archive-form textarea{ resize:vertical; font-family:'Work Sans', sans-serif; }
-  .archive-form button{ margin-top:0.5rem; cursor:pointer; border:none; }
-
-  /* ---------- Access request modal ---------- */
-  .overlay{
-    position:fixed; inset:0;
-    background:rgba(0,0,0,0.55);
-    display:none;
-    align-items:flex-start;
-    justify-content:center;
-    padding:3rem 1rem;
-    overflow-y:auto;
-    z-index:20;
-  }
-  .overlay.open{ display:flex; }
-  .access-panel{
-    background:var(--ivory);
-    color:var(--teak);
-    max-width:480px;
-    width:100%;
-    padding:2.2rem;
-    border-radius:4px;
-    position:relative;
-  }
-  .access-panel .close{
-    position:absolute; top:0.8rem; right:1rem;
-    background:none; border:none;
-    font-size:1.4rem; cursor:pointer;
-    color:var(--teak);
-    font-family:'Work Sans', sans-serif;
-  }
-  .access-panel h3{ font-size:1.4rem; margin-bottom:0.6rem; }
-  .access-panel p.access-copy{ font-size:0.92rem; color:#5c4a38; margin-bottom:1.4rem; }
-  .access-panel .btn-primary{
-    display:block; text-align:center; width:100%;
-    background:var(--oxide); color:var(--ivory);
-  }
-  .access-panel .btn-primary:hover{ background:var(--oxide-light); }
-  .access-divider{
-    display:flex; align-items:center; gap:0.8rem;
-    margin:1.6rem 0; font-family:'Space Mono', monospace;
-    font-size:0.7rem; letter-spacing:0.06em; text-transform:uppercase;
-    color:#8a6d4d;
-  }
-  .access-divider::before, .access-divider::after{
-    content:''; flex:1; height:1px; background:rgba(107,42,30,0.2);
-  }
-  #access-form label{
-    display:block;
-    font-family:'Space Mono', monospace;
-    font-size:0.72rem;
-    letter-spacing:0.06em;
-    text-transform:uppercase;
-    color:#6b5a45;
-    margin-bottom:1rem;
-  }
-  #access-form input[type="text"],
-  #access-form input[type="email"],
-  #access-form textarea{
-    display:block; width:100%; margin-top:0.4rem;
-    padding:0.6rem 0.75rem;
-    font-family:'Work Sans', sans-serif; font-size:0.92rem;
-    color:var(--teak); background:#fff;
-    border:1px solid rgba(43,29,20,0.2); border-radius:3px;
-  }
-  #access-form textarea{ resize:vertical; }
-  #access-form button{ cursor:pointer; border:none; }
-
-  .mini-teaser{
-    display:flex; align-items:center; gap:0.8rem;
-    background:rgba(107,42,30,0.06);
-    border:1px solid rgba(107,42,30,0.15);
-    border-radius:4px;
-    padding:0.8rem 1rem;
-    margin-bottom:1.2rem;
-    font-size:0.85rem;
-    color:#5c4a38;
-  }
-  .mini-teaser img{
-    width:44px; height:44px;
-    object-fit:cover;
-    border-radius:3px;
-    flex-shrink:0;
-  }
-  .mini-teaser a{ color:var(--oxide); font-weight:500; }
-
-  /* ---------- Footer ---------- */
-  footer{
-    text-align:center;
-    padding:3rem 1.5rem 2.5rem;
-    color:var(--ivory-dim);
-    font-size:0.82rem;
-  }
-  footer .eyebrow{ margin-bottom:0.6rem; }
+  footer{ text-align:center; padding:2.5rem 1.5rem; color:var(--ivory-dim); font-size:0.82rem; }
 </style>
 </head>
 <body>
 
 <div class="topbar">
   <div class="wordmark">Korappath<span>.</span></div>
-  <nav>
-    <a href="#history">Vadakkini · History</a>
-    <a href="family-tree-explore.html" onclick="openAccessModal(); return false;">Kizhakkini · People</a>
-    <a href="#house">Thekkini · The House</a>
-    <a href="#gallery">Padinjattini · Gallery</a>
-  </nav>
+  <a href="../index.html" class="back">← Back home</a>
 </div>
 
-<section class="courtyard">
-  <span class="eyebrow">Chiyyaram, Thrissur District, Kerala — est. unknown, remembered still</span>
-
-  <div class="lamp-wrap">
-    <svg width="120" height="140" viewBox="0 0 200 220" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <ellipse cx="100" cy="205" rx="55" ry="8" fill="#C6952F" opacity="0.15"/>
-      <path d="M100 190 L100 130" stroke="#C6952F" stroke-width="4"/>
-      <path d="M60 190 Q100 175 140 190" stroke="#C6952F" stroke-width="4" fill="none"/>
-      <ellipse cx="100" cy="130" rx="14" ry="6" fill="#C6952F"/>
-      <path d="M88 130 Q100 90 112 130 Z" fill="#C6952F"/>
-      <path d="M100 128 Q94 100 100 62 Q106 100 100 128 Z" fill="#E8C776" class="flame"/>
-      <circle cx="100" cy="80" r="3" fill="#F1E9D6" opacity="0.8" class="flame"/>
-    </svg>
-  </div>
-
-  <h1>A house remembered by everyone who ever ate at its table.</h1>
-  <p class="lede">The Korappath tharavad has stood alongside Thrissur's growth for generations, but its history has only ever lived in memory — until now. This is an archive built by the family, for the family, and anyone tracing their way back to it.</p>
-
-  <div class="cta-row">
-    <a href="#contribute" class="btn btn-primary">Add a memory</a>
-    <a href="family-tree-explore.html" class="btn btn-ghost" onclick="openAccessModal(); return false;">Explore the family tree</a>
-  </div>
-</section>
-
-<section class="featured-profile">
-  <span class="eyebrow" style="color:var(--brass-light); display:block; text-align:center;">A glimpse of the archive</span>
-  <div class="featured-card" id="featured-card">
-    <img id="featured-photo" src="images/people/krc-menon.jpg" alt="" onerror="this.style.display='none'">
-    <div class="featured-text">
-      <h3 id="featured-name"><span class="late-tag">Late</span> K.R.C. Menon</h3>
-      <p id="featured-blurb">Founder Secretary of the Thrissur Pooram Ekopana Samithy — one of the stories already documented and preserved here.</p>
-      <a href="people/krc-menon.html" id="featured-link" class="featured-link">Read his full story →</a>
-    </div>
-  </div>
-</section>
-
-<div class="wings-label">
-  <span class="eyebrow">Four wings, one courtyard — like the house itself</span>
+<div class="header">
+  <span class="eyebrow">Vadakkini — History</span>
+  <h1>Stories from the old days</h1>
+  <p>Told by family, recorded before they're lost — each one in the original Malayalam, with an English translation alongside.</p>
 </div>
 
-<div class="wings">
-  <div class="wing" id="history">
-    <svg class="wing-motif" width="130" height="90" viewBox="0 0 130 90" style="bottom:-10px; right:-10px;" xmlns="http://www.w3.org/2000/svg">
-      <path d="M5 85 L65 15 L125 85" stroke="var(--ivory)" stroke-width="2" fill="none"/>
-      <path d="M20 85 L65 32 L110 85" stroke="var(--ivory)" stroke-width="2" fill="none"/>
-      <line x1="65" y1="15" x2="65" y2="0" stroke="var(--ivory)" stroke-width="2"/>
-    </svg>
-    <span class="dir">North — Vadakkini</span>
-    <h3>History</h3>
-    <p>Origins of the household in Chiyyaram, its place in Thrissur's growth, and the events passed down through generations. Other Korappath branches trace back to the same root but split off and settled elsewhere — this archive follows the Chiyyaram line.</p>
-    <span class="malayalam">Where the oldest stories are kept</span>
-  </div>
-
-  <div class="wing" id="gallery">
-    <svg class="wing-motif" width="110" height="110" viewBox="0 0 110 110" style="top:-15px; right:-15px;" xmlns="http://www.w3.org/2000/svg">
-      <line x1="0" y1="20" x2="110" y2="20" stroke="var(--ivory)" stroke-width="1.5"/>
-      <line x1="0" y1="50" x2="110" y2="50" stroke="var(--ivory)" stroke-width="1.5"/>
-      <line x1="0" y1="80" x2="110" y2="80" stroke="var(--ivory)" stroke-width="1.5"/>
-      <line x1="20" y1="0" x2="20" y2="110" stroke="var(--ivory)" stroke-width="1.5"/>
-      <line x1="55" y1="0" x2="55" y2="110" stroke="var(--ivory)" stroke-width="1.5"/>
-      <line x1="90" y1="0" x2="90" y2="110" stroke="var(--ivory)" stroke-width="1.5"/>
-    </svg>
-    <span class="dir">West — Padinjattini</span>
-    <h3>Gallery</h3>
-    <p>Photographs, documents, and objects gathered from wherever they've been kept safe — attics, trunks, and drawers.</p>
-    <span class="malayalam">Where the light comes in at dusk</span>
-  </div>
-
-  <a href="family-tree-explore.html" class="wing" id="people" onclick="openAccessModal(); return false;">
-    <svg class="wing-motif" width="120" height="90" viewBox="0 0 120 90" style="bottom:-5px; left:-5px;" xmlns="http://www.w3.org/2000/svg">
-      <circle cx="25" cy="65" r="7" fill="none" stroke="var(--ivory)" stroke-width="2"/>
-      <circle cx="60" cy="20" r="7" fill="none" stroke="var(--ivory)" stroke-width="2"/>
-      <circle cx="95" cy="65" r="7" fill="none" stroke="var(--ivory)" stroke-width="2"/>
-      <line x1="30" y1="60" x2="55" y2="26" stroke="var(--ivory)" stroke-width="2"/>
-      <line x1="65" y1="26" x2="90" y2="60" stroke="var(--ivory)" stroke-width="2"/>
-    </svg>
-    <span class="dir">East — Kizhakkini</span>
-    <h3>People</h3>
-    <p>A living family tree — names, branches, and the stories that belong to each person who carried the house forward.</p>
-    <span class="malayalam">Where the day begins</span>
-  </a>
-
-  <div class="wing" id="house">
-    <svg class="wing-motif" width="100" height="100" viewBox="0 0 100 100" style="top:-8px; left:-8px;" xmlns="http://www.w3.org/2000/svg">
-      <rect x="8" y="8" width="84" height="84" fill="none" stroke="var(--ivory)" stroke-width="2"/>
-      <rect x="34" y="34" width="32" height="32" fill="none" stroke="var(--ivory)" stroke-width="2"/>
-    </svg>
-    <span class="dir">South — Thekkini</span>
-    <h3>The House</h3>
-    <p>The building itself — its architecture, its rooms, and what it looked like across the years it stood.</p>
-    <span class="malayalam">The quiet, private wing</span>
-  </div>
+<div class="story-list" id="story-list">
+  <p class="empty-note">Loading stories…</p>
 </div>
 
-<section class="contribute" id="contribute">
-  <span class="eyebrow" style="color:var(--oxide);">Open call</span>
-  <h2>Have a photo, a letter, or a story?</h2>
-  <p>This archive only grows as fast as the family shares. If you have something tucked away — even if you're not sure it matters — it belongs here. No account needed.</p>
-
-  <!--
-    Replace YOUR_FORM_ID below with your real Formspree endpoint,
-    e.g. if Formspree gives you https://formspree.io/f/abcwxyz1
-    then YOUR_FORM_ID is just: abcwxyz1
-  -->
-  <form class="archive-form" action="https://formspree.io/f/xjgnzory" method="POST" enctype="multipart/form-data">
-    <input type="hidden" name="_subject" value="New Korappath photo/story submission">
-
-    <label>
-      Your name
-      <input type="text" name="name" required>
-    </label>
-
-    <label>
-      Your email <span class="optional">(so we can reach out if we have questions)</span>
-      <input type="email" name="email" required>
-    </label>
-
-    <label>
-      Your relation to the family <span class="optional">(optional)</span>
-      <input type="text" name="relation" placeholder="e.g. granddaughter of...">
-    </label>
-
-    <label>
-      Upload a photo <span class="optional">(optional)</span>
-      <input type="file" name="attachment" accept="image/*">
-    </label>
-
-    <label>
-      The story <span class="optional">(required — if you've added a photo, please say who's in it and what's happening)</span>
-      <textarea name="description" rows="5" placeholder="Names, approximate date, what's happening — or just the memory itself if there's no photo" required></textarea>
-    </label>
-
-    <button type="submit" class="btn btn-primary">Send it in</button>
-  </form>
-</section>
-
-<footer>
-  <span class="eyebrow">Korappath</span>
-  <p>An ongoing family archive — Thrissur, Kerala</p>
-</footer>
-
-<div class="overlay" id="access-overlay">
-  <div class="access-panel">
-    <button class="close" id="close-access-panel">×</button>
-    <h3>This part of the archive is private</h3>
-    <p class="access-copy">The family tree, photos, and stories are kept behind a simple login so they stay within the family. If you're already approved, go ahead in — if not, request access below and we'll add you.</p>
-
-    <div class="mini-teaser">
-      <img id="mini-teaser-photo" src="images/people/krc-menon.jpg" alt="" onerror="this.style.display='none'">
-      <div>
-        <strong>Already documented:</strong> <span id="mini-teaser-name"><span class="late-tag">Late</span> K.R.C. Menon</span>'s story —
-        <a href="people/krc-menon.html" id="mini-teaser-link">read it →</a>
-      </div>
-    </div>
-
-    <a href="family-tree-explore.html" class="btn btn-primary">I'm approved — enter the tree</a>
-
-    <div class="access-divider">or request access</div>
-
-    <!-- Replace ACCESS_FORM_ID below with your dedicated access-request Formspree endpoint -->
-    <form id="access-form" action="https://formspree.io/f/mzdnqgnb" method="POST">
-      <input type="hidden" name="_subject" value="Korappath tree access request">
-
-      <label>
-        Your name
-        <input type="text" name="name" required>
-      </label>
-
-      <label>
-        Your email <span style="text-transform:none; opacity:0.7;">(the one you'll log in with)</span>
-        <input type="email" name="email" required>
-      </label>
-
-      <label>
-        Your relation to the family
-        <input type="text" name="relation" placeholder="e.g. granddaughter of..." required>
-      </label>
-
-      <label>
-        Anything else? <span style="text-transform:none; opacity:0.7;">(optional)</span>
-        <textarea name="message" rows="2"></textarea>
-      </label>
-
-      <button type="submit" class="btn btn-primary">Request access</button>
-    </form>
-  </div>
-</div>
+<footer>An ongoing family archive — Korappath, Chiyyaram, Thrissur</footer>
 
 <script>
-fetch('featured-profiles.json')
+fetch('../stories.json')
   .then(r => r.json())
-  .then(list => {
-    if(!Array.isArray(list) || list.length === 0) return;
-    const pick = list[Math.floor(Math.random() * list.length)];
-    const nameHtml = (pick.deceased ? '<span class="late-tag">Late</span> ' : '') + pick.name;
+  .then(stories => {
+    const list = document.getElementById('story-list');
+    if(!Array.isArray(stories) || stories.length === 0){
+      list.innerHTML = '<p class="empty-note">No stories yet — check back soon.</p>';
+      return;
+    }
+    const sorted = [...stories].sort((a, b) => new Date(b.dateAdded || 0) - new Date(a.dateAdded || 0));
 
-    document.getElementById('featured-photo').src = pick.photo;
-    document.getElementById('featured-photo').alt = pick.name;
-    document.getElementById('featured-name').innerHTML = nameHtml;
-    document.getElementById('featured-blurb').textContent = pick.blurb;
-    document.getElementById('featured-link').href = pick.profileUrl;
-
-    document.getElementById('mini-teaser-photo').src = pick.photo;
-    document.getElementById('mini-teaser-photo').alt = pick.name;
-    document.getElementById('mini-teaser-name').innerHTML = nameHtml;
-    document.getElementById('mini-teaser-link').href = pick.profileUrl;
+    list.innerHTML = sorted.map(s => {
+      const dateStr = s.dateAdded ? new Date(s.dateAdded).toLocaleDateString('en-US', { month:'short', day:'numeric', year:'numeric' }) : '';
+      return `
+      <a class="story-card" href="../${s.storyUrl}">
+        <h3>${s.titleMl ? s.titleMl + ' — ' : ''}${s.titleEn}</h3>
+        <div class="meta">${s.author}${s.period ? ' · ' + s.period : ''}${dateStr ? ' · Added ' + dateStr : ''}</div>
+        <p>${s.excerptEn}</p>
+      </a>
+    `;
+    }).join('');
   })
-  .catch(() => { /* fall back silently to the static default already in the HTML */ });
-
-function openAccessModal(){
-  document.getElementById('access-overlay').classList.add('open');
-}
-function closeAccessModal(){
-  document.getElementById('access-overlay').classList.remove('open');
-}
-document.getElementById('close-access-panel').onclick = closeAccessModal;
-document.getElementById('access-overlay').onclick = (e) => {
-  if(e.target.id === 'access-overlay') closeAccessModal();
-};
+  .catch(() => {
+    document.getElementById('story-list').innerHTML =
+      '<p class="empty-note">Could not load stories right now.</p>';
+  });
 </script>
 
 </body>

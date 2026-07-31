@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ചിയ്യാരത്തിലെ എന്റെ ബാല്യകാലം — Korappath</title>
+<meta name="description" content="Sudhakara Menon's account of growing up in Chiyyaram, his ancestral home Korappath Kalappurakkal, and his uncle Govinda Menon's standing in the village.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,500;9..144,600&family=Noto+Serif+Malayalam:wght@400;600&family=Work+Sans:wght@300;400;500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --oxide-dark:#3E1810; --oxide:#6B2A1E; --oxide-light:#8C3E2C;
+    --brass:#C6952F; --brass-light:#E8C776;
+    --ivory:#F1E9D6; --ivory-dim:#D8CBAE; --teak:#2B1D14;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{ background:var(--oxide-dark); color:var(--ivory); font-family:'Work Sans', sans-serif; font-weight:300; line-height:1.7; }
+  h1,h2{ font-family:'Fraunces', serif; font-weight:500; }
+  .eyebrow{ font-family:'Space Mono', monospace; font-size:0.7rem; letter-spacing:0.15em; text-transform:uppercase; color:var(--brass-light); opacity:0.85; }
+  .topbar{ display:flex; justify-content:space-between; align-items:center; padding:1.5rem clamp(1.5rem, 5vw, 4rem); border-bottom:1px solid rgba(198,149,47,0.25); }
+  .wordmark{ font-family:'Fraunces', serif; font-size:1.15rem; }
+  .wordmark span{ color:var(--brass-light); }
+  .topbar a.back{ font-family:'Space Mono', monospace; font-size:0.72rem; letter-spacing:0.08em; text-transform:uppercase; color:var(--ivory); text-decoration:none; opacity:0.8; }
+  .topbar a.back:hover{ opacity:1; }
+
+  main{ max-width:720px; margin:0 auto; padding:3.5rem 1.5rem 4rem; }
+
+  .byline{ margin-bottom:1.6rem; }
+  .byline h1{ font-size:clamp(1.8rem, 4vw, 2.4rem); margin:0.6rem 0 0.3rem; line-height:1.2; }
+  .byline h1.malayalam-title{ font-family:'Noto Serif Malayalam', serif; }
+  .byline .subtitle{ color:var(--ivory-dim); font-size:1rem; font-style:italic; margin-bottom:0.6rem; }
+  .byline .meta{ font-family:'Space Mono', monospace; font-size:0.78rem; color:var(--brass-light); }
+
+  /* Language toggle */
+  .lang-toggle{
+    display:flex; gap:0.5rem;
+    margin:1.8rem 0 2.2rem;
+  }
+  .lang-toggle button{
+    font-family:'Space Mono', monospace;
+    font-size:0.75rem;
+    letter-spacing:0.05em;
+    text-transform:uppercase;
+    padding:0.6rem 1.2rem;
+    border-radius:2px;
+    border:1px solid var(--brass);
+    background:none;
+    color:var(--ivory);
+    cursor:pointer;
+    transition:background 0.2s ease, color 0.2s ease;
+  }
+  .lang-toggle button.active{
+    background:var(--brass);
+    color:var(--teak);
+  }
+  .lang-toggle button:not(.active):hover{
+    background:rgba(198,149,47,0.15);
+  }
+
+  .story-text{ display:none; }
+  .story-text.active{ display:block; }
+  .story-text.malayalam{
+    font-family:'Noto Serif Malayalam', serif;
+    font-size:1.15rem;
+    line-height:2;
+  }
+  .story-text.english{
+    font-family:'Fraunces', serif;
+    font-size:1.08rem;
+    line-height:1.85;
+    color:var(--ivory-dim);
+  }
+  .story-text p{ margin-bottom:1.3rem; }
+
+  .attribution{
+    margin-top:3rem;
+    padding-top:1.5rem;
+    border-top:1px solid rgba(198,149,47,0.2);
+    font-family:'Space Mono', monospace;
+    font-size:0.78rem;
+    color:var(--brass-light);
+    opacity:0.85;
+  }
+
+  footer{ text-align:center; padding:2.5rem 1.5rem; color:var(--ivory-dim); font-size:0.82rem; }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="wordmark">Korappath<span>.</span></div>
+  <a href="index.html" class="back">← All stories</a>
+</div>
+
+<main>
+  <div class="byline">
+    <span class="eyebrow">A story from the family — 1945 onwards</span>
+    <h1 class="malayalam-title">ചിയ്യാരത്തിലെ എന്റെ ബാല്യകാലം</h1>
+    <p class="subtitle">My childhood in Chiyyaram</p>
+    <p class="meta">As told by Korappath Kalapurakal Sudhakara Menon · Recorded Jul 31, 2026</p>
+  </div>
+
+  <div class="lang-toggle">
+    <button id="btn-ml" class="active" onclick="showLang('ml')">മലയാളം</button>
+    <button id="btn-en" onclick="showLang('en')">English</button>
+  </div>
+
+  <div class="story-text malayalam active" id="text-ml">
+    <p>ഞാൻ ജനിച്ചതും വളർന്നതും ചിയ്യാരം എന്നൊരു കുഗ്രാമത്തിലായിരുന്നു. കൊല്ലം 1945 സെപ്റ്റംബർ മാസം. ഒരു പക്ഷെ ഞങ്ങൾ ജീവിച്ചതും വളർന്നതും ഫ്യൂഡൽ പരിവേഷത്തിലായിരുന്നിരിക്കണം കാരണം എന്റെ തറവാട് "കോരപ്പത്തു കളപ്പുരക്കൽ" ഞങ്ങളുടെ ഗ്രാമത്തിലും തൃശ്ശൂർ പരിസര പ്രദേശത്തും സാമാന്യം അറിയപ്പെട്ടിരുന്നതും പരമ്പരാഗതമായി സമൂഹത്തിൽ നാട്ടുകാരാൽ വിലകല്പിച്ചിരുന്നതും ആയിരുന്നു. എന്റെ വലിയമ്മാവൻ ശ്രീ കോരപ്പത്തു കളപ്പുരക്കൽ ഗോവിന്ദമേനോൻ ജന്മിയും സഹൃദയനും പരോപകാരിയും നാട്ടുകാരാൽ ബഹുമാനിക്കപ്പെട്ടവനും സ്നേഹിക്കപ്പെട്ടവനും ആയിരുന്നതുകൊണ്ട് ഞങ്ങൾക്കെല്ലാം നാട്ടിൽ വിലയും നിലയും ഉണ്ടായിരുന്നു. നാട്ടിലുള്ളവർ അവരുടെ പ്രശ്നങ്ങൾക്കും പരിതാപങ്ങൾക്കും അത്താണിയായി ആവശ്യക്കാരെല്ലാം കണ്ടിരുന്നതും വലിയമ്മാവനെ തന്നെ ആയിരുന്നു. സ്വന്തമായി വലിയമ്മാവൻ ആർജ്ജിച്ചെടുത്ത കോടതി വ്യവഹാര കാര്യങ്ങളും നാട്ടിൽ അക്കാലത്ത് നിലവിലിരുന്ന നിയമ വ്യവസ്തകളും നന്നായി കൈകാര്യം ചെയ്യാൻ സാധിച്ചിരുന്നത് കൊണ്ട് ആവശ്യക്കാരെല്ലാം മിക്ക ദിവസങ്ങളിലും അമ്മാവന്റെ സന്നിധിയിൽ എത്തുമായിരുന്നു തീർപ്പുകൾക്കായി. ഒട്ടും പ്രതിഫലം പറ്റാതെ എല്ലാ തീർപ്പുകളും ഭംഗിയായി സന്ദർഭോചിതമായി അദ്ദേഹം നടത്തിയിരുന്നു. ചില ദിവസങ്ങളിൽ അവർക്കു വേണ്ടിയോ അന്യർക്കു വേണ്ടിയോ അമ്മാവൻ കോടതിയിൽ ഹാജരാകാറും ഉണ്ടായിരുന്നു. കോടതിയിലും വലിയ മതിപ്പുണ്ടായിരുന്നു അദ്ദേഹത്തിന്റെ ഇടപെടലുകൾക്ക്.</p>
+    <p>കുടുംബപരമായി ഞങ്ങൾക്ക് ധാരാളം വസ്തുവകകളും പാട്ടഭൂമികളും കൃഷിയിടങ്ങളും ചുറ്റിലും പരിസര പ്രദേശങ്ങളിലും ഉണ്ടായിരുന്നു. സുഭിക്ഷമായി ഞങ്ങൾക്കെല്ലാം ജീവിച്ചു പോകാനുള്ള വകകൾ നിർലോഭം ഞങ്ങൾക്കുണ്ടായിരുന്നു.</p>
+  </div>
+
+  <div class="story-text english" id="text-en">
+    <p style="font-family:'Space Mono', monospace; font-size:0.72rem; text-transform:uppercase; letter-spacing:0.05em; color:var(--brass-light); opacity:0.85;">Draft translation — pending review for accuracy</p>
+    <p>I was born and raised in a small village called Chiyyaram, in September of the year 1945. Perhaps we lived and grew up with something of a feudal air about us, because my ancestral home, "Korappath Kalappurakkal," was reasonably well known in our village and the surrounding Thrissur area, and had traditionally been held in regard by the local community. My eldest uncle, Sri Korappath Kalappurakkal Govinda Menon, was a landlord, warm-hearted, and generous to others — respected and loved by the people of the village — and because of this, all of us held a certain standing in the village. The people of the village saw him as their refuge for their troubles and grievances; everyone in need turned to my uncle himself. Because he had, through his own experience, gained a good command of court matters and the legal systems prevailing in the region at the time, people in need would come to him on most days seeking resolutions. Without accepting any payment at all, he carried out every resolution gracefully and appropriately to the situation. On some days, my uncle would even appear in court, whether on their behalf or on behalf of others. Even in court, his interventions were held in great regard.</p>
+    <p>As a family, we had a great deal of property, leased lands, and farmland in and around the surrounding areas. We had no shortage of means for all of us to live comfortably and well.</p>
+  </div>
+
+  <div class="attribution">
+    Recorded as part of the Korappath family archive. If you remember more of this story, or a different version of it, <a href="../index.html" style="color:var(--brass-light);">let us know</a>.
+  </div>
+</main>
+
+<footer>An ongoing family archive — Korappath, Chiyyaram, Thrissur</footer>
+
+<script>
+function showLang(lang){
+  document.getElementById('text-ml').classList.toggle('active', lang === 'ml');
+  document.getElementById('text-en').classList.toggle('active', lang === 'en');
+  document.getElementById('btn-ml').classList.toggle('active', lang === 'ml');
+  document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+}
+</script>
+
+</body>
+</html>

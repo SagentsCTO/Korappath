@@ -129,6 +129,41 @@
   .btn-ghost:hover{ border-color:var(--ivory); }
 
   /* ---------- Four Wings ---------- */
+  .featured-profile{
+    margin:0 clamp(1rem, 4vw, 3rem) 0;
+    padding-top:0.5rem;
+  }
+  .featured-card{
+    max-width:640px;
+    margin:1.2rem auto 0;
+    background:var(--ivory);
+    color:var(--teak);
+    border-radius:6px;
+    padding:1.6rem;
+    display:flex;
+    align-items:center;
+    gap:1.6rem;
+    flex-wrap:wrap;
+  }
+  .featured-card img{
+    width:110px; height:110px;
+    object-fit:cover;
+    border-radius:4px;
+    border:2px solid var(--oxide);
+    flex-shrink:0;
+  }
+  .featured-text{ flex:1; min-width:220px; }
+  .featured-text h3{ font-family:'Fraunces', serif; font-size:1.3rem; margin-bottom:0.4rem; }
+  .featured-text p{ font-size:0.92rem; color:#5c4a38; margin-bottom:0.7rem; }
+  .featured-link{
+    font-family:'Space Mono', monospace;
+    font-size:0.75rem;
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+    color:var(--oxide);
+    text-decoration:underline;
+  }
+
   .wings-label{
     text-align:center;
     padding:1rem 0 0.5rem;
@@ -301,6 +336,24 @@
   #access-form textarea{ resize:vertical; }
   #access-form button{ cursor:pointer; border:none; }
 
+  .mini-teaser{
+    display:flex; align-items:center; gap:0.8rem;
+    background:rgba(107,42,30,0.06);
+    border:1px solid rgba(107,42,30,0.15);
+    border-radius:4px;
+    padding:0.8rem 1rem;
+    margin-bottom:1.2rem;
+    font-size:0.85rem;
+    color:#5c4a38;
+  }
+  .mini-teaser img{
+    width:44px; height:44px;
+    object-fit:cover;
+    border-radius:3px;
+    flex-shrink:0;
+  }
+  .mini-teaser a{ color:var(--oxide); font-weight:500; }
+
   /* ---------- Footer ---------- */
   footer{
     text-align:center;
@@ -344,6 +397,18 @@
   <div class="cta-row">
     <a href="#contribute" class="btn btn-primary">Add a memory</a>
     <a href="family-tree-explore.html" class="btn btn-ghost" onclick="openAccessModal(); return false;">Explore the family tree</a>
+  </div>
+</section>
+
+<section class="featured-profile">
+  <span class="eyebrow" style="color:var(--brass-light); display:block; text-align:center;">A glimpse of the archive</span>
+  <div class="featured-card">
+    <img src="images/people/krc-menon.jpg" alt="Lt. K.R.C. Menon" onerror="this.style.display='none'">
+    <div class="featured-text">
+      <h3>Lt. K.R.C. Menon</h3>
+      <p>Founder Secretary of the Thrissur Pooram Ekopana Samithy — one of the stories already documented and preserved here.</p>
+      <a href="people/krc-menon.html" class="featured-link">Read his full story →</a>
+    </div>
   </div>
 </section>
 
@@ -457,6 +522,14 @@
     <button class="close" id="close-access-panel">×</button>
     <h3>This part of the archive is private</h3>
     <p class="access-copy">The family tree, photos, and stories are kept behind a simple login so they stay within the family. If you're already approved, go ahead in — if not, request access below and we'll add you.</p>
+
+    <div class="mini-teaser">
+      <img src="images/people/krc-menon.jpg" alt="Lt. K.R.C. Menon" onerror="this.style.display='none'">
+      <div>
+        <strong>Already documented:</strong> Lt. K.R.C. Menon's story —
+        <a href="people/krc-menon.html">read it →</a>
+      </div>
+    </div>
 
     <a href="family-tree-explore.html" class="btn btn-primary">I'm approved — enter the tree</a>
 

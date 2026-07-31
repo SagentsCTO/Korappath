@@ -766,14 +766,14 @@ function update(){
           .attr('text-anchor', 'middle')
           .attr('x', 0)
           .attr('y', -2)
-          .html(d => nameSvg(truncate(d.data.name, 18), d.data.deceased));
+          .text(d => truncate(d.data.name, 18));
 
         g.append('text')
           .attr('class', 'node-sub')
           .attr('text-anchor', 'middle')
           .attr('x', 0)
           .attr('y', 14)
-          .html(d => d.data.spouse ? '&amp; ' + nameSvg(truncate(d.data.spouse, 16), d.data.spouseDeceased) : escapeMarkup(d.data.born || d.data.died ? yearRange(d.data) : ''));
+          .text(d => d.data.spouse ? '& ' + truncate(d.data.spouse, 16) : (d.data.born || d.data.died ? yearRange(d.data) : ''));
 
         // Collapse/expand toggle — only meaningful for nodes with children either way
         const toggle = g.filter(d => d.children || d._children).append('g')

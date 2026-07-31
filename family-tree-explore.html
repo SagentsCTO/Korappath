@@ -244,6 +244,17 @@
   .node.has-profile .node-sub{ fill:var(--brass); }
   .node.deceased rect{ fill:#6b6258; stroke:rgba(198,149,47,0.55); }
   .node.deceased .main-label{ fill:var(--ivory-dim); }
+  .late-tag-svg{ font-size:9px; fill:var(--brass-light); font-style:italic; }
+  .late-tag{
+    font-family:'Space Mono', monospace;
+    font-size:0.6em;
+    letter-spacing:0.04em;
+    text-transform:uppercase;
+    color:var(--oxide);
+    opacity:0.75;
+    vertical-align:middle;
+    margin-right:0.3em;
+  }
 
   .toggle circle{
     fill:var(--oxide-dark);
@@ -643,7 +654,7 @@ function setupStartScreen(){
     const matches = allPeopleData.filter(p => p.name && p.name.toLowerCase().includes(q)).slice(0, 8);
     matches.forEach(p => {
       const row = document.createElement('div');
-      row.textContent = displayName(p.name, p.deceased);
+      row.innerHTML = nameHtml(p.name, p.deceased);
       row.onclick = () => beginExploring(p.id);
       results.appendChild(row);
     });
@@ -755,14 +766,14 @@ function update(){
           .attr('text-anchor', 'middle')
           .attr('x', 0)
           .attr('y', -2)
-          .text(d => truncate(displayName(d.data.name, d.data.deceased), 18));
+          .html(d => nameSvg(truncate(d.data.name, 18), d.data.deceased));
 
         g.append('text')
           .attr('class', 'node-sub')
           .attr('text-anchor', 'middle')
           .attr('x', 0)
           .attr('y', 14)
-          .text(d => d.data.spouse ? '& ' + truncate(displayName(d.data.spouse, d.data.spouseDeceased), 16) : (d.data.born || d.data.died ? yearRange(d.data) : ''));
+          .html(d => d.data.spouse ? '&amp; ' + nameSvg(truncate(d.data.spouse, 16), d.data.spouseDeceased) : escapeMarkup(d.data.born || d.data.died ? yearRange(d.data) : ''));
 
         // Collapse/expand toggle — only meaningful for nodes with children either way
         const toggle = g.filter(d => d.children || d._children).append('g')
@@ -841,8 +852,17 @@ function truncate(str, n){
   if(!str) return '';
   return str.length > n ? str.slice(0, n - 1) + '…' : str;
 }
-function displayName(name, isDeceased){
-  return (isDeceased ? 'Lt. ' : '') + (name || '');
+function escapeMarkup(str){
+  if(!str) return '';
+  return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+}
+function nameHtml(name, isDeceased){
+  const safe = escapeMarkup(name);
+  return isDeceased ? '<span class="late-tag">Late</span> ' + safe : safe;
+}
+function nameSvg(name, isDeceased){
+  const safe = escapeMarkup(name);
+  return isDeceased ? '<tspan class="late-tag-svg">Late </tspan>' + safe : safe;
 }
 function yearRange(d){
   if(d.born && d.died) return `${d.born}–${d.died}`;
@@ -853,7 +873,7 @@ function yearRange(d){
 
 function openPanel(person){
   activePerson = person;
-  document.getElementById('panel-name').textContent = displayName(person.name, person.deceased);
+  document.getElementById('panel-name').innerHTML = nameHtml(person.name, person.deceased);
   document.getElementById('panel-dates').textContent =
     [yearRange(person), person.location].filter(Boolean).join(' · ');
   document.getElementById('panel-story').textContent = person.story || 'No story recorded yet.';
@@ -867,7 +887,7 @@ function openPanel(person){
   const spouseBlock = document.getElementById('spouse-block');
   if(person.spouse){
     spouseBlock.style.display = 'block';
-    document.getElementById('spouse-name').textContent = displayName(person.spouse, person.spouseDeceased);
+    document.getElementById('spouse-name').innerHTML = nameHtml(person.spouse, person.spouseDeceased);
     document.getElementById('spouse-dates').textContent =
       yearRange({born: person.spouseBorn, died: person.spouseDied});
     document.getElementById('spouse-story').textContent = person.spouseStory || '';
@@ -887,7 +907,7 @@ document.getElementById('close-side-panel').onclick = () => {
 
 function openPhotoModal(){
   if(!activePerson) return;
-  document.getElementById('photo-subject-name').textContent = displayName(activePerson.name, activePerson.deceased);
+  document.getElementById('photo-subject-name').innerHTML = nameHtml(activePerson.name, activePerson.deceased);
   document.getElementById('photo-person-name').value = activePerson.name;
   document.getElementById('photo-person-id').value = activePerson.id;
   document.getElementById('photo-form').reset();

@@ -155,7 +155,7 @@
 
     <label style="display:flex; align-items:center; gap:0.5rem; text-transform:none;">
       <input type="checkbox" id="f-deceased" style="width:auto;" onchange="">
-      Deceased <span style="text-transform:none; opacity:0.7;">(prefixes their name with "Lt." wherever it's shown)</span>
+      Deceased <span style="text-transform:none; opacity:0.7;">(shows a small "Late" tag before their name wherever it's shown)</span>
     </label>
 
     <label>Order among siblings <span style="text-transform:none;">(1, 2, 3... — controls left-to-right position under the same parent)</span>
@@ -251,13 +251,13 @@ function renderTree(){
       info.className = 'info';
       const nm = document.createElement('span');
       nm.className = 'name';
-      const prefix = p.deceased ? 'Lt. ' : '';
+      const prefix = p.deceased ? 'Late ' : '';
       nm.textContent = (p.order ? `${p.order}. ` : '') + prefix + (p.name || '(unnamed)');
       info.appendChild(nm);
       const sub = document.createElement('span');
       sub.className = 'sub';
       const bits = [];
-      if(p.spouse) bits.push('& ' + (p.spouseDeceased ? 'Lt. ' : '') + p.spouse);
+      if(p.spouse) bits.push('& ' + (p.spouseDeceased ? 'Late ' : '') + p.spouse);
       if(p.born || p.died) bits.push(`${p.born || '?'}–${p.died || 'present'}`);
       if(p.profileUrl) bits.push('has profile');
       sub.textContent = bits.join(' · ');

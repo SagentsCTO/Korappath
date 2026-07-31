@@ -163,6 +163,16 @@
     color:var(--oxide);
     text-decoration:underline;
   }
+  .late-tag{
+    font-family:'Space Mono', monospace;
+    font-size:0.6em;
+    letter-spacing:0.04em;
+    text-transform:uppercase;
+    color:var(--oxide);
+    opacity:0.75;
+    vertical-align:middle;
+    margin-right:0.3em;
+  }
 
   .wings-label{
     text-align:center;
@@ -570,17 +580,17 @@ fetch('featured-profiles.json')
   .then(list => {
     if(!Array.isArray(list) || list.length === 0) return;
     const pick = list[Math.floor(Math.random() * list.length)];
-    const displayName = (pick.deceased ? 'Lt. ' : '') + pick.name;
+    const nameHtml = (pick.deceased ? '<span class="late-tag">Late</span> ' : '') + pick.name;
 
     document.getElementById('featured-photo').src = pick.photo;
-    document.getElementById('featured-photo').alt = displayName;
-    document.getElementById('featured-name').textContent = displayName;
+    document.getElementById('featured-photo').alt = pick.name;
+    document.getElementById('featured-name').innerHTML = nameHtml;
     document.getElementById('featured-blurb').textContent = pick.blurb;
     document.getElementById('featured-link').href = pick.profileUrl;
 
     document.getElementById('mini-teaser-photo').src = pick.photo;
-    document.getElementById('mini-teaser-photo').alt = displayName;
-    document.getElementById('mini-teaser-name').textContent = displayName;
+    document.getElementById('mini-teaser-photo').alt = pick.name;
+    document.getElementById('mini-teaser-name').innerHTML = nameHtml;
     document.getElementById('mini-teaser-link').href = pick.profileUrl;
   })
   .catch(() => { /* fall back silently to the static default already in the HTML */ });

@@ -84,6 +84,56 @@
   }
 
   footer{ text-align:center; padding:2.5rem 1.5rem; color:var(--ivory-dim); font-size:0.82rem; }
+
+  /* ---------- Comments ---------- */
+  .comments-section{ margin-top:3rem; }
+  .comments-section h2{ font-size:1.3rem; margin-bottom:1.2rem; }
+  .comment-empty{ color:var(--ivory-dim); font-size:0.9rem; }
+  .comment-card{
+    background:rgba(198,149,47,0.06);
+    border:1px solid rgba(198,149,47,0.2);
+    border-radius:4px;
+    padding:1rem 1.2rem;
+    margin-bottom:0.8rem;
+  }
+  .comment-card .comment-meta{
+    font-family:'Space Mono', monospace;
+    font-size:0.7rem;
+    letter-spacing:0.04em;
+    text-transform:uppercase;
+    color:var(--brass-light);
+    margin-bottom:0.4rem;
+  }
+  .comment-card p{ font-size:0.92rem; color:var(--ivory-dim); }
+
+  #comment-form{ margin-top:1.6rem; max-width:520px; }
+  #comment-form label{
+    display:block;
+    font-family:'Space Mono', monospace;
+    font-size:0.72rem;
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+    color:var(--brass-light);
+    opacity:0.9;
+    margin-bottom:1rem;
+  }
+  #comment-form input[type="text"],
+  #comment-form textarea{
+    display:block; width:100%; margin-top:0.4rem;
+    padding:0.6rem 0.75rem;
+    font-family:'Work Sans', sans-serif; font-size:0.92rem;
+    color:var(--teak); background:var(--ivory);
+    border:1px solid rgba(43,29,20,0.2); border-radius:3px;
+  }
+  #comment-form textarea{ resize:vertical; }
+  .btn-comment{
+    font-family:'Space Mono', monospace;
+    font-size:0.75rem; letter-spacing:0.06em; text-transform:uppercase;
+    padding:0.7rem 1.4rem; border-radius:2px; border:none; cursor:pointer;
+    background:var(--brass); color:var(--teak);
+  }
+  .btn-comment:hover{ background:var(--brass-light); }
+  .comment-note{ font-size:0.8rem; color:var(--ivory-dim); opacity:0.75; margin-top:0.8rem; }
 </style>
 </head>
 <body>
@@ -107,7 +157,7 @@
   </div>
 
   <div class="story-text malayalam active" id="text-ml">
-    <p>ഞാൻ ജനിച്ചതും വളർന്നതും ചിയ്യാരം എന്നൊരു കുഗ്രാമത്തിലായിരുന്നു. കൊല്ലം 1945 സെപ്റ്റംബർ മാസം. ഒരു പക്ഷെ ഞങ്ങൾ ജീവിച്ചതും വളർന്നതും ഫ്യൂഡൽ പരിവേഷത്തിലായിരുന്നിരിക്കണം കാരണം എന്റെ തറവാട് "കോരപ്പത്തു കളപ്പുരക്കൽ" ഞങ്ങളുടെ ഗ്രാമത്തിലും തൃശ്ശൂർ പരിസര പ്രദേശത്തും സാമാന്യം അറിയപ്പെട്ടിരുന്നതും പരമ്പരാഗതമായി സമൂഹത്തിൽ നാട്ടുകാരാൽ വിലകല്പിച്ചിരുന്നതും ആയിരുന്നു. എന്റെ വലിയമ്മാവൻ ശ്രീ കോരപ്പത്തു കളപ്പുരക്കൽ ഗോവിന്ദമേനോൻ ജന്മിയും സഹൃദയനും പരോപകാരിയും നാട്ടുകാരാൽ ബഹുമാനിക്കപ്പെട്ടവനും സ്നേഹിക്കപ്പെട്ടവനും ആയിരുന്നതുകൊണ്ട് ഞങ്ങൾക്കെല്ലാം നാട്ടിൽ വിലയും നിലയും ഉണ്ടായിരുന്നു. നാട്ടിലുള്ളവർ അവരുടെ പ്രശ്നങ്ങൾക്കും പരിതാപങ്ങൾക്കും അത്താണിയായി ആവശ്യക്കാരെല്ലാം കണ്ടിരുന്നതും വലിയമ്മാവനെ തന്നെ ആയിരുന്നു. സ്വന്തമായി വലിയമ്മാവൻ ആർജ്ജിച്ചെടുത്ത കോടതി വ്യവഹാര കാര്യങ്ങളും നാട്ടിൽ അക്കാലത്ത് നിലവിലിരുന്ന നിയമ വ്യവസ്തകളും നന്നായി കൈകാര്യം ചെയ്യാൻ സാധിച്ചിരുന്നത് കൊണ്ട് ആവശ്യക്കാരെല്ലാം മിക്ക ദിവസങ്ങളിലും അമ്മാവന്റെ സന്നിധിയിൽ എത്തുമായിരുന്നു തീർപ്പുകൾക്കായി. ഒട്ടും പ്രതിഫലം പറ്റാതെ എല്ലാ തീർപ്പുകളും ഭംഗിയായി സന്ദർഭോചിതമായി അദ്ദേഹം നടത്തിയിരുന്നു. ചില ദിവസങ്ങളിൽ അവർക്കു വേണ്ടിയോ അന്യർക്കു വേണ്ടിയോ അമ്മാവൻ കോടതിയിൽ ഹാജരാകാറും ഉണ്ടായിരുന്നു. കോടതിയിലും വലിയ മതിപ്പുണ്ടായിരുന്നു അദ്ദേഹത്തിന്റെ ഇടപെടലുകൾക്ക്.</p>
+    <p>ഞാൻ ജനിച്ചതും വളർന്നതും ചിയ്യാരം എന്നൊരു കുഗ്രാമത്തിലായിരുന്നു. കൊല്ലം 1945 സെപ്റ്റംബർ മാസം. ഒരു പക്ഷെ ഞങ്ങൾ ജീവിച്ചതും വളർന്നതും ഫ്യൂഡൽ പരിവേഷത്തിലായിരുന്നിരിക്കണം കാരണം എന്റെ തറവാട് "കോരപ്പത്തു കളപ്പുരക്കൽ" ഞങ്ങളുടെ ഗ്രാമത്തിലും തൃശ്ശൂർ പരിസര പ്രദേശത്തും സാമാന്യം അറിയപ്പെട്ടിരുന്നതും പരമ്പരാഗതമായി സമൂഹത്തിൽ നാട്ടുകാരാൽ വിലകല്പിച്ചിരുന്നതും ആയിരുന്നു. എന്റെ വലിയമ്മാവൻ ശ്രീ കോരപ്പത്തു കളപ്പുരക്കൽ ഗോവിന്ദമേനോൻ ജന്മിയും സഹൃദയനും പരോപകാരിയും നാട്ടുകാരാൽ ബഹുമാനിക്കപ്പെട്ടവനും സ്നേഹിക്കപ്പെട്ടവനും ആയിരുന്നതുകൊണ്ട് ഞങ്ങൾക്കെല്ലാം നാട്ടിൽ വിലയും നിലയും ഉണ്ടായിരുന്നു. നാട്ടിലുള്ളവർ അവരുടെ പ്രശ്നങ്ങൾക്കും പരിതാപങ്ങൾക്കും അത്താണിയായിആവശ്യക്കാരെല്ലാം കണ്ടിരുന്നതും വലിയമ്മാവനെ തന്നെ ആയിരുന്നു. സ്വന്തമായി വലിയമ്മാവൻ ആർജ്ജിച്ചെടുത്ത കോടതി വ്യവഹാര കാര്യങ്ങളും നാട്ടിൽ അക്കാലത്ത് നിലവിലിരുന്ന നിയമ വ്യവസ്ഥകളും നന്നായി കൈകാര്യം ചെയ്യാൻ സാധിച്ചിരുന്നത് കൊണ്ട് ആവശ്യക്കാരെല്ലാം മിക്ക ദിവസങ്ങളിലും അമ്മാവന്റെ സന്നിധിയിൽ എത്തുമായിരുന്നു തീർപ്പുകൾക്കായി. ഒട്ടും പ്രതിഫലം പറ്റാതെ എല്ലാ തീർപ്പുകളും ഭംഗിയായി സന്ദർഭോചിതമായി അദ്ദേഹം നടത്തിയിരുന്നു. ചില ദിവസങ്ങളിൽ അവർക്കു വേണ്ടിയോ അന്യർക്കു വേണ്ടിയോ അമ്മാവൻ കോടതിയിൽ ഹാജരാകാറും ഉണ്ടായിരുന്നു. കോടതിയിലും വലിയ മതിപ്പുണ്ടായിരുന്നു അദ്ദേഹത്തിന്റെ ഇടപെടലുകൾക്ക്.</p>
     <p>കുടുംബപരമായി ഞങ്ങൾക്ക് ധാരാളം വസ്തുവകകളും പാട്ടഭൂമികളും കൃഷിയിടങ്ങളും ചുറ്റിലും പരിസര പ്രദേശങ്ങളിലും ഉണ്ടായിരുന്നു. സുഭിക്ഷമായി ഞങ്ങൾക്കെല്ലാം ജീവിച്ചു പോകാനുള്ള വകകൾ നിർലോഭം ഞങ്ങൾക്കുണ്ടായിരുന്നു.</p>
   </div>
 
@@ -120,6 +170,32 @@
   <div class="attribution">
     Recorded as part of the Korappath family archive. If you remember more of this story, or a different version of it, <a href="../index.html#contribute" style="color:var(--brass-light);">let us know</a>.
   </div>
+
+  <section class="comments-section">
+    <h2>Comments</h2>
+    <div id="comments-list"><p class="comment-empty">Loading comments…</p></div>
+
+    <!-- Replace COMMENT_FORM_ID below with your dedicated comments Formspree endpoint -->
+    <form id="comment-form" action="https://formspree.io/f/xqerojyy" method="POST">
+      <input type="hidden" name="_subject" value="New comment on: My childhood in Chiyyaram">
+      <input type="hidden" name="story_id" value="chiyyaram-childhood">
+      <input type="hidden" name="story_title" value="My childhood in Chiyyaram">
+      <input type="hidden" id="date-submitted" name="date_submitted">
+
+      <label>
+        Your name
+        <input type="text" name="name" required>
+      </label>
+
+      <label>
+        Your comment
+        <textarea name="comment" rows="4" required placeholder="Share a memory, a correction, or your own version of this story..."></textarea>
+      </label>
+
+      <button type="submit" class="btn-comment">Post comment</button>
+    </form>
+    <p class="comment-note">Comments are reviewed before they appear publicly.</p>
+  </section>
 </main>
 
 <footer>An ongoing family archive — Korappath, Chiyyaram, Thrissur</footer>
@@ -130,6 +206,35 @@ function showLang(lang){
   document.getElementById('text-en').classList.toggle('active', lang === 'en');
   document.getElementById('btn-ml').classList.toggle('active', lang === 'ml');
   document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+}
+
+document.getElementById('date-submitted').value = new Date().toISOString().slice(0, 10);
+
+fetch('../stories.json')
+  .then(r => r.json())
+  .then(stories => {
+    const mine = stories.find(s => s.id === 'chiyyaram-childhood');
+    const list = document.getElementById('comments-list');
+    const comments = mine && Array.isArray(mine.comments) ? mine.comments : [];
+    if(comments.length === 0){
+      list.innerHTML = '<p class="comment-empty">No comments yet — be the first to share a memory.</p>';
+      return;
+    }
+    list.innerHTML = comments.map(c => {
+      const dateStr = c.date ? new Date(c.date).toLocaleDateString('en-US', { month:'short', day:'numeric', year:'numeric' }) : '';
+      return `<div class="comment-card">
+        <div class="comment-meta">${escapeHtml(c.name)}${dateStr ? ' · ' + dateStr : ''}</div>
+        <p>${escapeHtml(c.text)}</p>
+      </div>`;
+    }).join('');
+  })
+  .catch(() => {
+    document.getElementById('comments-list').innerHTML = '<p class="comment-empty">Could not load comments right now.</p>';
+  });
+
+function escapeHtml(str){
+  if(!str) return '';
+  return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 }
 </script>
 

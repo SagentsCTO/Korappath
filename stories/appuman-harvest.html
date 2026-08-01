@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>അപ്പുമാൻ — സഹൃദയനായ ഒരു കർഷകൻ — Korappath</title>
+<meta name="description" content="Sudhakara Menon remembers Appuman, his grandfather's warm-hearted farmhand, bringing the harvest by bullock cart and singing field songs late into the evening.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,500;9..144,600&family=Noto+Serif+Malayalam:wght@400;600&family=Work+Sans:wght@300;400;500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --oxide-dark:#3E1810; --oxide:#6B2A1E; --oxide-light:#8C3E2C;
+    --brass:#C6952F; --brass-light:#E8C776;
+    --ivory:#F1E9D6; --ivory-dim:#D8CBAE; --teak:#2B1D14;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{ background:var(--oxide-dark); color:var(--ivory); font-family:'Work Sans', sans-serif; font-weight:300; line-height:1.7; }
+  h1,h2{ font-family:'Fraunces', serif; font-weight:500; }
+  .eyebrow{ font-family:'Space Mono', monospace; font-size:0.7rem; letter-spacing:0.15em; text-transform:uppercase; color:var(--brass-light); opacity:0.85; }
+  .topbar{ display:flex; justify-content:space-between; align-items:center; padding:1.5rem clamp(1.5rem, 5vw, 4rem); border-bottom:1px solid rgba(198,149,47,0.25); }
+  .wordmark{ font-family:'Fraunces', serif; font-size:1.15rem; }
+  .wordmark span{ color:var(--brass-light); }
+  .topbar a.back{ font-family:'Space Mono', monospace; font-size:0.72rem; letter-spacing:0.08em; text-transform:uppercase; color:var(--ivory); text-decoration:none; opacity:0.8; }
+  .topbar a.back:hover{ opacity:1; }
+
+  main{ max-width:720px; margin:0 auto; padding:3.5rem 1.5rem 4rem; }
+
+  .byline{ margin-bottom:1.6rem; }
+  .series-nav{
+    display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.6rem;
+    margin-bottom:1.8rem; padding-bottom:1.2rem;
+    border-bottom:1px solid rgba(198,149,47,0.2);
+  }
+  .series-nav .series-links{ display:flex; gap:1.2rem; font-family:'Space Mono', monospace; font-size:0.75rem; letter-spacing:0.05em; text-transform:uppercase; }
+  .series-nav .series-links a{ color:var(--brass-light); text-decoration:none; }
+  .series-nav .series-links a:hover{ text-decoration:underline; }
+  .byline h1{ font-size:clamp(1.8rem, 4vw, 2.4rem); margin:0.6rem 0 0.3rem; line-height:1.2; }
+  .byline h1.malayalam-title{ font-family:'Noto Serif Malayalam', serif; }
+  .byline .subtitle{ color:var(--ivory-dim); font-size:1rem; font-style:italic; margin-bottom:0.6rem; }
+  .byline .meta{ font-family:'Space Mono', monospace; font-size:0.78rem; color:var(--brass-light); }
+
+  /* Language toggle */
+  .lang-toggle{
+    display:flex; gap:0.5rem;
+    margin:1.8rem 0 2.2rem;
+  }
+  .lang-toggle button{
+    font-family:'Space Mono', monospace;
+    font-size:0.75rem;
+    letter-spacing:0.05em;
+    text-transform:uppercase;
+    padding:0.6rem 1.2rem;
+    border-radius:2px;
+    border:1px solid var(--brass);
+    background:none;
+    color:var(--ivory);
+    cursor:pointer;
+    transition:background 0.2s ease, color 0.2s ease;
+  }
+  .lang-toggle button.active{
+    background:var(--brass);
+    color:var(--teak);
+  }
+  .lang-toggle button:not(.active):hover{
+    background:rgba(198,149,47,0.15);
+  }
+
+  .story-text{ display:none; }
+  .story-text.active{ display:block; }
+  .story-text.malayalam{
+    font-family:'Noto Serif Malayalam', serif;
+    font-size:1.15rem;
+    line-height:2;
+  }
+  .story-text.english{
+    font-family:'Fraunces', serif;
+    font-size:1.08rem;
+    line-height:1.85;
+    color:var(--ivory-dim);
+  }
+  .story-text p{ margin-bottom:1.3rem; }
+
+  .attribution{
+    margin-top:3rem;
+    padding-top:1.5rem;
+    border-top:1px solid rgba(198,149,47,0.2);
+    font-family:'Space Mono', monospace;
+    font-size:0.78rem;
+    color:var(--brass-light);
+    opacity:0.85;
+  }
+
+  footer{ text-align:center; padding:2.5rem 1.5rem; color:var(--ivory-dim); font-size:0.82rem; }
+
+  /* ---------- Comments ---------- */
+  .comments-section{ margin-top:3rem; }
+  .comments-section h2{ font-size:1.3rem; margin-bottom:1.2rem; }
+  .comment-empty{ color:var(--ivory-dim); font-size:0.9rem; }
+  .comment-card{
+    background:rgba(198,149,47,0.06);
+    border:1px solid rgba(198,149,47,0.2);
+    border-radius:4px;
+    padding:1rem 1.2rem;
+    margin-bottom:0.8rem;
+  }
+  .comment-card .comment-meta{
+    font-family:'Space Mono', monospace;
+    font-size:0.7rem;
+    letter-spacing:0.04em;
+    text-transform:uppercase;
+    color:var(--brass-light);
+    margin-bottom:0.4rem;
+  }
+  .comment-card p{ font-size:0.92rem; color:var(--ivory-dim); }
+
+  #comment-form{ margin-top:1.6rem; max-width:520px; }
+  #comment-form label{
+    display:block;
+    font-family:'Space Mono', monospace;
+    font-size:0.72rem;
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+    color:var(--brass-light);
+    opacity:0.9;
+    margin-bottom:1rem;
+  }
+  #comment-form input[type="text"],
+  #comment-form textarea{
+    display:block; width:100%; margin-top:0.4rem;
+    padding:0.6rem 0.75rem;
+    font-family:'Work Sans', sans-serif; font-size:0.92rem;
+    color:var(--teak); background:var(--ivory);
+    border:1px solid rgba(43,29,20,0.2); border-radius:3px;
+  }
+  #comment-form textarea{ resize:vertical; }
+  .btn-comment{
+    font-family:'Space Mono', monospace;
+    font-size:0.75rem; letter-spacing:0.06em; text-transform:uppercase;
+    padding:0.7rem 1.4rem; border-radius:2px; border:none; cursor:pointer;
+    background:var(--brass); color:var(--teak);
+  }
+  .btn-comment:hover{ background:var(--brass-light); }
+  .comment-note{ font-size:0.8rem; color:var(--ivory-dim); opacity:0.75; margin-top:0.8rem; }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="wordmark">Korappath<span>.</span></div>
+  <a href="index.html" class="back">← All stories</a>
+</div>
+
+<main>
+  <div class="series-nav">
+    <span class="eyebrow">Part 2 of an ongoing series</span>
+    <div class="series-links">
+      <a href="chiyyaram-childhood.html">← Part 1</a>
+      <!-- Add <a href="kunjan-rickshaw.html">Part 3 →</a> back here once Part 3 is confirmed and ready -->
+      <span></span>
+    </div>
+  </div>
+
+  <div class="byline">
+    <span class="eyebrow">A story from the family — 1945 onwards</span>
+    <h1 class="malayalam-title">അപ്പുമാൻ — സഹൃദയനായ ഒരു കർഷകൻ</h1>
+    <p class="subtitle">Appuman — a warm-hearted farmer</p>
+    <p class="meta">As told by Korappath Kalapurakal Sudhakara Menon · Recorded Jul 31, 2026</p>
+  </div>
+
+  <div class="lang-toggle">
+    <button id="btn-ml" class="active" onclick="showLang('ml')">മലയാളം</button>
+    <button id="btn-en" onclick="showLang('en')">English</button>
+  </div>
+
+  <div class="story-text malayalam active" id="text-ml">
+    <p>എന്റെ അച്ഛന്റെ വീടും ഞങ്ങളുടെ തറവാടിന്റെ അഞ്ചാറ് വീട് വടക്കുമാറി ചിയ്യാരം ഗ്രാമത്തിൽ തന്നെ ആയിരുന്നു. അച്ഛന്റെ അച്ഛന്റെ ( മുത്തശ്ശന്റെ ) തറവാട് തൃശൂർ നിന്നും പത്തോളം മൈലുകൾ പടിഞ്ഞാറോട്ടു മാറി കണ്ടശംകടവ് എന്ന തീരപ്രദേശത്തായിരുന്നു. മുത്തശ്ശനും വലിയ കൃഷിസ്ഥലത്തിന്റെ ഉടമയും നെൽകൃഷിയുള്ള വലിയൊരു ജന്മിയും ആയിരുന്നു. മുറ്റിച്ചൂർ എന്ന സ്ഥലത്തെ കൃഷിയിടങ്ങളിൽ രണ്ടും മൂന്നും പൂവൽ കൃഷി ചെയ്തിരുന്നു. പുഞ്ച കൃഷിയായിരുന്നു കൂടുതലും പിന്നെ വേനൽ കാലത്ത് മുണ്ടകനും കൃഷി ചെയ്യുമായിരുന്നു. ഓരോ പൂവലും കൃഷി കഴിഞ്ഞാൽ രണ്ടോ മൂന്നോ കാളവണ്ടികൾ നിറയെ നെല്ല് കയറ്റി ചിയ്യാരത്ത് 'ശങ്കരംപൊന്നത്തേക്കു', അച്ഛന്റെ വീട്ടിലേക്കു അപ്പുമാൻ നയിച്ചു കൊണ്ടുവരുമായിരുന്നു. അപ്പുമാൻ മുത്തശ്ശന്റെ മരുമകനായിരുന്നു.</p>
+    <p>അപ്പുമാനു വിദ്യാഭ്യാസം കുറവായിരുന്നു. പഠിക്കാൻ മിടുക്കനായിരുന്നില്ല. അതുകൊണ്ട് കൃഷികാര്യങ്ങൾ എല്ലാം നോക്കി നടത്താൻ അപ്പുമാനെ ആണ് മുത്തശ്ശൻ ഏൽപ്പിച്ചുരുന്നത്. അക്കാര്യങ്ങളിൽ അദ്ദേഹം ബഹുമിടുക്കനും ആയിരുന്നു.</p>
+    <p>അപ്പുമാൻ കാളവണ്ടികളും തെളിച്ചു ശങ്കരംപൊന്നത്ത് എത്തുമ്പോൾ വൈകുന്നേരമാകും വെളുപ്പിനെ പുറപ്പെട്ടതാണെന്നു പറയും. അച്ഛമ്മ ശങ്കരംപൊന്നത്ത് അപ്പുമാനും വണ്ടിക്കാർക്കും വയറുനിറച്ചു കാപ്പിയും പലഹാരവും കൊടുക്കും. വണ്ടിക്കാർ കാളകളെ അഴിച്ചുകെട്ടി വെള്ളം കൊടുത്തു മടങ്ങും എങ്കിലേ പിറ്റേന്ന് വെളുപ്പിനെ നാടെത്തൂ. അപ്പുമാൻ അന്ന് തിരികെ പോകില്ല രണ്ടുമൂന്നു ദിവസം ശങ്കരം പൊന്നത്ത് തന്നെ തങ്ങും. അപ്പുമാൻ വന്നാൽ ഞങ്ങൾ കുട്ടികൾക്കൊക്കെ വലിയ സന്തോഷമാണ്. അപ്പുമാന്റെ കഥകളും നാടൻ പാട്ടുകളും തമാശകളും പ്രായഭേദമന്യേ ഏവർക്കും രസിക്കും. അഛനും അച്ഛമ്മയും നേരം വൈകിയാലും എണീക്കില്ല രസിച്ചിരിക്കും. ഞങ്ങളുടെ കാര്യം പറയുകയും വേണ്ട. അപ്പുമാൻ മുറ്റിച്ചൂർ അമ്പലത്തിലെ കോമരത്തിനെ അനുകരിച്ചു തുള്ളലും അട്ടഹാസങ്ങളും ഒക്കെ ചെയ്യും. ബഹു തമാശക്കാരനാണ് ഞങ്ങളുടെ അപ്പുമാൻ. നാടൻശീലുകളിൽ നന്നായി പാട്ടുകൾ പാടും. കൂടുതലും വയലേലകളിൽ കർഷകർ പാടുന്ന പാട്ടുകളായിരിക്കും. കൃഷിയിറക്കുമ്പോഴും ഞാറുനടുമ്പോഴും കൊയ്ത്തു കഴിഞ്ഞു കറ്റമെതിക്കുമ്പോഴും പ്രത്യേകം പ്രത്യേകം പാട്ടുകൾ ആണ് പാടുക. അപ്പുമാൻ എല്ലാം വടക്കൻ പാട്ടിന്റെ ഈണത്തിൽ നല്ല ശബ്ദ മാധുരിയോടെ പാടുന്നത് കേൾക്കാൻ നല്ല രസമായതുകൊണ്ട് ഞങ്ങൾ ചുറ്റും കൂടി അപ്പുമാനെ പ്രോത്സാഹിപ്പിക്കും. അപ്പുമാ നാകട്ടെ ചില പ്രത്യേക ആംഗ്യ ഭാഷ്യങ്ങളോടെയാണ് പാട്ടു പാടി അവതരിപ്പിക്കുക.</p>
+    <p>രണ്ടു ദിവസം കഴിഞ്ഞു അദ്ദേഹം തിരിച്ചുപോകുമ്പോൾ ഞങ്ങൾ കുട്ടികൾ വിഷമത്തോടെയും വിഷാദത്തോടെയും ആകും യാത്ര അയക്കുക.</p>
+  </div>
+
+  <div class="story-text english" id="text-en">
+    <p style="font-family:'Space Mono', monospace; font-size:0.72rem; text-transform:uppercase; letter-spacing:0.05em; color:var(--brass-light); opacity:0.85;">AI-generated translation — a rough guide only, not a faithful rendering of the original</p>
+    <p>My father's house was also in Chiyyaram village itself, just five or six houses north of our ancestral home. My father's father's (grandfather's) home was about ten miles west of Thrissur, in a riverside area called Kandassankadavu. Grandfather was the owner of large farmland and a major landlord with paddy cultivation. In the fields at a place called Muttichoor, he grew two or three seasons of paddy a year. Mostly it was "puncha" cultivation, and "mundakan" was also grown in summer. After each harvest, two or three bullock carts loaded full of rice would be brought to Chiyyaram, to "Sankarapponath" — my father's house — led by Appuman. Appuman was grandfather's nephew.</p>
+    <p>Appuman had little formal education. He wasn't a bright student. Because of this, grandfather entrusted him with overseeing all the farming affairs — and in those matters, he was extremely capable.</p>
+    <p>By the time Appuman drove the bullock carts and reached Sankarapponath, it would be evening, though he'd say he had set out at dawn. Grandmother at Sankarapponath would feed Appuman and the cart-drivers a full meal of coffee and snacks. The cart-drivers would only head back once they had untied the bulls and given them water — only then would they reach home by the following dawn. Appuman wouldn't go back that day; he would stay at Sankarapponath for two or three days. Whenever Appuman came, we children were overjoyed. His stories, folk songs, and jokes delighted everyone, regardless of age. Even father and grandmother wouldn't get up though it grew late — they'd sit enjoying it. Needless to say what it was like for us. Appuman would imitate the temple oracle of Muttichoor, leaping about and shouting. Our Appuman was a great joker. He sang folk tunes well — mostly songs that farmers sing out in the paddy fields. There were distinct songs for sowing, for planting saplings, and for threshing the sheaves after harvest. It was such a delight to hear Appuman sing them all in the tune of northern ballads, with such a sweet voice, that we would gather around and encourage him, and he would perform the songs with certain distinctive gestures.</p>
+    <p>After two days, when he went back, we children would see him off with sadness and heaviness of heart.</p>
+  </div>
+
+  <div class="attribution">
+    Recorded as part of the Korappath family archive. If you remember more of this story, or a different version of it, <a href="../index.html#contribute" style="color:var(--brass-light);">let us know</a>.
+  </div>
+
+  <section class="comments-section">
+    <h2>Comments</h2>
+    <div id="comments-list"><p class="comment-empty">Loading comments…</p></div>
+
+    <form id="comment-form" action="https://formspree.io/f/xqerojyy" method="POST">
+      <input type="hidden" name="_subject" value="New comment on: Appuman — A Warm-Hearted Farmer">
+      <input type="hidden" name="story_id" value="appuman-harvest">
+      <input type="hidden" name="story_title" value="Appuman — A Warm-Hearted Farmer">
+      <input type="hidden" id="date-submitted" name="date_submitted">
+
+      <label>
+        Your name
+        <input type="text" name="name" required>
+      </label>
+
+      <label>
+        Your comment
+        <textarea name="comment" rows="4" required placeholder="Share a memory, a correction, or your own version of this story..."></textarea>
+      </label>
+
+      <button type="submit" class="btn-comment">Post comment</button>
+    </form>
+    <p class="comment-note">Comments are reviewed before they appear publicly.</p>
+  </section>
+</main>
+
+<footer>An ongoing family archive — Korappath, Chiyyaram, Thrissur</footer>
+
+<script>
+function showLang(lang){
+  document.getElementById('text-ml').classList.toggle('active', lang === 'ml');
+  document.getElementById('text-en').classList.toggle('active', lang === 'en');
+  document.getElementById('btn-ml').classList.toggle('active', lang === 'ml');
+  document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+}
+
+document.getElementById('date-submitted').value = new Date().toISOString().slice(0, 10);
+
+fetch('../stories.json')
+  .then(r => r.json())
+  .then(stories => {
+    const mine = stories.find(s => s.id === 'appuman-harvest');
+    const list = document.getElementById('comments-list');
+    const comments = mine && Array.isArray(mine.comments) ? mine.comments : [];
+    if(comments.length === 0){
+      list.innerHTML = '<p class="comment-empty">No comments yet — be the first to share a memory.</p>';
+      return;
+    }
+    list.innerHTML = comments.map(c => {
+      const dateStr = c.date ? new Date(c.date).toLocaleDateString('en-US', { month:'short', day:'numeric', year:'numeric' }) : '';
+      return `<div class="comment-card">
+        <div class="comment-meta">${escapeHtml(c.name)}${dateStr ? ' · ' + dateStr : ''}</div>
+        <p>${escapeHtml(c.text)}</p>
+      </div>`;
+    }).join('');
+  })
+  .catch(() => {
+    document.getElementById('comments-list').innerHTML = '<p class="comment-empty">Could not load comments right now.</p>';
+  });
+
+function escapeHtml(str){
+  if(!str) return '';
+  return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+}
+</script>
+
+</body>
+</html>

@@ -1,13 +1,26 @@
 [
   {
     "id": "chiyyaram-childhood",
-    "titleEn": "My childhood in Chiyyaram",
+    "titleEn": "My childhood in Chiyyaram (Part 1)",
     "titleMl": "ചിയ്യാരത്തിലെ എന്റെ ബാല്യകാലം",
     "excerptEn": "Sudhakara Menon recalls growing up in Chiyyaram from 1945, the family's standing in the village, and his uncle Govinda Menon's role settling disputes without payment.",
     "author": "Korappath Kalapurakal Sudhakara Menon",
     "period": "1945 onwards",
     "dateAdded": "2026-07-31",
     "photo": "",
-    "storyUrl": "stories/chiyyaram-childhood.html"
+    "storyUrl": "stories/chiyyaram-childhood.html",
+    "comments": []
+  },
+  {
+    "id": "appuman-harvest",
+    "titleEn": "Appuman — a warm-hearted farmer (Part 2)",
+    "titleMl": "അപ്പുമാൻ — സഹൃദയനായ ഒരു കർഷകൻ",
+    "excerptEn": "Sudhakara Menon remembers Appuman, his grandfather's warm-hearted farmhand — the bullock-cart harvest deliveries, his field songs, and the children's sadness when he left.",
+    "author": "Korappath Kalapurakal Sudhakara Menon",
+    "period": "1945 onwards",
+    "dateAdded": "2026-07-31",
+    "photo": "",
+    "storyUrl": "stories/appuman-harvest.html",
+    "comments": []
   }
 ]

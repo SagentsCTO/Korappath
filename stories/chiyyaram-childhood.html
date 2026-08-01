@@ -27,6 +27,14 @@
   main{ max-width:720px; margin:0 auto; padding:3.5rem 1.5rem 4rem; }
 
   .byline{ margin-bottom:1.6rem; }
+  .series-nav{
+    display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.6rem;
+    margin-bottom:1.8rem; padding-bottom:1.2rem;
+    border-bottom:1px solid rgba(198,149,47,0.2);
+  }
+  .series-nav .series-links{ display:flex; gap:1.2rem; font-family:'Space Mono', monospace; font-size:0.75rem; letter-spacing:0.05em; text-transform:uppercase; }
+  .series-nav .series-links a{ color:var(--brass-light); text-decoration:none; }
+  .series-nav .series-links a:hover{ text-decoration:underline; }
   .byline h1{ font-size:clamp(1.8rem, 4vw, 2.4rem); margin:0.6rem 0 0.3rem; line-height:1.2; }
   .byline h1.malayalam-title{ font-family:'Noto Serif Malayalam', serif; }
   .byline .subtitle{ color:var(--ivory-dim); font-size:1rem; font-style:italic; margin-bottom:0.6rem; }
@@ -144,6 +152,13 @@
 </div>
 
 <main>
+  <div class="series-nav">
+    <span class="eyebrow">Part 1 of an ongoing series</span>
+    <div class="series-links">
+      <span></span>
+      <a href="appuman-harvest.html">Part 2 →</a>
+    </div>
+  </div>
   <div class="byline">
     <span class="eyebrow">A story from the family — 1945 onwards</span>
     <h1 class="malayalam-title">ചിയ്യാരത്തിലെ എന്റെ ബാല്യകാലം</h1>
@@ -175,8 +190,7 @@
     <h2>Comments</h2>
     <div id="comments-list"><p class="comment-empty">Loading comments…</p></div>
 
-    <!-- Replace COMMENT_FORM_ID below with your dedicated comments Formspree endpoint -->
-    <form id="comment-form" action="https://formspree.io/f/xqerojyy" method="POST">
+        <form id="comment-form" action="https://formspree.io/f/xqerojyy" method="POST">
       <input type="hidden" name="_subject" value="New comment on: My childhood in Chiyyaram">
       <input type="hidden" name="story_id" value="chiyyaram-childhood">
       <input type="hidden" name="story_title" value="My childhood in Chiyyaram">

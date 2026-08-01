@@ -113,20 +113,11 @@ fetch('../stories.json')
     list.innerHTML = sorted.map(s => {
       const dateStr = s.dateAdded ? new Date(s.dateAdded).toLocaleDateString('en-US', { month:'short', day:'numeric', year:'numeric' }) : '';
       const isNew = mostRecentDate && s.dateAdded && new Date(s.dateAdded).getTime() === mostRecentDate.getTime();
-      return `
-      <a class="story-card" href="../${s.storyUrl}">
-        <h3>${s.titleMl ? s.titleMl + ' — ' : ''}${s.titleEn}${isNew ? ' <span class="new-badge">New</span>' : ''}</h3>
-        <div class="meta">${s.author}${s.period ? ' · ' + s.period : ''}${dateStr ? ' · Added ' + dateStr : ''}</div>
-        <p>${s.excerptEn}</p>
-      </a>
-    `;
-    
-    list.innerHTML = sorted.map(s => {
-      const dateStr = s.dateAdded ? new Date(s.dateAdded).toLocaleDateString('en-US', { month:'short', day:'numeric', year:'numeric' }) : '';
       const isUpcoming = mostRecentDate && s.dateAdded && new Date(s.dateAdded).getTime() > mostRecentDate.getTime();
+      isNew = isNew && !isUpcoming; // If it's upcoming, don't mark it as new
       return `
       <a class="story-card" href="../${s.storyUrl}">
-        <h3>${s.titleMl ? s.titleMl + ' — ' : ''}${s.titleEn}${isUpcoming ? ' <span class="upcoming-badge">Upcoming</span>' : ''}</h3>
+        <h3>${s.titleMl ? s.titleMl + ' — ' : ''}${s.titleEn}${isNew ? ' <span class="new-badge">New</span>' : isUpcoming ? ' <span class="upcoming-badge">Upcoming</span>' : ''}</h3>
         <div class="meta">${s.author}${s.period ? ' · ' + s.period : ''}${dateStr ? ' · Added ' + dateStr : ''}</div>
         <p>${s.excerptEn}</p>
       </a>

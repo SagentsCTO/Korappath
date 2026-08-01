@@ -104,7 +104,7 @@ fetch('../stories.json')
       isNew = isNew && !isUpcoming; // If it's upcoming, don't mark it as new
       return `
       <a class="story-card" href="../${s.storyUrl}">
-        <h3>${s.titleMl ? s.titleMl + ' — ' : ''}${s.titleEn}${isNew ? ' <span class="badge">New</span>' : isUpcoming ? ' <span class="badge">Upcoming</span>' : ''}</h3>
+        <h3>${s.titleMl ? s.titleMl + ' — ' : ''}${s.titleEn}${isNew ? ' <span class="badge">New</span>' : ''}${isUpcoming ? ' <span class="badge">Upcoming</span>' : ''}</h3>
         <div class="meta">${s.author}${s.period ? ' · ' + s.period : ''}${dateStr ? ' · Added ' + dateStr : ''}</div>
         <p>${s.excerptEn}</p>
       </a>

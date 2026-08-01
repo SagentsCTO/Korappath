@@ -100,11 +100,9 @@ fetch('../stories.json')
     list.innerHTML = sorted.map(s => {
       const dateStr = s.dateAdded ? new Date(s.dateAdded).toLocaleDateString('en-US', { month:'short', day:'numeric', year:'numeric' }) : '';
       const isNew = mostRecentDate && s.dateAdded && new Date(s.dateAdded).getTime() === mostRecentDate.getTime();
-      const isUpcoming = mostRecentDate && s.dateAdded && new Date(s.dateAdded).getTime() > mostRecentDate.getTime();
-      isNew = isNew && !isUpcoming; // If it's upcoming, don't mark it as new
       return `
       <a class="story-card" href="../${s.storyUrl}">
-        <h3>${s.titleMl ? s.titleMl + ' — ' : ''}${s.titleEn}${isNew ? ' <span class="badge">New</span>' : ''}${isUpcoming ? ' <span class="badge">Upcoming</span>' : ''}</h3>
+        <h3>${s.titleMl ? s.titleMl + ' — ' : ''}${s.titleEn}${isNew ? ' <span class="badge">New</span>' : ''}</h3>
         <div class="meta">${s.author}${s.period ? ' · ' + s.period : ''}${dateStr ? ' · Added ' + dateStr : ''}</div>
         <p>${s.excerptEn}</p>
       </a>

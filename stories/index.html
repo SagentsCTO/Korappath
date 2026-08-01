@@ -42,20 +42,7 @@
   }
   .story-card:hover{ background:var(--oxide-light); }
   .story-card h3{ font-family:'Fraunces', serif; font-size:1.3rem; margin-bottom:0.3rem; }
-  .new-badge{
-    display:inline-block;
-    font-family:'Space Mono', monospace;
-    font-size:0.62rem;
-    letter-spacing:0.05em;
-    text-transform:uppercase;
-    background:var(--brass);
-    color:var(--teak);
-    padding:0.15rem 0.5rem;
-    border-radius:2px;
-    vertical-align:middle;
-    margin-left:0.4rem;
-  }
-  .upcoming-badge{
+  .badge{
     display:inline-block;
     font-family:'Space Mono', monospace;
     font-size:0.62rem;
@@ -117,7 +104,7 @@ fetch('../stories.json')
       isNew = isNew && !isUpcoming; // If it's upcoming, don't mark it as new
       return `
       <a class="story-card" href="../${s.storyUrl}">
-        <h3>${s.titleMl ? s.titleMl + ' — ' : ''}${s.titleEn}${isNew ? ' <span class="new-badge">New</span>' : isUpcoming ? ' <span class="upcoming-badge">Upcoming</span>' : ''}</h3>
+        <h3>${s.titleMl ? s.titleMl + ' — ' : ''}${s.titleEn}${isNew ? ' <span class="badge">New</span>' : isUpcoming ? ' <span class="badge">Upcoming</span>' : ''}</h3>
         <div class="meta">${s.author}${s.period ? ' · ' + s.period : ''}${dateStr ? ' · Added ' + dateStr : ''}</div>
         <p>${s.excerptEn}</p>
       </a>

@@ -42,6 +42,19 @@
   }
   .story-card:hover{ background:var(--oxide-light); }
   .story-card h3{ font-family:'Fraunces', serif; font-size:1.3rem; margin-bottom:0.3rem; }
+  .new-badge{
+    display:inline-block;
+    font-family:'Space Mono', monospace;
+    font-size:0.62rem;
+    letter-spacing:0.05em;
+    text-transform:uppercase;
+    background:var(--brass);
+    color:var(--teak);
+    padding:0.15rem 0.5rem;
+    border-radius:2px;
+    vertical-align:middle;
+    margin-left:0.4rem;
+  }
   .story-card .meta{ font-family:'Space Mono', monospace; font-size:0.72rem; color:var(--brass-light); margin-bottom:0.6rem; }
   .story-card p{ color:var(--ivory-dim); font-size:0.92rem; }
 
@@ -78,13 +91,18 @@ fetch('../stories.json')
       list.innerHTML = '<p class="empty-note">No stories yet — check back soon.</p>';
       return;
     }
-    const sorted = [...stories].sort((a, b) => new Date(b.dateAdded || 0) - new Date(a.dateAdded || 0));
+    const sorted = [...stories].sort((a, b) => (a.chapterNumber ?? 999) - (b.chapterNumber ?? 999));
+    const mostRecentDate = stories.reduce((latest, s) => {
+      const d = s.dateAdded ? new Date(s.dateAdded) : null;
+      return d && (!latest || d > latest) ? d : latest;
+    }, null);
 
     list.innerHTML = sorted.map(s => {
       const dateStr = s.dateAdded ? new Date(s.dateAdded).toLocaleDateString('en-US', { month:'short', day:'numeric', year:'numeric' }) : '';
+      const isNew = mostRecentDate && s.dateAdded && new Date(s.dateAdded).getTime() === mostRecentDate.getTime();
       return `
       <a class="story-card" href="../${s.storyUrl}">
-        <h3>${s.titleMl ? s.titleMl + ' — ' : ''}${s.titleEn}</h3>
+        <h3>${s.titleMl ? s.titleMl + ' — ' : ''}${s.titleEn}${isNew ? ' <span class="new-badge">New</span>' : ''}</h3>
         <div class="meta">${s.author}${s.period ? ' · ' + s.period : ''}${dateStr ? ' · Added ' + dateStr : ''}</div>
         <p>${s.excerptEn}</p>
       </a>

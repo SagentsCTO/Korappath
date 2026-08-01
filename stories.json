@@ -9,7 +9,8 @@
     "dateAdded": "2026-07-31",
     "photo": "",
     "storyUrl": "stories/chiyyaram-childhood.html",
-    "comments": []
+    "comments": [],
+    "chapterNumber": 1
   },
   {
     "id": "appuman-harvest",
@@ -21,6 +22,7 @@
     "dateAdded": "2026-08-01",
     "photo": "",
     "storyUrl": "stories/appuman-harvest.html",
-    "comments": []
+    "comments": [],
+    "chapterNumber": 2
   }
 ]

@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>കുഞ്ഞനും എനിക്ക് മറക്കാൻ വയ്യാത്ത കുഞ്ഞന്റെ റിക്ഷയും — Korappath</title>
+<meta name="description" content="Sudhakara Menon remembers his father's Devaswom work, Kunjan the rickshaw-puller, and his grandmother's account of surviving the 1921 Mappila uprising.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,500;9..144,600&family=Noto+Serif+Malayalam:wght@400;600&family=Work+Sans:wght@300;400;500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --oxide-dark:#3E1810; --oxide:#6B2A1E; --oxide-light:#8C3E2C;
+    --brass:#C6952F; --brass-light:#E8C776;
+    --ivory:#F1E9D6; --ivory-dim:#D8CBAE; --teak:#2B1D14;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{ background:var(--oxide-dark); color:var(--ivory); font-family:'Work Sans', sans-serif; font-weight:300; line-height:1.7; }
+  h1,h2{ font-family:'Fraunces', serif; font-weight:500; }
+  .eyebrow{ font-family:'Space Mono', monospace; font-size:0.7rem; letter-spacing:0.15em; text-transform:uppercase; color:var(--brass-light); opacity:0.85; }
+  .topbar{ display:flex; justify-content:space-between; align-items:center; padding:1.5rem clamp(1.5rem, 5vw, 4rem); border-bottom:1px solid rgba(198,149,47,0.25); }
+  .wordmark{ font-family:'Fraunces', serif; font-size:1.15rem; }
+  .wordmark span{ color:var(--brass-light); }
+  .topbar a.back{ font-family:'Space Mono', monospace; font-size:0.72rem; letter-spacing:0.08em; text-transform:uppercase; color:var(--ivory); text-decoration:none; opacity:0.8; }
+  .topbar a.back:hover{ opacity:1; }
+
+  main{ max-width:720px; margin:0 auto; padding:3.5rem 1.5rem 4rem; }
+
+  .byline{ margin-bottom:1.6rem; }
+  .series-nav{
+    display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.6rem;
+    margin-bottom:1.8rem; padding-bottom:1.2rem;
+    border-bottom:1px solid rgba(198,149,47,0.2);
+  }
+  .series-nav .series-links{ display:flex; gap:1.2rem; font-family:'Space Mono', monospace; font-size:0.75rem; letter-spacing:0.05em; text-transform:uppercase; }
+  .series-nav .series-links a{ color:var(--brass-light); text-decoration:none; }
+  .series-nav .series-links a:hover{ text-decoration:underline; }
+  .byline h1{ font-size:clamp(1.8rem, 4vw, 2.4rem); margin:0.6rem 0 0.3rem; line-height:1.2; }
+  .byline h1.malayalam-title{ font-family:'Noto Serif Malayalam', serif; }
+  .byline .subtitle{ color:var(--ivory-dim); font-size:1rem; font-style:italic; margin-bottom:0.6rem; }
+  .byline .meta{ font-family:'Space Mono', monospace; font-size:0.78rem; color:var(--brass-light); }
+
+  /* Language toggle */
+  .lang-toggle{
+    display:flex; gap:0.5rem;
+    margin:1.8rem 0 2.2rem;
+  }
+  .lang-toggle button{
+    font-family:'Space Mono', monospace;
+    font-size:0.75rem;
+    letter-spacing:0.05em;
+    text-transform:uppercase;
+    padding:0.6rem 1.2rem;
+    border-radius:2px;
+    border:1px solid var(--brass);
+    background:none;
+    color:var(--ivory);
+    cursor:pointer;
+    transition:background 0.2s ease, color 0.2s ease;
+  }
+  .lang-toggle button.active{
+    background:var(--brass);
+    color:var(--teak);
+  }
+  .lang-toggle button:not(.active):hover{
+    background:rgba(198,149,47,0.15);
+  }
+
+  .story-text{ display:none; }
+  .story-text.active{ display:block; }
+  .story-text.malayalam{
+    font-family:'Noto Serif Malayalam', serif;
+    font-size:1.15rem;
+    line-height:2;
+  }
+  .story-text.english{
+    font-family:'Fraunces', serif;
+    font-size:1.08rem;
+    line-height:1.85;
+    color:var(--ivory-dim);
+  }
+  .story-text p{ margin-bottom:1.3rem; }
+
+  .attribution{
+    margin-top:3rem;
+    padding-top:1.5rem;
+    border-top:1px solid rgba(198,149,47,0.2);
+    font-family:'Space Mono', monospace;
+    font-size:0.78rem;
+    color:var(--brass-light);
+    opacity:0.85;
+  }
+
+  footer{ text-align:center; padding:2.5rem 1.5rem; color:var(--ivory-dim); font-size:0.82rem; }
+
+  /* ---------- Comments ---------- */
+  .comments-section{ margin-top:3rem; }
+  .comments-section h2{ font-size:1.3rem; margin-bottom:1.2rem; }
+  .comment-empty{ color:var(--ivory-dim); font-size:0.9rem; }
+  .comment-card{
+    background:rgba(198,149,47,0.06);
+    border:1px solid rgba(198,149,47,0.2);
+    border-radius:4px;
+    padding:1rem 1.2rem;
+    margin-bottom:0.8rem;
+  }
+  .comment-card .comment-meta{
+    font-family:'Space Mono', monospace;
+    font-size:0.7rem;
+    letter-spacing:0.04em;
+    text-transform:uppercase;
+    color:var(--brass-light);
+    margin-bottom:0.4rem;
+  }
+  .comment-card p{ font-size:0.92rem; color:var(--ivory-dim); }
+
+  #comment-form{ margin-top:1.6rem; max-width:520px; }
+  #comment-form label{
+    display:block;
+    font-family:'Space Mono', monospace;
+    font-size:0.72rem;
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+    color:var(--brass-light);
+    opacity:0.9;
+    margin-bottom:1rem;
+  }
+  #comment-form input[type="text"],
+  #comment-form textarea{
+    display:block; width:100%; margin-top:0.4rem;
+    padding:0.6rem 0.75rem;
+    font-family:'Work Sans', sans-serif; font-size:0.92rem;
+    color:var(--teak); background:var(--ivory);
+    border:1px solid rgba(43,29,20,0.2); border-radius:3px;
+  }
+  #comment-form textarea{ resize:vertical; }
+  .btn-comment{
+    font-family:'Space Mono', monospace;
+    font-size:0.75rem; letter-spacing:0.06em; text-transform:uppercase;
+    padding:0.7rem 1.4rem; border-radius:2px; border:none; cursor:pointer;
+    background:var(--brass); color:var(--teak);
+  }
+  .btn-comment:hover{ background:var(--brass-light); }
+  .comment-note{ font-size:0.8rem; color:var(--ivory-dim); opacity:0.75; margin-top:0.8rem; }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="wordmark">Korappath<span>.</span></div>
+  <a href="index.html" class="back">← All stories</a>
+</div>
+
+<main>
+  <div class="series-nav">
+    <span class="eyebrow">Chapter 3 of an ongoing series</span>
+    <div class="series-links">
+      <a href="appuman-harvest.html">← Chapter 2</a>
+      <!-- Add <a href="[chapter-4-file].html">Chapter 4 →</a> here once Chapter 4 is confirmed and ready -->
+      <span></span>
+    </div>
+  </div>
+
+  <div class="byline">
+    <span class="eyebrow">A story from the family — 1945 onwards</span>
+    <h1 class="malayalam-title">കുഞ്ഞനും എനിക്ക് മറക്കാൻ വയ്യാത്ത കുഞ്ഞന്റെ റിക്ഷയും</h1>
+    <p class="subtitle">Kunjan, and Kunjan's rickshaw I cannot forget</p>
+    <p class="meta">As told by Korappath Kalapurakal Sudhakara Menon · Recorded Aug 1, 2026</p>
+  </div>
+
+  <div class="lang-toggle">
+    <button id="btn-ml" class="active" onclick="showLang('ml')">മലയാളം</button>
+    <button id="btn-en" onclick="showLang('en')">English</button>
+  </div>
+
+  <div class="story-text malayalam active" id="text-ml">
+    <p>അച്ഛന് തൃശൂരിൽ കൊച്ചിൻ ദേവസ്വം ഓഫീസിൽ ആയിരുന്നു ജോലി. പലപ്പോഴും ദേവസ്വം വക ക്ഷേത്രങ്ങളിൽ പ്രത്യേകമായി ചുമതലകൾ ഉണ്ടാകും. തൃപ്രയാർ, മുളകുന്നത്തു കാവ്, കല്ലേകുളങ്ങര, തിരുവില്വമല തുടങ്ങിയ ക്ഷേത്രങ്ങളിലായിരിക്കും വർഷത്തിൽ രണ്ടോ മൂന്നോ തവണ പോകേണ്ടി വരിക, അതും ഓരോ മാസത്തെ താമസത്തോടെ. കൂടുതലും ഉത്സവകാലങ്ങളിൽ ആയിരിക്കും. ക്ഷേത്രത്തിലോ സമീപത്തുള്ള ദേവസ്വം വക കിടപ്പുമുറിയിലോ ആയിരിക്കും തങ്ങേണ്ടി വരിക. ദേവസ്വം വക കണക്കുകൾ പരിശോധിക്കലും ആഡിറ്റിങ്ങും അപ്പോഴായിരിക്കും നടക്കുക.</p>
+    <p>അച്ഛന്റെ ആരോഗ്യസ്ഥിതി ക്രമേണ മോശമായപ്പോൾ യാത്രകൾ കുറഞ്ഞു വന്നു. കൂടുതലും തൃശ്ശൂർ വടക്കുനാഥൻ ക്ഷേത്രത്തോടനുബന്ധിച്ചുള്ള ദേവസ്വം വക കെട്ടിടത്തിൽ ആയിരുന്നു അച്ഛന്റെ ആഫീസ് മുറി. എന്നെയും ജ്യേഷ്ഠന്മാരെയും മാറി മാറി ഇടയ്ക്കിടെ അച്ഛൻ അവിടെയൊക്കെ കൊണ്ടുപോകാറുണ്ട്. വീട്ടിൽ നിന്നും റിക്ഷയിലാണ് അപ്പോൾ അച്ഛന്റെ കൂടെ പോകുക. കുഞ്ഞൻ ആണ് റിക്ഷ വലിക്കുക. കുഞ്ഞന്റെ തന്നെയാണ് ആ റിക്ഷ. കുഞ്ഞന് ഞങ്ങളെ വലിയ സ്നേഹ മായിരുന്നു. അച്ഛനെയും, വലിയമ്മാവനെയും, ഗംഗാധരേട്ടനെയും, പിന്നെ ഒരു ഗുജറാത്തി സേട്ടുവിനെയും മാത്രമേ കുഞ്ഞൻ തന്റെ റിക്ഷയിൽ സ്ഥിരമായി കൊണ്ടുപോകാറുള്ളൂ. സേട്ടു തൃശൂരിൽ മലഞ്ചരക്ക് കച്ചവടം ചെയ്യുന്നു. കൂർക്കഞ്ചേരിയാണ് സേട്ടുവിന്റെ ബംഗ്ലാവ്. ഗംഗാധരേട്ടൻ ഞങ്ങളുടെ വകയിൽ ഒരമ്മാവനാണ്. പലചരക്കു കച്ചവടമാണ് തൃശൂരിൽ. കുറുപ്പം റോഡിലാണ് ഗംഗാധരേട്ടന്റെ കട സ്ഥിതി ചെയ്യുന്നത്. പ്രസിദ്ധമാണ് ആ പലവ്യഞ്ജന കട, കൂടെ പൂജാസാമഗ്രികളും വില്പനക്കുണ്ട്. തൃശൂരിന്റെ ഹൃദയ സ്ഥാനത്തായതുകൊണ്ട് തിരക്കുള്ള കച്ചവടമാണവിടെ ദിനവും നടക്കുക. തൃശൂരും പരിസര പ്രദേശത്തുള്ളവരും അവിടെ നിന്നാണ് വാങ്ങുക. നല്ല മെച്ചപ്പെട്ട സാധനങ്ങൾ മിതമായ വിലക്ക് ലഭിക്കുന്നതുകൊണ്ട് എല്ലാവരും അങ്ങോട്ടാണ് വരിക.</p>
+    <p>ഗംഗാധരേട്ടൻ ഞങ്ങളുടെ അമ്മാവനാണെങ്കിലും അമ്മാവൻ എന്നല്ല ഞങ്ങൾ വിളിക്കുക, ഗംഗാധരേട്ടൻ എന്നാണ്. മൂപ്പർക്കും അതായിരുന്നു ഇഷ്ടം.</p>
+    <p>കുഞ്ഞനെ എനിക്ക് വലിയ ഇഷ്ടമായിരുന്നു കുഞ്ഞന് തിരിച്ചും. കുഞ്ഞന്റെ കുട്ടികളുമായി ഞങ്ങൾ കൂട്ട് കൂടും കളിക്കും. പിൽകാലത്തൊരിക്കൽ ഞാൻ ഡൽഹിയിൽ ജോലിയിലായി രുന്നപ്പോൾ, ഒരവധിക്കു നാട്ടിൽ വന്നപ്പോൾ കുഞ്ഞനെ തൃശ്ശൂർ റായിൽവെ സ്റ്റേഷനിലേക്കു അമ്മ എന്നെ കൂട്ടി കൊണ്ടുവരാൻ അയച്ചു. എന്റെ പെട്ടിയും ബാഗും ഞാനുമായി റിക്ഷയിൽ കയറി കുറെ പോയി കൂർക്കഞ്ചേരി എത്തിയപ്പോൾ കുഞ്ഞൻ തളർന്നു പോയി എന്നെനിക്കു തോന്നി. എനിക്ക് സഹിച്ചില്ല. ഞാനിറങ്ങി കുഞ്ഞനും റിക്ഷക്കും ഒപ്പം നടന്നു. കുഞ്ഞന് വിഷമമായി. ഞാൻ കുഞ്ഞനെ സാന്ത്വനിപ്പിച്ചു. അന്നുമുതൽ എനിക്ക് റിക്ഷയോടുള്ള താല്പര്യം അവസാനിച്ചു. മനുഷ്യൻ മനുഷ്യനെ ചുമന്നു വലിക്കുന്ന ഏർപ്പാട് എനിക്കെന്തോ അന്നുമുതൽ ഒരു വൈപര്യത്യമായി തോന്നിത്തുടങ്ങി. കുഞ്ഞന്റെ മരണശേഷം ആരും പിന്നെ റിക്ഷ തൊട്ടിട്ടില്ല. കുഞ്ഞന്റെ മക്കൾ പഠിച്ചു ഉദ്യോഗസ്ഥർ ആയി. ഞങ്ങളും നാട് വിട്ടു. പലയിടങ്ങളിൽ ചേക്കേറി. ഒരിക്കൽ സിങ്കപ്പൂർ ചാങ്കി ( changi) എയർപോർട്ടിൽ ഒരു റിക്ഷ പ്രദർശിപ്പിച്ചു വച്ചിരിക്കുന്നത് ശ്രദ്ധയിൽ പെടുകയുണ്ടായി അവരുടെ സാംസ്‌കാരിക വകുപ്പിന്റെവകയായി. പഴയ കാളവണ്ടി പിന്നെ എങ്ങും കണ്ടിട്ടില്ല, ദിവംഗതനായ ശ്രീ കലാഭവൻ മണി ചാലക്കുടിയിൽ അദ്ദേഹത്തിന്റെ അച്ഛൻ രാമന്റെ ഓർമ്മക്കായി അവരുടെ കുടുംബം വക ഭവനത്തിൽ സൂക്ഷിച്ചതൊഴികെ മറ്റെങ്ങും ഇല്ലെന്നു തോന്നുന്നു.</p>
+  </div>
+
+  <div class="story-text english" id="text-en">
+    <p style="font-family:'Space Mono', monospace; font-size:0.72rem; text-transform:uppercase; letter-spacing:0.05em; color:var(--brass-light); opacity:0.85;">AI-generated translation — a rough guide only, not a faithful rendering of the original</p>
+    <p style="font-family:'Space Mono', monospace; font-size:0.72rem; text-transform:uppercase; letter-spacing:0.05em; color:var(--brass-light); opacity:0.85;">AI-generated translation — a rough guide only, not a faithful rendering of the original</p>
+    <p>Father worked at the Cochin Devaswom office in Thrissur. Often there would be special duties at Devaswom temples. Two or three times a year he would have to go to temples such as Thriprayar, Mulakunnathukavu, Kallekulangara, and Thiruvilwamala — each time with about a month's stay. This was mostly during festival seasons. He would have to stay either at the temple itself or in a nearby Devaswom guest room. That would be when the Devaswom accounts were checked and audited.</p>
+    <p>As father's health gradually declined, his travels reduced. Increasingly, his office was in the Devaswom building attached to the Thrissur Vadakkunnathan temple. Father would take my elder brothers and me there in turns from time to time. We would go with him from the house by rickshaw. Kunjan was the one who pulled the rickshaw — it was his own rickshaw, and he loved us very much. Kunjan would regularly carry only father, my eldest uncle, Gangadharettan, and a Gujarati Seth in his rickshaw. The Seth traded in hill produce in Thrissur; his bungalow was in Kurkkancherry. Gangadharettan is an uncle of ours; he ran a grocery business in Thrissur, on Kurupam Road. That grocery shop was well known, and also sold puja items. Being in the heart of Thrissur, brisk business happened there every day — people from Thrissur and the surrounding areas would buy from there, because good-quality goods were available at reasonable prices.</p>
+    <p>Even though Gangadharettan was our uncle, we didn't call him "uncle" — we called him Gangadharettan. And that's what he preferred too.</p>
+    <p>I was very fond of Kunjan, and he of me. We children would befriend and play with Kunjan's children. Later, once when I was working in Delhi and came home on leave, mother sent Kunjan to the Thrissur railway station to bring me back. I got into the rickshaw with my suitcase and bag, and after going some distance, when we reached Kurkkancherry, I felt that Kunjan had grown exhausted. I couldn't bear it. I got off and walked alongside Kunjan and the rickshaw. Kunjan was upset; I consoled him. From that day, my interest in rickshaws ended. The arrangement of one human hauling another began to feel, from that day on, like something wrong to me. After Kunjan's death, no one ever touched that rickshaw again. Kunjan's children studied and became professionals. We too left the village and scattered to various places. Once, at Singapore's Changi Airport, I noticed a rickshaw on display, kept by their cultural department. I have never seen the old bullock cart anywhere since — except, it seems, one preserved by the family of the late Sri Kalabhavan Mani in Chalakudy, in memory of his father Raman, kept at their family home.</p>
+  </div>
+
+  <div class="attribution">
+    Recorded as part of the Korappath family archive. If you remember more of this story, or a different version of it, <a href="../index.html#contribute" style="color:var(--brass-light);">let us know</a>.
+  </div>
+
+  <section class="comments-section">
+    <h2>Comments</h2>
+    <div id="comments-list"><p class="comment-empty">Loading comments…</p></div>
+
+    <form id="comment-form" action="https://formspree.io/f/xqerojyy" method="POST">
+      <input type="hidden" name="_subject" value="New comment on: Kunjan, and Kunjan's Rickshaw I Cannot Forget">
+      <input type="hidden" name="story_id" value="kunjan-rickshaw">
+      <input type="hidden" name="story_title" value="Kunjan, and Kunjan's Rickshaw I Cannot Forget">
+      <input type="hidden" id="date-submitted" name="date_submitted">
+
+      <label>
+        Your name
+        <input type="text" name="name" required>
+      </label>
+
+      <label>
+        Your comment
+        <textarea name="comment" rows="4" required placeholder="Share a memory, a correction, or your own version of this story..."></textarea>
+      </label>
+
+      <button type="submit" class="btn-comment">Post comment</button>
+    </form>
+    <p class="comment-note">Comments are reviewed before they appear publicly.</p>
+  </section>
+</main>
+
+<footer>An ongoing family archive — Korappath, Chiyyaram, Thrissur</footer>
+
+<script>
+function showLang(lang){
+  document.getElementById('text-ml').classList.toggle('active', lang === 'ml');
+  document.getElementById('text-en').classList.toggle('active', lang === 'en');
+  document.getElementById('btn-ml').classList.toggle('active', lang === 'ml');
+  document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+}
+
+document.getElementById('date-submitted').value = new Date().toISOString().slice(0, 10);
+
+fetch('../stories.json')
+  .then(r => r.json())
+  .then(stories => {
+    const mine = stories.find(s => s.id === 'kunjan-rickshaw');
+    const list = document.getElementById('comments-list');
+    const comments = mine && Array.isArray(mine.comments) ? mine.comments : [];
+    if(comments.length === 0){
+      list.innerHTML = '<p class="comment-empty">No comments yet — be the first to share a memory.</p>';
+      return;
+    }
+    list.innerHTML = comments.map(c => {
+      const dateStr = c.date ? new Date(c.date).toLocaleDateString('en-US', { month:'short', day:'numeric', year:'numeric' }) : '';
+      return `<div class="comment-card">
+        <div class="comment-meta">${escapeHtml(c.name)}${dateStr ? ' · ' + dateStr : ''}</div>
+        <p>${escapeHtml(c.text)}</p>
+      </div>`;
+    }).join('');
+  })
+  .catch(() => {
+    document.getElementById('comments-list').innerHTML = '<p class="comment-empty">Could not load comments right now.</p>';
+  });
+
+function escapeHtml(str){
+  if(!str) return '';
+  return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+}
+</script>
+
+</body>
+</html>

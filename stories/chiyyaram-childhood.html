@@ -224,11 +224,30 @@
 <footer>An ongoing family archive — Korappath, Chiyyaram, Thrissur</footer>
 
 <script>
+let prevChapterData = null;
+let nextChapterData = null;
+
+function stripChapterSuffix(title){
+  return (title || '').replace(/\s*\(Chapter\s*\d+\)\s*$/i, '');
+}
+
+function renderChapterNav(){
+  const bareUrl = s => s.storyUrl.replace('stories/', '');
+  const label = currentLang === 'ml' ? 'അധ്യായം' : 'Chapter';
+  const getTitle = s => currentLang === 'ml' ? s.titleMl : stripChapterSuffix(s.titleEn);
+  document.getElementById('chapter-nav').innerHTML = `
+    ${prevChapterData ? `<a class="prev" href="${bareUrl(prevChapterData)}"><span class="nav-label">← ${label} ${prevChapterData.chapterNumber}</span>${getTitle(prevChapterData)}</a>` : '<span></span>'}
+    ${nextChapterData ? `<a class="next" href="${bareUrl(nextChapterData)}"><span class="nav-label">${label} ${nextChapterData.chapterNumber} →</span>${getTitle(nextChapterData)}</a>` : '<span></span>'}
+  `;
+}
+let currentLang = 'ml';
 function showLang(lang){
+  currentLang = lang;
   document.getElementById('text-ml').classList.toggle('active', lang === 'ml');
   document.getElementById('text-en').classList.toggle('active', lang === 'en');
   document.getElementById('btn-ml').classList.toggle('active', lang === 'ml');
   document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+  renderChapterNav();
 }
 
 document.getElementById('date-submitted').value = new Date().toISOString().slice(0, 10);
@@ -239,13 +258,9 @@ fetch('../stories.json')
     const mine = stories.find(s => s.id === 'chiyyaram-childhood');
 
     const myChapter = mine ? mine.chapterNumber : null;
-    const prev = stories.find(s => s.chapterNumber === myChapter - 1);
-    const next = stories.find(s => s.chapterNumber === myChapter + 1);
-    const bareUrl = s => s.storyUrl.replace('stories/', '');
-    document.getElementById('chapter-nav').innerHTML = `
-      ${prev ? `<a class="prev" href="${bareUrl(prev)}"><span class="nav-label">← Chapter ${prev.chapterNumber}</span>${prev.titleMl}</a>` : '<span></span>'}
-      ${next ? `<a class="next" href="${bareUrl(next)}"><span class="nav-label">Chapter ${next.chapterNumber} →</span>${next.titleMl}</a>` : '<span></span>'}
-    `;
+    prevChapterData = stories.find(s => s.chapterNumber === myChapter - 1);
+    nextChapterData = stories.find(s => s.chapterNumber === myChapter + 1);
+    renderChapterNav();
 
     const list = document.getElementById('comments-list');
     const comments = mine && Array.isArray(mine.comments) ? mine.comments : [];

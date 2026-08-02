@@ -40,15 +40,28 @@
   },
   {
     "id": "achamma-teachings",
-    "titleEn": "What Achamma taught us (Chapter 4)",
-    "titleMl": "അച്ഛമ്മ ഞങ്ങളെ പഠിപ്പിച്ചത്",
+    "titleEn": "What Achamma taught (Chapter 4)",
+    "titleMl": "അച്ഛമ്മ പഠിപ്പിച്ചത്",
     "excerptEn": "Grandmother's Puranic storytelling, her own account of surviving the 1921 Mappila uprising, and how it shaped who Sudhakara Menon's father became.",
     "author": "Korappath Kalapurakal Sudhakara Menon",
     "period": "1945 onwards",
-    "dateAdded": "2026-08-15",
+    "dateAdded": "2026-08-02",
     "photo": "",
     "storyUrl": "stories/achamma-teachings.html",
     "comments": [],
     "chapterNumber": 4
+  },
+  {
+    "id": "ooliyampurath-tharavad",
+    "titleEn": "The Ooliyampurath tharavad (Chapter 5)",
+    "titleMl": "ഊലിയമ്പുറത്ത് തറവാട്",
+    "excerptEn": "The household next door — the Meenakshi Buildings complex in Thrissur, Rameshan's tea trading business, and a reflection on how the family's standing has changed.",
+    "author": "Korappath Kalapurakal Sudhakara Menon",
+    "period": "1945 onwards",
+    "dateAdded": "2026-08-02",
+    "photo": "",
+    "storyUrl": "stories/ooliyampurath-tharavad.html",
+    "comments": [],
+    "chapterNumber": 5
   }
 ]

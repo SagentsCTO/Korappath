@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>അച്ഛമ്മ പഠിപ്പിച്ചത് — Korappath</title>
+<meta name="description" content="Sudhakara Menon on his grandmother's storytelling, her own account of surviving the 1921 Mappila uprising, and his father's character.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,500;9..144,600&family=Noto+Serif+Malayalam:wght@400;600&family=Work+Sans:wght@300;400;500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --oxide-dark:#3E1810; --oxide:#6B2A1E; --oxide-light:#8C3E2C;
+    --brass:#C6952F; --brass-light:#E8C776;
+    --ivory:#F1E9D6; --ivory-dim:#D8CBAE; --teak:#2B1D14;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{ background:var(--oxide-dark); color:var(--ivory); font-family:'Work Sans', sans-serif; font-weight:300; line-height:1.7; }
+  h1,h2{ font-family:'Fraunces', serif; font-weight:500; }
+  .eyebrow{ font-family:'Space Mono', monospace; font-size:0.7rem; letter-spacing:0.15em; text-transform:uppercase; color:var(--brass-light); opacity:0.85; }
+  .topbar{ display:flex; justify-content:space-between; align-items:center; padding:1.5rem clamp(1.5rem, 5vw, 4rem); border-bottom:1px solid rgba(198,149,47,0.25); }
+  .wordmark{ font-family:'Fraunces', serif; font-size:1.15rem; }
+  .wordmark span{ color:var(--brass-light); }
+  .topbar a.back{ font-family:'Space Mono', monospace; font-size:0.72rem; letter-spacing:0.08em; text-transform:uppercase; color:var(--ivory); text-decoration:none; opacity:0.8; }
+  .topbar a.back:hover{ opacity:1; }
+
+  main{ max-width:720px; margin:0 auto; padding:3.5rem 1.5rem 4rem; }
+
+  .byline{ margin-bottom:1.6rem; }
+  .chapter-nav{
+    display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:1rem;
+    margin-top:2.5rem; padding-top:1.5rem;
+    border-top:1px solid rgba(198,149,47,0.2);
+  }
+  .chapter-nav a{
+    max-width:46%;
+    color:var(--brass-light);
+    text-decoration:none;
+    font-size:0.9rem;
+  }
+  .chapter-nav a:hover{ text-decoration:underline; }
+  .chapter-nav a.next{ text-align:right; margin-left:auto; }
+  .chapter-nav .nav-label{
+    display:block;
+    font-family:'Space Mono', monospace;
+    font-size:0.68rem;
+    letter-spacing:0.05em;
+    text-transform:uppercase;
+    opacity:0.75;
+    margin-bottom:0.2rem;
+  }
+  .byline h1{ font-size:clamp(1.8rem, 4vw, 2.4rem); margin:0.6rem 0 0.3rem; line-height:1.2; }
+  .byline h1.malayalam-title{ font-family:'Noto Serif Malayalam', serif; }
+  .byline .subtitle{ color:var(--ivory-dim); font-size:1rem; font-style:italic; margin-bottom:0.6rem; }
+  .byline .meta{ font-family:'Space Mono', monospace; font-size:0.78rem; color:var(--brass-light); }
+
+  /* Language toggle */
+  .lang-toggle{
+    display:flex; gap:0.5rem;
+    margin:1.8rem 0 2.2rem;
+  }
+  .lang-toggle button{
+    font-family:'Space Mono', monospace;
+    font-size:0.75rem;
+    letter-spacing:0.05em;
+    text-transform:uppercase;
+    padding:0.6rem 1.2rem;
+    border-radius:2px;
+    border:1px solid var(--brass);
+    background:none;
+    color:var(--ivory);
+    cursor:pointer;
+    transition:background 0.2s ease, color 0.2s ease;
+  }
+  .lang-toggle button.active{
+    background:var(--brass);
+    color:var(--teak);
+  }
+  .lang-toggle button:not(.active):hover{
+    background:rgba(198,149,47,0.15);
+  }
+
+  .story-text{ display:none; }
+  .story-text.active{ display:block; }
+  .story-text.malayalam{
+    font-family:'Noto Serif Malayalam', serif;
+    font-size:1.15rem;
+    line-height:2;
+  }
+  .story-text.english{
+    font-family:'Fraunces', serif;
+    font-size:1.08rem;
+    line-height:1.85;
+    color:var(--ivory-dim);
+  }
+  .story-text p{ margin-bottom:1.3rem; }
+
+  .attribution{
+    margin-top:3rem;
+    padding-top:1.5rem;
+    border-top:1px solid rgba(198,149,47,0.2);
+    font-family:'Space Mono', monospace;
+    font-size:0.78rem;
+    color:var(--brass-light);
+    opacity:0.85;
+  }
+
+  footer{ text-align:center; padding:2.5rem 1.5rem; color:var(--ivory-dim); font-size:0.82rem; }
+
+  /* ---------- Comments ---------- */
+  .comments-section{ margin-top:3rem; }
+  .comments-section h2{ font-size:1.3rem; margin-bottom:1.2rem; }
+  .comment-empty{ color:var(--ivory-dim); font-size:0.9rem; }
+  .comment-card{
+    background:rgba(198,149,47,0.06);
+    border:1px solid rgba(198,149,47,0.2);
+    border-radius:4px;
+    padding:1rem 1.2rem;
+    margin-bottom:0.8rem;
+  }
+  .comment-card .comment-meta{
+    font-family:'Space Mono', monospace;
+    font-size:0.7rem;
+    letter-spacing:0.04em;
+    text-transform:uppercase;
+    color:var(--brass-light);
+    margin-bottom:0.4rem;
+  }
+  .comment-card p{ font-size:0.92rem; color:var(--ivory-dim); }
+
+  #comment-form{ margin-top:1.6rem; max-width:520px; }
+  #comment-form label{
+    display:block;
+    font-family:'Space Mono', monospace;
+    font-size:0.72rem;
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+    color:var(--brass-light);
+    opacity:0.9;
+    margin-bottom:1rem;
+  }
+  #comment-form input[type="text"],
+  #comment-form textarea{
+    display:block; width:100%; margin-top:0.4rem;
+    padding:0.6rem 0.75rem;
+    font-family:'Work Sans', sans-serif; font-size:0.92rem;
+    color:var(--teak); background:var(--ivory);
+    border:1px solid rgba(43,29,20,0.2); border-radius:3px;
+  }
+  #comment-form textarea{ resize:vertical; }
+  .btn-comment{
+    font-family:'Space Mono', monospace;
+    font-size:0.75rem; letter-spacing:0.06em; text-transform:uppercase;
+    padding:0.7rem 1.4rem; border-radius:2px; border:none; cursor:pointer;
+    background:var(--brass); color:var(--teak);
+  }
+  .btn-comment:hover{ background:var(--brass-light); }
+  .comment-note{ font-size:0.8rem; color:var(--ivory-dim); opacity:0.75; margin-top:0.8rem; }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="wordmark">Korappath<span>.</span></div>
+  <a href="index.html" class="back">← All stories</a>
+</div>
+
+<main>
+  <div class="byline">
+    <span class="eyebrow">A story from the family — 1945 onwards</span>
+    <h1 class="malayalam-title">അച്ഛമ്മ പഠിപ്പിച്ചത്</h1>
+    <p class="subtitle">What Achamma taught</p>
+    <p class="meta">As told by Korappath Kalapurakal Sudhakara Menon · Recorded Aug 2, 2026</p>
+  </div>
+
+  <div class="lang-toggle">
+    <button id="btn-ml" class="active" onclick="showLang('ml')">മലയാളം</button>
+    <button id="btn-en" onclick="showLang('en')">English</button>
+  </div>
+
+  <div class="story-text malayalam active" id="text-ml">
+    <p>ശങ്കരംപൊന്നത്ത് അച്ഛന്റെ വീട്ടുപേരാണ്. മുത്തശ്ശന്റെ വീട്ടുപേര് മണ്ണത്ത് എന്നാണ്. മണ്ണത്ത് കുഞ്ഞുണ്ണി മേനോൻ എന്നാണ് മുഴുവൻ പേര്. അച്ഛമ്മ ശങ്കരംപൊന്നത്ത് നാണിക്കുട്ടി അമ്മ. അച്ഛൻ എന്നും അച്ഛമ്മ യൊന്നിച്ചാണ് താമസം. ഞങ്ങളുടെ അമ്മയാകട്ടെ കളപ്പുരക്കൽ തറവാട്ടിലും. തറവാട്ടിൽ മുത്തശ്ശിയും അമ്മയുടെ സഹോദരിമാരായ ലക്ഷ്മിക്കുട്ടിയും ( അമ്മു ചേച്ചി ) ദേവകിചേച്ചിയും പിന്നെ ഞങ്ങൾ ആറു കുട്ടികളും ആണ്. ഞങ്ങൾ ചന്ദ്രചേട്ടൻ ( K R C Menon), ഗോപച്ചേട്ടൻ ( Gopakumara Menon) പിന്നെ ഞാനും, കൂടാതെ ദേവകി ചെറിയമ്മയുടെ മക്കൾ അമ്മിണിക്കുട്ടി ( ചന്ദ്രമതി ), അപ്പൻ ( വിശ്വംഭര മേനോൻ ), ബേബി ( ഇന്ദിര ) ഇത്രയും പേരാണ് തറവാട്ടിൽ സ്ഥിര താമസം. ഞാനും എന്റെ രണ്ടു സഹോദരങ്ങളും കൂടുതലും അച്ഛന്റെ വീട്ടിലായിരിക്കും മുഴുവൻ സമയവും.</p>
+    <p>അച്ഛമ്മക്കു മലയാളത്തിലും സംസ്കൃതത്തിലും നല്ല ജ്ഞാനം ഉണ്ടായിരുന്നു. പുരാണ കഥകൾ ധാരാളം ഞങ്ങളെ പറഞ്ഞു കേൾപ്പിക്കും. അച്ഛമ്മ കാലത്ത് കുളി കഴിഞ്ഞാൽ മഹാഭാരതവും ശ്രീകൃഷ്ണ കഥകളും ഞങ്ങളെ പറഞ്ഞു മനസ്സിലാക്കും. വൈകുന്നേരങ്ങളിൽ സന്ധ്യാ സമയത്ത് രാമായണ കഥകളും. ഇതൊക്കെ ധാരാളം കേട്ടാണ് ഞങ്ങൾ മൂവരും വളർന്നു വന്നത്. അതൊക്കെ ഞങ്ങളുടെ ജീവിത രീതികളിൽ നല്ലവണ്ണം സ്വാധീനം ചെലുത്തിയിട്ടുണ്ട്.</p>
+    <p>പിൽക്കാലത്ത് 1921 എന്ന മലയാളസിനിമ റിലീസ് ചെയ്തപ്പോൾ, പിന്നീട് ആകഥപറഞ്ഞു കേട്ടപ്പോൾ എനിക്ക് അച്ഛമ്മ പറഞ്ഞു തന്ന 1921 ലെ മാപ്പിള ലഹളയും അക്കാലത്ത് സമൂഹത്തിൽ അതുണ്ടാക്കിയ പ്രത്യാഘാതങ്ങളും ഏറെ മനസ്സിലാക്കാൻ കഴിഞ്ഞു. അച്ഛമ്മയും മാപ്പിള ലഹളയുടെ ഇരയായിട്ടുണ്ടത്രേ. അന്ന് അച്ഛമ്മയുടെ തറവാട്ടിൽ, മുറ്റിച്ചുരിൽ, മാപ്പിളമാർ മാരകാ യുധങ്ങളുമായ്‌ രാത്രിയിൽ വന്നതും യൗവനയുക്തകളായ പെൺകുട്ടികളെയും മറ്റു സ്ത്രീകളെയും ഇറക്കിവിടാൻ കതകു ചവുട്ടി പൊളിക്കാൻ ശ്രമിച്ചതും അച്ഛമ്മയുടെ തറവാട്ടിൽ അന്ന് കാരണവരുടെ വിശ്വസ്ഥനായ കാര്യസ്ഥനും സന്തതസഹചാരിയും അഭ്യാസിയുമായ കുഞ്ഞാലി എന്ന ആജാനുബാഹുവായ മറ്റൊരു മാപ്പിള അവരെ തടഞ്ഞു നിറുത്തിയതും നിലവറക്കുള്ളിൽ അടച്ചു ഒളിപ്പിച്ചു രക്ഷിച്ചതും അച്ഛമ്മ ഒരറബിക്കഥ പറയുന്ന ലാഘവത്തോടെ പറഞ്ഞു തന്നത് മനസ്സിലേക്ക് ഓടിക്കയറിവന്നു. അച്ഛമ്മയും സഹോദരിമാരും അന്ന് അതീവ സുന്ദരികൾ ആയിരുന്നുവത്രെ. കാല്പാദം വരെ എത്തുന്ന പനംകുല പോലെയുള്ള മുടിയും വാഴക്കൂമ്പിന്റെ നിറവും കുട്ടികൾക്കുണ്ടായിരുന്നുവത്രെ.</p>
+    <p>അച്ഛമ്മയുടെ നിറം അച്ഛനുമുണ്ടായിരുന്നു നിറകതിരിന്റെ നിറം. അച്ഛനു നല്ല ഉയരവും വിരിഞ്ഞ മാറിടവും ഉണ്ടായിരുന്നു. അച്ഛന്റെ അച്ഛൻ കുഞ്ഞുണ്ണി മേനോന്റെ അതേ എടുപ്പും നടപ്പും അച്ഛനും കിട്ടിയിരുന്നു.</p>
+    <p>അച്ഛമ്മ ഞങ്ങളെ വായിച്ചു കേൾപ്പിക്കുന്ന പുരാണ കഥകൾ കേൾക്കാൻ അച്ഛനും താല്പര്യം കാണിച്ചിരുന്നു ഞങ്ങളോടൊപ്പം. അച്ഛൻ മുറിയിൽ കിടന്നോ ഇരുന്നോ കേൾക്കുന്നുണ്ടാകും. ഒരുപക്ഷെ അതായിരിക്കും അച്ഛന് കൊച്ചിൻ ദേവസ്വം ആഫീസറായി ജോലി കിട്ടുവാൻ സഹായിച്ച ആദ്യ ചവിട്ടുപടി. അച്ഛന് സത്യവും ധർമവും കൈവിട്ടുള്ള ഒരു രീതിയും ഉദ്യോഗത്തിലോ സ്വകാര്യ ജീവിതത്തിലോ ഉണ്ടായിരുന്നില്ല എന്ന് കേട്ടിട്ടുണ്ട്.</p>
+  </div>
+
+  <div class="story-text english" id="text-en">
+    <p style="font-family:'Space Mono', monospace; font-size:0.72rem; text-transform:uppercase; letter-spacing:0.05em; color:var(--brass-light); opacity:0.85;">AI-generated translation — a rough guide only, not a faithful rendering of the original</p>
+    <p>Sankarapponath is my father's house name. Grandfather's house name is Mannath — his full name is Mannath Kunjunni Menon. Grandmother is Sankarapponath Nanikutty Amma. Father always lived together with grandmother. Our mother, meanwhile, was at the Kalapurakkal tharavad. In the tharavad were our grandmother, mother's sisters Lakshmikutty (Ammu chechi) and Devaki chechi, and then us six children — we were Chandrachettan (K.R.C. Menon), Gopachettan (Gopakumara Menon), and myself, along with Devaki cheriyamma's children Amminikutty (Chandramathi), Appan (Viswambhara Menon), and Baby (Indira) — these were the ones who lived permanently in the tharavad. My two siblings and I would mostly be at father's house full-time.</p>
+    <p>Grandmother had deep knowledge of Malayalam and Sanskrit. She would tell us many stories from the Puranas. After her bath, grandmother would explain the Mahabharata and stories of Sri Krishna to us. In the evenings, at dusk, it would be stories from the Ramayana. It was hearing all this so often that the three of us grew up — and it has had a real influence on how we've lived our lives.</p>
+    <p>Later, when the Malayalam film "1921" was released, and I subsequently heard that story told, I was able to understand much more about the 1921 Mappila uprising that grandmother had told us about, and the repercussions it caused in society at that time. Grandmother herself, it's said, was a victim of the Mappila uprising. Back then, at grandmother's tharavad in Muttichoor, Mappilas came at night with deadly weapons and tried to break down the door to drag out the young women and other women of the house. It came rushing back to my mind how grandmother would tell us — with the ease of someone narrating an Arabian tale — that Kunjali, a towering, well-built Mappila who was the trusted steward, constant companion, and a trained fighter of the family head, stood in their way and held them off, and hid the women locked away inside the cellar, saving them. Grandmother and her sisters were said to be extremely beautiful in those days — the children, it's said, had hair like clusters of palm flowers reaching down to their heels, and the complexion of a banana-flower sheath.</p>
+    <p>Father had grandmother's complexion too — the color of a full, ripe ear of grain. Father was tall, with a broad chest. Father had inherited the very same bearing and gait as his own father, Kunjunni Menon.</p>
+    <p>Father too showed interest in listening to the Puranic stories that grandmother would read out to us. He would be listening, whether lying down or sitting in his room. Perhaps that was the very first step that helped father get the job as a Cochin Devaswom officer. I have heard that father never once departed from truth and righteousness — neither in his career nor in his private life.</p>
+  </div>
+
+  <div class="attribution">
+    Recorded as part of the Korappath family archive. If you remember more of this story, or a different version of it, <a href="../index.html#contribute" style="color:var(--brass-light);">let us know</a>.
+  </div>
+
+  <div class="chapter-nav" id="chapter-nav"></div>
+
+  <section class="comments-section">
+    <h2>Comments</h2>
+    <div id="comments-list"><p class="comment-empty">Loading comments…</p></div>
+
+    <form id="comment-form" action="https://formspree.io/f/xqerojyy" method="POST">
+      <input type="hidden" name="_subject" value="New comment on: What Achamma Taught">
+      <input type="hidden" name="story_id" value="achamma-teachings">
+      <input type="hidden" name="story_title" value="What Achamma Taught">
+      <input type="hidden" id="date-submitted" name="date_submitted">
+
+      <label>
+        Your name
+        <input type="text" name="name" required>
+      </label>
+
+      <label>
+        Your comment
+        <textarea name="comment" rows="4" required placeholder="Share a memory, a correction, or your own version of this story..."></textarea>
+      </label>
+
+      <button type="submit" class="btn-comment">Post comment</button>
+    </form>
+    <p class="comment-note">Comments are reviewed before they appear publicly.</p>
+  </section>
+</main>
+
+<footer>An ongoing family archive — Korappath, Chiyyaram, Thrissur</footer>
+
+<script>
+let prevChapterData = null;
+let nextChapterData = null;
+
+function stripChapterSuffix(title){
+  return (title || '').replace(/\s*\(Chapter\s*\d+\)\s*$/i, '');
+}
+
+function renderChapterNav(){
+  const bareUrl = s => s.storyUrl.replace('stories/', '');
+  const label = currentLang === 'ml' ? 'അധ്യായം' : 'Chapter';
+  const getTitle = s => currentLang === 'ml' ? s.titleMl : stripChapterSuffix(s.titleEn);
+  document.getElementById('chapter-nav').innerHTML = `
+    ${prevChapterData ? `<a class="prev" href="${bareUrl(prevChapterData)}"><span class="nav-label">← ${label} ${prevChapterData.chapterNumber}</span>${getTitle(prevChapterData)}</a>` : '<span></span>'}
+    ${nextChapterData ? `<a class="next" href="${bareUrl(nextChapterData)}"><span class="nav-label">${label} ${nextChapterData.chapterNumber} →</span>${getTitle(nextChapterData)}</a>` : '<span></span>'}
+  `;
+}
+let currentLang = 'ml';
+function showLang(lang){
+  currentLang = lang;
+  document.getElementById('text-ml').classList.toggle('active', lang === 'ml');
+  document.getElementById('text-en').classList.toggle('active', lang === 'en');
+  document.getElementById('btn-ml').classList.toggle('active', lang === 'ml');
+  document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+  renderChapterNav();
+}
+
+document.getElementById('date-submitted').value = new Date().toISOString().slice(0, 10);
+
+fetch('../stories.json')
+  .then(r => r.json())
+  .then(stories => {
+    const mine = stories.find(s => s.id === 'achamma-teachings');
+
+    const myChapter = mine ? mine.chapterNumber : null;
+    const isPublished = s => !s.dateAdded || new Date(s.dateAdded) <= new Date();
+    prevChapterData = stories.find(s => s.chapterNumber === myChapter - 1 && isPublished(s));
+    nextChapterData = stories.find(s => s.chapterNumber === myChapter + 1 && isPublished(s));
+    renderChapterNav();
+
+    const list = document.getElementById('comments-list');
+    const comments = mine && Array.isArray(mine.comments) ? mine.comments : [];
+    if(comments.length === 0){
+      list.innerHTML = '<p class="comment-empty">No comments yet — be the first to share a memory.</p>';
+      return;
+    }
+    list.innerHTML = comments.map(c => {
+      const dateStr = c.date ? new Date(c.date).toLocaleDateString('en-US', { month:'short', day:'numeric', year:'numeric' }) : '';
+      return `<div class="comment-card">
+        <div class="comment-meta">${escapeHtml(c.name)}${dateStr ? ' · ' + dateStr : ''}</div>
+        <p>${escapeHtml(c.text)}</p>
+      </div>`;
+    }).join('');
+  })
+  .catch(() => {
+    document.getElementById('comments-list').innerHTML = '<p class="comment-empty">Could not load comments right now.</p>';
+  });
+
+function escapeHtml(str){
+  if(!str) return '';
+  return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+}
+</script>
+
+</body>
+</html>

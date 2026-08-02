@@ -128,7 +128,7 @@ fetch('../stories.json')
       return `
           <${tag} class="story-card${isUpcoming ? ' story-card-upcoming' : ''}" ${hrefAttr}>
             <h3>${s.titleMl ? s.titleMl + ' — ' : ''}${s.titleEn} ${badgeHtml}</h3>
-            <div class="meta">${s.author}${s.period ? ' · ' + s.period : ''}${dateStr ? ' · Added ' + dateStr : ''}</div>
+            <div class="meta">${s.author}${s.period ? ' · ' + s.period : ''}${(dateStr && !isUpcoming) ? ' · Added ' + dateStr : ''}</div>
             <p>${s.excerptEn}</p>
           </${tag}>
         `;

@@ -258,8 +258,9 @@ fetch('../stories.json')
     const mine = stories.find(s => s.id === 'chiyyaram-childhood');
 
     const myChapter = mine ? mine.chapterNumber : null;
-    prevChapterData = stories.find(s => s.chapterNumber === myChapter - 1);
-    nextChapterData = stories.find(s => s.chapterNumber === myChapter + 1);
+    const isPublished = s => !s.dateAdded || new Date(s.dateAdded) <= new Date();
+    prevChapterData = stories.find(s => s.chapterNumber === myChapter - 1 && isPublished(s));
+    nextChapterData = stories.find(s => s.chapterNumber === myChapter + 1 && isPublished(s));
     renderChapterNav();
 
     const list = document.getElementById('comments-list');

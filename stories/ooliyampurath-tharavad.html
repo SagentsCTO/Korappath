@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ഊലിയമ്പുറത്ത് തറവാട് — Korappath</title>
+<meta name="description" content="Sudhakara Menon remembers the Ooliyampurath household next door, the Meenakshi Buildings complex in Thrissur, and Rameshan's tea trading business.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,500;9..144,600&family=Noto+Serif+Malayalam:wght@400;600&family=Work+Sans:wght@300;400;500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --oxide-dark:#3E1810; --oxide:#6B2A1E; --oxide-light:#8C3E2C;
+    --brass:#C6952F; --brass-light:#E8C776;
+    --ivory:#F1E9D6; --ivory-dim:#D8CBAE; --teak:#2B1D14;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{ background:var(--oxide-dark); color:var(--ivory); font-family:'Work Sans', sans-serif; font-weight:300; line-height:1.7; }
+  h1,h2{ font-family:'Fraunces', serif; font-weight:500; }
+  .eyebrow{ font-family:'Space Mono', monospace; font-size:0.7rem; letter-spacing:0.15em; text-transform:uppercase; color:var(--brass-light); opacity:0.85; }
+  .topbar{ display:flex; justify-content:space-between; align-items:center; padding:1.5rem clamp(1.5rem, 5vw, 4rem); border-bottom:1px solid rgba(198,149,47,0.25); }
+  .wordmark{ font-family:'Fraunces', serif; font-size:1.15rem; }
+  .wordmark span{ color:var(--brass-light); }
+  .topbar a.back{ font-family:'Space Mono', monospace; font-size:0.72rem; letter-spacing:0.08em; text-transform:uppercase; color:var(--ivory); text-decoration:none; opacity:0.8; }
+  .topbar a.back:hover{ opacity:1; }
+
+  main{ max-width:720px; margin:0 auto; padding:3.5rem 1.5rem 4rem; }
+
+  .byline{ margin-bottom:1.6rem; }
+  .byline h1{ font-size:clamp(1.8rem, 4vw, 2.4rem); margin:0.6rem 0 0.3rem; line-height:1.2; }
+  .byline h1.malayalam-title{ font-family:'Noto Serif Malayalam', serif; }
+  .byline .subtitle{ color:var(--ivory-dim); font-size:1rem; font-style:italic; margin-bottom:0.6rem; }
+  .byline .meta{ font-family:'Space Mono', monospace; font-size:0.78rem; color:var(--brass-light); }
+
+  /* Language toggle */
+  .lang-toggle{
+    display:flex; gap:0.5rem;
+    margin:1.8rem 0 2.2rem;
+  }
+  .lang-toggle button{
+    font-family:'Space Mono', monospace;
+    font-size:0.75rem;
+    letter-spacing:0.05em;
+    text-transform:uppercase;
+    padding:0.6rem 1.2rem;
+    border-radius:2px;
+    border:1px solid var(--brass);
+    background:none;
+    color:var(--ivory);
+    cursor:pointer;
+    transition:background 0.2s ease, color 0.2s ease;
+  }
+  .lang-toggle button.active{
+    background:var(--brass);
+    color:var(--teak);
+  }
+  .lang-toggle button:not(.active):hover{
+    background:rgba(198,149,47,0.15);
+  }
+
+  .story-text{ display:none; }
+  .story-text.active{ display:block; }
+  .story-text.malayalam{
+    font-family:'Noto Serif Malayalam', serif;
+    font-size:1.15rem;
+    line-height:2;
+  }
+  .story-text.english{
+    font-family:'Fraunces', serif;
+    font-size:1.08rem;
+    line-height:1.85;
+    color:var(--ivory-dim);
+  }
+  .story-text p{ margin-bottom:1.3rem; }
+
+  .attribution{
+    margin-top:3rem;
+    padding-top:1.5rem;
+    border-top:1px solid rgba(198,149,47,0.2);
+    font-family:'Space Mono', monospace;
+    font-size:0.78rem;
+    color:var(--brass-light);
+    opacity:0.85;
+  }
+  .footnote{
+    margin-top:1.8rem;
+    font-family:'Work Sans', sans-serif;
+    font-size:0.85rem;
+    color:var(--ivory-dim);
+    line-height:1.6;
+  }
+  .footnote a{ color:var(--brass-light); text-decoration:underline; }
+  .chapter-nav{
+    display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:1rem;
+    margin-top:2.5rem; padding-top:1.5rem;
+    border-top:1px solid rgba(198,149,47,0.2);
+  }
+  .chapter-nav a{
+    max-width:46%;
+    color:var(--brass-light);
+    text-decoration:none;
+    font-size:0.9rem;
+  }
+  .chapter-nav a:hover{ text-decoration:underline; }
+  .chapter-nav a.next{ text-align:right; margin-left:auto; }
+  .chapter-nav .nav-label{
+    display:block;
+    font-family:'Space Mono', monospace;
+    font-size:0.68rem;
+    letter-spacing:0.05em;
+    text-transform:uppercase;
+    opacity:0.75;
+    margin-bottom:0.2rem;
+  }
+
+  footer{ text-align:center; padding:2.5rem 1.5rem; color:var(--ivory-dim); font-size:0.82rem; }
+
+  /* ---------- Comments ---------- */
+  .comments-section{ margin-top:3rem; }
+  .comments-section h2{ font-size:1.3rem; margin-bottom:1.2rem; }
+  .comment-empty{ color:var(--ivory-dim); font-size:0.9rem; }
+  .comment-card{
+    background:rgba(198,149,47,0.06);
+    border:1px solid rgba(198,149,47,0.2);
+    border-radius:4px;
+    padding:1rem 1.2rem;
+    margin-bottom:0.8rem;
+  }
+  .comment-card .comment-meta{
+    font-family:'Space Mono', monospace;
+    font-size:0.7rem;
+    letter-spacing:0.04em;
+    text-transform:uppercase;
+    color:var(--brass-light);
+    margin-bottom:0.4rem;
+  }
+  .comment-card p{ font-size:0.92rem; color:var(--ivory-dim); }
+
+  #comment-form{ margin-top:1.6rem; max-width:520px; }
+  #comment-form label{
+    display:block;
+    font-family:'Space Mono', monospace;
+    font-size:0.72rem;
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+    color:var(--brass-light);
+    opacity:0.9;
+    margin-bottom:1rem;
+  }
+  #comment-form input[type="text"],
+  #comment-form textarea{
+    display:block; width:100%; margin-top:0.4rem;
+    padding:0.6rem 0.75rem;
+    font-family:'Work Sans', sans-serif; font-size:0.92rem;
+    color:var(--teak); background:var(--ivory);
+    border:1px solid rgba(43,29,20,0.2); border-radius:3px;
+  }
+  #comment-form textarea{ resize:vertical; }
+  .btn-comment{
+    font-family:'Space Mono', monospace;
+    font-size:0.75rem; letter-spacing:0.06em; text-transform:uppercase;
+    padding:0.7rem 1.4rem; border-radius:2px; border:none; cursor:pointer;
+    background:var(--brass); color:var(--teak);
+  }
+  .btn-comment:hover{ background:var(--brass-light); }
+  .comment-note{ font-size:0.8rem; color:var(--ivory-dim); opacity:0.75; margin-top:0.8rem; }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="wordmark">Korappath<span>.</span></div>
+  <a href="index.html" class="back">← All stories</a>
+</div>
+
+<main>
+  <div class="byline">
+    <span class="eyebrow">A story from the family — circa 1960s</span>
+    <h1 class="malayalam-title">ഊലിയമ്പുറത്ത് തറവാട്</h1>
+    <p class="subtitle">The Ooliyampurath tharavad</p>
+    <p class="meta">As told by Korappath Kalapurakal Sudhakara Menon · Recorded Aug 2, 2026</p>
+  </div>
+
+  <div class="lang-toggle">
+    <button id="btn-ml" class="active" onclick="showLang('ml')">മലയാളം</button>
+    <button id="btn-en" onclick="showLang('en')">English</button>
+  </div>
+
+  <div class="story-text malayalam active" id="text-ml">
+    <p>അച്ഛന്റെ വീടിനു തൊട്ടായിരുന്നു വലയമ്മാവന്റെ ഭാര്യവീടായ "ഊലിയം പുറത്ത് " എന്ന ബംഗ്ലാവ്. അവിടെ അമ്മാവന്റെ പ്രിയപത്നി 'ചിന്നു 'എന്ന് വിളിപ്പേരുള്ള മീനാക്ഷി അമ്മയും മക്കളും വേലക്കാരും ആയിരുന്നു സ്ഥിരതാമസം. അമ്മാവന് എഴുപെണ്ണും ഒരാണും കൂടി എട്ടു പേരായിരുന്നു മക്കളായി. ഒരേ ഒരാണായിട്ട് ഗോപിനാഥൻ ( ഗോപിച്ചേട്ടൻ ).</p>
+    <p>അമ്മാവന്റെ ഭാര്യവീട്ടുകാർക്കും ധാരാളം സ്വത്തുവകകളും നെൽവയലുകളും തൃശൂരിന്റെ ഹൃദയഭാഗത്ത് ശക്തൻ ബസ് സ്റ്റാൻഡിൽ ഭീമാകാരമായി സ്ഥിതി ചെയ്യുന്ന വിശാലമായ ഒരു ഷോപ്പിംഗ് കോംപ്ലക്സ് " മീനാക്ഷി" ബിൽഡിങ്‌സ് എന്ന പേരിൽ. അനവധി മുറികളിലായി ഹോട്ടലും ബേക്കറിയും പച്ചമരുന്ന് കടയും ഇലക്ട്രിക് ഷോപ്പും ആയുർവേദ ഫാർമസിയും അവിടെ പ്രവർത്തിക്കുന്നുണ്ടായിരുന്നു. അതെല്ലാം നോക്കി നടത്തിയിരുന്നത് ഗോപിച്ചേട്ടനായിരുന്നു.</p>
+    <p>കെട്ടിടത്തിന്റെ മുകൾ നിലയിൽ തെക്കു വശത്ത് 'മാർ അപ്രേം ബാങ്കും' നടുവിൽ ഞങ്ങളുടെ ദേവകി ചെറിയമ്മയുടെ ഭർത്താവ് രാമേട്ടൻ നടത്തിയിരുന്ന ' കേരള ടീ ട്രെഡിങ് കമ്പനി' യും വലതു മാറി,'കേരള ബാങ്ക്' എന്ന പേരിൽ ഒരു ധനകാര്യ സ്ഥാപനവും നന്നായി പ്രവർത്തിച്ചിരുന്നു. ചെറിയമ്മയുടെ ഭർത്താവായിരുന്നു പൂയത്ത് രാമൻ മേനോൻ എന്ന രാമേട്ടൻ. അക്കാലത്ത് തൃശൂരിൽ ഒരേ ഒരു ചായക്കച്ചവടം ചെയ്തിരുന്നത് രാമേട്ടനായിരുന്നു. കൊച്ചിയിൽനിന്ന് ലേലം ചെയ്തുകൊണ്ട് വന്നിരുന്ന മുന്തിയ ഇനം ചായപ്പൊടിയായിരുന്നു അവിടെ അന്ന് വിറ്റിരുന്നത്. ആവശ്യക്കാർ അനവധി ഉണ്ടായിരുന്നത് കൊണ്ടു രാമേട്ടൻ നല്ലവണ്ണം ലാഭം കൊയ്തു. കച്ചവടത്തിൽ അദ്ദേഹത്തിനു കൂർമബുദ്ധിയായിരുന്നു. "പീയാർ" നെ എല്ലാവർക്കും വലിയ സ്നേഹവും ബഹുമാനവും ആയിരുന്നു. വലിയമ്മാവന്റെ പീടിക മുറി യിലായിരുന്നത് കൊണ്ട് നിസ്സാര വാടകയെ കൊടുക്കേണ്ടതുണ്ടായിരുന്നുള്ളൂ. കൂടാതെ ഒന്നാം നിലയും. പലതരം ചായപ്പൊടികളുടെ ബ്ലെന്റിങ്ങും ടീ ടേസ്റ്റിംഗും മറ്റും അദ്ദേഹത്തിന് സുപരിചിതമായിരുന്നു. എല്ലാ ബുധനാഴ്ചകളിലും കൊച്ചി വെല്ലിങ്ടൺ ഐലണ്ടിലുള്ള auction ഹൌസിൽ പോയി അദ്ദേഹം ലേലം ചെയ്തു കൊണ്ടുവന്നു. നാട്ടിലുള്ള പലവ്യഞ്ജന കടകളിലായിരുന്നു ചായ ധാരാളം വിറ്റു പോയിരുന്നത്. സാമ്പിൾ പരിശോധിക്കാൻ ഞാനും അപ്പനും ഒഴിവു ദിനങ്ങളിൽ പോകുമായിരുന്നു. ലേലം കഴിഞ്ഞാൽ സാമ്പിൾ പാക്കറ്റുകൾ തപാലിൽ വരും. ഞങ്ങൾ അത് തരം തിരിച്ചു കൊടുക്കും. രാമേട്ടൻ അതെല്ലാം ഓരോന്നായി വേർതിരിച്ചു തിളപ്പിച്ചെടുത്ത് മധുരം ചേർക്കാതെ ടേസ്റ്റ് നോക്കി വിലയിടും. പലയിനം ചായപ്പൊടികൾ ബ്ലൻഡ് ചെയ്യും പിന്നീട് പാക്ക് ചെയ്തു വില്പനക്ക് അയക്കും.</p>
+    <p>വൈകീട്ട് ജോലി കഴിഞ്ഞാൽ ഞങ്ങളെ കൊണ്ട് ഏതെങ്കിലും മുന്തിയകച്ചവകച്ചവടം ടം റെസ്റ്റോറന്റിൽ കൊണ്ടു പോയി സമൃദ്ധമായി ഭക്ഷണം വാങ്ങി തരും. അതാണ് ഞങ്ങളുടെ ശമ്പളം.</p>
+    <p>രാമേട്ടന്റെ മരണ ശേഷം മക്കളെയും മരുമക്കളെയും ആ സ്ഥാപനം നടത്തിപ്പിനായി ഏൽപ്പിച്ചെങ്കിലും കച്ചവടം കാര്യമായി മെച്ചപ്പെട്ടില്ല. താമസിയാതെ മാറ്റാർക്കോ കട വിൽക്കുകയും ചെയ്തു.</p>
+    <p>തൃശ്ശൂരിന്റെ ചരിത്രത്തിൽ വലിയ സ്വാധീനം ചെലുത്തിയ കുടുംബങ്ങളിൽ ഒന്നായിരുന്നു ഞങ്ങളുടേത്. ഞങ്ങളുടെ കുടുംബത്തിന്റെ സൽപേരും പ്രശസ്തിയും കോട്ടം തട്ടാതെ ഇന്നും നിലനിൽക്കുന്നുണ്ട്. പുതിയ തലമുറയിൽ അംഗസംഖ്യ കുറവായിരിക്കുന്നു. അധികവും പ്രവാസികളായി അന്യ സംസ്ഥാനങ്ങളിലും രാജ്യങ്ങളിലും ഔദ്യോഗികമായി ചേക്കേറി യിരിക്കുന്നു. അവരുടെ വീടുകളിലിന്നു പഴയ തലമുറയിൽ പെട്ട വൃദ്ധന്മാരും വൃദ്ധകളും നിധി കാക്കും ഭൂതഗണങ്ങളെ പോലെ മരണവും കാത്ത്, പണ്ടത്തെ പ്രതാപങ്ങൾ അയവിറക്കി, വല്ലപ്പോഴും വന്നു പോകുന്ന സ്വന്തം മക്കളെയും പേരക്കിടാങ്ങളെയും മറ്റു ബന്ധുജനങ്ങളെയും പ്രതീക്ഷിച്ചു ജീവിച്ചു മരിച്ചു കൊണ്ടിരിക്കുന്നു. നമ്മുടെ സോഷ്യൽ സ്റ്റാറ്റസ് എത്രത്തോളം അധഃപതിച്ചു പോയി എന്നതിന് ഇതിൽ പരം മറ്റു ദൃഷ്ടാന്തങ്ങൾ വേറെ എന്ത് വേണം. ഇന്നും നാളെയും ആയി മരിച്ചു മണ്ണടിയുന്ന ആ തലമുറ എത്ര എത്ര വിജ്ഞാനത്തിന്റെ കലവറകൾ ആണെന്ന് അവരറിയുന്നുണ്ടോ ആവോ!</p>
+  </div>
+
+  <div class="story-text english" id="text-en">
+    <p style="font-family:'Space Mono', monospace; font-size:0.72rem; text-transform:uppercase; letter-spacing:0.05em; color:var(--brass-light); opacity:0.85;">AI-generated translation — a rough guide only, not a faithful rendering of the original</p>
+    <p>Right next to my father's house was the bungalow called "Ooliyampurath" — the house of my eldest uncle's wife's family. Living there permanently were the uncle's beloved wife, known by the pet name "Chinnu," whose real name was Meenakshi Amma, along with their children and household staff. The uncle had eight children in all — seven daughters and one son. The only son was Gopinathan (Gopichettan).</p>
+    <p>My uncle's wife's family also had considerable property and paddy fields — including a vast shopping complex standing imposingly at Shaktan Bus Stand in the heart of Thrissur, named "Meenakshi Buildings." Across its many rooms operated a hotel, a bakery, an herb shop, an electrical shop, and an ayurvedic pharmacy. Gopichettan was the one who managed and ran all of it.</p>
+    <p>On the upper floor of the building, on the south side, "Mar Aprem Bank" operated well, and in the middle was the "Kerala Tea Trading Company" run by our Devaki cheriyamma's husband, Rameshan (Rametan), and further to the right, a finance company called "Kerala Bank." Cheriyamma's husband was Rameshan, whose full name was Pooyath Raman Menon. At that time, Rameshan was the only one running a tea trading business in Thrissur. What he sold there was premium-grade tea powder brought in through auctions from Kochi. Since there was substantial demand, Rameshan earned a good profit — he had a sharp mind for business. Everyone had great affection and respect for "PR," as he was known. Since it was in my eldest uncle's own shop premises, he only had to pay a nominal rent, and had the first floor as well. He was well versed in blending various tea powders, tea tasting, and the like. Every Wednesday, he would go to the auction house at Willingdon Island in Kochi and bring back tea he had purchased there. The tea sold widely through the grocery shops around the area. My cousin Appan and I would go along on our days off to check the samples. After the auction, sample packets would arrive by post. We would sort them and hand them over. Rameshan would separate each one, boil it, taste it without adding sugar, and price it accordingly. He would blend various kinds of tea powders, then pack them and send them off for sale.</p>
+    <p>In the evenings, once work was done, he would take us to some fine restaurant and treat us to a lavish meal. That was our wages.</p>
+    <p>After Rameshan's death, the business was handed over to his children and children-in-law to run, but it didn't improve significantly. Before long, the shop was sold off to someone else.</p>
+    <p>Ours was one of the families that had a significant influence on the history of Thrissur. The good name and reputation of our family still stands today, undiminished. But the newer generation has fewer members — most have settled abroad as expatriates, officially relocated to other states and countries. In their homes today, the elderly men and women of the older generation live on, like guardian spirits watching over treasure, waiting for death, chewing over the glories of the past, living and dying while hoping for the occasional visit of their own children, grandchildren, and other relatives. What greater proof do we need of how far our social standing has declined? Whether that generation — passing away and returning to the earth, today and tomorrow — realizes just how vast a storehouse of knowledge they are, I wonder.</p>
+  </div>
+
+  <p class="footnote">
+    The Meenakshi Buildings stood at <a href="https://en.wikipedia.org/wiki/Sakthan_Thampuran_Nagar" target="_blank" rel="noopener">Shaktan Bus Stand</a>, named for <a href="https://en.wikipedia.org/wiki/Shakthan_Thampuran_Palace" target="_blank" rel="noopener">Sakthan Thampuran</a>, the ruler of Cochin (1790–1805) credited with founding the Thrissur Pooram festival itself. Rameshan's Wednesday auctions took place at <a href="https://en.wikipedia.org/wiki/Willingdon_Island" target="_blank" rel="noopener">Willingdon Island</a>, a man-made island built by the British in Kochi harbor between 1928 and 1936.
+  </p>
+
+  <div class="attribution">
+    Recorded as part of the Korappath family archive. If you remember more of this story, or a different version of it, <a href="../index.html#contribute" style="color:var(--brass-light);">let us know</a>.
+  </div>
+
+  <div class="chapter-nav" id="chapter-nav"></div>
+
+  <section class="comments-section">
+    <h2>Comments</h2>
+    <div id="comments-list"><p class="comment-empty">Loading comments…</p></div>
+
+    <!--
+      Replace COMMENT_FORM_ID with your Formspree endpoint.
+      Replace the story_id/story_title values below to match this story's real id/title
+      (the story_id must match the "id" field for this story in stories.json).
+    -->
+    <form id="comment-form" action="https://formspree.io/f/xqerojyy" method="POST">
+      <input type="hidden" name="_subject" value="New comment on: The Ooliyampurath Tharavad">
+      <input type="hidden" name="story_id" value="ooliyampurath-tharavad">
+      <input type="hidden" name="story_title" value="The Ooliyampurath Tharavad">
+      <input type="hidden" id="date-submitted" name="date_submitted">
+
+      <label>
+        Your name
+        <input type="text" name="name" required>
+      </label>
+
+      <label>
+        Your comment
+        <textarea name="comment" rows="4" required placeholder="Share a memory, a correction, or your own version of this story..."></textarea>
+      </label>
+
+      <button type="submit" class="btn-comment">Post comment</button>
+    </form>
+    <p class="comment-note">Comments are reviewed before they appear publicly.</p>
+  </section>
+</main>
+
+<footer>An ongoing family archive — Korappath, Chiyyaram, Thrissur</footer>
+
+<script>
+let prevChapterData = null;
+let nextChapterData = null;
+
+function stripChapterSuffix(title){
+  return (title || '').replace(/\s*\(Chapter\s*\d+\)\s*$/i, '');
+}
+
+function renderChapterNav(){
+  const bareUrl = s => s.storyUrl.replace('stories/', '');
+  const label = currentLang === 'ml' ? 'അധ്യായം' : 'Chapter';
+  const getTitle = s => currentLang === 'ml' ? s.titleMl : stripChapterSuffix(s.titleEn);
+  document.getElementById('chapter-nav').innerHTML = `
+    ${prevChapterData ? `<a class="prev" href="${bareUrl(prevChapterData)}"><span class="nav-label">← ${label} ${prevChapterData.chapterNumber}</span>${getTitle(prevChapterData)}</a>` : '<span></span>'}
+    ${nextChapterData ? `<a class="next" href="${bareUrl(nextChapterData)}"><span class="nav-label">${label} ${nextChapterData.chapterNumber} →</span>${getTitle(nextChapterData)}</a>` : '<span></span>'}
+  `;
+}
+let currentLang = 'ml';
+function showLang(lang){
+  currentLang = lang;
+  document.getElementById('text-ml').classList.toggle('active', lang === 'ml');
+  document.getElementById('text-en').classList.toggle('active', lang === 'en');
+  document.getElementById('btn-ml').classList.toggle('active', lang === 'ml');
+  document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+  renderChapterNav();
+}
+
+document.getElementById('date-submitted').value = new Date().toISOString().slice(0, 10);
+
+fetch('../stories.json')
+  .then(r => r.json())
+  .then(stories => {
+    const mine = stories.find(s => s.id === 'ooliyampurath-tharavad');
+
+    const myChapter = mine ? mine.chapterNumber : null;
+    const isPublished = s => !s.dateAdded || new Date(s.dateAdded) <= new Date();
+    prevChapterData = stories.find(s => s.chapterNumber === myChapter - 1 && isPublished(s));
+    nextChapterData = stories.find(s => s.chapterNumber === myChapter + 1 && isPublished(s));
+    renderChapterNav();
+
+    const list = document.getElementById('comments-list');
+    const comments = mine && Array.isArray(mine.comments) ? mine.comments : [];
+    if(comments.length === 0){
+      list.innerHTML = '<p class="comment-empty">No comments yet — be the first to share a memory.</p>';
+      return;
+    }
+    list.innerHTML = comments.map(c => {
+      const dateStr = c.date ? new Date(c.date).toLocaleDateString('en-US', { month:'short', day:'numeric', year:'numeric' }) : '';
+      return `<div class="comment-card">
+        <div class="comment-meta">${escapeHtml(c.name)}${dateStr ? ' · ' + dateStr : ''}</div>
+        <p>${escapeHtml(c.text)}</p>
+      </div>`;
+    }).join('');
+  })
+  .catch(() => {
+    document.getElementById('comments-list').innerHTML = '<p class="comment-empty">Could not load comments right now.</p>';
+  });
+
+function escapeHtml(str){
+  if(!str) return '';
+  return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+}
+</script>
+
+</body>
+</html>

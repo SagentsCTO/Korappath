@@ -73,6 +73,13 @@
   }
   .story-card .meta{ font-family:'Space Mono', monospace; font-size:0.72rem; color:var(--brass-light); margin-bottom:0.6rem; }
   .story-card p{ color:var(--ivory-dim); font-size:0.92rem; }
+  .countdown{
+    font-family:'Space Mono', monospace;
+    font-size:0.75rem;
+    letter-spacing:0.03em;
+    color:var(--brass-light);
+    margin-bottom:0.6rem;
+  }
 
   .empty-note{ text-align:center; color:var(--ivory-dim); padding:2rem; font-size:0.92rem; }
 
@@ -99,40 +106,78 @@
 <footer>An ongoing family archive — Korappath, Chiyyaram, Thrissur</footer>
 
 <script>
+function formatCountdown(ms){
+  if(ms <= 0) return 'Releasing any moment now';
+  const totalMinutes = Math.floor(ms / 60000);
+  const totalHours = Math.floor(totalMinutes / 60);
+  const totalDays = Math.floor(totalHours / 24);
+  const weeks = Math.floor(totalDays / 7);
+  const days = totalDays % 7;
+  const hours = totalHours % 24;
+
+  if(weeks > 0){
+    let out = `${weeks} week${weeks !== 1 ? 's' : ''}`;
+    if(days > 0) out += ` ${days} day${days !== 1 ? 's' : ''}`;
+    return `Releasing in ${out}`;
+  }
+  if(totalDays > 0){
+    let out = `${totalDays} day${totalDays !== 1 ? 's' : ''}`;
+    if(hours > 0) out += ` ${hours} hour${hours !== 1 ? 's' : ''}`;
+    return `Releasing in ${out}`;
+  }
+  if(totalHours > 0) return `Releasing in ${totalHours} hour${totalHours !== 1 ? 's' : ''}`;
+  return `Releasing in ${totalMinutes} minute${totalMinutes !== 1 ? 's' : ''}`;
+}
+
+function renderStories(stories){
+  const list = document.getElementById('story-list');
+  if(!Array.isArray(stories) || stories.length === 0){
+    list.innerHTML = '<p class="empty-note">No stories yet — check back soon.</p>';
+    return;
+  }
+  const sorted = [...stories].sort((a, b) => (a.chapterNumber ?? 999) - (b.chapterNumber ?? 999));
+  const now = new Date();
+  const mostRecentDate = stories.reduce((latest, s) => {
+    const d = s.dateAdded ? new Date(s.dateAdded) : null;
+    return d && d <= now && (!latest || d > latest) ? d : latest;
+  }, null);
+
+  list.innerHTML = sorted.map(s => {
+    const releaseDate = s.dateAdded ? new Date(s.dateAdded) : null;
+    const dateStr = releaseDate ? releaseDate.toLocaleDateString('en-US', { month:'short', day:'numeric', year:'numeric' }) : '';
+    const isNew = mostRecentDate && s.dateAdded && releaseDate.getTime() === mostRecentDate.getTime();
+    const isUpcoming = releaseDate && releaseDate > now;
+
+    const tag = isUpcoming ? 'div' : 'a';
+    const hrefAttr = isUpcoming ? '' : `href="../${s.storyUrl}"`;
+    const badgeHtml = isUpcoming
+      ? '<span class="badge badge-upcoming">Upcoming</span>'
+      : isNew ? '<span class="badge badge-new">New</span>' : '';
+
+    const scheduledStr = isUpcoming
+      ? releaseDate.toLocaleDateString('en-US', { month:'short', day:'numeric', year:'numeric' }) + ' at ' + releaseDate.toLocaleTimeString('en-US', { hour:'numeric', minute:'2-digit' })
+      : '';
+    const countdownHtml = isUpcoming
+      ? `<div class="countdown">${scheduledStr} · ${formatCountdown(releaseDate - now)}</div>`
+      : '';
+
+    return `
+        <${tag} class="story-card${isUpcoming ? ' story-card-upcoming' : ''}" ${hrefAttr}>
+          <h3>${s.titleMl ? s.titleMl + ' — ' : ''}${s.titleEn} ${badgeHtml}</h3>
+          <div class="meta">${s.author}${s.period ? ' · ' + s.period : ''}${(dateStr && !isUpcoming) ? ' · Added ' + dateStr : ''}</div>
+          ${countdownHtml}
+          <p>${s.excerptEn}</p>
+        </${tag}>
+      `;
+  }).join('');
+}
+
 fetch('../stories.json')
   .then(r => r.json())
   .then(stories => {
-    const list = document.getElementById('story-list');
-    if(!Array.isArray(stories) || stories.length === 0){
-      list.innerHTML = '<p class="empty-note">No stories yet — check back soon.</p>';
-      return;
-    }
-    const sorted = [...stories].sort((a, b) => (a.chapterNumber ?? 999) - (b.chapterNumber ?? 999));
-    const today = new Date();
-    const mostRecentDate = stories.reduce((latest, s) => {
-      const d = s.dateAdded ? new Date(s.dateAdded) : null;
-      return d && d <= today && (!latest || d > latest) ? d : latest;
-    }, null);
-
-    list.innerHTML = sorted.map(s => {
-      const dateStr = s.dateAdded ? new Date(s.dateAdded).toLocaleDateString('en-US', { month:'short', day:'numeric', year:'numeric' }) : '';
-      const isNew = mostRecentDate && s.dateAdded && new Date(s.dateAdded).getTime() === mostRecentDate.getTime();
-      const isUpcoming = s.dateAdded && new Date(s.dateAdded) > today;
-
-      const tag = isUpcoming ? 'div' : 'a';
-      const hrefAttr = isUpcoming ? '' : `href="../${s.storyUrl}"`;
-      const badgeHtml = isUpcoming
-        ? '<span class="badge badge-upcoming">Upcoming</span>'
-        : isNew ? '<span class="badge badge-new">New</span>' : '';
-
-      return `
-          <${tag} class="story-card${isUpcoming ? ' story-card-upcoming' : ''}" ${hrefAttr}>
-            <h3>${s.titleMl ? s.titleMl + ' — ' : ''}${s.titleEn} ${badgeHtml}</h3>
-            <div class="meta">${s.author}${s.period ? ' · ' + s.period : ''}${(dateStr && !isUpcoming) ? ' · Added ' + dateStr : ''}</div>
-            <p>${s.excerptEn}</p>
-          </${tag}>
-        `;
-    }).join('');
+    renderStories(stories);
+    // Re-render every minute so the countdown and any midnight-crossing badge changes stay live
+    setInterval(() => renderStories(stories), 60000);
   })
   .catch(() => {
     document.getElementById('story-list').innerHTML =

@@ -82,6 +82,28 @@
     color:var(--brass-light);
     opacity:0.85;
   }
+  .chapter-nav{
+    display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:1rem;
+    margin-top:2.5rem; padding-top:1.5rem;
+    border-top:1px solid rgba(198,149,47,0.2);
+  }
+  .chapter-nav a{
+    max-width:46%;
+    color:var(--brass-light);
+    text-decoration:none;
+    font-size:0.9rem;
+  }
+  .chapter-nav a:hover{ text-decoration:underline; }
+  .chapter-nav a.next{ text-align:right; margin-left:auto; }
+  .chapter-nav .nav-label{
+    display:block;
+    font-family:'Space Mono', monospace;
+    font-size:0.68rem;
+    letter-spacing:0.05em;
+    text-transform:uppercase;
+    opacity:0.75;
+    margin-bottom:0.2rem;
+  }
 
   footer{ text-align:center; padding:2.5rem 1.5rem; color:var(--ivory-dim); font-size:0.82rem; }
 
@@ -173,6 +195,8 @@
     Recorded as part of the Korappath family archive. If you remember more of this story, or a different version of it, <a href="../index.html#contribute" style="color:var(--brass-light);">let us know</a>.
   </div>
 
+  <div class="chapter-nav" id="chapter-nav"></div>
+
   <section class="comments-section">
     <h2>Comments</h2>
     <div id="comments-list"><p class="comment-empty">Loading comments…</p></div>
@@ -220,6 +244,16 @@ fetch('../stories.json')
   .then(r => r.json())
   .then(stories => {
     const mine = stories.find(s => s.id === 'sample-story'); // change 'sample-story' to this story's real id
+
+    const myChapter = mine ? mine.chapterNumber : null;
+    const prev = stories.find(s => s.chapterNumber === myChapter - 1);
+    const next = stories.find(s => s.chapterNumber === myChapter + 1);
+    const bareUrl = s => s.storyUrl.replace('stories/', '');
+    document.getElementById('chapter-nav').innerHTML = `
+      ${prev ? `<a class="prev" href="${bareUrl(prev)}"><span class="nav-label">← Chapter ${prev.chapterNumber}</span>${prev.titleMl}</a>` : '<span></span>'}
+      ${next ? `<a class="next" href="${bareUrl(next)}"><span class="nav-label">Chapter ${next.chapterNumber} →</span>${next.titleMl}</a>` : '<span></span>'}
+    `;
+
     const list = document.getElementById('comments-list');
     const comments = mine && Array.isArray(mine.comments) ? mine.comments : [];
     if(comments.length === 0){

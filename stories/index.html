@@ -55,6 +55,22 @@
     vertical-align:middle;
     margin-left:0.4rem;
   }
+  .badge-new{
+    background: var(--brass);
+    color: var(--teak);
+  }
+  .badge-upcoming{
+    background: transparent;
+    color: var(--brass-light);
+    border: 1px solid var(--brass-light);
+  }
+  .story-card-upcoming{
+    opacity: 0.6;
+    cursor: default;
+  }
+  .story-card-upcoming:hover{
+    background: var(--oxide);
+  }
   .story-card .meta{ font-family:'Space Mono', monospace; font-size:0.72rem; color:var(--brass-light); margin-bottom:0.6rem; }
   .story-card p{ color:var(--ivory-dim); font-size:0.92rem; }
 
@@ -92,22 +108,30 @@ fetch('../stories.json')
       return;
     }
     const sorted = [...stories].sort((a, b) => (a.chapterNumber ?? 999) - (b.chapterNumber ?? 999));
+    const today = new Date();
     const mostRecentDate = stories.reduce((latest, s) => {
       const d = s.dateAdded ? new Date(s.dateAdded) : null;
-      return d && (!latest || d > latest) ? d : latest;
+      return d && d <= today && (!latest || d > latest) ? d : latest;
     }, null);
 
     list.innerHTML = sorted.map(s => {
       const dateStr = s.dateAdded ? new Date(s.dateAdded).toLocaleDateString('en-US', { month:'short', day:'numeric', year:'numeric' }) : '';
       const isNew = mostRecentDate && s.dateAdded && new Date(s.dateAdded).getTime() === mostRecentDate.getTime();
+      const isUpcoming = s.dateAdded && new Date(s.dateAdded) > today;
+
+      const tag = isUpcoming ? 'div' : 'a';
+      const hrefAttr = isUpcoming ? '' : `href="../${s.storyUrl}"`;
+      const badgeHtml = isUpcoming
+        ? '<span class="badge badge-upcoming">Upcoming</span>'
+        : isNew ? '<span class="badge badge-new">New</span>' : '';
+
       return `
-      <a class="story-card" href="../${s.storyUrl}">
-        <h3>${s.titleMl ? s.titleMl + ' — ' : ''}${s.titleEn}${isNew ? ' <span class="badge">New</span>' : ''}</h3>
-        <div class="meta">${s.author}${s.period ? ' · ' + s.period : ''}${dateStr ? ' · Added ' + dateStr : ''}</div>
-        <p>${s.excerptEn}</p>
-      </a>
-    `;
-      
+          <${tag} class="story-card${isUpcoming ? ' story-card-upcoming' : ''}" ${hrefAttr}>
+            <h3>${s.titleMl ? s.titleMl + ' — ' : ''}${s.titleEn} ${badgeHtml}</h3>
+            <div class="meta">${s.author}${s.period ? ' · ' + s.period : ''}${dateStr ? ' · Added ' + dateStr : ''}</div>
+            <p>${s.excerptEn}</p>
+          </${tag}>
+        `;
     }).join('');
   })
   .catch(() => {

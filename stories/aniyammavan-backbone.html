@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>അനിയമ്മാവൻ 'ചിയ്യാരത്തിന്റെ നട്ടെല്ല്' — Korappath</title>
+<meta name="description" content="Sudhakara Menon remembers his fearless younger maternal uncle, their great-grandmother Madhavi Amma, and the Kalapurakkal tharavad.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,500;9..144,600&family=Noto+Serif+Malayalam:wght@400;600&family=Work+Sans:wght@300;400;500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --oxide-dark:#3E1810; --oxide:#6B2A1E; --oxide-light:#8C3E2C;
+    --brass:#C6952F; --brass-light:#E8C776;
+    --ivory:#F1E9D6; --ivory-dim:#D8CBAE; --teak:#2B1D14;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{ background:var(--oxide-dark); color:var(--ivory); font-family:'Work Sans', sans-serif; font-weight:300; line-height:1.7; }
+  h1,h2{ font-family:'Fraunces', serif; font-weight:500; }
+  .eyebrow{ font-family:'Space Mono', monospace; font-size:0.7rem; letter-spacing:0.15em; text-transform:uppercase; color:var(--brass-light); opacity:0.85; }
+  .topbar{ display:flex; justify-content:space-between; align-items:center; padding:1.5rem clamp(1.5rem, 5vw, 4rem); border-bottom:1px solid rgba(198,149,47,0.25); }
+  .wordmark{ font-family:'Fraunces', serif; font-size:1.15rem; }
+  .wordmark span{ color:var(--brass-light); }
+  .topbar a.back{ font-family:'Space Mono', monospace; font-size:0.72rem; letter-spacing:0.08em; text-transform:uppercase; color:var(--ivory); text-decoration:none; opacity:0.8; }
+  .topbar a.back:hover{ opacity:1; }
+
+  main{ max-width:720px; margin:0 auto; padding:3.5rem 1.5rem 4rem; }
+
+  .byline{ margin-bottom:1.6rem; }
+  .byline h1{ font-size:clamp(1.8rem, 4vw, 2.4rem); margin:0.6rem 0 0.3rem; line-height:1.2; }
+  .byline h1.malayalam-title{ font-family:'Noto Serif Malayalam', serif; }
+  .byline .subtitle{ color:var(--ivory-dim); font-size:1rem; font-style:italic; margin-bottom:0.6rem; }
+  .byline .meta{ font-family:'Space Mono', monospace; font-size:0.78rem; color:var(--brass-light); }
+
+  /* Language toggle */
+  .lang-toggle{
+    display:flex; gap:0.5rem;
+    margin:1.8rem 0 2.2rem;
+  }
+  .lang-toggle button{
+    font-family:'Space Mono', monospace;
+    font-size:0.75rem;
+    letter-spacing:0.05em;
+    text-transform:uppercase;
+    padding:0.6rem 1.2rem;
+    border-radius:2px;
+    border:1px solid var(--brass);
+    background:none;
+    color:var(--ivory);
+    cursor:pointer;
+    transition:background 0.2s ease, color 0.2s ease;
+  }
+  .lang-toggle button.active{
+    background:var(--brass);
+    color:var(--teak);
+  }
+  .lang-toggle button:not(.active):hover{
+    background:rgba(198,149,47,0.15);
+  }
+
+  .story-text{ display:none; }
+  .story-text.active{ display:block; }
+  .story-text.malayalam{
+    font-family:'Noto Serif Malayalam', serif;
+    font-size:1.15rem;
+    line-height:2;
+  }
+  .story-text.english{
+    font-family:'Fraunces', serif;
+    font-size:1.08rem;
+    line-height:1.85;
+    color:var(--ivory-dim);
+  }
+  .story-text p{ margin-bottom:1.3rem; }
+
+  .attribution{
+    margin-top:3rem;
+    padding-top:1.5rem;
+    border-top:1px solid rgba(198,149,47,0.2);
+    font-family:'Space Mono', monospace;
+    font-size:0.78rem;
+    color:var(--brass-light);
+    opacity:0.85;
+  }
+  .footnote{
+    margin-top:1.8rem;
+    font-family:'Work Sans', sans-serif;
+    font-size:0.85rem;
+    color:var(--ivory-dim);
+    line-height:1.6;
+  }
+  .footnote a{ color:var(--brass-light); text-decoration:underline; }
+  .chapter-nav{
+    display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:1rem;
+    margin-top:2.5rem; padding-top:1.5rem;
+    border-top:1px solid rgba(198,149,47,0.2);
+  }
+  .chapter-nav a{
+    max-width:46%;
+    color:var(--brass-light);
+    text-decoration:none;
+    font-size:0.9rem;
+  }
+  .chapter-nav a:hover{ text-decoration:underline; }
+  .chapter-nav a.next{ text-align:right; margin-left:auto; }
+  .chapter-nav .nav-label{
+    display:block;
+    font-family:'Space Mono', monospace;
+    font-size:0.68rem;
+    letter-spacing:0.05em;
+    text-transform:uppercase;
+    opacity:0.75;
+    margin-bottom:0.2rem;
+  }
+
+  footer{ text-align:center; padding:2.5rem 1.5rem; color:var(--ivory-dim); font-size:0.82rem; }
+
+  /* ---------- Comments ---------- */
+  .comments-section{ margin-top:3rem; }
+  .comments-section h2{ font-size:1.3rem; margin-bottom:1.2rem; }
+  .comment-empty{ color:var(--ivory-dim); font-size:0.9rem; }
+  .comment-card{
+    background:rgba(198,149,47,0.06);
+    border:1px solid rgba(198,149,47,0.2);
+    border-radius:4px;
+    padding:1rem 1.2rem;
+    margin-bottom:0.8rem;
+  }
+  .comment-card .comment-meta{
+    font-family:'Space Mono', monospace;
+    font-size:0.7rem;
+    letter-spacing:0.04em;
+    text-transform:uppercase;
+    color:var(--brass-light);
+    margin-bottom:0.4rem;
+  }
+  .comment-card p{ font-size:0.92rem; color:var(--ivory-dim); }
+
+  #comment-form{ margin-top:1.6rem; max-width:520px; }
+  #comment-form label{
+    display:block;
+    font-family:'Space Mono', monospace;
+    font-size:0.72rem;
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+    color:var(--brass-light);
+    opacity:0.9;
+    margin-bottom:1rem;
+  }
+  #comment-form input[type="text"],
+  #comment-form textarea{
+    display:block; width:100%; margin-top:0.4rem;
+    padding:0.6rem 0.75rem;
+    font-family:'Work Sans', sans-serif; font-size:0.92rem;
+    color:var(--teak); background:var(--ivory);
+    border:1px solid rgba(43,29,20,0.2); border-radius:3px;
+  }
+  #comment-form textarea{ resize:vertical; }
+  .btn-comment{
+    font-family:'Space Mono', monospace;
+    font-size:0.75rem; letter-spacing:0.06em; text-transform:uppercase;
+    padding:0.7rem 1.4rem; border-radius:2px; border:none; cursor:pointer;
+    background:var(--brass); color:var(--teak);
+  }
+  .btn-comment:hover{ background:var(--brass-light); }
+  .comment-note{ font-size:0.8rem; color:var(--ivory-dim); opacity:0.75; margin-top:0.8rem; }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="wordmark">Korappath<span>.</span></div>
+  <a href="index.html" class="back">← All stories</a>
+</div>
+
+<main>
+  <div class="byline">
+    <span class="eyebrow">A story from the family — circa 1960s</span>
+    <h1 class="malayalam-title">അനിയമ്മാവൻ 'ചിയ്യാരത്തിന്റെ നട്ടെല്ല്'</h1>
+    <p class="subtitle">Aniyammavan — Chiyyaram's backbone</p>
+    <p class="meta">As told by Korappath Kalapurakal Sudhakara Menon · Recorded Aug 7, 2026</p>
+  </div>
+
+  <div class="lang-toggle">
+    <button id="btn-ml" class="active" onclick="showLang('ml')">മലയാളം</button>
+    <button id="btn-en" onclick="showLang('en')">English</button>
+  </div>
+
+  <div class="story-text malayalam active" id="text-ml">
+    <p>കോരപ്പത്തു കളപ്പുരക്കൽ മാധവി അമ്മ എന്ന ഞങ്ങളുടെ മുത്തശ്ശിയായിരുന്നു തറവാടിന്റെ ജീവാത്മാവും പരമാത്മാവും. അക്കാലത്ത് പഴയ തലമുറയിൽ പെട്ട സ്ത്രീകൾ മാറ് മറക്കാറില്ല. കാലങ്ങൾക്ക് ശേഷം, 1929 ലെ സാമൂഹിക നവോത്ഥാന സമരത്തിനുശേഷമാണ് ആ രീതി സ്ത്രീകളുടെ ഇടയിൽ മാറിയതും സ്ത്രീകൾ മാറ് മറക്കാൻ തുടങ്ങിയതും. സർവ്വശ്രീ V.T.ഭട്ടതിരിപ്പാട്, സമകാലീകരായ സഹോദരൻ അയ്യപ്പൻ, അയ്യാങ്കാളി, നാരായണഗുരു സ്വാമികൾ എന്നിവരാണ്. വി.ടി യുടെ "അടുക്കളയിൽ നിന്ന് അരങ്ങത്തേക്ക്" ( from kitchen to the public sphere) എന്ന പ്രശസ്ത മലയാള നാടകത്തിനു ചുവടു പിടിച്ച് കേരളത്തിൽ ഈ സാമൂഹിക പരിഷ്കാരം കൊണ്ടു വന്നത്.</p>
+    <p>നമ്പൂതിരി സ്ത്രീകളുടെ ഉന്നമനത്തിനും അടിച്ചമർത്തലിനും എതിരായിട്ടാണ് ഭട്ടതിരിപ്പാട് ഈ നാടകം എഴുതി അരങ്ങിൽ കളിച്ചത്. വലിയ സാമൂഹിക സാംസ്കാരിക വിപ്ലവത്തിന് ഈ നാടകം അക്കാലത്തു വഴി തെളിയിച്ചു എന്ന് പറയപ്പെടുന്നു.</p>
+    <p>മുത്തശ്ശിയാകട്ടെ അപ്രകാരം തന്നെ ആയിരുന്നു വസ്ത്രധാരണ രീതി എങ്കിലും മരണം വരെ മാറ്റങ്ങൾക്കു വിധേയയായില്ല എന്നതാണ് സത്യം.</p>
+    <p>മുത്തശ്ശി പുറത്തോട്ടൊന്നും ഒരിക്കലും പോകാറില്ല. എപ്പോഴും തറവാട്ടിലെ നാലുകെട്ടിലൊതുങ്ങി ദുർലഭമായി മാത്രം തൊടിയിൽ ഇറങ്ങുന്നതായിരുന്നു മുത്തശ്ശിയുടെ ശീലം. പക്ഷെ അവരുടെ സാന്നിധ്യം എല്ലായിടത്തും എപ്പോഴും ഉണ്ടെന്നു തോന്നുമായിരുന്നു. തെറ്റ് ചെയ്താൽ മുത്തശ്ശി ശാസിക്കും അത്രമാത്രം. മുത്തശ്ശി സ്നേഹനിധിയായിരുന്നു. എല്ലാ കാര്യങ്ങളും അമ്മു ചേച്ചിയാണ് കൊണ്ടു നടക്കുക മുത്തശ്ശിയുടെ അനുഗ്രഹാശിസ്സുകളോടെ തന്നെ. വലിയമ്മാവനും അനിയമ്മാവനും അമ്മയുടെ മുൻപിൽ കുഞ്ഞാടുകളാണ്. അമ്മയുടെ അനുഗ്രഹത്തോടെ മാത്രമേ എന്തും ചെയ്യൂ.</p>
+    <p>അനിയമ്മാവൻ വലിയമ്മാവന്റെ എതിർ കക്ഷിയാണ് സ്വഭാവത്തിൽ. ആരെയും കൂട്ടാക്കാത്ത സ്വഭാവം ആർക്കും ബഹുമാനം തോന്നിക്കുന്ന വ്യക്തിത്വം. അനിയമ്മാവന് മുൻപും പിൻപും അത്തരമൊരു ധീര പുരുഷൻ ചിയ്യാരത്ത് ജനിച്ചിട്ടില്ല എന്ന് നിശ്ചയമായും പറയാം. വല്ലാത്ത ഒരു തന്റേടിയും ഇരട്ടച്ചങ്കും ആയിരുന്നു അദ്ദേഹം. ചിലപ്പോൾ കഠിന ഹൃദയനാണെന്നു തോന്നും, മറ്റു ചിലപ്പോൾ വലിയ ദയാലുവും സ്നേഹനിധിയും ആണെന്നു തോന്നിക്കും. വൈപരീത്യം നിറഞ്ഞ സ്വഭാവം. സത്യം നീതി ബന്ധങ്ങൾ ഇവക്ക് വലിയ വിലകൊടുക്കുന്ന ശീലം. തെറ്റ് കണ്ടാൽ മുഖം നോക്കാതെ പ്രതികരിക്കും. എന്നും വന്നു അമ്മയുടെ( മുത്തശ്ശി ) കാൽ തൊട്ടു വന്നിച്ചു അമ്മ വിളമ്പുന്ന ഭക്ഷണം കഴിച്ചേ ഭാര്യവീട്ടിൽ പോകൂ. ചില ദിവസങ്ങളിൽ മദ്യ സേവ കഴിഞ്ഞു തറവാട്ടിൽ എത്തിയാൽ വിശദമായി അഭ്യംഗസ്നാനം കഴിഞ്ഞേ അത്താഴം കഴിക്കൂ. മുത്തശ്ശി തന്നെ വിളമ്പി കൊടുക്കണം എന്ന് നിർബന്ധമായിരുന്നു. സഹോദരിമാർ ആരും മുൻപിൽ ചെല്ലില്ല. വളരെ വിരളമായി അമ്മുചേച്ചി മാത്രം ചിലപ്പോൾ വിളമ്പി കൊടുക്കും. ഞങ്ങൾ കുട്ടികൾ ആ ഭാഗത്തേക്കു എത്തി നോക്കുക പോലും പതിവില്ല. ഭക്ഷണം കഴിഞ്ഞു പോകുന്ന പോക്കിൽ അപൂർവമായി ഞങ്ങളുടെ തലയിലൊന്നു തലോടിയാൽ ആയി. മറ്റു ചിലപ്പോൾ പഠിപ്പിനെ പറ്റി ആരായും. അത്രതന്നെ.</p>
+    <p>ഊണ് കഴിഞ്ഞു നേരെ കയ്യാല മുറിയിൽ കയറും. ആട്ടുകട്ടിലിൽ വിശ്രമിക്കും. കുറച്ചു കഴിഞ്ഞാൽ ശരരാന്തലും കത്തിച്ചു ഭാര്യവീട്ടിലേക്കു തിരിക്കും. പോകുമ്പോൾ "അമ്മേ പോകുന്നു" എന്ന് ഘനഗംഭീരമായി പറയും. മറുപടി പ്രതീക്ഷിച്ചല്ല ഒരു ചടങ്ങു പോലെ. എങ്കിലും മുത്തശ്ശി അത് പ്രതീക്ഷിക്കും, കുറച്ചു കഴിഞ്ഞു ഞങ്ങളിലാരോടെങ്കിലും മുത്തശ്ശി ചോദിക്കും, 'അനിയൻ പോയി അല്ലേ' എന്ന്. അതിനു ശേഷമേ മുത്തശ്ശി തെക്കിനിയിലേക്ക് ഉറങ്ങാൻ പോകൂ. വലിയ ചിട്ടയോടെ ജീവിച്ചിട്ടും അനിയമ്മാവനെ ആ മാരക രോഗം എങ്ങിനെ ഗ്രസിച്ചു എന്ന് ഞാൻ അത്ഭുതപ്പെട്ടിട്ടുണ്ട്. ഒരു പക്ഷെ മദ്യപാനമായിരിക്കും കാരണം. അറുപതു തികയും മുൻപേ അനിയമ്മാവൻ വിട പറഞ്ഞു.</p>
+    <p>കനത്ത ഇടിവെട്ടും മിന്നലും കാറ്റും മഴയും ഉണ്ടായിരുന്ന കർക്കിടത്തിലേ ഒരു പരപരാ വെളുപ്പിനാണ് അനിയമ്മാവൻ ഇഹലോകവാസം വെടിഞ്ഞു ഞങ്ങളെയും ചിയ്യാരത്തുകാരേയും ഒന്നടങ്കം ദുഃഖത്തിലാഴ്ത്തി മണ്ണറഞ്ഞു പോയത്. ആ ദിവസം ഞങ്ങൾ കുട്ടികളുടെ മനസ്സിൽ മായാതെ എന്നും കിടക്കും, ഒറ്റ ഒരാഞ്ഞിലിത്തടി വെട്ടിയിട്ട പോലത്തെ അനിയമ്മാവന്റെ സ്വർഗീയവിശ്രമം.</p>
+  </div>
+
+  <div class="story-text english" id="text-en">
+    <p style="font-family:'Space Mono', monospace; font-size:0.72rem; text-transform:uppercase; letter-spacing:0.05em; color:var(--brass-light); opacity:0.85;">AI-generated translation — a rough guide only, not a faithful rendering of the original</p>
+    <p>Our great-grandmother, Korappath Kalappurakkal Madhavi Amma, was the very soul — the life-breath and the supreme spirit — of the tharavad. In those days, women of the older generation did not cover their breasts. It was only later, after the 1929 social reform movement, that this custom changed among women and they began to cover themselves. Sarvashri V.T. Bhattathiripad, and his contemporaries Sahodaran Ayyappan, Ayyankali, and Sree Narayana Guru, were behind it. It was V.T.'s famous Malayalam play, "Adukkalayil Ninnu Arangathekku" ("From the Kitchen to the Public Sphere"), that paved the way for this social reform to take hold in Kerala.</p>
+    <p>Bhattathiripad wrote and staged this play for the upliftment of Namboothiri women, and against their oppression. It's said that this play, at the time, paved the way for a major social and cultural revolution.</p>
+    <p>Great-grandmother, though her manner of dress had originally been the same as the old style, was, in truth, one who never submitted to the changes — right up until her death.</p>
+    <p>Great-grandmother never went out anywhere at all. She always kept herself within the nalukettu of the tharavad, and it was her habit to step out into the yard only very rarely. And yet, her presence always seemed to be felt everywhere, at all times. If we did something wrong, she would only ever scold us — nothing more. Great-grandmother was a fount of affection. Everything was managed by Ammu chechi, always with Great-grandmother's blessing. Both the elder uncle and the younger uncle were like meek lambs before her — nothing was ever done without her blessing.</p>
+    <p>The younger uncle was, in temperament, the exact opposite of the elder uncle. He answered to no one — a nature that nonetheless commanded everyone's respect. It can be said with certainty that neither before him nor after him has such a bold, fearless man been born in Chiyyaram. He was a man of extraordinary self-assurance and daring — twice as brave-hearted as most. At times he seemed hard-hearted; at other times, he seemed deeply kind and full of affection. A nature full of contradiction — one that placed enormous value on truth, justice, and relationships. If he saw a wrong, he would respond to it without regard for who was involved. He would come every day, touch Great-grandmother's feet in reverence, and eat only the food she herself served before heading to his wife's house. On some days, after having a drink, if he arrived at the tharavad, he would only have his dinner after a thorough ceremonial oil bath. He insisted that Great-grandmother herself must be the one to serve him. None of his sisters would ever go near him at such times. Very rarely, only Ammu chechi might serve him. We children never so much as dared to peek in that direction. As he left after eating, if we were lucky, he might stroke our heads once. Other times, he might ask about our studies. That was all.</p>
+    <p>After eating, he would go straight up to the kayyala room and rest on the swinging cot. After a while, he would light the lantern and set off for his wife's house. As he left, he would announce, in a deep, solemn voice, "Amme, I'm going" — not really expecting a reply, more like a ritual. And yet Great-grandmother would wait for it; a little while later, she would ask one of us, "Has the younger one left?" Only after that would she go to sleep in the southern chamber. Even though he lived with such great discipline, I have often marveled at how that fatal illness came to seize the younger uncle. Perhaps it was his drinking that was the cause. Before he even turned sixty, the younger uncle bid us farewell.</p>
+    <p>It was in the pre-dawn half-light of a Karkidakam morning heavy with thunder, lightning, wind, and rain, that the younger uncle departed this earthly life, plunging us and all of Chiyyaram together into grief, and returned to the earth. That day will remain etched in us children's minds forever — the younger uncle's passing into eternal rest, sudden and complete, like a single mighty aanjili tree felled in one stroke.</p>
+  </div>
+
+  <p class="footnote">
+    The 1929 reform referenced here is tied to <a href="https://en.wikipedia.org/wiki/V._T._Bhattathiripad" target="_blank" rel="noopener">V.T. Bhattathiripad</a>'s play <em>Adukkalayil Ninnu Arangathekku</em> ("From the Kitchen to the Stage"), first staged in December 1929 at Edakkunni — a village in Thrissur district. It challenged the confinement of Namboothiri women and is considered a landmark in Kerala's social reform movement, alongside contemporaries <a href="https://en.wikipedia.org/wiki/Ayyankali" target="_blank" rel="noopener">Ayyankali</a>, <a href="https://en.wikipedia.org/wiki/Sahodaran_Ayyappan" target="_blank" rel="noopener">Sahodaran Ayyappan</a>, and <a href="https://en.wikipedia.org/wiki/Narayana_Guru" target="_blank" rel="noopener">Sree Narayana Guru</a>.
+  </p>
+
+  <div class="attribution">
+    Recorded as part of the Korappath family archive. If you remember more of this story, or a different version of it, <a href="../index.html#contribute" style="color:var(--brass-light);">let us know</a>.
+  </div>
+
+  <div class="chapter-nav" id="chapter-nav"></div>
+
+  <section class="comments-section">
+    <h2>Comments</h2>
+    <div id="comments-list"><p class="comment-empty">Loading comments…</p></div>
+
+    <form id="comment-form" action="https://formspree.io/f/xqerojyy" method="POST">
+      <input type="hidden" name="_subject" value="New comment on: Aniyammavan — Chiyyaram's Backbone">
+      <input type="hidden" name="story_id" value="aniyammavan-backbone">
+      <input type="hidden" name="story_title" value="Aniyammavan — Chiyyaram's Backbone">
+      <input type="hidden" id="date-submitted" name="date_submitted">
+
+      <label>
+        Your name
+        <input type="text" name="name" required>
+      </label>
+
+      <label>
+        Your comment
+        <textarea name="comment" rows="4" required placeholder="Share a memory, a correction, or your own version of this story..."></textarea>
+      </label>
+
+      <button type="submit" class="btn-comment">Post comment</button>
+    </form>
+    <p class="comment-note">Comments are reviewed before they appear publicly.</p>
+  </section>
+</main>
+
+<footer>An ongoing family archive — Korappath, Chiyyaram, Thrissur</footer>
+
+<script>
+let prevChapterData = null;
+let nextChapterData = null;
+
+function stripChapterSuffix(title){
+  return (title || '').replace(/\s*\(Chapter\s*\d+\)\s*$/i, '');
+}
+
+function renderChapterNav(){
+  const bareUrl = s => s.storyUrl.replace('stories/', '');
+  const label = currentLang === 'ml' ? 'അധ്യായം' : 'Chapter';
+  const getTitle = s => currentLang === 'ml' ? s.titleMl : stripChapterSuffix(s.titleEn);
+  document.getElementById('chapter-nav').innerHTML = `
+    ${prevChapterData ? `<a class="prev" href="${bareUrl(prevChapterData)}"><span class="nav-label">← ${label} ${prevChapterData.chapterNumber}</span>${getTitle(prevChapterData)}</a>` : '<span></span>'}
+    ${nextChapterData ? `<a class="next" href="${bareUrl(nextChapterData)}"><span class="nav-label">${label} ${nextChapterData.chapterNumber} →</span>${getTitle(nextChapterData)}</a>` : '<span></span>'}
+  `;
+}
+let currentLang = 'ml';
+function showLang(lang){
+  currentLang = lang;
+  document.getElementById('text-ml').classList.toggle('active', lang === 'ml');
+  document.getElementById('text-en').classList.toggle('active', lang === 'en');
+  document.getElementById('btn-ml').classList.toggle('active', lang === 'ml');
+  document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+  renderChapterNav();
+}
+
+document.getElementById('date-submitted').value = new Date().toISOString().slice(0, 10);
+
+fetch('../stories.json')
+  .then(r => r.json())
+  .then(stories => {
+    const mine = stories.find(s => s.id === 'aniyammavan-backbone');
+
+    const myChapter = mine ? mine.chapterNumber : null;
+    const isPublished = s => !s.dateAdded || new Date(s.dateAdded) <= new Date();
+    prevChapterData = stories.find(s => s.chapterNumber === myChapter - 1 && isPublished(s));
+    nextChapterData = stories.find(s => s.chapterNumber === myChapter + 1 && isPublished(s));
+    renderChapterNav();
+
+    const list = document.getElementById('comments-list');
+    const comments = mine && Array.isArray(mine.comments) ? mine.comments : [];
+    if(comments.length === 0){
+      list.innerHTML = '<p class="comment-empty">No comments yet — be the first to share a memory.</p>';
+      return;
+    }
+    list.innerHTML = comments.map(c => {
+      const dateStr = c.date ? new Date(c.date).toLocaleDateString('en-US', { month:'short', day:'numeric', year:'numeric' }) : '';
+      return `<div class="comment-card">
+        <div class="comment-meta">${escapeHtml(c.name)}${dateStr ? ' · ' + dateStr : ''}</div>
+        <p>${escapeHtml(c.text)}</p>
+      </div>`;
+    }).join('');
+  })
+  .catch(() => {
+    document.getElementById('comments-list').innerHTML = '<p class="comment-empty">Could not load comments right now.</p>';
+  });
+
+function escapeHtml(str){
+  if(!str) return '';
+  return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+}
+</script>
+
+</body>
+</html>

@@ -4,11 +4,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Write a Story — Korappath</title>
-<meta name="description" content="Write a family story in Malayalam, right in your browser, with live transliteration — no account needed. Your draft is saved automatically until you're ready to send it.">
+<meta name="description" content="Write a family story in Malayalam and send it in — no account needed. Your draft is saved automatically until you're ready to send it.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,500;9..144,600&family=Noto+Serif+Malayalam:wght@400;600&family=Work+Sans:wght@300;400;500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/@indic-transliteration/sanscript/sanscript.js"></script>
 <style>
   :root{
     --oxide-dark:#3E1810; --oxide:#6B2A1E; --oxide-light:#8C3E2C;
@@ -25,11 +24,46 @@
   .topbar a.back{ font-family:'Space Mono', monospace; font-size:0.72rem; letter-spacing:0.08em; text-transform:uppercase; color:var(--ivory); text-decoration:none; opacity:0.8; }
   .topbar a.back:hover{ opacity:1; }
 
-  main{ max-width:720px; margin:0 auto; padding:3rem 1.5rem 4rem; }
-  .header{ margin-bottom:2rem; }
+  main{ max-width:640px; margin:0 auto; padding:3rem 1.5rem 4rem; }
+  .header{ margin-bottom:1.8rem; }
   .header h1{ font-size:clamp(1.8rem, 4vw, 2.4rem); margin:0.6rem 0 0.6rem; }
-  .header p{ color:var(--ivory-dim); font-size:0.95rem; max-width:60ch; }
-  .header p a{ color:var(--brass-light); }
+  .header p{ color:var(--ivory-dim); font-size:0.95rem; }
+
+  .step-box{
+    background:rgba(198,149,47,0.08);
+    border:1px solid rgba(198,149,47,0.25);
+    border-radius:4px;
+    padding:1.5rem;
+    margin-bottom:2rem;
+  }
+  .step-box .step{ display:flex; gap:0.9rem; align-items:flex-start; margin-bottom:1rem; }
+  .step-box .step:last-child{ margin-bottom:0; }
+  .step-box .num{
+    flex-shrink:0;
+    width:24px; height:24px;
+    border-radius:50%;
+    background:var(--brass);
+    color:var(--teak);
+    font-family:'Space Mono', monospace;
+    font-size:0.8rem;
+    font-weight:700;
+    display:flex; align-items:center; justify-content:center;
+  }
+  .step-box .step p{ color:var(--ivory-dim); font-size:0.9rem; margin-top:0.2rem; }
+  .step-box a.manglish-link{
+    display:inline-block;
+    margin-top:0.5rem;
+    font-family:'Space Mono', monospace;
+    font-size:0.75rem;
+    letter-spacing:0.05em;
+    text-transform:uppercase;
+    background:var(--brass);
+    color:var(--teak);
+    padding:0.6rem 1.1rem;
+    border-radius:2px;
+    text-decoration:none;
+  }
+  .step-box a.manglish-link:hover{ background:var(--brass-light); }
 
   .draft-status{
     font-family:'Space Mono', monospace;
@@ -38,7 +72,7 @@
     text-transform:uppercase;
     color:var(--brass-light);
     opacity:0.8;
-    margin-bottom:1.6rem;
+    margin-bottom:1.4rem;
   }
 
   label{
@@ -50,13 +84,6 @@
     color:var(--brass-light);
     margin-bottom:1.2rem;
   }
-  label .optional{
-    text-transform:none;
-    font-family:'Work Sans', sans-serif;
-    letter-spacing:0;
-    opacity:0.65;
-    font-size:0.78rem;
-  }
   input[type="text"], input[type="email"], textarea{
     display:block; width:100%; margin-top:0.5rem;
     padding:0.75rem 0.9rem;
@@ -65,33 +92,12 @@
     border:1px solid rgba(43,29,20,0.2); border-radius:3px;
   }
   textarea{ resize:vertical; }
-
-  .type-row{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:1.2rem;
-  }
-  @media (max-width:640px){ .type-row{ grid-template-columns:1fr; } }
-  #phoneticInput{
-    font-family:'Work Sans', sans-serif;
-    min-height:220px;
-  }
-  #malayalamOutput{
+  #storyBox{
     font-family:'Noto Serif Malayalam', serif;
     font-size:1.1rem;
     line-height:1.9;
-    min-height:220px;
-    background:#fff;
+    min-height:280px;
   }
-
-  .type-hint{
-    font-family:'Work Sans', sans-serif;
-    font-size:0.82rem;
-    color:var(--ivory-dim);
-    margin-top:0.6rem;
-    margin-bottom:1.6rem;
-  }
-  .type-hint a{ color:var(--brass-light); }
 
   .btn{
     font-family:'Space Mono', monospace;
@@ -117,8 +123,20 @@
 <main>
   <div class="header">
     <span class="eyebrow">Write a story</span>
-    <h1>Write your story, in Malayalam</h1>
-    <p>Type phonetically in English on the left and it converts to Malayalam script on the right, automatically. Your draft is saved in this browser as you go — nothing is sent anywhere until you press "Send to Raju." If the automatic conversion doesn't get a word quite right, you can also just type or paste Malayalam directly into the right-hand box, or use <a href="https://www.manglish.app/" target="_blank" rel="noopener">manglish.app</a> for a more polished typing experience and paste the result in here.</p>
+    <h1>Send in your story</h1>
+    <p>No account needed — just type your story, then send it in.</p>
+  </div>
+
+  <div class="step-box">
+    <div class="step">
+      <span class="num">1</span>
+      <p>Type your story in Malayalam at <strong>manglish.app</strong> — type phonetically in English and it converts as you go.</p>
+    </div>
+    <a href="https://www.manglish.app/" target="_blank" rel="noopener" class="manglish-link">Open manglish.app →</a>
+    <div class="step" style="margin-top:1.3rem;">
+      <span class="num">2</span>
+      <p>Copy the Malayalam text, come back to this tab, and paste it into the box below.</p>
+    </div>
   </div>
 
   <div class="draft-status" id="draftStatus">No draft saved yet</div>
@@ -130,25 +148,13 @@
     </label>
 
     <label>
-      Your email <span class="optional">(so we can reach out if we have questions)</span>
+      Your email
       <input type="email" name="email" id="fEmail" required>
     </label>
 
     <label>
-      Story title
-      <input type="text" name="title" id="fTitle" placeholder="A short title for this story">
-    </label>
-
-    <label style="margin-bottom:0.3rem;">Type your story</label>
-    <div class="type-row">
-      <textarea id="phoneticInput" placeholder="Type phonetically here, e.g. 'ente achante veedu...'"></textarea>
-      <textarea id="malayalamOutput" name="story_malayalam" placeholder="Malayalam appears here as you type — or type/paste Malayalam directly"></textarea>
-    </div>
-    <p class="type-hint">Left box: type in English letters the way the words sound. Right box: the Malayalam result — feel free to edit it directly too.</p>
-
-    <label>
-      Anything else? <span class="optional">(context, approximate date, who it's about — optional)</span>
-      <textarea name="notes" rows="3" id="fNotes"></textarea>
+      Your story <span style="text-transform:none; opacity:0.7;">(paste the Malayalam text here)</span>
+      <textarea id="storyBox" name="story_malayalam" placeholder="Paste your story here"></textarea>
     </label>
 
     <input type="hidden" name="_subject" value="New story submitted via Write a Story page">
@@ -162,7 +168,7 @@
 </main>
 
 <script>
-const fields = ['fName', 'fEmail', 'fTitle', 'phoneticInput', 'malayalamOutput', 'fNotes'];
+const fields = ['fName', 'fEmail', 'storyBox'];
 const DRAFT_KEY = 'korappath_write_draft';
 
 function saveDraft(){
@@ -200,7 +206,6 @@ function clearDraft(){
   document.getElementById('draftStatus').textContent = 'No draft saved yet';
 }
 
-// Auto-save on any input, lightly debounced
 let saveTimer = null;
 fields.forEach(id => {
   document.getElementById(id).addEventListener('input', () => {
@@ -211,26 +216,7 @@ fields.forEach(id => {
 
 document.getElementById('clearDraftBtn').addEventListener('click', clearDraft);
 
-// Live transliteration: phonetic English -> Malayalam
-const phoneticInput = document.getElementById('phoneticInput');
-const malayalamOutput = document.getElementById('malayalamOutput');
-let userEditedOutput = false;
-
-malayalamOutput.addEventListener('input', () => { userEditedOutput = true; });
-
-phoneticInput.addEventListener('input', () => {
-  if(typeof Sanscript === 'undefined') return; // library failed to load — output box still usable manually
-  // If the user has started hand-editing the Malayalam box directly, stop overwriting it
-  if(userEditedOutput) return;
-  try{
-    malayalamOutput.value = Sanscript.t(phoneticInput.value, 'itrans_dravidian', 'malayalam');
-  } catch(e){ /* leave output box as-is if transliteration fails on some input */ }
-});
-
 document.getElementById('writeForm').addEventListener('submit', () => {
-  // Give Formspree a moment to receive the submission before we clear the local draft;
-  // actual clearing happens on the thank-you redirect in practice, but we also clear
-  // proactively so a resubmit doesn't duplicate old text.
   setTimeout(() => localStorage.removeItem(DRAFT_KEY), 500);
 });
 

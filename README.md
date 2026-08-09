@@ -53,6 +53,58 @@ The root ancestor should have `"parentId": null`. Everyone else's `parentId` poi
 
 `family-tree.html` and `family-tree-collapsible.html` are earlier iterations kept in the repo for reference — they're not linked from the live site and can be deleted once you're confident `family-tree-explore.html` covers what you need.
 
+## Adding a story
+
+Stories live in `stories.json`, listed newest-first automatically by the `dateAdded` field. To add one:
+
+1. Copy `stories/sample-story.html` to a new file (e.g. `stories/the-old-house.html`)
+2. Replace the placeholder Malayalam and English text, one `<p>` per paragraph
+3. Add an entry to `stories.json`:
+
+```json
+{
+  "id": "the-old-house",
+  "titleEn": "English title",
+  "titleMl": "മലയാളം തലക്കെട്ട്",
+  "excerptEn": "A one- or two-sentence teaser for the listing page.",
+  "author": "Full name",
+  "period": "Roughly when the story took place",
+  "dateAdded": "YYYY-MM-DD",
+  "photo": "",
+  "storyUrl": "stories/the-old-house.html"
+}
+```
+
+`dateAdded` is when the story was recorded/added here — not necessarily when the events happened (that's what `period` is for).
+
+## Comments on stories
+
+Comments are submitted via a Formspree form on each story page, but don't appear publicly until you add them yourself — same moderated pattern as everything else on this site. To approve a comment:
+
+1. Check the comments Formspree dashboard for new submissions
+2. Add an entry to that story's `comments` array in `stories.json`:
+
+```json
+{
+  "name": "Their name",
+  "text": "Their comment",
+  "date": "YYYY-MM-DD"
+}
+```
+
+3. Upload the updated `stories.json` — it'll appear on the story page automatically
+
+## Email notifications for new chapters
+
+`feed.xml` is an RSS feed generated automatically from `stories.json` — a GitHub Action (`.github/workflows/generate-feed.yml`) regenerates it every time `stories.json` changes on the main branch and commits it back to the repo. You never need to touch `feed.xml` by hand; just upload an updated `stories.json` as usual, and the feed catches up within a minute or two.
+
+Family members get emailed automatically through **Follow.it** (free), which watches the feed and sends an email whenever a new item appears:
+
+1. Go to follow.it and create a feed using `https://korappath.com/feed.xml`
+2. Follow.it gives you a shareable subscribe link
+3. Replace the placeholder link in `stories/index.html` (search for `YOUR_FOLLOW_IT_LINK`) with your real one, and re-upload that file
+4. Share the same link directly with family via WhatsApp/email if you want — they just enter their email once, no account needed
+
 ## Tech
 
 Plain HTML/CSS, no framework or build step — kept intentionally simple so the site is easy to maintain and archive for the long term. Hosted on GitHub Pages, domain via Cloudflare.

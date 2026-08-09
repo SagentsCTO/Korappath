@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Write a Story — Korappath</title>
+<meta name="description" content="Write a family story in Malayalam, right in your browser, with live transliteration — no account needed. Your draft is saved automatically until you're ready to send it.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,500;9..144,600&family=Noto+Serif+Malayalam:wght@400;600&family=Work+Sans:wght@300;400;500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/@indic-transliteration/sanscript/sanscript.js"></script>
+<style>
+  :root{
+    --oxide-dark:#3E1810; --oxide:#6B2A1E; --oxide-light:#8C3E2C;
+    --brass:#C6952F; --brass-light:#E8C776;
+    --ivory:#F1E9D6; --ivory-dim:#D8CBAE; --teak:#2B1D14;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{ background:var(--oxide-dark); color:var(--ivory); font-family:'Work Sans', sans-serif; font-weight:300; line-height:1.7; }
+  h1,h2{ font-family:'Fraunces', serif; font-weight:500; }
+  .eyebrow{ font-family:'Space Mono', monospace; font-size:0.7rem; letter-spacing:0.15em; text-transform:uppercase; color:var(--brass-light); opacity:0.85; }
+  .topbar{ display:flex; justify-content:space-between; align-items:center; padding:1.5rem clamp(1.5rem, 5vw, 4rem); border-bottom:1px solid rgba(198,149,47,0.25); }
+  .wordmark{ font-family:'Fraunces', serif; font-size:1.15rem; }
+  .wordmark span{ color:var(--brass-light); }
+  .topbar a.back{ font-family:'Space Mono', monospace; font-size:0.72rem; letter-spacing:0.08em; text-transform:uppercase; color:var(--ivory); text-decoration:none; opacity:0.8; }
+  .topbar a.back:hover{ opacity:1; }
+
+  main{ max-width:720px; margin:0 auto; padding:3rem 1.5rem 4rem; }
+  .header{ margin-bottom:2rem; }
+  .header h1{ font-size:clamp(1.8rem, 4vw, 2.4rem); margin:0.6rem 0 0.6rem; }
+  .header p{ color:var(--ivory-dim); font-size:0.95rem; max-width:60ch; }
+  .header p a{ color:var(--brass-light); }
+
+  .draft-status{
+    font-family:'Space Mono', monospace;
+    font-size:0.7rem;
+    letter-spacing:0.05em;
+    text-transform:uppercase;
+    color:var(--brass-light);
+    opacity:0.8;
+    margin-bottom:1.6rem;
+  }
+
+  label{
+    display:block;
+    font-family:'Space Mono', monospace;
+    font-size:0.72rem;
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+    color:var(--brass-light);
+    margin-bottom:1.2rem;
+  }
+  label .optional{
+    text-transform:none;
+    font-family:'Work Sans', sans-serif;
+    letter-spacing:0;
+    opacity:0.65;
+    font-size:0.78rem;
+  }
+  input[type="text"], input[type="email"], textarea{
+    display:block; width:100%; margin-top:0.5rem;
+    padding:0.75rem 0.9rem;
+    font-family:'Work Sans', sans-serif; font-size:0.95rem;
+    color:var(--teak); background:var(--ivory);
+    border:1px solid rgba(43,29,20,0.2); border-radius:3px;
+  }
+  textarea{ resize:vertical; }
+
+  .type-row{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:1.2rem;
+  }
+  @media (max-width:640px){ .type-row{ grid-template-columns:1fr; } }
+  #phoneticInput{
+    font-family:'Work Sans', sans-serif;
+    min-height:220px;
+  }
+  #malayalamOutput{
+    font-family:'Noto Serif Malayalam', serif;
+    font-size:1.1rem;
+    line-height:1.9;
+    min-height:220px;
+    background:#fff;
+  }
+
+  .type-hint{
+    font-family:'Work Sans', sans-serif;
+    font-size:0.82rem;
+    color:var(--ivory-dim);
+    margin-top:0.6rem;
+    margin-bottom:1.6rem;
+  }
+  .type-hint a{ color:var(--brass-light); }
+
+  .btn{
+    font-family:'Space Mono', monospace;
+    font-size:0.75rem; letter-spacing:0.06em; text-transform:uppercase;
+    padding:0.8rem 1.5rem; border-radius:2px; border:none; cursor:pointer;
+  }
+  .btn-primary{ background:var(--brass); color:var(--teak); }
+  .btn-primary:hover{ background:var(--brass-light); }
+  .btn-ghost{ background:none; border:1px solid rgba(241,233,214,0.35); color:var(--ivory); }
+  .btn-ghost:hover{ border-color:var(--ivory); }
+
+  .actions{ display:flex; gap:0.8rem; align-items:center; flex-wrap:wrap; margin-top:0.5rem; }
+  .save-note{ font-size:0.78rem; color:var(--ivory-dim); opacity:0.75; margin-top:1.2rem; }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="wordmark">Korappath<span>.</span></div>
+  <a href="index.html" class="back">← Back home</a>
+</div>
+
+<main>
+  <div class="header">
+    <span class="eyebrow">Write a story</span>
+    <h1>Write your story, in Malayalam</h1>
+    <p>Type phonetically in English on the left and it converts to Malayalam script on the right, automatically. Your draft is saved in this browser as you go — nothing is sent anywhere until you press "Send to Raju." If the automatic conversion doesn't get a word quite right, you can also just type or paste Malayalam directly into the right-hand box, or use <a href="https://www.manglish.app/" target="_blank" rel="noopener">manglish.app</a> for a more polished typing experience and paste the result in here.</p>
+  </div>
+
+  <div class="draft-status" id="draftStatus">No draft saved yet</div>
+
+  <form id="writeForm" action="https://formspree.io/f/xjgnzory" method="POST">
+    <label>
+      Your name
+      <input type="text" name="name" id="fName" required>
+    </label>
+
+    <label>
+      Your email <span class="optional">(so we can reach out if we have questions)</span>
+      <input type="email" name="email" id="fEmail" required>
+    </label>
+
+    <label>
+      Story title
+      <input type="text" name="title" id="fTitle" placeholder="A short title for this story">
+    </label>
+
+    <label style="margin-bottom:0.3rem;">Type your story</label>
+    <div class="type-row">
+      <textarea id="phoneticInput" placeholder="Type phonetically here, e.g. 'ente achante veedu...'"></textarea>
+      <textarea id="malayalamOutput" name="story_malayalam" placeholder="Malayalam appears here as you type — or type/paste Malayalam directly"></textarea>
+    </div>
+    <p class="type-hint">Left box: type in English letters the way the words sound. Right box: the Malayalam result — feel free to edit it directly too.</p>
+
+    <label>
+      Anything else? <span class="optional">(context, approximate date, who it's about — optional)</span>
+      <textarea name="notes" rows="3" id="fNotes"></textarea>
+    </label>
+
+    <input type="hidden" name="_subject" value="New story submitted via Write a Story page">
+
+    <div class="actions">
+      <button type="submit" class="btn btn-primary">Send to Raju</button>
+      <button type="button" class="btn btn-ghost" id="clearDraftBtn">Clear draft</button>
+    </div>
+    <p class="save-note">Your draft is saved only in this browser, on this device — it isn't sent to us until you press "Send to Raju."</p>
+  </form>
+</main>
+
+<script>
+const fields = ['fName', 'fEmail', 'fTitle', 'phoneticInput', 'malayalamOutput', 'fNotes'];
+const DRAFT_KEY = 'korappath_write_draft';
+
+function saveDraft(){
+  const draft = {};
+  fields.forEach(id => { draft[id] = document.getElementById(id).value; });
+  draft.savedAt = new Date().toISOString();
+  try{
+    localStorage.setItem(DRAFT_KEY, JSON.stringify(draft));
+    updateDraftStatus(draft.savedAt);
+  } catch(e){ /* localStorage unavailable — draft simply won't persist, no crash */ }
+}
+
+function loadDraft(){
+  try{
+    const raw = localStorage.getItem(DRAFT_KEY);
+    if(!raw) return;
+    const draft = JSON.parse(raw);
+    fields.forEach(id => {
+      if(draft[id]) document.getElementById(id).value = draft[id];
+    });
+    if(draft.savedAt) updateDraftStatus(draft.savedAt);
+  } catch(e){ /* ignore corrupted or inaccessible draft */ }
+}
+
+function updateDraftStatus(isoDate){
+  const d = new Date(isoDate);
+  document.getElementById('draftStatus').textContent =
+    'Draft auto-saved · ' + d.toLocaleDateString('en-US', { month:'short', day:'numeric' }) + ' at ' + d.toLocaleTimeString('en-US', { hour:'numeric', minute:'2-digit' });
+}
+
+function clearDraft(){
+  if(!confirm('Clear this draft? This cannot be undone.')) return;
+  localStorage.removeItem(DRAFT_KEY);
+  fields.forEach(id => { document.getElementById(id).value = ''; });
+  document.getElementById('draftStatus').textContent = 'No draft saved yet';
+}
+
+// Auto-save on any input, lightly debounced
+let saveTimer = null;
+fields.forEach(id => {
+  document.getElementById(id).addEventListener('input', () => {
+    clearTimeout(saveTimer);
+    saveTimer = setTimeout(saveDraft, 400);
+  });
+});
+
+document.getElementById('clearDraftBtn').addEventListener('click', clearDraft);
+
+// Live transliteration: phonetic English -> Malayalam
+const phoneticInput = document.getElementById('phoneticInput');
+const malayalamOutput = document.getElementById('malayalamOutput');
+let userEditedOutput = false;
+
+malayalamOutput.addEventListener('input', () => { userEditedOutput = true; });
+
+phoneticInput.addEventListener('input', () => {
+  if(typeof Sanscript === 'undefined') return; // library failed to load — output box still usable manually
+  // If the user has started hand-editing the Malayalam box directly, stop overwriting it
+  if(userEditedOutput) return;
+  try{
+    malayalamOutput.value = Sanscript.t(phoneticInput.value, 'itrans_dravidian', 'malayalam');
+  } catch(e){ /* leave output box as-is if transliteration fails on some input */ }
+});
+
+document.getElementById('writeForm').addEventListener('submit', () => {
+  // Give Formspree a moment to receive the submission before we clear the local draft;
+  // actual clearing happens on the thank-you redirect in practice, but we also clear
+  // proactively so a resubmit doesn't duplicate old text.
+  setTimeout(() => localStorage.removeItem(DRAFT_KEY), 500);
+});
+
+loadDraft();
+</script>
+
+</body>
+</html>

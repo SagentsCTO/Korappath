@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ചിയ്യാരം എന്ന എന്റെ ജന്മസ്ഥലം — Korappath</title>
+<meta name="description" content="Sudhakara Menon on his birthplace Chiyyaram, his father's death when he was twelve, the family's shift from marumakkathayam to the modern family structure, and his own reflections on family and society.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,500;9..144,600&family=Noto+Serif+Malayalam:wght@400;600&family=Work+Sans:wght@300;400;500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --oxide-dark:#3E1810; --oxide:#6B2A1E; --oxide-light:#8C3E2C;
+    --brass:#C6952F; --brass-light:#E8C776;
+    --ivory:#F1E9D6; --ivory-dim:#D8CBAE; --teak:#2B1D14;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{ background:var(--oxide-dark); color:var(--ivory); font-family:'Work Sans', sans-serif; font-weight:300; line-height:1.7; }
+  h1,h2{ font-family:'Fraunces', serif; font-weight:500; }
+  .eyebrow{ font-family:'Space Mono', monospace; font-size:0.7rem; letter-spacing:0.15em; text-transform:uppercase; color:var(--brass-light); opacity:0.85; }
+  .topbar{ display:flex; justify-content:space-between; align-items:center; padding:1.5rem clamp(1.5rem, 5vw, 4rem); border-bottom:1px solid rgba(198,149,47,0.25); }
+  .wordmark{ font-family:'Fraunces', serif; font-size:1.15rem; }
+  .wordmark span{ color:var(--brass-light); }
+  .topbar a.back{ font-family:'Space Mono', monospace; font-size:0.72rem; letter-spacing:0.08em; text-transform:uppercase; color:var(--ivory); text-decoration:none; opacity:0.8; }
+  .topbar a.back:hover{ opacity:1; }
+
+  main{ max-width:720px; margin:0 auto; padding:3.5rem 1.5rem 4rem; }
+
+  .byline{ margin-bottom:1.6rem; }
+  .byline h1{ font-size:clamp(1.8rem, 4vw, 2.4rem); margin:0.6rem 0 0.3rem; line-height:1.2; }
+  .byline h1.malayalam-title{ font-family:'Noto Serif Malayalam', serif; }
+  .byline .subtitle{ color:var(--ivory-dim); font-size:1rem; font-style:italic; margin-bottom:0.6rem; }
+  .byline .meta{ font-family:'Space Mono', monospace; font-size:0.78rem; color:var(--brass-light); }
+
+  /* Language toggle */
+  .lang-toggle{
+    display:flex; gap:0.5rem;
+    margin:1.8rem 0 2.2rem;
+  }
+  .lang-toggle button{
+    font-family:'Space Mono', monospace;
+    font-size:0.75rem;
+    letter-spacing:0.05em;
+    text-transform:uppercase;
+    padding:0.6rem 1.2rem;
+    border-radius:2px;
+    border:1px solid var(--brass);
+    background:none;
+    color:var(--ivory);
+    cursor:pointer;
+    transition:background 0.2s ease, color 0.2s ease;
+  }
+  .lang-toggle button.active{
+    background:var(--brass);
+    color:var(--teak);
+  }
+  .lang-toggle button:not(.active):hover{
+    background:rgba(198,149,47,0.15);
+  }
+
+  .story-text{ display:none; }
+  .story-text.active{ display:block; }
+  .story-text.malayalam{
+    font-family:'Noto Serif Malayalam', serif;
+    font-size:1.15rem;
+    line-height:2;
+  }
+  .story-text.english{
+    font-family:'Fraunces', serif;
+    font-size:1.08rem;
+    line-height:1.85;
+    color:var(--ivory-dim);
+  }
+  .story-text p{ margin-bottom:1.3rem; }
+
+  .attribution{
+    margin-top:3rem;
+    padding-top:1.5rem;
+    border-top:1px solid rgba(198,149,47,0.2);
+    font-family:'Space Mono', monospace;
+    font-size:0.78rem;
+    color:var(--brass-light);
+    opacity:0.85;
+  }
+  .footnote{
+    margin-top:1.8rem;
+    font-family:'Work Sans', sans-serif;
+    font-size:0.85rem;
+    color:var(--ivory-dim);
+    line-height:1.6;
+  }
+  .footnote a{ color:var(--brass-light); text-decoration:underline; }
+  .chapter-nav{
+    display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:1rem;
+    margin-top:2.5rem; padding-top:1.5rem;
+    border-top:1px solid rgba(198,149,47,0.2);
+  }
+  .chapter-nav a{
+    max-width:46%;
+    color:var(--brass-light);
+    text-decoration:none;
+    font-size:0.9rem;
+  }
+  .chapter-nav a:hover{ text-decoration:underline; }
+  .chapter-nav a.next{ text-align:right; margin-left:auto; }
+  .chapter-nav .nav-label{
+    display:block;
+    font-family:'Space Mono', monospace;
+    font-size:0.68rem;
+    letter-spacing:0.05em;
+    text-transform:uppercase;
+    opacity:0.75;
+    margin-bottom:0.2rem;
+  }
+
+  footer{ text-align:center; padding:2.5rem 1.5rem; color:var(--ivory-dim); font-size:0.82rem; }
+
+  /* ---------- Comments ---------- */
+  .comments-section{ margin-top:3rem; }
+  .comments-section h2{ font-size:1.3rem; margin-bottom:1.2rem; }
+  .comment-empty{ color:var(--ivory-dim); font-size:0.9rem; }
+  .comment-card{
+    background:rgba(198,149,47,0.06);
+    border:1px solid rgba(198,149,47,0.2);
+    border-radius:4px;
+    padding:1rem 1.2rem;
+    margin-bottom:0.8rem;
+  }
+  .comment-card .comment-meta{
+    font-family:'Space Mono', monospace;
+    font-size:0.7rem;
+    letter-spacing:0.04em;
+    text-transform:uppercase;
+    color:var(--brass-light);
+    margin-bottom:0.4rem;
+  }
+  .comment-card p{ font-size:0.92rem; color:var(--ivory-dim); }
+
+  #comment-form{ margin-top:1.6rem; max-width:520px; }
+  #comment-form label{
+    display:block;
+    font-family:'Space Mono', monospace;
+    font-size:0.72rem;
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+    color:var(--brass-light);
+    opacity:0.9;
+    margin-bottom:1rem;
+  }
+  #comment-form input[type="text"],
+  #comment-form textarea{
+    display:block; width:100%; margin-top:0.4rem;
+    padding:0.6rem 0.75rem;
+    font-family:'Work Sans', sans-serif; font-size:0.92rem;
+    color:var(--teak); background:var(--ivory);
+    border:1px solid rgba(43,29,20,0.2); border-radius:3px;
+  }
+  #comment-form textarea{ resize:vertical; }
+  .btn-comment{
+    font-family:'Space Mono', monospace;
+    font-size:0.75rem; letter-spacing:0.06em; text-transform:uppercase;
+    padding:0.7rem 1.4rem; border-radius:2px; border:none; cursor:pointer;
+    background:var(--brass); color:var(--teak);
+  }
+  .btn-comment:hover{ background:var(--brass-light); }
+  .comment-note{ font-size:0.8rem; color:var(--ivory-dim); opacity:0.75; margin-top:0.8rem; }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="wordmark">Korappath<span>.</span></div>
+  <a href="index.html" class="back">← All stories</a>
+</div>
+
+<main>
+  <div class="byline">
+    <span class="eyebrow">A story from the family — circa 1960s</span>
+    <h1 class="malayalam-title">ചിയ്യാരം എന്ന എന്റെ ജന്മസ്ഥലം</h1>
+    <p class="subtitle">Chiyyaram, my birthplace</p>
+    <p class="meta">As told by Korappath Kalapurakal Sudhakara Menon · Recorded Aug 21, 2026</p>
+  </div>
+
+  <div class="lang-toggle">
+    <button id="btn-ml" class="active" onclick="showLang('ml')">മലയാളം</button>
+    <button id="btn-en" onclick="showLang('en')">English</button>
+  </div>
+
+  <div class="story-text malayalam active" id="text-ml">
+    <p>എന്റെ ബാല്യകാലം പൂർണമായും ചിയ്യാരത്തു തന്നെ ആയിരുന്നു എന്ന് പറയാം. കളപ്പുരക്കൽ തറവാട്ടിലും ശങ്കരംപൊന്നത്ത് എന്ന എന്റെ അച്ഛന്റെ വീട്ടിലും ആയിരുന്നു ഞങ്ങൾ കൂടുതലും താമസിച്ചിരുന്നത്. ചില ദിവസങ്ങളിൽ രാത്രിയിൽ ശങ്കരംപൊന്നത്ത് തന്നെ ആയിരിക്കും ഞങ്ങൾ ഉറങ്ങുക. അച്ഛമ്മയുടെ കൂടെ കഥകൾ കേട്ടു കിടന്നുറങ്ങാം. അത്തരം സന്ദർഭങ്ങൾ ഞങ്ങൾ ഏറെ ഇഷ്ടപ്പെട്ടിരുന്നു. അച്ഛമ്മയുടെ പുരാണ കഥകളിൽ കൂടിയും സന്ദർഭോചിത വിവരണങ്ങളിൽകൂടിയും പിൽകാലത്ത് പല കാര്യങ്ങളിലും ഉൾകാഴ്ച വളരെ കുട്ടിക്കാലത്തുതന്നെ ഞങ്ങൾ മൂവരും ആർജിച്ചിരുന്നു എന്ന് ബോധ്യം വന്നിട്ടുണ്ട്. 1921 എന്ന മലയാളം സിനിമാക്കഥ അത്തരം ഒരു ഉൾക്കാഴ്ചയുടെ പരിണിതഫലമായിരുന്നിരിക്കാം. അച്ഛമ്മയുടെ വിജ്ഞാനം അങ്ങിനെ അന്ന് ഞങ്ങളുടെ മനസ്സിലേക്ക് അൽപ്പാൽപ്പമായി അരിച്ചിറങ്ങിയിരിക്കാം. അരക്കിട്ടപോലെ ഉറച്ചിരിക്കാം. എന്തായാലും പിന്നീടുള്ള ഞങ്ങളുടെ ഭാവി ജീവിതത്തിൽ അത് വളരെ പ്രയോജനപ്പെട്ടിട്ടുണ്ട് തീർച്ച.</p>
+
+    <p>ഇന്നത്തെ പുതുയുഗത്തിൽ കുട്ടികൾക്ക് നഷ്ടപ്പെടുന്നത് അത് തന്നെയാണ് ആ ഉൾകാഴ്ചകൾ. പഴയ തലമുറ കാലങ്ങളായി നേടിയെടുത്ത സംസ്കാരവും ചിട്ടയായ ജീവിതരീതികളും അവർക്കു ഇന്നു പകർന്നു കിട്ടുന്നില്ല. ഇനിയൊട്ട് കിട്ടാനും പോകുന്നില്ല കാരണം ആ തലമുറ മണ്മറഞ്ഞു പോയിരിക്കുന്നു. പുതു തലമുറയ്ക്ക് നഷ്ടപ്പെട്ടതും ഇനി ഒരിക്കലും തിരിച്ചെടുക്കാൻ പറ്റാത്തതുമായ വിലപ്പെട്ട അറിവുകൾ അവരോടൊപ്പം കുഴിച്ചു മൂടപ്പെട്ടിരിക്കുന്നു. ആ നഷ്ടമാണ് ഇന്നത്തെ തലമുറ മനസ്സിലാക്കാതെ ആണെങ്കിലും മടിയോടെ മനസ്സിലാക്കുന്നത്. അവരുടെ കുടുംബ ജീവിതത്തിലെ പാകപ്പിഴകൾ നഷ്ടബോധങ്ങളായി അവസാനം വരെ നിലനിൽക്കുകയും ചെയ്യും. വാദത്തിനു വേണ്ടി ഒരിക്കലും അവർ സമ്മതിച്ചു തരില്ലായിരിക്കാം എങ്കിലും സത്യം സത്യമായി തന്നെ നിലനിൽക്കും. കുടുംബ ജീവിതത്തിലെ അസ്വരസങ്ങൾ സ്ത്രീ പുരുഷ സമത്വത്തിനു (gender equality) വേണ്ടിയുള്ള വിട്ടുവീഴ്ചയില്ലാത്ത മനോഭാവം അവരെ നാശത്തിലേക്കു നയിക്കുന്നു. കുടുംബ ബന്ധങ്ങൾ തകരുന്നു. വിവാഹമോചനങ്ങൾ അധികരിച്ചു വരുന്നു. പ്രകൃതി നിയമങ്ങൾക്കനുസൃതമായി പ്രസവിച്ചു പെരുകാൻ അവർ താല്പര്യം കാണിക്കുന്നില്ല. തലമുറകൾ നിലനിന്നു പോകേണ്ടതിന്റെ ആവശ്യകത അവർ അറിയുന്നില്ല. സ്വാതന്ത്ര്യമാണ് പരമപ്രധാനം.</p>
+
+    <p>മറ്റൊരു വിഭാഗം വിവാഹത്തിന് തന്നെ എതിരാകുന്നു എന്നിട്ടും വിവാഹം കൂടാതെ ആണും പെണ്ണും ഒരുമിച്ചു ജീവിക്കാൻ (co-habitation) അവർ ഒരുമ്പെട്ടിറങ്ങുന്നു. സാമൂഹ്യനീതികൾക്കോ പ്രകൃതി അനുശാസിക്കുന്ന നിയമങ്ങൾക്കോ അവർ അല്പം പോലും വില കൽപിക്കുന്നില്ല. ഒടുവിൽ സമൂഹവും അവരെ ബഹിഷ്കരിക്കുന്നു. നിരാലംബരായി കുറെ കാലം ജീവിക്കുമ്പോൾ സ്വബോധം തിരിച്ചുവരുന്നു. പക്ഷെ അപ്പോഴേക്കും സമയം വളരെയേറെ കടന്നുപോയിരിക്കും, യുവത്വവും ചോരത്തിളപ്പും ചോർന്നു പോയിക്കാണും. വിഷാദരോഗവും മറ്റു വ്യഥകളും ആരോഗ്യത്തെയും മനസ്സിനെയും കാർന്നു തിന്നു കൊണ്ടിരിക്കുകയും ചെയ്യും.</p>
+
+    <p>ഇത്തരം നവയുഗകുടുംബങ്ങൾ ഇന്നു അനവധിയാണ്. വിവാഹമോചന കേസുകളുമായി കോടതി കയറി ഇറങ്ങുന്നവരുടെ എണ്ണം ദിനംപ്രതി വർധിച്ചുവരുന്നു. അവരുടെ ആശകളും ആവശ്യങ്ങളും മരീചിക പോലെ നീണ്ടു നീണ്ടു പോകുന്നു.</p>
+
+    <p>ചിയ്യാരത്ത് ഞങ്ങളുടെ ബാല്യകാലവും വിദ്യാഭ്യാസ കാലവും സന്തോഷം നിറഞ്ഞതായിരുന്നു. ആരോഗ്യപരമായി ഞാനും മൂത്തജേഷ്ഠനായ ചന്ദ്രചേട്ടനും വലിയ ബുദ്ധിമുട്ടുകളൊന്നും കൂടാതെ കഴിഞ്ഞു. പക്ഷെ ഗോപച്ചേട്ടന് നിരന്തരം ആരോഗ്യപ്രശ്നങ്ങൾ ഉണ്ടായി കൊണ്ടേയിരുന്നു. കഴുത്തിൽ ഒരു മുഴ വന്നു അത് സർജറി ചെയ്തപ്പോൾ വലിയ പ്രശ്നമായി. കുറെ മാസങ്ങൾ വേദന സഹിച്ചും നിലവിളിച്ചും കഴിച്ചുകൂട്ടി. സ്കൂൾ പോക്കും നിന്നുപോയി. കുടുംബ വൈദ്യനും പിന്നെ അലോപ്പതി ഡോക്ടറും ചികിത്സയുമായി പാവം കുറെ ബുദ്ധിമുട്ടി. ഞാനായിരുന്നു അന്ന് സഹായത്തിന് കൂടുതൽ സമയവും കൂടെ.</p>
+
+    <p>താമസിയാതെ അച്ഛനും കിടപ്പിലായി സ്ഥിരമായി ലീവ് എടുത്തു ശങ്കരംപൊന്നത്തു തന്നെയായി താമസം. ഓഫീസിൽ തീരെ പോകാതായി. ഡോക്ടർമാർ വീട്ടിൽ വരും. തൃശ്ശൂർ പോളി ക്ലിനിക്കിലെ സീനിയർ ഡോക്ടർ കൃഷ്ണയ്യരും അസിസ്റ്റന്റ് ഡോക്ടർ ഡേവിഡുമായിരുന്നു അച്ഛന്റെ സ്ഥിരം ഡോക്ടർമാർ. ഡോക്ടർ കൃഷ്ണയ്യർ തന്നെ ആയിരുന്നു വലിയമ്മാവനെയും ചികിത്സിച്ചിരുന്നത്. അമ്മാവന് ആസ്തമ കലശലായി ഉണ്ടായിരുന്നു. പലപ്പോഴും കൃഷ്ണയ്യർ ഊലിയംപുരത്തു വന്നു പോയിരുന്നു. വലിയൊരു ബ്യൂക് കാറിലാണ് അദ്ദേഹം വരിക. കോട്ടും സൂട്ടും ആണ് വേഷം. ഊലിയമ്പുറത്തേക്കുള്ള ഇടവഴിയിൽക്കൂടി ഞെങ്ങി നിറഞ്ഞാണു ബ്യൂക്ക് വരിക.</p>
+
+    <p>അങ്ങിനെ കുറേകാലം കടന്നുപോയി. എനിക്ക് 12 വയസ്സുള്ളപ്പോൾ എന്റെ പ്രിയപ്പെട്ട അച്ഛൻ ഞങ്ങളെ ദുഃഖത്തിലാഴ്ത്തി മരിച്ചു പോയി. ഞാൻ 7 സ്റ്റാൻഡേർഡിൽ കൂർക്കേഞ്ചേരി JPE high സ്കൂളിൽ പഠിക്കുമ്പോൾ ആയിരുന്നു അച്ഛന്റെ മരണം. അച്ഛന് മരിക്കുമ്പോൾ 57ഓ 58ഓ വയസ്സായിരുന്നു എന്നാണ് എന്റെ ഓർമ. കാലത്ത് എന്നെ സ്കൂളിലേക്ക് യാത്രയാക്കി അയച്ചശേഷം 11 മണിയോടെ അച്ഛൻ ഇഹലോകവാസം വെടിഞ്ഞു. താങ്ങാനാവാത്ത ഒരടിയായിരുന്നു ഞങ്ങൾക്ക് അച്ഛന്റെ അവിചാരിത മരണം.</p>
+
+    <p>ഗോപച്ചേട്ടൻ സിവിൽ എഞ്ചിനീയറിങ്ങിനു ആമ്പല്ലൂർ അളഗപ്പ പോളിടെക്‌നിക്കിൽ (പിന്നീട് പേര് മാറി ഇപ്പോൾ ത്യാഗരാജാ എന്നായി) ചേർന്ന വർഷം ആയിരുന്നു അച്ഛൻ മരിച്ചത്. ചന്ദ്രചേട്ടൻ തൃശൂർ സെന്റ് തോമസ് കോളേജിൽ പ്രീയൂണിവേഴ്സിറ്റി കഴിഞ്ഞു ഡിഗ്രീക്കു ചേരാൻ തുടങ്ങിയതും അതെ വർഷമായിരുന്നു.</p>
+
+    <p>ഞാൻ കൂർക്കഞ്ചേരി സ്കൂളിലേക്ക് നടന്നാണ് പോകുക. ആലുംവെട്ടുവഴിയിലൂടെ സുഹൃത്തുക്കളും സഹപാഠികളും ഒത്തു ചേർന്നായിരുന്നു യാത്ര. അവരെ കൂടാതെ വലിയമ്മാവൻറെ മകൾ അനിയത്തിച്ചേച്ചിയും മറ്റൊരു മകൾ സുലോചനയും ബന്ധുക്കളായ കൃഷ്ണൻ, അവന്റെ ചേച്ചിമാരായ വിശാലം, വാവ എല്ലാവരും ഒന്നിച്ചാണ് സ്കൂളിൽ പോകാറ്. വീട്ടിൽ നിന്നും ഏകദേശം രണ്ടു കിലോമീറ്ററിലധികം നടന്നാലേ സ്കൂളിലേത്തൂ. വൈകീട്ട് അത് പോലെ നാല് മണിക്കു സ്കൂൾ വിട്ടാൽ തിരിച്ചു വീട്ടിലേക്കും. ഉച്ചക്ക് വീട്ടിലെയോ അച്ഛന്റെ വീട്ടിലെയോ വേലക്കാരിൽ ഒരാൾ ഉച്ചഭക്ഷണം കൊണ്ടു സ്കൂളിലെത്തും. കുഞ്ചിയമ്മയായിരിക്കും മിക്കവാറും വരിക.</p>
+
+    <p>അങ്ങിനെ ഒരുദിവസം കുഞ്ചിയമ്മ ആയിരുന്നു എന്നെയും കൊണ്ട് സ്കൂളിൽ നിന്നും ധൃതിയിൽ അച്ഛന്റെ മരണ വിവരം അറിയിക്കാതെ ശങ്കരംപൊന്നത്ത് എത്തിച്ചത്. അന്ന് ബോധം കെട്ടു വീണ അച്ഛമ്മ കുറെ ദിവസം കിടന്നാണ് എണീറ്റത്.</p>
+
+    <p>അച്ഛന്റെ മരണശേഷം വലിയമ്മാവനായിരുന്നു ഞങ്ങളുടെ വിദ്യാഭ്യാസ കാര്യങ്ങൾ എല്ലാം നോക്കി നടത്തിയിരുന്നത്. വല്യമ്മാവന്റെ മകൾ അനിയത്തിച്ചേച്ചി (പാറുകുട്ടി ടീച്ചർ) ആയിരുന്നു എന്നെ നയിച്ചിരുന്നത്. ഗോപച്ചേട്ടനെ ആമ്പല്ലൂർ ഞങ്ങളുടെ ഒരു ബന്ധുവായ ഗോപലേട്ടന്റെ വീട്ടിൽ നിർത്തിയാണ് വലിയമ്മാവൻ പഠിപ്പിച്ചിരുന്നത്. ഞാനും ചന്ദ്രേട്ടനും ചിയ്യാരത്തും. ചന്ദ്രേട്ടന് കോളേജിൽ പോകാൻ അച്ഛൻ സൈക്കിൾ വാങ്ങികൊടുത്തിരുന്നു. ചന്ദ്രേട്ടൻ പഠനം കഴിഞ്ഞു ഉദ്യോഗാർത്ഥം ഡൽഹിയിലേക്ക് വണ്ടി കയറിയപ്പോൾ സൈക്കിൾ എനിക്ക് സ്വന്തമായി.</p>
+
+    <p>എന്റെ പത്താംക്ലാസ് എത്തിയപ്പോഴേക്കും വലിയമ്മാവൻ വിട പറഞ്ഞു പോയി. പിന്നെ ചന്ദ്രേട്ടൻ തന്നെ ആയിരുന്നു ഞങ്ങളുടെ രക്ഷാകർത്താവും മാർഗദർശിയും. ചന്ദ്രേട്ടന് അന്ന് ഡൽഹിയിൽ 50 രൂപ ശമ്പളത്തിൽ 'മർഫി' (Murphy) റേഡിയോവിൽ ജോലി കിട്ടിയിരുന്നു. 30 രൂപ ചന്ദ്രേട്ടൻ എല്ലാ മാസവും അമ്മക്ക് അയച്ചുകൊടുക്കും. അതിൽ നിന്നെടുത്താണ് അമ്മ സ്വന്തം ചിലവും ഞങ്ങൾ രണ്ടുപേരുടെ ചിലവുകളും വഹിച്ചിരുന്നത്. ഭക്ഷണത്തിനു തീരെ ബുദ്ധിമുട്ടില്ലായിരുന്നു തറവാട്ടിൽ കൃഷിയും മറ്റും ഉണ്ടായിരുന്നത് കൊണ്ട്. കൂട്ടുകുടുംബത്തിൽ ആയിരുന്നു ഞങ്ങൾ ജനിച്ചു ജീവിച്ചു വന്നത്. പണത്തിന്റെ യാതൊരു ആവശ്യവും ഞങ്ങൾക്ക് ഒരിക്കലും അനുഭവപ്പെട്ടില്ല. പണം കൈകാര്യം ചെയ്യുക മുതിർന്നവർ മാത്രം. ആ കാലത്തൊക്കെ കുടുംബങ്ങൾ തമ്മിൽ തമ്മിൽ കൂടുതലും barter system (കൊടുക്കൽ വാങ്ങൽ) നിലനിന്നിരുന്നു എന്നെനിക്കു പിൽകാലത്ത് ബോധ്യം വന്നിട്ടുണ്ട്. കൂടുതലും കൃഷിക്കാരായത് കൊണ്ടാകാം. അരിയും നെല്ലും സമൃദ്ധിയായി ഉണ്ടായിരുന്നു. അവകൾ കൈമാറ്റം ചെയ്തു അവശ്യ സാധനങ്ങൾ വാങ്ങും. അതായിരുന്നു barter രീതികൾ.</p>
+
+    <p>വീടുകൾ തമ്മിൽ നല്ല അടുപ്പത്തിൽ ആയിരുന്നു. അന്നോന്യം സുഹൃത്ത് ബന്ധങ്ങൾ വിടർന്നു വികസിക്കാൻ ഇതൊക്കെ കാരണമായിട്ടുണ്ട് എന്നെനിക്കു തോന്നിയിട്ടുണ്ട്. സഹായ സഹകരണങ്ങൾ വേണ്ടുവോളം ലഭിച്ചിരുന്നു. സ്പർദ്ധയും വിദ്വേഷവും വെറുപ്പും തീരെ ഉണ്ടായിരുന്നില്ല. മഹാബലിയുടെ കാലത്തെ സത്യവും നീതിയും അന്നും നിലനിന്നിരുന്നു. കള്ളപ്പണവും കള്ളപ്പറയും കളവു പറച്ചിലും തീരെ കുറവായിരുന്നു. സ്നേഹവും സഹോദര്യവും പരസ്പര വിശ്വാസവും അർപ്പണ ബോധവും ബഹുമാനവും ഉണ്ടായിരുന്നു. ദൈവഭയം ഒഴിച്ച് കൂടാത്ത ഒന്നായിരുന്നു. ഈശ്വരനെ മറന്നു ആരും ഒന്നും ചെയ്യാൻ ധൈര്യപ്പെട്ടിരുന്നില്ല. അമ്മയെ മറന്നു, അമ്മയെ ബഹുമാനിക്കാതെ, അവരുടെ അഭിപ്രായം ആരായാതെ ആരും തീരുമാനങ്ങൾ എടുത്തിരുന്നില്ല.</p>
+
+    <p>മരുമക്കത്തായ കൂട്ടുകുടുംബ വ്യവസ്ഥിതിയിൽ വല്യമ്മാവനായിരുന്നു തറവാട്ടിൽ കാരണവർ. എല്ലാ തീരുമാനങ്ങളും വല്യമ്മാവന്റേത് മാത്രമായിരുന്നു. തീരുമാനം മുത്തശ്ശിയെ കൂടി ആദ്യം അറിയിച്ച ശേഷമേ നടപ്പിലാക്കൂ എന്ന് വല്യമ്മാവന് നിർബന്ധം ഉണ്ടായിരുന്നു. മുത്തശ്ശി ഒട്ടും എതിർക്കില്ലായിരുന്നു. മകന്റെ തീരുമാനങ്ങൾക്ക് ഒപ്പം നിൽക്കാനായിരുന്നു അവർക്കിഷ്ടം.</p>
+
+    <p>മരുമക്കത്തായ വ്യവസ്ഥിതിയിൽ തറവാട്ടിലെ സ്ത്രീകൾക്കോ അവരുടെ ഭർത്താക്കന്മാർക്കോ സ്ഥാനം ഉണ്ടായിരുന്നില്ല. അവരെ വെറും സംബന്ധക്കാർ ആയി മാത്രമേ വിലകൽപ്പിച്ചിരുന്നുള്ളൂ. എങ്കിലും ഞങ്ങളുടെ തറവാട്ടിൽ അവരോടു വല്യമ്മാവൻ ചില പ്രത്യേകം അവസരങ്ങളിൽ അഭിപ്രായം ആരാഞ്ഞിരുന്നു. എംടീയുടെ "മുറപ്പെണ്ണ്" (1975) എന്ന മലയാളം സിനിമ ഇത്തരുണത്തിൽ ഓർക്കുന്നതിൽ തെറ്റില്ല എന്ന് പറയാം.</p>
+
+    <p>'കാലം പോയി കോലവും തിരിഞ്ഞു' എന്ന് പറഞ്ഞപോലെ പിൽകാലത്ത് മരുമക്കത്തായം പോയ്പ്പോയി മക്കത്തായ സമ്പ്രദായം നിലവിൽ വന്നു. 1957 ലോ മറ്റോ ആണെന്ന് തോന്നുന്നു ഇതിനു തുടക്കമായത്. ആദ്യത്തെ കമ്മ്യൂണിസ്റ്റ് മന്ത്രിസഭ കേരളത്തിൽ നിലവിൽ വന്നപ്പോഴാണത്. മക്കത്തായ സമ്പ്രദായത്തിൽ അച്ഛനും അമ്മയും മക്കളും അടങ്ങുന്ന ഇടത്തരം 'ന്യൂക്ലീയർ ഫാമിലി സെറ്റപ്പുകൾ' കൂട്ടുകുടുംബങ്ങൾക്ക് പകരം കേരളത്തിൽ അങ്ങോളമിങ്ങോളം പിന്നീട് നിലനിന്ന് പോന്നു. അങ്ങിനെ പുതിയ ഒരു സാമൂഹ്യ വ്യവസ്ഥിതിക്ക് കേരളം തുടക്കം കുറിച്ചു.</p>
+  </div>
+
+  <div class="story-text english" id="text-en">
+    <p style="font-family:'Space Mono', monospace; font-size:0.72rem; text-transform:uppercase; letter-spacing:0.05em; color:var(--brass-light); opacity:0.85;">AI-generated translation — a rough guide only, not a faithful rendering of the original</p>
+
+    <p>I can say my childhood was spent almost entirely in Chiyyaram itself. We lived mostly between the Kalapurakkal tharavad and Sankarapponath, my father's house. On some nights we would sleep right there at Sankarapponath, falling asleep listening to Grandmother's stories. We loved those occasions dearly. Through Grandmother's Puranic tales and her stories suited to the moment, I've come to realize that all three of us gained real insight into many things, even very early in childhood. The story behind the Malayalam film "1921" may well have been one result of that same insight. Grandmother's knowledge must have seeped into our minds, little by little, back then — and settled in firmly, like something set in plaster. Whatever the case, it has certainly been of great use to us in the life we've lived since.</p>
+
+    <p>What children lose in today's new age is exactly that — that same insight. The culture and disciplined ways of living that the older generation built up over time are no longer being passed down to them. And they never will be now, because that generation has returned to the earth. Valuable knowledge that the new generation has lost, and can never reclaim, lies buried along with them. It is that very loss which today's generation comes to understand — reluctantly, even if not consciously. The cracks in their family lives remain with them as feelings of loss and regret, right to the end. They may never concede this in argument, but the truth remains the truth regardless. The discord within family life — an uncompromising attitude toward gender equality — leads them toward ruin. Family bonds break down. Divorces increase. They show no interest in bearing and raising children according to the laws of nature. They do not recognize the need for generations to continue. Freedom alone is what matters most to them.</p>
+
+    <p>Another group turns against marriage itself, and yet still sets out to live together as man and woman without marrying (co-habitation). They give no weight at all to social norms or to the laws that nature dictates. In the end, society casts them out too. After living unsupported for some years, sense returns to them — but by then, much time has already passed, and the vigor and passion of youth will have drained away. Depression and other afflictions will have been eating away at both their health and their minds.</p>
+
+    <p>Such new-age families are countless today. The number of people going in and out of court with divorce cases grows larger by the day. Their hopes and their needs stretch on and on, like a mirage.</p>
+
+    <p>Our childhood and school years in Chiyyaram were full of happiness. Health-wise, my eldest brother Chandrachettan and I got through without any major troubles. But Gopachettan suffered from health problems again and again. A lump appeared on his neck, and when it was operated on, it became a serious problem. He spent months in pain and crying out. Even going to school stopped for a while. The family physician, and later an allopathic doctor, struggled hard with his treatment, poor thing. I was the one who spent the most time with him then, helping out.</p>
+
+    <p>Before long, father too took to bed, took permanent leave, and stayed on at Sankarapponath itself. He stopped going to the office entirely. Doctors would come to the house. Father's regular doctors were the senior physician Dr. Krishna Iyer and assistant Dr. David, at Thrissur Poly Clinic. It was the same Dr. Krishna Iyer who also treated the elder uncle, who suffered badly from asthma. Krishna Iyer would often come and go from Ooliyampurath. He would arrive in a large Buick car, dressed in a coat and suit. The Buick would come squeezing tightly through the narrow lane leading to Ooliyampurath.</p>
+
+    <p>Time passed on like this. When I was twelve years old, my beloved father passed away, plunging us into grief. I was studying in the 7th standard at Kurkkancherry JPE High School when father died. My memory is that father was 57 or 58 when he died. After seeing me off to school that morning, father departed this earthly life around 11 o'clock. Father's sudden death was a blow we could not bear.</p>
+
+    <p>It was the same year Gopachettan had joined Ambalur Alagappa Polytechnic (later renamed, now called Thyagaraja) for civil engineering, that father died. That was also the very year Chandrachettan finished his pre-university at Thrissur St. Thomas College and was starting his degree.</p>
+
+    <p>I would walk to Kurkkancherry school. The journey was made together with friends and classmates along the Alumvettu path. Besides them, the elder uncle's daughter Aniyathichechi, and his other daughter Sulochana, and relatives Krishnan and his elder sisters Vishalam and Vava — all of us would go to school together. It took walking more than about two kilometers from the house to reach school. In the evening, school let out at four, and it was the same walk back home. At noon, one of the household staff — from either house — would bring lunch to the school. It was usually Kunjiyamma who came.</p>
+
+    <p>And so it was, one day, that it was Kunjiyamma who hurried me away from school and brought me to Sankarapponath, without telling me of father's death. That day, Grandmother collapsed and lost consciousness, and lay unable to get up for several days after.</p>
+
+    <p>After father's death, it was the elder uncle who took charge of all our educational matters. The elder uncle's daughter Aniyathichechi (Parukutty Teacher) was the one who guided me. Gopachettan was put up at the house of a relative of ours, Gopalettan, in Ambalur, where the elder uncle had him study. Chandrettan and I stayed on in Chiyyaram. Father had bought Chandrettan a bicycle for going to college. When Chandrettan finished his studies and set off for Delhi in search of work, the bicycle became mine.</p>
+
+    <p>By the time I reached the 10th class, the elder uncle too had bid us farewell and passed on. After that, it was Chandrettan himself who became our guardian and guide. Chandrettan had, by then, gotten a job in Delhi with the "Murphy" radio company, on a salary of 50 rupees. Every month, Chandrettan would send 30 rupees home to mother. It was from that money that mother covered her own expenses and the expenses of the two of us. There was never much trouble over food, since the tharavad had its own farming and produce. We were born and raised in a joint family. We never once felt any real need for money — handling money was something only the elders did. I've come to understand, later in life, that in those days families largely relied on a barter system among themselves. This was probably because most were farmers. Rice and paddy were abundant. They would exchange these for whatever essential goods were needed. That was how the barter system worked.</p>
+
+    <p>Households were closely bound to one another. I've come to feel that this is what allowed friendships between families to blossom and grow. There was help and cooperation in as much measure as was ever needed. There was hardly any rivalry, hatred, or ill will at all. The truth and justice of Mahabali's era still held then. False money, false measures, and lying were all quite rare. There was love, brotherhood, mutual trust, a sense of devotion, and respect. Fear of God was something no one went without. No one dared do anything while forgetting the Almighty. And no one ever made decisions while forgetting their mother, disrespecting her, or without seeking her opinion.</p>
+
+    <p>Under the marumakkathayam joint-family system, it was the elder uncle who was the karanavar — the head of the tharavad. Every decision belonged to the elder uncle alone. And yet the elder uncle insisted that no decision be carried out until Great-grandmother had first been informed of it. Great-grandmother herself would never object at all — she preferred simply to stand behind her son's decisions.</p>
+
+    <p>Under the marumakkathayam system, the women of the tharavad, and their husbands, held no real standing. They were regarded merely as "sambandhakkar" — spousal connections, nothing more. And yet, in our own tharavad, the elder uncle did, on certain particular occasions, ask for their opinion. It wouldn't be wrong, in this context, to recall M.T.'s Malayalam film "Murappennu" (1975).</p>
+
+    <p>As the saying goes, "time passed, and with it the old order turned." In time, marumakkathayam gave way, and the makkathayam system came into practice. This began, I believe, around 1957 or thereabouts — around when the first Communist ministry came to power in Kerala. Under the makkathayam system, modest nuclear family setups — father, mother, and children — came to stand in place of joint families, and persisted across Kerala from then on. And so Kerala set out on the beginning of a new social order.</p>
+  </div>
+
+  <p class="footnote">
+    Kerala's shift away from <a href="https://en.wikipedia.org/wiki/Marumakkathayam" target="_blank" rel="noopener">marumakkathayam</a> (matrilineal inheritance) did trace back to reforms beginning under the <a href="https://en.wikipedia.org/wiki/First_E._M._S._Namboodiripad_ministry" target="_blank" rel="noopener">first Communist ministry of 1957</a>, though the system was formally abolished later, by the Kerala Joint Family System (Abolition) Act of 1975. The film <em><a href="https://en.wikipedia.org/wiki/Murappennu" target="_blank" rel="noopener">Murappennu</a></em>, M.T. Vasudevan Nair's debut as a screenwriter, was released in 1965.
+  </p>
+
+  <div class="attribution">
+    Recorded as part of the Korappath family archive. If you remember more of this story, or a different version of it, <a href="../index.html#contribute" style="color:var(--brass-light);">let us know</a>.
+  </div>
+
+  <div class="chapter-nav" id="chapter-nav"></div>
+
+  <section class="comments-section">
+    <h2>Comments</h2>
+    <div id="comments-list"><p class="comment-empty">Loading comments…</p></div>
+
+    <form id="comment-form" action="https://formspree.io/f/xqerojyy" method="POST">
+      <input type="hidden" name="_subject" value="New comment on: Chiyyaram, My Birthplace">
+      <input type="hidden" name="story_id" value="chiyyaram-birthplace">
+      <input type="hidden" name="story_title" value="Chiyyaram, My Birthplace">
+      <input type="hidden" id="date-submitted" name="date_submitted">
+
+      <label>
+        Your name
+        <input type="text" name="name" required>
+      </label>
+
+      <label>
+        Your comment
+        <textarea name="comment" rows="4" required placeholder="Share a memory, a correction, or your own version of this story..."></textarea>
+      </label>
+
+      <button type="submit" class="btn-comment">Post comment</button>
+    </form>
+    <p class="comment-note">Comments are reviewed before they appear publicly.</p>
+  </section>
+</main>
+
+<footer>An ongoing family archive — Korappath, Chiyyaram, Thrissur</footer>
+
+<script>
+let prevChapterData = null;
+let nextChapterData = null;
+
+function stripChapterSuffix(title){
+  return (title || '').replace(/\s*\(Chapter\s*\d+\)\s*$/i, '');
+}
+
+function renderChapterNav(){
+  const bareUrl = s => s.storyUrl.replace('stories/', '');
+  const label = currentLang === 'ml' ? 'അധ്യായം' : 'Chapter';
+  const getTitle = s => currentLang === 'ml' ? s.titleMl : stripChapterSuffix(s.titleEn);
+  document.getElementById('chapter-nav').innerHTML = `
+    ${prevChapterData ? `<a class="prev" href="${bareUrl(prevChapterData)}"><span class="nav-label">← ${label} ${prevChapterData.chapterNumber}</span>${getTitle(prevChapterData)}</a>` : '<span></span>'}
+    ${nextChapterData ? `<a class="next" href="${bareUrl(nextChapterData)}"><span class="nav-label">${label} ${nextChapterData.chapterNumber} →</span>${getTitle(nextChapterData)}</a>` : '<span></span>'}
+  `;
+}
+let currentLang = 'ml';
+function showLang(lang){
+  currentLang = lang;
+  document.getElementById('text-ml').classList.toggle('active', lang === 'ml');
+  document.getElementById('text-en').classList.toggle('active', lang === 'en');
+  document.getElementById('btn-ml').classList.toggle('active', lang === 'ml');
+  document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+  renderChapterNav();
+}
+
+document.getElementById('date-submitted').value = new Date().toISOString().slice(0, 10);
+
+fetch('../stories.json')
+  .then(r => r.json())
+  .then(stories => {
+    const mine = stories.find(s => s.id === 'chiyyaram-birthplace');
+
+    const myChapter = mine ? mine.chapterNumber : null;
+    const isPublished = s => !s.dateAdded || new Date(s.dateAdded) <= new Date();
+    prevChapterData = stories.find(s => s.chapterNumber === myChapter - 1 && isPublished(s));
+    nextChapterData = stories.find(s => s.chapterNumber === myChapter + 1 && isPublished(s));
+    renderChapterNav();
+
+    const list = document.getElementById('comments-list');
+    const comments = mine && Array.isArray(mine.comments) ? mine.comments : [];
+    if(comments.length === 0){
+      list.innerHTML = '<p class="comment-empty">No comments yet — be the first to share a memory.</p>';
+      return;
+    }
+    list.innerHTML = comments.map(c => {
+      const dateStr = c.date ? new Date(c.date).toLocaleDateString('en-US', { month:'short', day:'numeric', year:'numeric' }) : '';
+      return `<div class="comment-card">
+        <div class="comment-meta">${escapeHtml(c.name)}${dateStr ? ' · ' + dateStr : ''}</div>
+        <p>${escapeHtml(c.text)}</p>
+      </div>`;
+    }).join('');
+  })
+  .catch(() => {
+    document.getElementById('comments-list').innerHTML = '<p class="comment-empty">Could not load comments right now.</p>';
+  });
+
+function escapeHtml(str){
+  if(!str) return '';
+  return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+}
+</script>
+
+</body>
+</html>

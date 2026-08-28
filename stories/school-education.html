@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>എന്റെ സ്കൂൾ വിദ്യാഭ്യാസം — Korappath</title>
+<meta name="description" content="Sudhakara Menon on St. Mary's Primary School, JPE High School under his cousin Aniyathichechi, and the family's school and college years in Thrissur.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,500;9..144,600&family=Noto+Serif+Malayalam:wght@400;600&family=Work+Sans:wght@300;400;500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --oxide-dark:#3E1810; --oxide:#6B2A1E; --oxide-light:#8C3E2C;
+    --brass:#C6952F; --brass-light:#E8C776;
+    --ivory:#F1E9D6; --ivory-dim:#D8CBAE; --teak:#2B1D14;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{ background:var(--oxide-dark); color:var(--ivory); font-family:'Work Sans', sans-serif; font-weight:300; line-height:1.7; }
+  h1,h2{ font-family:'Fraunces', serif; font-weight:500; }
+  .eyebrow{ font-family:'Space Mono', monospace; font-size:0.7rem; letter-spacing:0.15em; text-transform:uppercase; color:var(--brass-light); opacity:0.85; }
+  .topbar{ display:flex; justify-content:space-between; align-items:center; padding:1.5rem clamp(1.5rem, 5vw, 4rem); border-bottom:1px solid rgba(198,149,47,0.25); }
+  .wordmark{ font-family:'Fraunces', serif; font-size:1.15rem; }
+  .wordmark span{ color:var(--brass-light); }
+  .topbar a.back{ font-family:'Space Mono', monospace; font-size:0.72rem; letter-spacing:0.08em; text-transform:uppercase; color:var(--ivory); text-decoration:none; opacity:0.8; }
+  .topbar a.back:hover{ opacity:1; }
+
+  main{ max-width:720px; margin:0 auto; padding:3.5rem 1.5rem 4rem; }
+
+  .byline{ margin-bottom:1.6rem; }
+  .byline h1{ font-size:clamp(1.8rem, 4vw, 2.4rem); margin:0.6rem 0 0.3rem; line-height:1.2; }
+  .byline h1.malayalam-title{ font-family:'Noto Serif Malayalam', serif; }
+  .byline .subtitle{ color:var(--ivory-dim); font-size:1rem; font-style:italic; margin-bottom:0.6rem; }
+  .byline .meta{ font-family:'Space Mono', monospace; font-size:0.78rem; color:var(--brass-light); }
+
+  /* Language toggle */
+  .lang-toggle{
+    display:flex; gap:0.5rem;
+    margin:1.8rem 0 2.2rem;
+  }
+  .lang-toggle button{
+    font-family:'Space Mono', monospace;
+    font-size:0.75rem;
+    letter-spacing:0.05em;
+    text-transform:uppercase;
+    padding:0.6rem 1.2rem;
+    border-radius:2px;
+    border:1px solid var(--brass);
+    background:none;
+    color:var(--ivory);
+    cursor:pointer;
+    transition:background 0.2s ease, color 0.2s ease;
+  }
+  .lang-toggle button.active{
+    background:var(--brass);
+    color:var(--teak);
+  }
+  .lang-toggle button:not(.active):hover{
+    background:rgba(198,149,47,0.15);
+  }
+
+  .story-text{ display:none; }
+  .story-text.active{ display:block; }
+  .story-text.malayalam{
+    font-family:'Noto Serif Malayalam', serif;
+    font-size:1.15rem;
+    line-height:2;
+  }
+  .story-text.english{
+    font-family:'Fraunces', serif;
+    font-size:1.08rem;
+    line-height:1.85;
+    color:var(--ivory-dim);
+  }
+  .story-text p{ margin-bottom:1.3rem; }
+
+  .attribution{
+    margin-top:3rem;
+    padding-top:1.5rem;
+    border-top:1px solid rgba(198,149,47,0.2);
+    font-family:'Space Mono', monospace;
+    font-size:0.78rem;
+    color:var(--brass-light);
+    opacity:0.85;
+  }
+  .footnote{
+    margin-top:1.8rem;
+    font-family:'Work Sans', sans-serif;
+    font-size:0.85rem;
+    color:var(--ivory-dim);
+    line-height:1.6;
+  }
+  .footnote a{ color:var(--brass-light); text-decoration:underline; }
+  .chapter-nav{
+    display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:1rem;
+    margin-top:2.5rem; padding-top:1.5rem;
+    border-top:1px solid rgba(198,149,47,0.2);
+  }
+  .chapter-nav a{
+    max-width:46%;
+    color:var(--brass-light);
+    text-decoration:none;
+    font-size:0.9rem;
+  }
+  .chapter-nav a:hover{ text-decoration:underline; }
+  .chapter-nav a.next{ text-align:right; margin-left:auto; }
+  .chapter-nav .nav-label{
+    display:block;
+    font-family:'Space Mono', monospace;
+    font-size:0.68rem;
+    letter-spacing:0.05em;
+    text-transform:uppercase;
+    opacity:0.75;
+    margin-bottom:0.2rem;
+  }
+
+  footer{ text-align:center; padding:2.5rem 1.5rem; color:var(--ivory-dim); font-size:0.82rem; }
+
+  /* ---------- Comments ---------- */
+  .comments-section{ margin-top:3rem; }
+  .comments-section h2{ font-size:1.3rem; margin-bottom:1.2rem; }
+  .comment-empty{ color:var(--ivory-dim); font-size:0.9rem; }
+  .comment-card{
+    background:rgba(198,149,47,0.06);
+    border:1px solid rgba(198,149,47,0.2);
+    border-radius:4px;
+    padding:1rem 1.2rem;
+    margin-bottom:0.8rem;
+  }
+  .comment-card .comment-meta{
+    font-family:'Space Mono', monospace;
+    font-size:0.7rem;
+    letter-spacing:0.04em;
+    text-transform:uppercase;
+    color:var(--brass-light);
+    margin-bottom:0.4rem;
+  }
+  .comment-card p{ font-size:0.92rem; color:var(--ivory-dim); }
+
+  #comment-form{ margin-top:1.6rem; max-width:520px; }
+  #comment-form label{
+    display:block;
+    font-family:'Space Mono', monospace;
+    font-size:0.72rem;
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+    color:var(--brass-light);
+    opacity:0.9;
+    margin-bottom:1rem;
+  }
+  #comment-form input[type="text"],
+  #comment-form textarea{
+    display:block; width:100%; margin-top:0.4rem;
+    padding:0.6rem 0.75rem;
+    font-family:'Work Sans', sans-serif; font-size:0.92rem;
+    color:var(--teak); background:var(--ivory);
+    border:1px solid rgba(43,29,20,0.2); border-radius:3px;
+  }
+  #comment-form textarea{ resize:vertical; }
+  .btn-comment{
+    font-family:'Space Mono', monospace;
+    font-size:0.75rem; letter-spacing:0.06em; text-transform:uppercase;
+    padding:0.7rem 1.4rem; border-radius:2px; border:none; cursor:pointer;
+    background:var(--brass); color:var(--teak);
+  }
+  .btn-comment:hover{ background:var(--brass-light); }
+  .comment-note{ font-size:0.8rem; color:var(--ivory-dim); opacity:0.75; margin-top:0.8rem; }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="wordmark">Korappath<span>.</span></div>
+  <a href="index.html" class="back">← All stories</a>
+</div>
+
+<main>
+  <div class="byline">
+    <span class="eyebrow">A story from the family — circa 1960s</span>
+    <h1 class="malayalam-title">എന്റെ സ്കൂൾ വിദ്യാഭ്യാസം</h1>
+    <p class="subtitle">My school education</p>
+    <p class="meta">As told by Korappath Kalapurakal Sudhakara Menon · Recorded Aug 28, 2026</p>
+  </div>
+
+  <div class="lang-toggle">
+    <button id="btn-ml" class="active" onclick="showLang('ml')">മലയാളം</button>
+    <button id="btn-en" onclick="showLang('en')">English</button>
+  </div>
+
+  <div class="story-text malayalam active" id="text-ml">
+    <p>ഞാൻ പഠിച്ചിരുന്ന സെന്റ് മേരീസ്‌ പ്രൈമറി സ്കൂൾ തറവാടിന് ഒരു കിലോമീറ്റർ തെക്കു മാറി അതേ പേരിലുള്ള ചർച്ചിന് അനുബന്ധമായി നടത്തിയിരുന്ന ക്രിസ്ത്യൻ മിഷനറി സ്കൂൾ ആയിരുന്നു. കന്യാസ്ത്രീ കളായിരുന്നു (nuns) മുഴുവൻ അധ്യാപകരും. എനിക്ക് അഞ്ചു വയസുള്ളപ്പോൾ സ്കൂളിൽ ഒന്നാം ക്ലാസ്സിൽ ചേർത്തു. മിക്സഡ് ക്ലാസ്സുകൾ. പെൺകുട്ടികൾ ഒരുവശത്തും ആൺകുട്ടികൾ മറുവശത്തും ഇരിക്കും. കളിക്കുമ്പോൾ എല്ലാവരും ഒന്നിച്ചു തന്നെ ആയിരിക്കും. ഫിഫ്ത് സ്റ്റാൻഡേർഡ് വരെ മാത്രമേ അവിടെ ഉണ്ടായിരുന്നുള്ളൂ. എല്ലാവരും പ്രദേശികമായി താമസിക്കുന്നവരും കൂടുതലും ക്രിസ്ത്യാനി കുടുംബത്തിലെ കുട്ടികളുമാണ്. 10 മണിക്ക് ക്ലാസ്സ്‌ തുടങ്ങും മുൻപേ സ്കൂളിനോട് ചേർന്നുള്ള പള്ളിയിൽ പോയി പ്രാർത്ഥിക്കണം. ക്രിസ്ത്യാനികുട്ടികൾക്ക് അത് നിർബന്ധമാണ്. മറ്റുള്ളവർക്ക് താല്പര്യമുണ്ടെങ്കിൽ മാത്രം മതി. ഞങ്ങൾ പുറത്തു നിന്ന് പള്ളിക്ക് അകത്തേക്ക് ഒളിഞ്ഞു നോക്കുമ്പോൾ കൂട്ടുകാർ മുട്ടുകുത്തി പ്രാർത്ഥിക്കുന്നത് കാണാം. യേശു ദേവന്റെ ഒരു പൂർണകായ പ്രതിമ ആൾതാരയിൽ തെളിഞ്ഞു കാണാം. എന്റെ ക്ലാസ്സിലെ സുന്ദരി കുട്ടിയും സന്തത സാഹചാരിയും ആയിരുന്ന ആനിയുടെ പതിവ് പ്രാർത്ഥന അവിടെയായിരുന്നു. എന്നെയും അവൾ കൂടെ ചെല്ലാൻ നിർബന്ധിക്കുമായിരുന്നു എങ്കിലും ഞാൻ ആ സന്ദർഭങ്ങൾ പരമാവധി ഒഴിവാക്കുമായിരുന്നു. സ്നേഹപുരസ്സരം അവളെ വിലക്കുമായിരുന്നു. കാരണം എനിക്കറിയില്ലായിരുന്നു. ഒരിക്കൽ വീട്ടിൽ എല്ലാവരുമായി ഞാൻ ഇക്കാര്യം ചർച്ച ചെയ്തപ്പോൾ അവരും അത് വേണ്ട എന്ന് നിഷ്കർഷിച്ചു. കോരപ്പത്തു കളപ്പുരക്കൽ തറവാട് വളരെ പഴഞ്ചനും പരമ്പരാഗത ആചാരാനുഷ്ഠാനങ്ങളിൽ അടിയുറച്ചു പോകുന്നതും ( orthodox set up) ആയിരുന്നത് കൊണ്ടായിരിക്കാം എന്ന് ഇപ്പോൾ ഞാൻ മനസ്സിലാക്കുന്നു. ആനിക്കതു അന്ന് മനസ്സിലായിക്കാണുമോ എന്തോ. ഞാനൊട്ടു അറിയാൻ ശ്രമിച്ചതുമില്ല.</p>
+
+    <p>പ്രൈമറി സ്കൂൾ വിദ്യാഭ്യാസം കഴിഞ്ഞു ഞാൻ പിന്നീട് സെക്കന്ററി-ഹൈസ്കൂളിൽ ചെന്നെത്തിയത് കൂർക്കേഞ്ചേരി ജെപിഇ എച്. എസ്സിൽ ആയിരുന്നു. അന്നു ആ സ്കൂളിൽ ഹെഡ്മിസ്ട്രെസ്സും ബേസിക് ട്രെയിനിങ് അധ്യാപികയും വല്യമ്മാവന്റെ മകൾ പാറുക്കുട്ടി G.മേനോൻ എന്ന ഞങ്ങളുടെ പ്രിയപെട്ട അനിയത്തി ചേച്ചി ആയിരുന്നു. എന്റെ പഠനകാര്യങ്ങളിൽ അവർ പ്രത്യേകം നിഷ്ക്കർഷ എടുത്തിരുന്നു. വല്യമ്മാവന്റെ വീക്കിലി റിവ്യൂകളിൽ ഞങ്ങളുടെ വിദ്യാഭ്യാസ പുരോഗതിയും വിഷയമായിരുന്നു. അച്ഛന്റെ മരണശേഷം വല്യമ്മാവൻ ആയിരുന്നു ഞങ്ങളുടെ മൂവരുടെയും രക്ഷാ കർത്താവ്.</p>
+
+    <p>ചന്ദ്രചേട്ടനും ഗോപചേട്ടനും ഒല്ലൂർ ഹൈ സ്കൂളിലും ഞാൻ മാത്രം കൂർക്കഞ്ചേരി അച്ചന്റെ സ്കൂളിലും അഥവാ JPEHS.. ജോൺ പോൾ എലുവത്തിങ്കൽ ഹൈ സ്കൂൾ.. ആയിരുന്നു സ്കൂൾ വിദ്യാഭ്യാസം പൂർത്തിയാക്കിയത്. ചന്ദ്രേട്ടൻ ഒരു 'ഫുട്ബോൾ ഫ്രീക് ' ആയിരുന്നത് കൊണ്ടാകാം ഒല്ലൂർ ഹൈ സ്കൂളിൽ പോകാൻ നിമിത്തമായത്. ഒല്ലൂർ സ്കൂൾ മാനേജ്മെന്റ് ഫുട്ബാളിന് മുൻഗണന കൊടുത്തിരുന്നു ചന്ദ്രേട്ടൻ നന്നായി ഫുട്ബോൾ കളിക്കുമായിരുന്നു. ഒല്ലൂർ "അറോറ ഫുട്ബോൾ ക്ലബ് " പ്രസിദ്ധവും ആയിരുന്നു അക്കാലത്തു. ചെറിയമ്മയുടെ കുട്ടികൾ അമ്മിണിക്കുട്ടി, അപ്പൻ, ബേബി മൂവരും തൃശ്ശൂർ "വിവേകോദയം " ഹൈ സ്കൂളിലായിരുന്നു പഠിച്ചത്.</p>
+
+    <p>ചന്ദ്രേട്ടൻ സ്കൂൾ കഴിഞു തൃശ്ശൂർ സെന്റ് തോമസ് കോളേജിൽ ചേർന്നു. ഗോപച്ചേട്ടൻ അളഗപ്പ പോളിടെക്‌നികിൽ സിവിൽ ഡിപ്ലോമയ്ക്ക് ചേർന്ന് അമ്പല്ലൂർക്കു താമസം മാറി. എന്റെ സ്കൂൾ കഴിഞു ഞാനും സെന്റ് തോമസ് കോളേജിലാണ് പഠിത്തം തുടരുന്നത്.</p>
+  </div>
+
+  <div class="story-text english" id="text-en">
+    <p style="font-family:'Space Mono', monospace; font-size:0.72rem; text-transform:uppercase; letter-spacing:0.05em; color:var(--brass-light); opacity:0.85;">AI-generated translation — a rough guide only, not a faithful rendering of the original</p>
+    <p>The St. Mary's Primary School I attended was a Christian missionary school, run in connection with the church of the same name, about a kilometer south of the tharavad. All the teachers were nuns. I was admitted to first class there at age five. The classes were mixed — girls sat on one side and boys on the other, though everyone played together. The school only went up to the fifth standard. Everyone there lived locally, and most were children from Christian families. Before class began at 10 o'clock, everyone had to go pray at the church attached to the school. This was compulsory for the Christian children; for the rest of us, it was only if we wished to. When we peeked in from outside toward the inside of the church, we could see our friends kneeling in prayer. A full-length statue of Jesus stood visible on the altar. My classmate Annie — a pretty girl, and a constant companion of mine — had her usual place of prayer there. She would insist that I come along with her too, but I would avoid those occasions as much as I possibly could. I would gently, affectionately, hold her back from asking — though I didn't really know why myself. Once, when I discussed this at home with everyone, they too were firm that I shouldn't go. I understand now that this was probably because the Korappath Kalapurakkal tharavad was quite old-fashioned, deeply rooted in traditional customs and rituals — an orthodox set-up. Whether Annie understood that back then, I don't know — I never really tried to find out.</p>
+    <p>After finishing primary school, I went on to secondary and high school at Kurkkancherry JPE H.S. At that time, the headmistress and basic-training teacher at that school was our beloved Aniyathichechi — the elder uncle's daughter, Parukutty G. Menon. She took particular care over my studies. Our educational progress was also a topic in the elder uncle's weekly reviews. After father's death, the elder uncle was the guardian of all three of us.</p>
+    <p>Chandrachettan and Gopachettan both completed their schooling at Ollur High School, while I alone finished mine at Kurkkancherry — at "father's school," as it was known, or JPEHS: John Paul Eluvathinkal High School. It was probably because Chandrettan was a real "football freak" that he ended up going to Ollur High School — the school's management gave priority to football, and Chandrettan played it well. Ollur's "Aurora Football Club" was also well known in those days. Cheriyamma's three children — Amminikutty, Appan, and Baby — all studied at Thrissur's "Vivekodayam" High School.</p>
+    <p>After finishing school, Chandrettan joined St. Thomas College, Thrissur. Gopachettan enrolled in the Civil Diploma program at Alagappa Polytechnic and moved to live in Ambalur. Once my own schooling was done, I too continued my studies at St. Thomas College.</p>
+  </div>
+
+  <p class="footnote">
+    Ollur's Aurora Football Club, founded in 1947, is the second-oldest football club in the state of Kerala — behind only Ollur's own R.B. Ferguson Club (1899), the oldest football club in Kerala.
+  </p>
+
+  <div class="attribution">
+    Recorded as part of the Korappath family archive. If you remember more of this story, or a different version of it, <a href="../index.html#contribute" style="color:var(--brass-light);">let us know</a>.
+  </div>
+
+  <div class="chapter-nav" id="chapter-nav"></div>
+
+  <section class="comments-section">
+    <h2>Comments</h2>
+    <div id="comments-list"><p class="comment-empty">Loading comments…</p></div>
+
+    <form id="comment-form" action="https://formspree.io/f/xqerojyy" method="POST">
+      <input type="hidden" name="_subject" value="New comment on: My School Education">
+      <input type="hidden" name="story_id" value="school-education">
+      <input type="hidden" name="story_title" value="My School Education">
+      <input type="hidden" id="date-submitted" name="date_submitted">
+
+      <label>
+        Your name
+        <input type="text" name="name" required>
+      </label>
+
+      <label>
+        Your comment
+        <textarea name="comment" rows="4" required placeholder="Share a memory, a correction, or your own version of this story..."></textarea>
+      </label>
+
+      <button type="submit" class="btn-comment">Post comment</button>
+    </form>
+    <p class="comment-note">Comments are reviewed before they appear publicly.</p>
+  </section>
+</main>
+
+<footer>An ongoing family archive — Korappath, Chiyyaram, Thrissur</footer>
+
+<script>
+let prevChapterData = null;
+let nextChapterData = null;
+
+function stripChapterSuffix(title){
+  return (title || '').replace(/\s*\(Chapter\s*\d+\)\s*$/i, '');
+}
+
+function renderChapterNav(){
+  const bareUrl = s => s.storyUrl.replace('stories/', '');
+  const label = currentLang === 'ml' ? 'അധ്യായം' : 'Chapter';
+  const getTitle = s => currentLang === 'ml' ? s.titleMl : stripChapterSuffix(s.titleEn);
+  document.getElementById('chapter-nav').innerHTML = `
+    ${prevChapterData ? `<a class="prev" href="${bareUrl(prevChapterData)}"><span class="nav-label">← ${label} ${prevChapterData.chapterNumber}</span>${getTitle(prevChapterData)}</a>` : '<span></span>'}
+    ${nextChapterData ? `<a class="next" href="${bareUrl(nextChapterData)}"><span class="nav-label">${label} ${nextChapterData.chapterNumber} →</span>${getTitle(nextChapterData)}</a>` : '<span></span>'}
+  `;
+}
+let currentLang = 'ml';
+function showLang(lang){
+  currentLang = lang;
+  document.getElementById('text-ml').classList.toggle('active', lang === 'ml');
+  document.getElementById('text-en').classList.toggle('active', lang === 'en');
+  document.getElementById('btn-ml').classList.toggle('active', lang === 'ml');
+  document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+  renderChapterNav();
+}
+
+document.getElementById('date-submitted').value = new Date().toISOString().slice(0, 10);
+
+fetch('../stories.json')
+  .then(r => r.json())
+  .then(stories => {
+    const mine = stories.find(s => s.id === 'school-education');
+
+    const myChapter = mine ? mine.chapterNumber : null;
+    const isPublished = s => !s.dateAdded || new Date(s.dateAdded) <= new Date();
+    prevChapterData = stories.find(s => s.chapterNumber === myChapter - 1 && isPublished(s));
+    nextChapterData = stories.find(s => s.chapterNumber === myChapter + 1 && isPublished(s));
+    renderChapterNav();
+
+    const list = document.getElementById('comments-list');
+    const comments = mine && Array.isArray(mine.comments) ? mine.comments : [];
+    if(comments.length === 0){
+      list.innerHTML = '<p class="comment-empty">No comments yet — be the first to share a memory.</p>';
+      return;
+    }
+    list.innerHTML = comments.map(c => {
+      const dateStr = c.date ? new Date(c.date).toLocaleDateString('en-US', { month:'short', day:'numeric', year:'numeric' }) : '';
+      return `<div class="comment-card">
+        <div class="comment-meta">${escapeHtml(c.name)}${dateStr ? ' · ' + dateStr : ''}</div>
+        <p>${escapeHtml(c.text)}</p>
+      </div>`;
+    }).join('');
+  })
+  .catch(() => {
+    document.getElementById('comments-list').innerHTML = '<p class="comment-empty">Could not load comments right now.</p>';
+  });
+
+function escapeHtml(str){
+  if(!str) return '';
+  return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+}
+</script>
+
+</body>
+</html>

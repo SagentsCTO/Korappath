@@ -8,68 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,500;9..144,600&family=Noto+Serif+Malayalam:wght@400;600&family=Work+Sans:wght@300;400;500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
-<style>
-  :root{
-    --oxide-dark:#3E1810; --oxide:#6B2A1E; --oxide-light:#8C3E2C;
-    --brass:#C6952F; --brass-light:#E8C776;
-    --ivory:#F1E9D6; --ivory-dim:#D8CBAE; --teak:#2B1D14;
-  }
-  *{ box-sizing:border-box; margin:0; padding:0; }
-  body{ background:var(--oxide-dark); color:var(--ivory); font-family:'Work Sans', sans-serif; font-weight:300; line-height:1.6; min-height:100vh; }
-  .topbar{ display:flex; justify-content:space-between; align-items:center; padding:1.2rem clamp(1rem, 5vw, 4rem); border-bottom:1px solid rgba(198,149,47,0.25); }
-  .wordmark{ font-family:'Fraunces', serif; font-size:1.15rem; }
-  .wordmark span{ color:var(--brass-light); }
-  .topbar a.back{ font-family:'Space Mono', monospace; font-size:0.72rem; letter-spacing:0.08em; text-transform:uppercase; color:var(--ivory); text-decoration:none; opacity:0.8; }
-  .topbar a.back:hover{ opacity:1; }
-
-  main{ max-width:720px; margin:0 auto; padding:1.5rem 1rem 3rem; }
-  .eyebrow{ font-family:'Space Mono', monospace; font-size:0.7rem; letter-spacing:0.15em; text-transform:uppercase; color:var(--brass-light); opacity:0.85; }
-  h1{ font-family:'Fraunces', serif; font-weight:500; font-size:clamp(1.6rem, 5vw, 2.3rem); line-height:1.2; margin:0.4rem 0 0.3rem; }
-  .subtitle{ color:var(--ivory-dim); font-style:italic; }
-  .notice{ margin:1rem 0 0; padding:0.75rem 0.9rem; border-left:3px solid var(--brass); background:rgba(198,149,47,0.08); font-size:0.88rem; color:var(--ivory-dim); }
-  .notice a{ color:var(--brass-light); }
-
-  .controls{ display:flex; justify-content:space-between; align-items:center; gap:0.75rem; margin:1.4rem 0 0.8rem; flex-wrap:wrap; }
-  .lang-toggle{ display:flex; gap:0.5rem; }
-  .lang-toggle button, .nav button{
-    font-family:'Space Mono', monospace; font-size:0.75rem; letter-spacing:0.05em; text-transform:uppercase;
-    padding:0.55rem 1rem; border-radius:2px; border:1px solid var(--brass); background:none; color:var(--ivory); cursor:pointer;
-    transition:background 0.2s ease, color 0.2s ease;
-  }
-  .lang-toggle button.active{ background:var(--brass); color:var(--teak); }
-  .lang-toggle button:not(.active):hover, .nav button:not(:disabled):hover{ background:rgba(198,149,47,0.15); }
-  .counter{ font-family:'Space Mono', monospace; font-size:0.75rem; color:var(--brass-light); }
-
-  .stage{ position:relative; background:var(--oxide); border:1px solid rgba(198,149,47,0.35); border-radius:4px; overflow:hidden; touch-action:pan-y; user-select:none; }
-  .stage img{ display:block; width:100%; height:auto; transition:opacity 0.25s ease; }
-  .stage img.fading{ opacity:0; }
-  .tap{ position:absolute; top:0; bottom:0; width:35%; background:none; border:0; cursor:pointer; }
-  .tap.prev{ left:0; } .tap.next{ right:0; }
-  .tap:focus-visible{ outline:2px solid var(--brass-light); outline-offset:-4px; }
-
-  .text{ padding:1rem 0 0; min-height:4rem; }
-  .narrative:empty{ display:none; }
-  .narrative{ margin-bottom:0.9rem; }
-  .narrative .narration{ margin:0; }
-  .caption{ background:var(--ivory); color:var(--teak); padding:0.8rem 1rem; border-radius:2px; box-shadow:3px 3px 0 var(--brass); font-family:'Fraunces', serif; font-size:1.02rem; line-height:1.55; }
-  .caption.ml{ font-family:'Noto Serif Malayalam', serif; font-size:1rem; line-height:1.85; }
-  .caption-label{ display:block; font-family:'Space Mono', monospace; font-size:0.62rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--oxide-light); margin-bottom:0.3rem; }
-  .bubble{ position:relative; background:#fff; color:var(--teak); border-radius:18px; padding:0.6rem 1rem; margin:0 0 0.9rem 0.6rem; max-width:90%; font-family:'Work Sans', sans-serif; font-weight:400; font-size:1rem; width:fit-content; }
-  .bubble::before{ content:""; position:absolute; left:-8px; top:12px; border:8px solid transparent; border-right-color:#fff; border-left:0; }
-  .bubble .who{ display:block; font-family:'Space Mono', monospace; font-size:0.62rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--oxide-light); }
-  .bubble.aside{ font-style:italic; }
-  .narration{ color:var(--ivory-dim); font-style:italic; margin-bottom:0.9rem; }
-  .tbc{ font-family:'Fraunces', serif; font-size:1.1rem; color:var(--brass-light); margin-top:0.4rem; }
-  .tbc a{ color:var(--brass-light); }
-
-  .nav{ display:flex; justify-content:space-between; gap:0.75rem; margin-top:1rem; }
-  .nav button:disabled{ opacity:0.35; cursor:default; }
-  .dots{ display:flex; justify-content:center; gap:6px; margin-top:1rem; flex-wrap:wrap; }
-  .dots button{ width:10px; height:10px; border-radius:50%; border:1px solid var(--brass); background:none; cursor:pointer; padding:0; }
-  .dots button.on{ background:var(--brass); }
-
-  footer{ text-align:center; padding:2rem 1rem; font-size:0.8rem; color:var(--ivory-dim); border-top:1px solid rgba(198,149,47,0.2); }
-</style>
+<link rel="stylesheet" href="../viewer.css?v=1">
 </head>
 <body>
 
@@ -78,143 +17,53 @@
   <a class="back" href="../../stories/chiyyaram-childhood.html">← Read Chapter 1</a>
 </div>
 
-<main>
+<div class="intro">
   <p class="eyebrow">A comic for the grandchildren · Chapter 1</p>
   <h1>Back to Chiyyaram</h1>
   <p class="subtitle">Appu, Achu, their grandfather's handwritten pages, and a trip to the early 1950s.</p>
   <p class="notice">This is an <strong>adaptation for children</strong>, not the memoir itself. The captions are quoted word for word from the chapter. The speech bubbles, the time travel and the pictures (AI-generated illustrations) are imagined. <a href="../../stories/chiyyaram-childhood.html">Read the original chapter →</a></p>
+</div>
 
+<div class="comic-wrap">
   <div class="controls">
+    <button type="button" class="btn primary" id="start-btn">▶ Read panel by panel</button>
     <div class="lang-toggle" role="group" aria-label="Caption language">
       <button type="button" data-lang="ml">മലയാളം</button>
       <button type="button" data-lang="en" class="active">English</button>
     </div>
-    <span class="counter" id="counter" aria-live="polite"></span>
   </div>
+  <p class="hint">Tap any panel to zoom in, then swipe or use the arrows to follow the page.</p>
 
-  <div class="narrative" id="panel-caption"></div>
-
-  <div class="stage" id="stage">
-    <img id="panel-img" src="panels/panel-01.jpg" alt="">
-    <button class="tap prev" type="button" aria-label="Previous panel"></button>
-    <button class="tap next" type="button" aria-label="Next panel"></button>
+  <div class="comic-view" id="comic-view">
+    <div class="gbar top">
+      <div class="lang-toggle" role="group" aria-label="Caption language">
+        <button type="button" data-lang="ml">മല</button>
+        <button type="button" data-lang="en" class="active">EN</button>
+      </div>
+      <button type="button" class="btn" id="g-close">▦ Whole page</button>
+    </div>
+    <div class="comic-page" id="comic-page"></div>
+    <button type="button" class="tapzone prev" id="tz-prev" aria-label="Previous panel"></button>
+    <button type="button" class="tapzone next" id="tz-next" aria-label="Next panel"></button>
+    <div class="gread" id="g-read" hidden></div>
+    <div class="gbar bottom">
+      <button type="button" class="btn" id="g-prev">← Back</button>
+      <span class="counter" id="g-counter" aria-live="polite"></span>
+      <button type="button" class="btn" id="g-next">Next →</button>
+    </div>
   </div>
-
-  <div class="text" id="panel-text"></div>
-
-  <div class="nav">
-    <button type="button" id="prev-btn">← Back</button>
-    <button type="button" id="next-btn">Next →</button>
-  </div>
-  <div class="dots" id="dots" aria-label="Jump to panel"></div>
-</main>
+</div>
 
 <footer>An ongoing family archive · Korappath, Chiyyaram, Thrissur</footer>
 
-<script src="story.js"></script>
+<script src="story.js?v=2"></script>
 <script>
-var current = 0;
-var lang = 'en';
-try { if (localStorage.getItem('korappath-lang') === 'ml') lang = 'ml'; } catch (e) {}
-
-var img = document.getElementById('panel-img');
-var textEl = document.getElementById('panel-text');
-var captionEl = document.getElementById('panel-caption');
-var counter = document.getElementById('counter');
-var prevBtn = document.getElementById('prev-btn');
-var nextBtn = document.getElementById('next-btn');
-var dotsEl = document.getElementById('dots');
-
-function esc(s) { var d = document.createElement('div'); d.textContent = s; return d.innerHTML; }
-function src(i) { return 'panels/panel-' + (i < 9 ? '0' : '') + (i + 1) + '.jpg'; }
-
-PANELS.forEach(function (_, i) {
-  var b = document.createElement('button');
-  b.type = 'button';
-  b.setAttribute('aria-label', 'Panel ' + (i + 1));
-  b.addEventListener('click', function () { show(i); });
-  dotsEl.appendChild(b);
-});
-
-function renderText() {
-  var p = PANELS[current], top = '', html = '';
-  // Narrative (chapter captions + narration) sits ABOVE the picture; speech bubbles below.
-  if (p.ml || p.en) {
-    if (lang === 'ml') top += '<div class="caption ml" lang="ml">' + esc(p.ml) + '</div>';
-    else top += '<div class="caption"><span class="caption-label">From the chapter · AI-generated translation</span>' + esc(p.en) + '</div>';
-  }
-  if (p.narration) top += '<p class="narration">' + esc(p.narration) + '</p>';
-  captionEl.innerHTML = top;
-  (p.bubbles || []).forEach(function (b) {
-    html += '<div class="bubble' + (b[2] ? ' ' + b[2] : '') + '"><span class="who">' + esc(b[0]) + '</span>' + esc(b[1]) + '</div>';
-  });
-  if (p.end) html += '<p class="tbc">Next time: who was Appuman? <a href="../../stories/appuman-harvest.html">Read Chapter 2 →</a></p>';
-  textEl.innerHTML = html;
-}
-
-function show(i) {
-  if (i < 0 || i >= PANELS.length) return;
-  var changed = i !== current;
-  current = i;
-  if (changed) {
-    img.classList.add('fading');
-    setTimeout(function () { img.src = src(current); }, 150);
-  } else {
-    img.src = src(current);
-  }
-  img.alt = PANELS[current].alt;
-  counter.textContent = 'Panel ' + (current + 1) + ' of ' + PANELS.length;
-  prevBtn.disabled = current === 0;
-  nextBtn.disabled = current === PANELS.length - 1;
-  Array.prototype.forEach.call(dotsEl.children, function (d, k) { d.classList.toggle('on', k === current); });
-  renderText();
-  try { history.replaceState(null, '', '#' + (current + 1)); } catch (e) {}
-  // preload the next panel
-  if (current + 1 < PANELS.length) { var pre = new Image(); pre.src = src(current + 1); }
-}
-img.addEventListener('load', function () { img.classList.remove('fading'); });
-
-prevBtn.addEventListener('click', function () { show(current - 1); });
-nextBtn.addEventListener('click', function () { show(current + 1); });
-document.querySelector('.tap.prev').addEventListener('click', function () { show(current - 1); });
-document.querySelector('.tap.next').addEventListener('click', function () { show(current + 1); });
-document.addEventListener('keydown', function (e) {
-  if (e.key === 'ArrowRight') show(current + 1);
-  if (e.key === 'ArrowLeft') show(current - 1);
-});
-
-var startX = null;
-var stage = document.getElementById('stage');
-stage.addEventListener('touchstart', function (e) { startX = e.touches[0].clientX; }, { passive: true });
-stage.addEventListener('touchend', function (e) {
-  if (startX === null) return;
-  var dx = e.changedTouches[0].clientX - startX;
-  if (Math.abs(dx) > 40) show(current + (dx < 0 ? 1 : -1));
-  startX = null;
-});
-
-Array.prototype.forEach.call(document.querySelectorAll('.lang-toggle button'), function (b) {
-  b.addEventListener('click', function () {
-    lang = b.getAttribute('data-lang');
-    try { localStorage.setItem('korappath-lang', lang); } catch (e) {}
-    syncLangButtons();
-    renderText();
-  });
-});
-function syncLangButtons() {
-  Array.prototype.forEach.call(document.querySelectorAll('.lang-toggle button'), function (b) {
-    b.classList.toggle('active', b.getAttribute('data-lang') === lang);
-  });
-}
-
-function fromHash() {
-  var n = parseInt((location.hash || '').slice(1), 10);
-  return n >= 1 && n <= PANELS.length ? n - 1 : 0;
-}
-window.addEventListener('hashchange', function () { if (fromHash() !== current) show(fromHash()); });
-
-syncLangButtons();
-show(fromHash());
+var COMIC = {
+  next: 'Next time: who was Appuman?',
+  nextUrl: '../../stories/appuman-harvest.html',
+  nextLink: 'Read Chapter 2 →'
+};
 </script>
+<script src="../viewer.js?v=1"></script>
 </body>
 </html>

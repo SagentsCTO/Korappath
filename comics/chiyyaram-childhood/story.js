@@ -1,4 +1,5 @@
-// Shared by index.html (the comic viewer) and sheet.html (the one-page share image).
+// Shared by index.html (the comic reader, via ../viewer.js) and sheet.html (the one-page share image).
+// wide: true marks the 16:9 panels that span two columns on the page.
 // What the children call their grandfather. ⚠ Confirm with the family (Achachan / Appooppan / Muthachan…).
 var GRANDPA = 'Achachan';
 
@@ -13,10 +14,10 @@ var PANELS = [
     bubbles: [[APPU, 'This is ' + GRANDPA + "'s book. He's writing about when he was little."], [ACHU, 'Read it to me!']] },
   { alt: 'Golden ribbons of light rise from the pages and swirl around the amazed children.',
     bubbles: [[ACHU, APPU + '… the letters are flying!']] },
-  { alt: 'The two children on a ridge between misty paddy fields at sunrise, egrets nearby.',
+  { wide: true, alt: 'The two children on a ridge between misty paddy fields at sunrise, egrets nearby.',
     ml: 'ഞാൻ ജനിച്ചതും വളർന്നതും ചിയ്യാരം എന്നൊരു കുഗ്രാമത്തിലായിരുന്നു. കൊല്ലം 1945 സെപ്റ്റംബർ മാസം.',
     en: 'I was born and raised in a small village called Chiyyaram, in September of the year 1945.' },
-  { alt: 'A village boy in a mundu stops on the ridge, staring at the two children.',
+  { alt: 'A bare-chested village boy in half-trousers stops on the ridge, staring at the two children.',
     bubbles: [['Village boy', "Who are you? I've never seen you in Chiyyaram!"], [APPU + ' (whispering)', ACHU + '… I think that\'s ' + GRANDPA + '!', 'aside']] },
   { alt: 'The village boy leads the children up a path toward a large tiled-roof ancestral home.',
     ml: '…എന്റെ തറവാട് "കോരപ്പത്തു കളപ്പുരക്കൽ" ഞങ്ങളുടെ ഗ്രാമത്തിലും തൃശ്ശൂർ പരിസര പ്രദേശത്തും സാമാന്യം അറിയപ്പെട്ടിരുന്നതും…',
@@ -35,7 +36,7 @@ var PANELS = [
   { alt: 'The uncle in white, holding a black umbrella, walks out of the gate while the children watch.',
     ml: 'ചില ദിവസങ്ങളിൽ അവർക്കു വേണ്ടിയോ അന്യർക്കു വേണ്ടിയോ അമ്മാവൻ കോടതിയിൽ ഹാജരാകാറും ഉണ്ടായിരുന്നു. കോടതിയിലും വലിയ മതിപ്പുണ്ടായിരുന്നു അദ്ദേഹത്തിന്റെ ഇടപെടലുകൾക്ക്.',
     en: 'On some days, my uncle would even appear in court, whether on their behalf or on behalf of others. Even in court, his interventions were held in great regard.' },
-  { alt: 'The three children, seen from behind, look out over wide green paddy fields and coconut groves.',
+  { wide: true, alt: 'The three children, seen from behind, look out over wide green paddy fields and coconut groves.',
     ml: 'കുടുംബപരമായി ഞങ്ങൾക്ക് ധാരാളം വസ്തുവകകളും പാട്ടഭൂമികളും കൃഷിയിടങ്ങളും ചുറ്റിലും പരിസര പ്രദേശങ്ങളിലും ഉണ്ടായിരുന്നു.',
     en: 'As a family, we had a great deal of property, leased lands, and farmland in and around the surrounding areas.' },
   { alt: 'At sunset the light swirls again; the little sister gives the village boy a sweet as everyone waves goodbye.',

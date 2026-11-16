@@ -25,11 +25,15 @@
   .by{ text-align:right; font-size:13px; color:var(--ivory-dim); line-height:1.5; max-width:380px; }
   .by strong{ color:var(--ivory); font-weight:500; }
 
-  .grid{ display:grid; grid-template-columns:repeat(4, 1fr); gap:16px; align-items:stretch; }
-  .cell{ background:var(--oxide); border:1px solid rgba(198,149,47,0.35); border-radius:4px; overflow:hidden; }
+  /* Each cell: narrative on top, picture, speech below. Subgrid keeps every picture in a row level. */
+  .grid{ display:grid; grid-template-columns:repeat(4, 1fr); column-gap:16px; row-gap:0; }
+  .cell{ display:grid; grid-row:span 3; grid-template-rows:subgrid; margin-bottom:16px; background:var(--oxide); border:1px solid rgba(198,149,47,0.35); border-radius:4px; overflow:hidden; }
   .cell.wide{ grid-column:span 2; }
   .cell img{ display:block; width:100%; height:330px; object-fit:cover; }
-  .body{ padding:10px 12px 12px; }
+  .top{ padding:9px 12px 10px; align-self:end; }
+  .top .cap{ margin-bottom:0; }
+  .top .narr{ margin:6px 0 0; }
+  .body{ padding:10px 12px 8px; }
   .num{ font-family:'Space Mono', monospace; font-size:10px; letter-spacing:0.12em; color:var(--brass-light); margin-bottom:6px; }
   .cap{ background:var(--ivory); color:var(--teak); padding:7px 9px; border-radius:2px; box-shadow:2px 2px 0 var(--brass); font-family:'Fraunces', serif; font-size:13px; line-height:1.45; margin-bottom:8px; }
   .cap.ml{ font-family:'Noto Serif Malayalam', serif; font-size:12.5px; line-height:1.75; }
@@ -37,7 +41,7 @@
   .say b{ font-family:'Space Mono', monospace; font-weight:400; font-size:9.5px; letter-spacing:0.08em; text-transform:uppercase; color:var(--brass-light); display:block; }
   .narr{ font-style:italic; font-size:13px; color:var(--ivory-dim); margin-bottom:6px; }
 
-  .endcard{ grid-column:span 2; align-self:stretch; display:flex; flex-direction:column; justify-content:center; padding:28px; border:1px solid var(--brass); border-radius:4px; background:rgba(198,149,47,0.08); }
+  .endcard{ grid-column:span 2; grid-row:span 3; margin-bottom:16px; align-self:stretch; display:flex; flex-direction:column; justify-content:center; padding:28px; border:1px solid var(--brass); border-radius:4px; background:rgba(198,149,47,0.08); }
   .endcard .tbc{ font-family:'Fraunces', serif; font-size:28px; color:var(--brass-light); margin:6px 0 14px; }
   .endcard p{ font-size:14px; color:var(--ivory-dim); line-height:1.55; margin-bottom:10px; }
   .endcard .url{ font-family:'Space Mono', monospace; font-size:15px; color:var(--ivory); }
@@ -68,18 +72,20 @@ function esc(s) { var d = document.createElement('div'); d.textContent = s; retu
 
 var html = '';
 PANELS.forEach(function (p, i) {
-  var n = i + 1, body = '';
+  var n = i + 1, top = '', body = '';
+  // Narrative (chapter caption + narration) above the picture, speech below it (same as the reader).
   if (p.ml || p.en) {
-    body += lang === 'ml' ? '<div class="cap ml" lang="ml">' + esc(p.ml) + '</div>'
-                          : '<div class="cap">' + esc(p.en) + '</div>';
+    top += lang === 'ml' ? '<div class="cap ml" lang="ml">' + esc(p.ml) + '</div>'
+                         : '<div class="cap">' + esc(p.en) + '</div>';
   }
-  if (p.narration) body += '<div class="narr">' + esc(p.narration) + '</div>';
+  if (p.narration) top += '<div class="narr">' + esc(p.narration) + '</div>';
   (p.bubbles || []).forEach(function (b) {
     body += '<div class="say"><b>' + esc(b[0]) + '</b>' + esc(b[1]) + '</div>';
   });
   html += '<div class="cell' + (WIDE[n] ? ' wide' : '') + '">' +
+          '<div class="top"><div class="num">' + n + '</div>' + top + '</div>' +
           '<img src="panels/panel-' + (n < 10 ? '0' : '') + n + '.jpg" alt="' + esc(p.alt) + '">' +
-          '<div class="body"><div class="num">' + n + '</div>' + body + '</div></div>';
+          '<div class="body">' + body + '</div></div>';
 });
 html += '<div class="endcard"><div class="eyebrow">To be continued</div>' +
         '<div class="tbc">Next time: who was Appuman?</div>' +

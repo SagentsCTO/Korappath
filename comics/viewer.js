@@ -27,7 +27,8 @@
   function src(i) { return 'panels/panel-' + (i < 9 ? '0' : '') + (i + 1) + '.jpg' + (C.v ? '?v=' + encodeURIComponent(C.v) : ''); }
   function stops() { return cells.length; } // panels + the end card
 
-  function text(p) {
+  // The narrative (chapter caption + narration) goes ABOVE the picture; speech bubbles go below it.
+  function narrative(p) {
     var h = '';
     if (p.ml || p.en) {
       h += lang === 'ml'
@@ -35,18 +36,21 @@
         : '<div class="cap"><span class="lbl">From the chapter · AI-generated translation</span>' + esc(p.en) + '</div>';
     }
     if (p.narration) h += '<p class="narr">' + esc(p.narration) + '</p>';
-    (p.bubbles || []).forEach(function (b) {
-      h += '<div class="bub' + (b[2] ? ' ' + b[2] : '') + '"><span class="who">' + esc(b[0]) + '</span>' + esc(b[1]) + '</div>';
-    });
     return h;
+  }
+  function bubbles(p) {
+    return (p.bubbles || []).map(function (b) {
+      return '<div class="bub' + (b[2] ? ' ' + b[2] : '') + '"><span class="who">' + esc(b[0]) + '</span>' + esc(b[1]) + '</div>';
+    }).join('');
   }
 
   function build() {
     var h = '';
     P.forEach(function (p, i) {
       h += '<div class="cc' + (p.wide ? ' wide' : '') + '" data-i="' + i + '" tabindex="0" role="button" aria-label="Panel ' + (i + 1) + '">' +
+           '<div class="ct"><div class="cn">' + (i + 1) + '</div>' + narrative(p) + '</div>' +
            '<img src="' + src(i) + '" alt="' + esc(p.alt) + '" decoding="async">' +
-           '<div class="cb"><div class="cn">' + (i + 1) + '</div>' + text(p) + '</div></div>';
+           '<div class="cb">' + bubbles(p) + '</div></div>';
     });
     h += '<div class="cc end" data-i="' + P.length + '" tabindex="0" aria-label="To be continued">' +
          '<div class="eyebrow">To be continued</div><div class="tbc">' + esc(C.next) + '</div>' +
@@ -73,9 +77,10 @@
     var s = fit(el, vw, vh);
     // If this panel's text would come out too small (wide panels on a phone), zoom on the picture
     // alone and show the text full-size in a reading card under it.
-    var cb = el.querySelector('.cb'), img = el.querySelector('img');
-    if (cb && img && cb.textContent.trim().length > 3 && s * TEXT_PX < MIN_TEXT_PX) {
-      readCard.innerHTML = cb.innerHTML;
+    var p = P[cur], img = el.querySelector('img');
+    var words = p && (narrative(p) + bubbles(p));
+    if (words && img && s * TEXT_PX < MIN_TEXT_PX) {
+      readCard.innerHTML = words;
       readCard.hidden = false;
       vh -= readCard.offsetHeight;
       target = img;

@@ -105,6 +105,20 @@
     opacity:0.85;
   }
 
+  .comic-link{
+    display:flex; gap:1rem; align-items:center;
+    margin-top:2.5rem; padding:1rem;
+    border:1px solid var(--brass); border-radius:4px;
+    background:rgba(198,149,47,0.08);
+    color:var(--ivory); text-decoration:none;
+    transition:background 0.2s ease;
+  }
+  .comic-link:hover{ background:rgba(198,149,47,0.16); }
+  .comic-link img{ width:84px; height:105px; object-fit:cover; border-radius:2px; flex-shrink:0; }
+  .comic-link .comic-eyebrow{ font-family:'Space Mono', monospace; font-size:0.68rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--brass-light); }
+  .comic-link .comic-title{ font-family:'Fraunces', serif; font-size:1.15rem; display:block; margin:0.15rem 0; }
+  .comic-link .comic-sub{ font-size:0.88rem; color:var(--ivory-dim); }
+
   footer{ text-align:center; padding:2.5rem 1.5rem; color:var(--ivory-dim); font-size:0.82rem; }
 
   /* ---------- Comments ---------- */
@@ -188,6 +202,15 @@
     <p>I was born and raised in a small village called Chiyyaram, in September of the year 1945. Perhaps we lived and grew up with something of a feudal air about us, because my ancestral home, "Korappath Kalappurakkal," was reasonably well known in our village and the surrounding Thrissur area, and had traditionally been held in regard by the local community. My eldest uncle, Sri Korappath Kalappurakkal Govinda Menon, was a landlord, warm-hearted, and generous to others — respected and loved by the people of the village — and because of this, all of us held a certain standing in the village. The people of the village saw him as their refuge for their troubles and grievances; everyone in need turned to my uncle himself. Because he had, through his own experience, gained a good command of court matters and the legal systems prevailing in the region at the time, people in need would come to him on most days seeking resolutions. Without accepting any payment at all, he carried out every resolution gracefully and appropriately to the situation. On some days, my uncle would even appear in court, whether on their behalf or on behalf of others. Even in court, his interventions were held in great regard.</p>
     <p>As a family, we had a great deal of property, leased lands, and farmland in and around the surrounding areas. We had no shortage of means for all of us to live comfortably and well.</p>
   </div>
+
+  <a class="comic-link" href="../comics/chiyyaram-childhood/index.html">
+    <img src="../comics/chiyyaram-childhood/panels/panel-04.jpg" alt="" loading="lazy">
+    <span>
+      <span class="comic-eyebrow">For the grandchildren · Comic</span>
+      <span class="comic-title">Back to Chiyyaram →</span>
+      <span class="comic-sub">This chapter as an illustrated time-travel comic for young readers.</span>
+    </span>
+  </a>
 
   <div class="attribution">
     Recorded as part of the Korappath family archive. If you remember more of this story, or a different version of it, <a href="../index.html#contribute" style="color:var(--brass-light);">let us know</a>.

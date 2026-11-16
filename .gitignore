@@ -17,3 +17,8 @@ originals/
 *.bak
 *.tmp
 ~$*
+# Comics — real family photos used as references for the image generator.
+# NEVER commit these (the repo and site are public).
+comics/*/refs/
+# Generated character sheets show the kids' likenesses; review before un-ignoring.
+comics/*/sheets/

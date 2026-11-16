@@ -1,0 +1,101 @@
+{
+  "title": "My childhood in Chiyyaram — comic adaptation (Chapter 1)",
+  "chapterId": "chiyyaram-childhood",
+  "style": "Hand-painted watercolour-and-gouache animation-background style. Soft natural light, lush green 1950s Kerala countryside, warm gentle palette, clean expressive character linework, cinematic composition, whimsical but grounded, suitable for young children. Absolutely no text, letters, captions, signage or speech bubbles anywhere in the image.",
+  "cast": {
+    "nephew": {
+      "role": "the older brother, a 10-year-old boy in modern casual clothes (t-shirt, shorts, sneakers)",
+      "photoNote": "Put a clear, front-facing photo at refs/nephew.jpg"
+    },
+    "niece": {
+      "role": "the little sister, a 4-year-old girl in a modern colourful frock",
+      "photoNote": "Put a clear, front-facing photo at refs/niece.jpg"
+    },
+    "young_achan": {
+      "role": "a slim Kerala boy of about 7 in the early 1950s: close-cropped hair, white mundu folded at the knee, bare feet, bright curious eyes",
+      "photoNote": "OPTIONAL: a childhood photo of Achan at refs/young_achan.jpg"
+    },
+    "valiyammavan": {
+      "role": "a dignified Kerala man in his 50s in the early 1950s: white mundu and a veshti over one shoulder, calm and kind face",
+      "photoNote": "OPTIONAL: a photo of Govinda Menon at refs/valiyammavan.jpg. Without one, he is drawn from this placeholder description; ask Achan."
+    },
+    "achachan_today": {
+      "role": "a warm Kerala grandfather around 80 years old, today, reading glasses",
+      "photoNote": "OPTIONAL: a current photo of Achan at refs/achachan_today.jpg"
+    }
+  },
+  "panels": [
+    {
+      "n": 1,
+      "aspect": "4:5",
+      "cast": ["nephew", "niece"],
+      "scene": "Present day, evening, inside a modern Kerala home. The older brother and little sister lie on their stomachs on a cool tiled floor beside a stack of handwritten pages in Malayalam script and an old fountain pen, warm lamp light, the brother reading aloud and the sister leaning in eagerly."
+    },
+    {
+      "n": 2,
+      "aspect": "4:5",
+      "cast": ["nephew", "niece"],
+      "scene": "Same room. Glowing ink-like ribbons of golden light rise from the handwritten pages and swirl around the two amazed children like fireflies; a magical wind lifts their hair; the room begins to dissolve into green light."
+    },
+    {
+      "n": 3,
+      "aspect": "16:9",
+      "cast": ["nephew", "niece"],
+      "scene": "Wide establishing shot. The two children, small in the frame, stand on a narrow raised ridge between flooded green paddy fields in a 1950s Kerala village at misty sunrise. Coconut palms line the horizon, egrets in the field, a small distant temple lamp glowing."
+    },
+    {
+      "n": 4,
+      "aspect": "4:5",
+      "cast": ["nephew", "niece", "young_achan"],
+      "scene": "On the paddy-field ridge, the 1950s village boy has run up and stopped short, staring curiously at the two children's strange modern clothes. The older brother looks at him in dawning wonder; the little sister hides half behind her brother."
+    },
+    {
+      "n": 5,
+      "aspect": "4:5",
+      "cast": ["nephew", "niece", "young_achan"],
+      "scene": "The village boy leads the two children up a shaded path toward a large traditional Kerala ancestral home with a sloping clay-tiled roof and a wide wooden veranda, set among coconut and jackfruit trees, 1950s."
+    },
+    {
+      "n": 6,
+      "aspect": "4:5",
+      "cast": ["nephew", "niece", "young_achan"],
+      "scene": "The wide wooden veranda of the ancestral home, 1950s. Several village men and women in simple traditional Kerala clothing sit and stand quietly waiting their turn. The three children peek around a wooden pillar; the little sister looks puzzled."
+    },
+    {
+      "n": 7,
+      "aspect": "4:5",
+      "cast": ["valiyammavan", "nephew", "niece", "young_achan"],
+      "scene": "On the veranda, the dignified older man sits calmly on a wooden chair, listening patiently to two village farmers who are both talking and gesturing at once. The three children watch from behind a pillar in the background. Do not show any objects that suggest what the problem is about."
+    },
+    {
+      "n": 8,
+      "aspect": "4:5",
+      "cast": ["valiyammavan", "niece", "nephew"],
+      "scene": "The two farmers, now smiling, shake hands. One farmer offers a bunch of bananas to the dignified older man, who gently raises his palm and pushes it back with a kind smile, refusing. In the foreground the little sister's mouth is open in surprise; her brother smiles."
+    },
+    {
+      "n": 9,
+      "aspect": "4:5",
+      "cast": ["valiyammavan", "young_achan", "nephew", "niece"],
+      "scene": "Morning. The dignified older man, in crisp white clothes and holding a black umbrella, walks out through the gate of the ancestral home toward town. The three children watch him go from the gate. Mode of travel not shown, just him walking away down a village lane."
+    },
+    {
+      "n": 10,
+      "aspect": "16:9",
+      "cast": ["young_achan", "nephew", "niece"],
+      "scene": "Wide panorama from a raised field ridge: the three children, seen from behind and small in frame, look out over vast green paddy fields, coconut groves and a few farm workers in the fields, golden afternoon light, 1950s Kerala."
+    },
+    {
+      "n": 11,
+      "aspect": "4:5",
+      "cast": ["niece", "young_achan", "nephew"],
+      "scene": "Sunset on the paddy-field ridge. Golden ink-like ribbons of light begin to swirl around the two modern children again. The little sister presses a small sweet into the village boy's hand; he looks puzzled but waves goodbye. The older brother waves too."
+    },
+    {
+      "n": 12,
+      "aspect": "4:5",
+      "cast": ["nephew", "niece", "achachan_today"],
+      "scene": "Present day, evening, a modern Kerala home. The grandfather sits at a small desk writing on handwritten pages with a fountain pen. The two children have just burst in excitedly, the brother mid-sentence; the grandfather looks up over his reading glasses and smiles warmly."
+    }
+  ]
+}

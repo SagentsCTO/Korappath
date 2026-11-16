@@ -1,0 +1,30 @@
+{
+  // Comments API + approval page for korappath.com.
+  // Public:  GET/POST https://comments.korappath.com/comments
+  // Private: https://comments.korappath.com/admin  (behind Cloudflare Access, and the Worker
+  //          also verifies the Access token itself, so it fails closed if Access is misconfigured)
+  "name": "korappath-comments",
+  "main": "src/index.js",
+  "compatibility_date": "2026-09-28",
+  "workers_dev": false,
+  "routes": [
+    { "pattern": "comments.korappath.com", "custom_domain": true }
+  ],
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "korappath-comments",
+      // Filled in after `wrangler d1 create korappath-comments` (see README.md)
+      "database_id": "REPLACE_WITH_DATABASE_ID"
+    }
+  ],
+  "vars": {
+    "ALLOWED_ORIGINS": "https://korappath.com,https://www.korappath.com",
+    "ACCESS_TEAM_DOMAIN": "https://falling-math-473a.cloudflareaccess.com",
+    "SITE_URL": "https://korappath.com"
+  }
+  // Secrets (set with `wrangler secret put`, never committed):
+  //   ACCESS_AUD    - the Application Audience (AUD) tag of the Access app protecting /admin
+  //   ADMIN_EMAILS  - comma-separated emails allowed to moderate
+  //   IP_SALT       - any long random string, used to hash IPs for rate limiting
+}

@@ -246,6 +246,7 @@
 
 <footer>An ongoing family archive — Korappath, Chiyyaram, Thrissur</footer>
 
+<script src="comments.js"></script>
 <script>
 let prevChapterData = null;
 let nextChapterData = null;
@@ -286,22 +287,11 @@ fetch('../stories.json')
     nextChapterData = stories.find(s => s.chapterNumber === myChapter + 1 && isPublished(s));
     renderChapterNav();
 
-    const list = document.getElementById('comments-list');
-    const comments = mine && Array.isArray(mine.comments) ? mine.comments : [];
-    if(comments.length === 0){
-      list.innerHTML = '<p class="comment-empty">No comments yet — be the first to share a memory.</p>';
-      return;
-    }
-    list.innerHTML = comments.map(c => {
-      const dateStr = c.date ? new Date(c.date).toLocaleDateString('en-US', { month:'short', day:'numeric', year:'numeric' }) : '';
-      return `<div class="comment-card">
-        <div class="comment-meta">${escapeHtml(c.name)}${dateStr ? ' · ' + dateStr : ''}</div>
-        <p>${escapeHtml(c.text)}</p>
-      </div>`;
-    }).join('');
+    // Comments: approved ones from the comments Worker plus any kept in stories.json (see comments.js)
+    KorappathComments.init(mine && Array.isArray(mine.comments) ? mine.comments : []);
   })
   .catch(() => {
-    document.getElementById('comments-list').innerHTML = '<p class="comment-empty">Could not load comments right now.</p>';
+    KorappathComments.init([]);
   });
 
 function escapeHtml(str){

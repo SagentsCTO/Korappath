@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1200">
+<meta name="robots" content="noindex">
+<title>Back to Chiyyaram — share sheet</title>
+<!-- One-page layout of the whole comic, rendered to an image for sharing.
+     sheet.html = English captions, sheet.html?lang=ml = Malayalam captions.
+     Text comes from story.js (same source as the comic viewer). -->
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=Noto+Serif+Malayalam:wght@400;600&family=Work+Sans:wght@400;500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --oxide-dark:#3E1810; --oxide:#6B2A1E; --oxide-light:#8C3E2C;
+    --brass:#C6952F; --brass-light:#E8C776;
+    --ivory:#F1E9D6; --ivory-dim:#D8CBAE; --teak:#2B1D14;
+  }
+  *{ box-sizing:border-box; margin:0; padding:0; }
+  html,body{ width:1200px; background:var(--oxide-dark); color:var(--ivory); font-family:'Work Sans', sans-serif; }
+  .sheet{ padding:40px 40px 32px; }
+  header{ display:flex; justify-content:space-between; align-items:flex-end; gap:24px; padding-bottom:20px; margin-bottom:22px; border-bottom:1px solid rgba(198,149,47,0.4); }
+  .eyebrow{ font-family:'Space Mono', monospace; font-size:12px; letter-spacing:0.15em; text-transform:uppercase; color:var(--brass-light); }
+  h1{ font-family:'Fraunces', serif; font-weight:600; font-size:46px; line-height:1.1; margin:6px 0 4px; }
+  .mltitle{ font-family:'Noto Serif Malayalam', serif; font-size:19px; color:var(--ivory-dim); }
+  .by{ text-align:right; font-size:13px; color:var(--ivory-dim); line-height:1.5; max-width:380px; }
+  .by strong{ color:var(--ivory); font-weight:500; }
+
+  .grid{ display:grid; grid-template-columns:repeat(4, 1fr); gap:16px; align-items:stretch; }
+  .cell{ background:var(--oxide); border:1px solid rgba(198,149,47,0.35); border-radius:4px; overflow:hidden; }
+  .cell.wide{ grid-column:span 2; }
+  .cell img{ display:block; width:100%; height:330px; object-fit:cover; }
+  .body{ padding:10px 12px 12px; }
+  .num{ font-family:'Space Mono', monospace; font-size:10px; letter-spacing:0.12em; color:var(--brass-light); margin-bottom:6px; }
+  .cap{ background:var(--ivory); color:var(--teak); padding:7px 9px; border-radius:2px; box-shadow:2px 2px 0 var(--brass); font-family:'Fraunces', serif; font-size:13px; line-height:1.45; margin-bottom:8px; }
+  .cap.ml{ font-family:'Noto Serif Malayalam', serif; font-size:12.5px; line-height:1.75; }
+  .say{ font-size:13px; line-height:1.4; margin-bottom:5px; }
+  .say b{ font-family:'Space Mono', monospace; font-weight:400; font-size:9.5px; letter-spacing:0.08em; text-transform:uppercase; color:var(--brass-light); display:block; }
+  .narr{ font-style:italic; font-size:13px; color:var(--ivory-dim); margin-bottom:6px; }
+
+  .endcard{ grid-column:span 2; align-self:stretch; display:flex; flex-direction:column; justify-content:center; padding:28px; border:1px solid var(--brass); border-radius:4px; background:rgba(198,149,47,0.08); }
+  .endcard .tbc{ font-family:'Fraunces', serif; font-size:28px; color:var(--brass-light); margin:6px 0 14px; }
+  .endcard p{ font-size:14px; color:var(--ivory-dim); line-height:1.55; margin-bottom:10px; }
+  .endcard .url{ font-family:'Space Mono', monospace; font-size:15px; color:var(--ivory); }
+  footer{ margin-top:22px; padding-top:14px; border-top:1px solid rgba(198,149,47,0.25); font-size:11.5px; color:var(--ivory-dim); text-align:center; }
+</style>
+</head>
+<body>
+<div class="sheet">
+  <header>
+    <div>
+      <div class="eyebrow">A comic for the grandchildren · Chapter 1</div>
+      <h1>Back to Chiyyaram</h1>
+      <div class="mltitle" lang="ml">ചിയ്യാരത്തിലെ എന്റെ ബാല്യകാലം</div>
+    </div>
+    <div class="by">Adapted from the memoir of<br><strong>Korappath Kalapurakal Sudhakara Menon</strong></div>
+  </header>
+
+  <div class="grid" id="grid"></div>
+
+  <footer>An adaptation for children. Captions are quoted word for word from the chapter; the speech bubbles, the time travel and the AI-generated illustrations are imagined.</footer>
+</div>
+
+<script src="story.js"></script>
+<script>
+var lang = /[?&]lang=ml\b/.test(location.search) ? 'ml' : 'en';
+var WIDE = { 3: true, 10: true };   // the 16:9 panels span two columns
+function esc(s) { var d = document.createElement('div'); d.textContent = s; return d.innerHTML; }
+
+var html = '';
+PANELS.forEach(function (p, i) {
+  var n = i + 1, body = '';
+  if (p.ml || p.en) {
+    body += lang === 'ml' ? '<div class="cap ml" lang="ml">' + esc(p.ml) + '</div>'
+                          : '<div class="cap">' + esc(p.en) + '</div>';
+  }
+  if (p.narration) body += '<div class="narr">' + esc(p.narration) + '</div>';
+  (p.bubbles || []).forEach(function (b) {
+    body += '<div class="say"><b>' + esc(b[0]) + '</b>' + esc(b[1]) + '</div>';
+  });
+  html += '<div class="cell' + (WIDE[n] ? ' wide' : '') + '">' +
+          '<img src="panels/panel-' + (n < 10 ? '0' : '') + n + '.jpg" alt="' + esc(p.alt) + '">' +
+          '<div class="body"><div class="num">' + n + '</div>' + body + '</div></div>';
+});
+html += '<div class="endcard"><div class="eyebrow">To be continued</div>' +
+        '<div class="tbc">Next time: who was Appuman?</div>' +
+        '<p>Read the full comic, and every chapter of the memoir in Malayalam and English, at</p>' +
+        '<div class="url">korappath.com</div></div>';
+document.getElementById('grid').innerHTML = html;
+
+// Report the finished height in the title so the render script can size the screenshot.
+Promise.all([document.fonts.ready].concat(Array.prototype.map.call(document.images, function (im) {
+  return im.complete ? 0 : new Promise(function (r) { im.onload = im.onerror = r; });
+}))).then(function () { document.title = 'H:' + Math.ceil(document.querySelector('.sheet').getBoundingClientRect().height); });
+</script>
+</body>
+</html>

@@ -1,7 +1,7 @@
 # Comic script — Chapter 1: My childhood in Chiyyaram
 *Working script behind the published comic at `comics/chiyyaram-childhood/index.html` (Raju chose to make it public, 2026-11-15). The page's `PANELS` array is the live version of the captions and bubbles; keep this file for reference when adapting later chapters.*
 
-**Premise:** [NEPHEW] (10) and [NIECE] (4) find their grandfather's handwritten memoir pages. The pages carry them back to Chiyyaram around 1952, where they meet their grandfather as a small boy and watch Valiyammavan, Govinda Menon, settle the village's troubles.
+**Premise:** Appu (10) and Achu (4) find their grandfather's handwritten memoir pages. The pages carry them back to Chiyyaram around 1952, where they meet their grandfather as a small boy and watch Valiyammavan, Govinda Menon, settle the village's troubles.
 
 ## How to read this script
 
@@ -21,8 +21,8 @@
 *Tip: many image tools refuse or water down "in the style of Studio Ghibli". Describing the qualities, as above, works better and keeps the art your own.*
 
 ### Character sheets (generate these first, then attach them to every panel prompt)
-1. **[NEPHEW], 10:** upload a photo. *"Character turnaround sheet of this boy as a 10-year-old animated character, front/side/back, modern casual clothes, [style block]."*
-2. **[NIECE], 4:** upload a photo. *Same prompt, "4-year-old girl".*
+1. **Appu, 10:** upload a photo. *"Character turnaround sheet of this boy as a 10-year-old animated character, front/side/back, modern casual clothes, [style block]."*
+2. **Achu, 4:** upload a photo. *Same prompt, "4-year-old girl".*
 3. **Young Achachan, about 7 years old in 1952:** ⚠️ Does a childhood photo of Achan exist? Otherwise: *"Slim Kerala boy, about 7, close-cropped hair, white mundu folded at the knee, bare feet, bright curious eyes, 1950s."*
 4. **Valiyammavan, Govinda Menon:** ⚠️ **We have no description of him.** Is there a photo, or can Achan describe him? Placeholder: *"Dignified Kerala man in his 50s, white mundu and veshti over one shoulder, calm, kind face, 1950s."*
 
@@ -32,13 +32,13 @@
 
 ### Panel 1: Today, Achachan's house
 Evening. The kids are sprawled on the floor beside a stack of handwritten Malayalam pages and an old fountain pen.
-- **SAYS [NEPHEW]:** "This is Achachan's book. He's writing about when he was little."
-- **SAYS [NIECE]:** "Read it to me!"
+- **SAYS Appu:** "This is Achachan's book. He's writing about when he was little."
+- **SAYS Achu:** "Read it to me!"
 - *Prompt:* Two children lying on a tiled floor in a modern Kerala home at dusk, reading a stack of handwritten Malayalam pages, warm lamp light, [style block].
 
 ### Panel 2: The pages glow
 The ink lifts off the paper and swirls around the kids like fireflies. Wind ruffles their hair.
-- **SAYS [NIECE]:** "Chettaa… the letters are flying!"
+- **SAYS Achu:** "Chettaa… the letters are flying!"
 - *Prompt:* Glowing ink-like swirls of light rising from paper pages and wrapping around two amazed children, magical, [style block].
 
 ### Panel 3: Chiyyaram (splash page)
@@ -51,7 +51,7 @@ They land on a paddy-field bund. Green fields, coconut palms, a distant temple l
 ### Panel 4: Meeting a boy
 A small boy in a mundu runs along the bund and stops, staring at their strange clothes.
 - **SAYS BOY:** "Who are you? I've never seen you in Chiyyaram!"
-- **SAYS [NEPHEW] (whispering):** "[NIECE]… I think that's *Achachan*."
+- **SAYS Appu (whispering):** "Achu… I think that's *Achachan*."
 - ⚠️ What was Achan called as a child at home? A pet name would be lovely here.
 
 ### Panel 5: The tharavad
@@ -65,7 +65,7 @@ The boy leads them to the family house.
 On the veranda, villagers sit and stand, waiting.
 - **CAPTION ML:** നാട്ടിലുള്ളവർ അവരുടെ പ്രശ്നങ്ങൾക്കും പരിതാപങ്ങൾക്കും അത്താണിയായിആവശ്യക്കാരെല്ലാം കണ്ടിരുന്നതും വലിയമ്മാവനെ തന്നെ ആയിരുന്നു.
 - **CAPTION EN:** The people of the village saw him as their refuge for their troubles and grievances; everyone in need turned to my uncle himself.
-- **SAYS [NIECE]:** "Why are all these people here?"
+- **SAYS Achu:** "Why are all these people here?"
 - **SAYS BOY:** "They've come to see Valiyammavan. Everyone does."
 - 📝 *Note: the original Malayalam has "അത്താണിയായിആവശ്യക്കാരെല്ലാം" written without a space. I've quoted it exactly as Achan wrote it.*
 
@@ -80,8 +80,8 @@ Govinda Menon sits on the veranda, calmly listening to two farmers who are both 
 The problem is solved and the farmers shake hands. One offers a bunch of bananas; Valiyammavan gently pushes it back.
 - **CAPTION ML:** ഒട്ടും പ്രതിഫലം പറ്റാതെ എല്ലാ തീർപ്പുകളും ഭംഗിയായി സന്ദർഭോചിതമായി അദ്ദേഹം നടത്തിയിരുന്നു.
 - **CAPTION EN:** Without accepting any payment at all, he carried out every resolution gracefully and appropriately to the situation.
-- **SAYS [NIECE]:** "He said no to the bananas!"
-- **SAYS [NEPHEW]:** "He helps them for free."
+- **SAYS Achu:** "He said no to the bananas!"
+- **SAYS Appu:** "He helps them for free."
 - ⚠️ The bananas are my invention, a visual way to show "no payment" to a 4-year-old.
 
 ### Panel 9: Off to court
@@ -97,13 +97,13 @@ The three children on a hilltop or field ridge, looking out over fields, coconut
 
 ### Panel 11: Goodbye at sunset
 The pages start glowing again. The niece gives the boy something, such as a hair clip or a sweet from her pocket.
-- **SAYS [NIECE]:** "Bye-bye, little Achachan!"
+- **SAYS Achu:** "Bye-bye, little Achachan!"
 - **SAYS BOY (puzzled, waving):** "Come back again!"
 - ⚠️ The boy's lines throughout are invented. I've kept them minimal on purpose so we don't put meaningful words in Achan's mouth. Strike any you don't like.
 
 ### Panel 12: Back home
 The kids burst into the room where today's Achachan sits writing.
-- **SAYS [NEPHEW]:** "Achacha! We saw Valiyammavan! He wouldn't even take the bananas!"
+- **SAYS Appu:** "Achacha! We saw Valiyammavan! He wouldn't even take the bananas!"
 - Achachan looks up over his glasses and smiles. (No line for him unless he'd like to write his own; that would be lovely.)
 - **Final tiny panel:** the next page of the notebook reads "Appuman…" *To be continued in Chapter 2.*
 

@@ -38,7 +38,7 @@ Evening. The kids are sprawled on the floor beside a stack of handwritten Malaya
 
 ### Panel 2: The pages glow
 The ink lifts off the paper and swirls around the kids like fireflies. Wind ruffles their hair.
-- **SAYS Achu:** "Chettaa… the letters are flying!"
+- **SAYS Achu:** "Appu… the letters are flying!"
 - *Prompt:* Glowing ink-like swirls of light rising from paper pages and wrapping around two amazed children, magical, [style block].
 
 ### Panel 3: Chiyyaram (splash page)

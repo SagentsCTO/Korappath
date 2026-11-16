@@ -12,7 +12,7 @@ var PANELS = [
   { alt: 'Two children lying on a tiled floor at night, reading a stack of handwritten pages.',
     bubbles: [[APPU, 'This is ' + GRANDPA + "'s book. He's writing about when he was little."], [ACHU, 'Read it to me!']] },
   { alt: 'Golden ribbons of light rise from the pages and swirl around the amazed children.',
-    bubbles: [[ACHU, 'Chettaa… the letters are flying!']] },
+    bubbles: [[ACHU, APPU + '… the letters are flying!']] },
   { alt: 'The two children on a ridge between misty paddy fields at sunrise, egrets nearby.',
     ml: 'ഞാൻ ജനിച്ചതും വളർന്നതും ചിയ്യാരം എന്നൊരു കുഗ്രാമത്തിലായിരുന്നു. കൊല്ലം 1945 സെപ്റ്റംബർ മാസം.',
     en: 'I was born and raised in a small village called Chiyyaram, in September of the year 1945.' },

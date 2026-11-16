@@ -3,7 +3,8 @@
 // to panel in reading order (left to right, then down), like reading a printed comic page.
 //
 // Needs, before this script: PANELS (from story.js; panels may set wide:true) and COMIC:
-//   { next: 'Next time: …', nextUrl: '../../stories/…html', nextLink: 'Read Chapter N →' }
+//   { v: '2', next: 'Next time: …', nextUrl: '../../stories/…html', nextLink: 'Read Chapter N →' }
+// Bump COMIC.v whenever a panel image changes; bump the ?v= on viewer.js/viewer.css/story.js when those change.
 (function () {
   var P = window.PANELS, C = window.COMIC || {};
   var PAGE_W = 1200, TOP_BAR = 52, BOTTOM_BAR = 64, PAD = 14;
@@ -21,7 +22,9 @@
   var guided = false, cur = 0, cells = [], pageScale = 1;
 
   function esc(s) { var d = document.createElement('div'); d.textContent = s == null ? '' : s; return d.innerHTML; }
-  function src(i) { return 'panels/panel-' + (i < 9 ? '0' : '') + (i + 1) + '.jpg'; }
+  // COMIC.v is bumped in index.html whenever a panel image changes. Images are cached for hours,
+  // but the page only for minutes, so a new v makes browsers fetch the new pictures.
+  function src(i) { return 'panels/panel-' + (i < 9 ? '0' : '') + (i + 1) + '.jpg' + (C.v ? '?v=' + encodeURIComponent(C.v) : ''); }
   function stops() { return cells.length; } // panels + the end card
 
   function text(p) {

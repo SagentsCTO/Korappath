@@ -19,45 +19,14 @@ This Cloudflare Worker receives every form on korappath.com. No Formspree, no th
 
 Done on 2026-11-16: login, D1 database, comments table, first deploy to `comments.korappath.com`, Access app, and the `ACCESS_AUD`, `ADMIN_EMAILS` and `IP_SALT` secrets. The photo store (KV namespace `korappath-uploads`) is created and listed in `wrangler.jsonc`.
 
-To finish the move to `dash.korappath.com` with no Formspree, do these in order.
+Completed on 2026-11-16 as well:
+- Email Routing on korappath.com, with alerts from `no-reply@korappath.com`.
+- The `NOTIFY_TO` secret and the submissions table.
+- The dashboard at `dash.korappath.com`: Access app "Dashboard", allowing only Raju.
+- A second Access app, "Korappath public forms", that bypasses `dash.korappath.com/comments` and `dash.korappath.com/submit/*` for everyone.
+- Every page switched off Formspree. The old `comments.korappath.com` address was retired.
 
-**1. Turn on Email Routing for korappath.com** (Cloudflare dashboard):
-
-1. Open korappath.com, then **Email → Email Routing → Enable**, and accept the DNS records it adds. korappath.com has no email today, so nothing breaks.
-2. Under **Destination addresses**, add `raj@13apples.com` and click the link in the verification email.
-3. Under **Routing rules → Custom addresses**, create `no-reply@korappath.com` and send it to `raj@13apples.com`. Alerts come from this address.
-
-**2. Add the alert address secret.** Type `raj@13apples.com` when asked.
-
-```bash
-wrangler secret put NOTIFY_TO
-```
-
-**3. Add the submissions table.** This is safe to re-run; existing comments are untouched.
-
-```bash
-wrangler d1 execute korappath-comments --remote --file=schema.sql
-```
-
-**4. Deploy.** This also creates `dash.korappath.com`. `comments.korappath.com` keeps working during the switch.
-
-```bash
-wrangler deploy
-```
-
-**5. Move the Access lock to the dashboard** (Zero Trust → Access → Applications):
-
-1. Edit the existing **Korappath comments admin** app. Change the domain to `dash.korappath.com` and **clear the path**, so the whole site is locked to your email. Rename it "Korappath dashboard" if you like. Editing it keeps the same AUD tag, so the `ACCESS_AUD` secret doesn't change.
-2. **Add a second application** (Self-hosted) named "Korappath public forms":
-   - Domain: `dash.korappath.com`, path `comments`
-   - Another domain entry: `dash.korappath.com`, path `submit`
-   - Policy: Action **Bypass**, Include **Everyone**
-
-   This lets visitors post comments and forms without a login. The dashboard itself stays locked, because the more specific path wins.
-
-**6. Tell Claude to push the site changes.** Only after step 5, the pages switch to posting to `dash.korappath.com`.
-
-**7. Remove the old address.** Delete the `comments.korappath.com` route from `wrangler.jsonc` and run `wrangler deploy` again.
+To redeploy after changing the Worker, run `wrangler deploy` from this folder.
 
 ## Checking it works
 

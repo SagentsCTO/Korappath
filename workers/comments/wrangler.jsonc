@@ -12,11 +12,6 @@
 		{
 			"pattern": "dash.korappath.com",
 			"custom_domain": true
-		},
-		// Old address, kept only until the new pages are live. Remove after the switch.
-		{
-			"pattern": "comments.korappath.com",
-			"custom_domain": true
 		}
 	],
 	"d1_databases": [

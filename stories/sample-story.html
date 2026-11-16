@@ -209,13 +209,8 @@
     <h2>Comments</h2>
     <div id="comments-list"><p class="comment-empty">Loading comments…</p></div>
 
-    <!--
-      Replace COMMENT_FORM_ID with your Formspree endpoint.
-      Replace the story_id/story_title values below to match this story's real id/title
-      (the story_id must match the "id" field for this story in stories.json).
-    -->
-    <form id="comment-form" action="https://formspree.io/f/xqerojyy" method="POST">
-      <input type="hidden" name="_subject" value="New comment on: [Story title]">
+    <!-- The story_id below must match this story's "id" in stories.json (comments are stored under it). -->
+    <form id="comment-form" action="https://dash.korappath.com/comments" method="POST">
       <input type="hidden" name="story_id" value="sample-story">
       <input type="hidden" name="story_title" value="[Story title]">
       <input type="hidden" id="date-submitted" name="date_submitted">

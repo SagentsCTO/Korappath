@@ -141,7 +141,8 @@
 
   <div class="draft-status" id="draftStatus">No draft saved yet</div>
 
-  <form id="writeForm" action="https://formspree.io/f/xjgnzory" method="POST">
+  <form id="writeForm" action="https://dash.korappath.com/submit/write" method="POST">
+    <div aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden"><label>Website <input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
     <label>
       Your name
       <input type="text" name="name" id="fName" required>
@@ -157,7 +158,6 @@
       <textarea id="storyBox" name="story_malayalam" placeholder="Paste your story here"></textarea>
     </label>
 
-    <input type="hidden" name="_subject" value="New story submitted via Write a Story page">
 
     <div class="actions">
       <button type="submit" class="btn btn-primary">Send to Raju</button>
@@ -216,11 +216,15 @@ fields.forEach(id => {
 
 document.getElementById('clearDraftBtn').addEventListener('click', clearDraft);
 
-document.getElementById('writeForm').addEventListener('submit', () => {
-  setTimeout(() => localStorage.removeItem(DRAFT_KEY), 500);
-});
-
-loadDraft();
+// After a successful send the server brings you back here with ?sent=1. Only then is the
+// draft cleared, so a failed send never loses the story.
+if(/[?&]sent=1\b/.test(location.search)){
+  try{ localStorage.removeItem(DRAFT_KEY); } catch(e){}
+  document.getElementById('draftStatus').textContent = 'Sent to Raju — thank you! Your draft has been cleared.';
+  history.replaceState(null, '', location.pathname);
+} else {
+  loadDraft();
+}
 </script>
 
 </body>

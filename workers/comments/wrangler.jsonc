@@ -1,13 +1,19 @@
 {
-	// Comments API + approval page for korappath.com.
-	// Public:  GET/POST https://comments.korappath.com/comments
-	// Private: https://comments.korappath.com/admin  (behind Cloudflare Access, and the Worker
-	//          also verifies the Access token itself, so it fails closed if Access is misconfigured)
+	// Every korappath.com form (comments, photo/story submissions, write.html, tree photos,
+	// access requests) posts here, and Raju's dashboard lives here. No Formspree, no GitHub writes.
+	// Dashboard (private): https://dash.korappath.com/  (Cloudflare Access, and the Worker also
+	//                      verifies the Access token itself, so it fails closed if Access is misconfigured)
+	// Public endpoints:    https://dash.korappath.com/comments and /submit/<kind>  (Access bypass)
 	"name": "korappath-comments",
 	"main": "src/index.js",
 	"compatibility_date": "2026-09-28",
 	"workers_dev": false,
 	"routes": [
+		{
+			"pattern": "dash.korappath.com",
+			"custom_domain": true
+		},
+		// Old address, kept only until the new pages are live. Remove after the switch.
 		{
 			"pattern": "comments.korappath.com",
 			"custom_domain": true
@@ -20,13 +26,29 @@
 			"database_id": "411590fc-7a91-45d8-9501-61292349978a"
 		}
 	],
+	// Uploaded photos (private; served only through /admin/files/<id>)
+	"kv_namespaces": [
+		{
+			"binding": "UPLOADS",
+			"id": "f53e960dbebd4e0ea97911730511dcf6"
+		}
+	],
+	// Email alerts for new comments/submissions. Needs Email Routing enabled on korappath.com
+	// and the NOTIFY_TO address verified as a destination (see README.md).
+	"send_email": [
+		{
+			"name": "NOTIFY"
+		}
+	],
 	"vars": {
 		"ALLOWED_ORIGINS": "https://korappath.com,https://www.korappath.com",
 		"ACCESS_TEAM_DOMAIN": "https://falling-math-473a.cloudflareaccess.com",
-		"SITE_URL": "https://korappath.com"
+		"SITE_URL": "https://korappath.com",
+		"NOTIFY_FROM": "no-reply@korappath.com"
 	}
 	// Secrets (set with `wrangler secret put`, never committed):
 	//   ACCESS_AUD    - the Application Audience (AUD) tag of the Access app protecting /admin
 	//   ADMIN_EMAILS  - comma-separated emails allowed to moderate
 	//   IP_SALT       - any long random string, used to hash IPs for rate limiting
+	//   NOTIFY_TO     - where alert emails go (a verified Email Routing destination address)
 }

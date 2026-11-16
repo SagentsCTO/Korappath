@@ -486,13 +486,8 @@
   <h2>Have a photo, a letter, or a story?</h2>
   <p>This archive only grows as fast as the family shares. If you have something tucked away — even if you're not sure it matters — it belongs here. No account needed.</p>
 
-  <!--
-    Replace YOUR_FORM_ID below with your real Formspree endpoint,
-    e.g. if Formspree gives you https://formspree.io/f/abcwxyz1
-    then YOUR_FORM_ID is just: abcwxyz1
-  -->
-  <form class="archive-form" action="https://formspree.io/f/xjgnzory" method="POST" enctype="multipart/form-data">
-    <input type="hidden" name="_subject" value="New Korappath photo/story submission">
+  <form class="archive-form" action="https://dash.korappath.com/submit/story" method="POST" enctype="multipart/form-data">
+    <div aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden"><label>Website <input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
 
     <label>
       Your name
@@ -546,9 +541,8 @@
 
     <div class="access-divider">or request access</div>
 
-    <!-- Replace ACCESS_FORM_ID below with your dedicated access-request Formspree endpoint -->
-    <form id="access-form" action="https://formspree.io/f/mzdnqgnb" method="POST">
-      <input type="hidden" name="_subject" value="Korappath tree access request">
+    <form id="access-form" action="https://dash.korappath.com/submit/access" method="POST">
+      <div aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden"><label>Website <input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
 
       <label>
         Your name

@@ -1,14 +1,14 @@
 // Live comments for chapter pages.
 //
-// Shows approved comments from the comments Worker (comments.korappath.com), plus any
-// older comments kept in stories.json. New comments go to the Worker as "pending" and to
-// Formspree for the email notification; nothing appears publicly until Raju approves it
-// on https://comments.korappath.com/admin.
+// Shows approved comments from the comments Worker (dash.korappath.com), plus any
+// older comments kept in stories.json. New comments go to the Worker as "pending" (it emails
+// Raju); nothing appears publicly until he approves it on https://dash.korappath.com.
+// Without JavaScript the form still works: it posts straight to the Worker.
 //
 // Each chapter page calls KorappathComments.init(commentsFromStoriesJson) once stories.json
 // has loaded. The story id is read from the form's hidden story_id field.
 var KorappathComments = (function () {
-  var API = 'https://comments.korappath.com';
+  var API = 'https://dash.korappath.com';
   // Local testing only: on localhost, ?commentsApi=http://localhost:8787 points at `wrangler dev`.
   if (/^(localhost|127\.0\.0\.1)$/.test(location.hostname)) {
     var m = location.search.match(/[?&]commentsApi=([^&]+)/);
@@ -72,32 +72,20 @@ var KorappathComments = (function () {
     btn.disabled = true;
     note('Sending…');
 
-    // Email notification via Formspree (unchanged endpoint), with a link to the approval page.
-    data.delete('website');
-    data.append('approve_at', 'https://comments.korappath.com/admin');
-    function sendEmail() {
-      return fetch(form.action, { method: 'POST', body: data, headers: { Accept: 'application/json' } })
-        .then(function (r) { return r.ok; }).catch(function () { return false; });
-    }
     function done(ok, msg) {
       btn.disabled = false;
       if (ok) { form.reset(); note('Thank you! Your comment will appear here once it has been reviewed.'); }
       else note(msg || 'Sorry, your comment could not be sent. Please try again in a little while.', true);
     }
 
+    // The Worker stores it as pending and emails Raju.
     fetch(API + '/comments', {
       method: 'POST',
       headers: { 'content-type': 'application/json' },
       body: JSON.stringify(payload)
     }).then(function (r) {
-      return r.json().catch(function () { return {}; }).then(function (d) {
-        if (r.ok) return sendEmail().then(function () { done(true); });   // stored; email is just a heads-up
-        if (r.status >= 500 && r.status !== 503) return sendEmail().then(done); // Worker broken: email still reaches Raju
-        done(false, d.error);                                              // refused (bad input, rate limit): no email
-      });
-    }).catch(function () {
-      sendEmail().then(done);                                              // Worker unreachable: fall back to email only
-    });
+      return r.json().catch(function () { return {}; }).then(function (d) { done(r.ok, d.error); });
+    }).catch(function () { done(false); });
   }
 
   function init(storiesJsonComments) {

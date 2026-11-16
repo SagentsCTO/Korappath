@@ -361,9 +361,8 @@
     <h3>Add a photo</h3>
     <p class="photo-subject">of <span id="photo-subject-name"></span></p>
 
-    <!-- Replace PHOTO_FORM_ID below with your dedicated tree-photo Formspree endpoint -->
-    <form id="photo-form" action="https://formspree.io/f/xjgnzdyq" method="POST" enctype="multipart/form-data">
-      <input type="hidden" name="_subject" value="New tree photo submission">
+    <form id="photo-form" action="https://dash.korappath.com/submit/tree-photo" method="POST" enctype="multipart/form-data">
+      <div aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden"><label>Website <input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
       <input type="hidden" name="person_name" id="photo-person-name">
       <input type="hidden" name="person_id" id="photo-person-id">
 

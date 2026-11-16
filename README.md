@@ -77,22 +77,14 @@ Stories live in `stories.json`, listed newest-first automatically by the `dateAd
 
 `dateAdded` is when the story was recorded/added here — not necessarily when the events happened (that's what `period` is for).
 
-## Comments on stories
+## Comments and form submissions
 
-Comments are submitted via a Formspree form on each story page, but don't appear publicly until you add them yourself — same moderated pattern as everything else on this site. To approve a comment:
+Every form on the site (chapter comments, photo/story submissions, the Write a Story page, tree photos and access requests) goes to a small Cloudflare Worker, and you get an email for each one. Review them all at **https://dash.korappath.com**:
 
-1. Check the comments Formspree dashboard for new submissions
-2. Add an entry to that story's `comments` array in `stories.json`:
+- **Comments:** tap Approve and the comment appears on the chapter straight away. Reject, Unpublish and Delete are there too.
+- **Submissions:** read them, view or download any photo, then mark them done (or delete them).
 
-```json
-{
-  "name": "Their name",
-  "text": "Their comment",
-  "date": "YYYY-MM-DD"
-}
-```
-
-3. Upload the updated `stories.json` — it'll appear on the story page automatically
+Setup and details: `workers/comments/README.md`.
 
 ## Email notifications for new chapters
 

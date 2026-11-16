@@ -26,3 +26,5 @@ comics/*/sheets/
 # Comments Worker — local dev secrets and state
 workers/*/.dev.vars
 workers/*/.wrangler/
+# Candidate panel edits awaiting approval
+comics/*/review/

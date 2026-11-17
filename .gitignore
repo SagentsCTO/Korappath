@@ -28,3 +28,5 @@ workers/*/.dev.vars
 workers/*/.wrangler/
 # Candidate panel edits awaiting approval
 comics/*/review/
+# Full-size generated panels before web compression
+comics/*/panels/raw/

@@ -58,5 +58,7 @@ var PANELS = [
     bubbles: [[APPU, "This one's the planting song!"]] },
   { alt: "Two days later Appuman walks away down the lane with a bundle, waving; the children wave from the gate as golden light swirls round Appu and Achu.",
     ml: "രണ്ടു ദിവസം കഴിഞ്ഞു അദ്ദേഹം തിരിച്ചുപോകുമ്പോൾ ഞങ്ങൾ കുട്ടികൾ വിഷമത്തോടെയും വിഷാദത്തോടെയും ആകും യാത്ര അയക്കുക.",
-    en: "After two days, when he went back, we children would see him off with sadness and heaviness of heart." }
+    en: "After two days, when he went back, we children would see him off with sadness and heaviness of heart." },
+  { alt: "Back home by moonlight, Appu climbs under the blanket and Achu tiptoes up with a finger to her lips, while Achachan, eyes closed, smiles in his sleep.",
+    bubbles: [[APPU + ' (whispering)', "Quick, before Achachan wakes up!", 'aside'], [ACHU + ' (whispering)', "Night-night, Appuman…", 'aside'], [GRANDPA + ' (eyes closed, smiling)', "Mmm… did you find Appuman?"]] }
 ];

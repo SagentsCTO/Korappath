@@ -184,6 +184,12 @@ Morning, two days later. Appuman sets off down the lane. Young Achan and the vil
 - **Caption (en):** After two days, when he went back, we children would see him off with sadness and heaviness of heart.
 - **End card:** next morning, Achachan finds the two of them asleep at his desk with the book still open. They wake up and do Appuman's planting-song gestures for him, and he laughs. "Next time: Kunjan's rickshaw!"
 
+### 16. Back to bed (4:5), NEW (Raju, 17 Nov 2026)
+Present day, late at night, by moonlight. The kids sneak back into bed; Achachan, eyes closed, smiles as if he knew all along.
+- **Appu** (whispering): "Quick, before Achachan wakes up!"
+- **Achu** (whispering): "Night-night, Appuman…"
+- **Achachan** (eyes closed, smiling): "Mmm… did you find Appuman?"
+
 ## Left out on purpose
 These lines are not quoted anywhere in the comic. Nothing is changed, they're just not used.
 

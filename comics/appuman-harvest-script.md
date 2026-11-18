@@ -6,7 +6,7 @@
 
 Source: `stories/appuman-harvest.html`, *Appuman, a warm-hearted farmer*.
 
-It picks up where Chapter 1's comic ended ("Next time: who was Appuman?"). At bedtime, Achachan tells the kids about Appuman: the things Achan told us that aren't in the chapter. After he falls asleep, they sneak into his study, open the book, and the time travel begins. Appu (10) and Achu (4) land at dawn in Kandassankadavu, where Appuman is setting off with the harvest carts. They ride the carts the long way to Sankaramponnath in Chiyyaram, arriving in the evening with him. There they meet little Achachan, who wears the new half-trousers, and stay for his visit.
+It picks up where Chapter 1's comic ended ("Next time: who was Appuman?"). At bedtime, Achachan tells the kids about Appuman: the things Achan told us that aren't in the chapter. After he falls asleep, they sneak into his study, open the book, and the time travel begins. Appu (10) and Achu (4) land at dawn in Kandassankadavu, where Appuman is setting off with the harvest carts. They ride the carts the long way to Sankaramponnath in Chiyyaram, arriving in the evening with him. There they meet young Achachan, who wears the new half-trousers, and stay for his visit.
 
 **15 panels.** Panel 5 (dawn at Kandassankadavu) was added on 16 Nov 2026, and panels 1–3 (bedtime story and the sneak) on 17 Nov 2026, to tell history from Achan that isn't in the chapter.
 
@@ -16,7 +16,7 @@ It picks up where Chapter 1's comic ended ("Next time: who was Appuman?"). At be
   - "…" marks words left out. Nothing is reworded.
 - **Speech bubbles** are invented children's dialogue.
   - Appuman, a real person, only says what the chapter says he said.
-  - Little Achachan's lines are kept minimal.
+  - Young Achachan's lines are kept minimal.
 - **Achan's extra history is told by Achachan himself, as a bedtime story** (Raju's idea, 17 Nov 2026), in panels 1–2.
   - His lines are our wording of what Achan told us. Every fact comes from his messages; nothing is added.
   - Later panels have the kids recognise those details ("just like Achachan said"), so the history appears in words as well as in the pictures.
@@ -29,7 +29,7 @@ It picks up where Chapter 1's comic ended ("Next time: who was Appuman?"). At be
 |---|---|---|
 | Appu | `nephew` (have it) | teal camo T-shirt, khaki cargo shorts |
 | Achu | `niece` (have it) | teal flower-and-elephant dress |
-| Little Achachan, ~7 | `young_achan` (have it) | khaki half-trousers, bare-chested |
+| Young Achachan, ~7 | `young_achan` (have it) | khaki half-trousers, bare-chested |
 | Achachan today | photos in Chapter 1's `refs/` | lean face, drooping white moustache, rectangular glasses, modern clothes (panels 1–3; the end card) |
 | **Appuman** | sheets done | Grandpa's nephew who ran the farms; a joker and singer. **From Achan and Raju (16 Nov 2026):** about 6 ft tall with a lean, ordinary build (not muscular, like Valiyammavan's), a thin, light moustache, neat medium-length hair. Cart trips: clean white mundu and a sleeveless shirt. At home and in the evenings: long mundu and a head cover. Komaram act: no head cover, hair short and swept back with nothing on the forehead, the white cloth worn as a diagonal sash, mundu in thattudukkal style, sharpened coconut-frond sword. |
 | **Achamma** | sheet done (v4) | Achan's grandmother, Grandpa's wife, at Sankaramponnath. **About 60, roughly 10 years younger than Grandpa.** From Achan and Raju: a single mundu; upper body in the old style, following a period photo Raju shared: a plain white cloth wrapped snugly across the chest, with shoulders and midriff bare (Achan called it a rouka). **Ears:** large hollow, bowl-shaped gold **തോട (thoda)** in stretched earlobes. Grey hair in a bun, warm and generous. |
@@ -37,7 +37,7 @@ It picks up where Chapter 1's comic ended ("Next time: who was Appuman?"). At be
 | Grandpa (Achan's grandfather) | sheet done (panel 5) | at Kandassankadavu. **From Raju:** tall; long mundu; long, loose white jubba-style shirt reaching nearly to the knees, with a band collar, one chest pocket and half sleeves rolled to the elbow (from a reference image Raju shared); **കടുക്കൻ (kadukkan)**, men's ear studs set with precious stones; a moustache like Achan's; **resembles Achan**, so draw him from Achan's photos (Chapter 1 `refs/`), aged for the early 1950s, with a white moustache. **Rounder face** (from Raju). |
 | Devi chechi | background, panel 5 | Grandpa's sister, Appuman's mother. **From Raju:** regular village / agricultural woman's dress, modestly covered; timid manner; darker complexion; average height. |
 | Cart drivers, bulls | background only | |
-| The other children | background | **Mostly Achan's cousins, plus his two brothers** (from Raju, 16 Nov 2026). Achan treated all his cousins like siblings, so draw them as one happy gang of brothers and cousins, all close in age to little Achachan. |
+| The other children | background | **Mostly Achan's cousins, plus his two brothers** (from Raju, 16 Nov 2026). Achan treated all his cousins like siblings, so draw them as one happy gang of brothers and cousins, all close in age to young Achachan. |
 
 ## History from Achan to show in the pictures (not in the chapter)
 From Achan's messages of 16 Nov 2026. These details are shown **in the pictures only**. Captions stay word for word from the chapter.
@@ -117,13 +117,15 @@ A traditional house by the water at first light. Appuman, tall and well built, i
 - **Appu:** "It's a long way to Chiyyaram!"
 
 ### 7. Sankaramponnath at evening (4:5)
-The same three carts and characters roll into a Chiyyaram lane at golden hour: Appuman's cart first, with the kids on it, and the helpers behind. They head towards a modest single-storey house with a tiled roof. Little Achachan runs out of the gate, overjoyed.
+The same three carts and characters roll into a Chiyyaram lane at golden hour: Appuman's cart first, with the kids on it, and the helpers behind. They head towards a modest single-storey house with a tiled roof. Young Achachan runs out of the gate, overjoyed.
 - **Caption (ml):** എന്റെ അച്ഛന്റെ വീടും ഞങ്ങളുടെ തറവാടിന്റെ അഞ്ചാറ് വീട് വടക്കുമാറി ചിയ്യാരം ഗ്രാമത്തിൽ തന്നെ ആയിരുന്നു.
 - **Caption (en):** My father's house was also in Chiyyaram village itself, just five or six houses north of our ancestral home.
-- **Little Achachan:** "Appuman's here!"
+- **Young Achachan:** "Appuman's here! … And it's you two again!" (18 Nov 2026)
+- **Appu:** "We promised we'd come back!"
+- **Achu:** "Hi, young Achachan!"
 
 ### 8. "Since dawn!" (4:5)
-Appuman, dusty and cheerful, greets the excited little Achachan in the yard. Raju chose the version with the larger two-tier house and the jackfruit tree (17 Nov 2026). Behind them, the two helpers lead the bullocks away to the cattle shed (Raju, 17 Nov 2026). Appu and Achu slide down off the sacks.
+Appuman, dusty and cheerful, greets the excited young Achachan in the yard. Raju chose the version with the larger two-tier house and the jackfruit tree (17 Nov 2026). Behind them, the two helpers lead the bullocks away to the cattle shed (Raju, 17 Nov 2026). Appu and Achu slide down off the sacks.
 - **Caption (ml):** അപ്പുമാൻ കാളവണ്ടികളും തെളിച്ചു ശങ്കരംപൊന്നത്ത് എത്തുമ്പോൾ വൈകുന്നേരമാകും വെളുപ്പിനെ പുറപ്പെട്ടതാണെന്നു പറയും.
 - **Caption (en):** By the time Appuman drove the bullock carts and reached Sankaramponnath, it would be evening, though he'd say he had set out at dawn.
 - **Appuman:** "Set out at dawn!" (from the text)
@@ -142,9 +144,12 @@ In the yard at dusk, **the same two helpers** water the bulls by the cattle shed
 - **Appu:** "They'll be walking all night!"
 
 ### 11. The farm boss (4:5)
-Appuman checks the paddy sacks being stacked, confident and in charge. **Only the same two helpers** do the stacking (Raju, 17 Nov 2026), while little Achachan, Appu and Achu watch from the doorway.
+Appuman checks the paddy sacks being stacked, confident and in charge. **Only the same two helpers** do the stacking (Raju, 17 Nov 2026), while young Achachan, Appu and Achu watch from the doorway.
 - **Caption (ml):** …കൃഷികാര്യങ്ങൾ എല്ലാം നോക്കി നടത്താൻ അപ്പുമാനെ ആണ് മുത്തശ്ശൻ ഏൽപ്പിച്ചുരുന്നത്. അക്കാര്യങ്ങളിൽ അദ്ദേഹം ബഹുമിടുക്കനും ആയിരുന്നു.
 - **Caption (en):** …grandfather entrusted him with overseeing all the farming affairs — and in those matters, he was extremely capable.
+- **Achu:** "Appuman is the boss!" (18 Nov 2026)
+- **Young Achachan:** "Grandfather lets him run all the farms."
+- **Appu:** "He knows exactly where every sack goes."
 
 ### 12. Night stories (4:5)
 By an oil lamp on the veranda, everyone sits round Appuman: children in front, with Achan's father and Achamma laughing too.
@@ -179,7 +184,7 @@ Appuman sings with hand gestures, miming sowing, planting saplings and threshing
 - **Appu:** "This one's the planting song!"
 
 ### 15. Goodbye, and home (4:5)
-Morning, two days later. Appuman sets off down the lane. Little Achachan and the village children wave sadly. The golden swirl rises around Appu and Achu as they wave too.
+Morning, two days later. Appuman sets off down the lane. Young Achachan and the village children wave sadly. The golden swirl rises around Appu and Achu as they wave too.
 - **Caption (ml):** രണ്ടു ദിവസം കഴിഞ്ഞു അദ്ദേഹം തിരിച്ചുപോകുമ്പോൾ ഞങ്ങൾ കുട്ടികൾ വിഷമത്തോടെയും വിഷാദത്തോടെയും ആകും യാത്ര അയക്കുക.
 - **Caption (en):** After two days, when he went back, we children would see him off with sadness and heaviness of heart.
 - **End card:** next morning, Achachan finds the two of them asleep at his desk with the book still open. They wake up and do Appuman's planting-song gestures for him, and he laughs. "Next time: Kunjan's rickshaw!"

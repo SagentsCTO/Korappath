@@ -95,6 +95,19 @@
   }
   .story-text p{ margin-bottom:1.3rem; }
 
+  .comic-link{
+    display:flex; gap:1rem; align-items:center;
+    margin-top:2.5rem; padding:1rem;
+    border:1px solid var(--brass); border-radius:4px;
+    background:rgba(198,149,47,0.08);
+    color:var(--ivory); text-decoration:none;
+    transition:background 0.2s ease;
+  }
+  .comic-link:hover{ background:rgba(198,149,47,0.16); }
+  .comic-link img{ width:84px; height:105px; object-fit:cover; border-radius:2px; flex-shrink:0; }
+  .comic-link .comic-eyebrow{ font-family:'Space Mono', monospace; font-size:0.68rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--brass-light); }
+  .comic-link .comic-title{ font-family:'Fraunces', serif; font-size:1.15rem; display:block; margin:0.15rem 0; }
+  .comic-link .comic-sub{ font-size:0.88rem; color:var(--ivory-dim); }
   .attribution{
     margin-top:3rem;
     padding-top:1.5rem;
@@ -204,6 +217,15 @@
   <p class="footnote">
     The "northern ballads" Appuman sang are <a href="https://en.wikipedia.org/wiki/Vadakkan_Pattukal" target="_blank" rel="noopener">Vadakkan Pattukal</a> — a centuries-old tradition of Malayalam folk ballads from North Malabar, celebrating legendary warriors and heroines through oral verse.
   </p>
+
+  <a class="comic-link" href="../comics/appuman-harvest/index.html">
+    <img src="../comics/appuman-harvest/panels/panel-07.jpg" alt="" loading="lazy">
+    <span>
+      <span class="comic-eyebrow">For the grandchildren · Comic</span>
+      <span class="comic-title">The Harvest Carts →</span>
+      <span class="comic-sub">This chapter as an illustrated time-travel comic for young readers.</span>
+    </span>
+  </a>
 
   <div class="attribution">
     Recorded as part of the Korappath family archive. If you remember more of this story, or a different version of it, <a href="../index.html#contribute" style="color:var(--brass-light);">let us know</a>.

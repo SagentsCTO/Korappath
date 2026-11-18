@@ -1,0 +1,200 @@
+{
+  "title": "Appuman, a warm-hearted farmer — comic adaptation (Chapter 2): The Harvest Carts",
+  "chapterId": "appuman-harvest",
+  "style": "Hand-painted watercolour-and-gouache animation-background style. Soft natural light, lush green 1950s Kerala countryside, warm gentle palette, clean expressive character linework, cinematic composition, whimsical but grounded, suitable for young children. Absolutely no text, letters, captions, signage or speech bubbles anywhere in the image.",
+  "styleReference": "../chiyyaram-childhood/panels/panel-05.jpg",
+  "cast": {
+    "nephew": {
+      "role": "Appu, the older brother, a 10-year-old boy in a teal camo t-shirt, khaki cargo shorts and navy sneakers"
+    },
+    "niece": {
+      "role": "Achu, the little sister, a 4-year-old girl in a teal flower-and-elephant frock and brown sandals"
+    },
+    "young_achan": {
+      "role": "young Achan, a slim Kerala boy of about 7 in the early 1950s: close-cropped hair, khaki knee-length half-trousers, bare-chested, barefoot"
+    },
+    "appuman": {
+      "role": "Appuman, about 35-40, tall with a lean ordinary build, thin light moustache, neat short-medium black hair"
+    },
+    "achamma": {
+      "role": "Achamma, about 60: grey hair in a bun, large hollow gold thoda in stretched earlobes, a white cloth wrapped across the chest, bare shoulders and midriff, long white mundu"
+    },
+    "grandpa": {
+      "role": "Grandpa, about 70: tall, round face, thick drooping white moustache, short grey-white hair, red-stone kadukkan, long loose half-sleeve white shirt over a long mundu"
+    },
+    "devi_chechi": {
+      "role": "Devi chechi, late 50s: average height, darker complexion, shy and timid, modest village dress (mundu, dark blouse, upper cloth)"
+    },
+    "achachan_today": {
+      "role": "Achachan today, around 80: lean face, short white hair, thick drooping white moustache, rectangular dark glasses, pink polo shirt"
+    },
+    "helpers": {
+      "role": "the two cart helpers, farmhands in their 30s, both bare-chested and barefoot: helper ONE is wiry and dark, with a red-checked towel tied round his head and a short red-checked knee-length mundu; helper TWO is stockier, with nothing on his head, a plain white knee-length mundu and a white towel over one shoulder"
+    }
+  },
+  "outfits": {
+    "cart": "a clean white ankle-length mundu and a plain white sleeveless shirt",
+    "home": "a long white mundu only, bare-chested, with a white cloth tied round his head",
+    "komaram": "no head cover, hair short and neat, his white cloth worn as a diagonal sash across his bare chest, his mundu in thattudukkal style, holding a sharpened coconut-frond stalk as a pretend sword"
+  },
+  "panels": [
+    {
+      "n": 1,
+      "aspect": "4:5",
+      "cast": [
+        "nephew",
+        "niece",
+        "achachan_today"
+      ],
+      "scene": "Present day, evening, the same modern Kerala study as before: a wooden desk, bookshelf, brass lamp, open doorway. The two children stand eagerly at the desk; the grandfather, seated, smiles warmly and slides one handwritten page in Malayalam script across the desk towards them."
+    },
+    {
+      "n": 2,
+      "aspect": "4:5",
+      "cast": [
+        "nephew",
+        "niece"
+      ],
+      "scene": "Golden ink-like ribbons of light rise off the handwritten page and swirl around the two amazed children; the study dissolves into misty dawn light over coconut palms on pale sandy ground, with a two-storey tiled house among the palms and a canal only glimpsed far off in the distance."
+    },
+    {
+      "n": 3,
+      "aspect": "4:5",
+      "cast": [
+        "appuman:cart",
+        "grandpa",
+        "devi_chechi",
+        "nephew",
+        "niece"
+      ],
+      "scene": "First light at Kandassankadavu, early 1950s, in front of Grandpa's house (see the house description). Pale sandy yard, many coconut palms; the canal is just a distant glimpse far behind the palms, NOT next to the house. Appuman heaves the last sack of paddy onto the first of the three bullock carts standing in the sandy yard. Grandpa and Devi chechi stand at the verandah steps seeing him off. The two children peek out from behind a big wooden cart wheel. No bridge, no concrete, no vehicles."
+    },
+    {
+      "n": 4,
+      "aspect": "16:9",
+      "cast": [
+        "appuman:cart",
+        "helpers",
+        "nephew",
+        "niece"
+      ],
+      "scene": "Wide shot under a high midday sun: the convoy of three carts travels in single file along ONE long, single, unbroken earthen country road (one road only, not split, no grass strip down the middle, no second track) that runs between green paddy fields and coconut palms and stretches far behind them. Appuman's cart leads, nearest the viewer, with the two children sitting on its sacks; the helpers lead the second and third carts behind it.",
+      "convoy": true
+    },
+    {
+      "n": 5,
+      "aspect": "4:5",
+      "cast": [
+        "appuman:cart",
+        "helpers",
+        "nephew",
+        "niece",
+        "young_achan"
+      ],
+      "scene": "Golden hour at Sankaramponnath, seen from the front gate (see the house description): the long unpaved earthen pathway runs from the gate to the padippura gatehouse with its archway, and beyond it the wide, low house with its small raised attic room in the middle of the roof, the barn to its right. The convoy of three carts has turned in at the gate and moves up the path in single file. Appuman's cart is first and nearest, the two children still sitting on its sacks; the two helpers lead the second and third carts behind. The village boy (young Achan) runs down the path from the padippura archway towards them, overjoyed, arms wide.",
+      "convoy": true
+    },
+    {
+      "n": 6,
+      "aspect": "4:5",
+      "cast": [
+        "appuman:cart",
+        "helpers",
+        "nephew",
+        "niece",
+        "young_achan"
+      ],
+      "scene": "Evening in the front yard of Sankaramponnath, between the padippura gatehouse and the house (see the house description; the house is wide and low with a small attic room raised in the middle of the roof, NOT grand). A big jackfruit tree shades one side of the yard. Appuman, a little dusty but cheerful, greets the excited village boy, ruffling his hair. Behind them the three unhitched carts stand in a row with their sacks, and the two helpers lead the six bullocks away in pairs towards the barn on the right of the house. The two children slide down off the sacks of the first cart.",
+      "convoy": true
+    },
+    {
+      "n": 7,
+      "aspect": "4:5",
+      "cast": [
+        "achamma",
+        "appuman:cart",
+        "helpers",
+        "nephew",
+        "niece"
+      ],
+      "scene": "On the front verandah of Sankaramponnath (a low, wide old house) at evening: Achamma holds out a round brass tray with EXACTLY FOUR steel tumblers of steaming coffee and a plate of snacks. These four tumblers are the ONLY cups in the whole picture: all four are still on the tray and nobody is holding a cup yet. Appuman and the two helpers (the only adults besides Achamma) sit on the veranda edge, smiling and about to reach for the tray. Appu, the boy, stands close, pointing hopefully at one of the tumblers; little Achu stands beside him eyeing the snacks."
+    },
+    {
+      "n": 8,
+      "aspect": "4:5",
+      "cast": [
+        "helpers",
+        "nephew",
+        "niece"
+      ],
+      "scene": "The yard beside the barn to the right of Sankaramponnath at dusk (the wide low house with its small attic room in the middle of the roof is partly visible to the left): the two helpers (the only adults in the picture) give the bullocks water from a bucket and a stone trough; the three EMPTY carts, sacks unloaded, stand turned towards the padippura and the gate, ready to go home. Appu, the boy, gently pats a white bullock's neck while little Achu watches from just behind him."
+    },
+    {
+      "n": 9,
+      "aspect": "4:5",
+      "cast": [
+        "appuman:cart",
+        "helpers",
+        "young_achan",
+        "nephew",
+        "niece"
+      ],
+      "scene": "Inside a storeroom off the veranda, lit by the open doorway: the two helpers (and nobody else) carry and stack the jute sacks of paddy against the wall. Appuman stands confident and in charge, one hand on a sack, pointing with the other to show where the next sacks go. Young Achan, Appu and Achu watch from the doorway, impressed."
+    },
+    {
+      "n": 10,
+      "aspect": "4:5",
+      "cast": [
+        "appuman:home",
+        "achamma",
+        "young_achan",
+        "nephew",
+        "niece"
+      ],
+      "scene": "Night on the veranda by the warm glow of a tall brass oil lamp (nilavilakku): everyone sits around Appuman as he tells a story with big gestures. In front sit the children: the village boy (young Achan), a few other boys of about the same age in half-trousers (his brothers and cousins), one girl cousin in a simple skirt and blouse, and the two modern children. Behind them sit Achamma and a middle-aged man in a white mundu (Achan's father), laughing too. Achamma is dressed EXACTLY as on her character sheet: a white cloth wrapped snugly across the chest with both shoulders and the midriff bare, NOT a cloth over one shoulder.",
+      "extras": "the village boy's brothers and cousins (a few boys and one girl) and Achan's father, as described"
+    },
+    {
+      "n": 11,
+      "aspect": "4:5",
+      "cast": [
+        "appuman:komaram",
+        "nephew",
+        "niece",
+        "young_achan"
+      ],
+      "scene": "Night on the verandah of Sankaramponnath, lit by the same tall brass oil lamp (nilavilakku) as the previous panel, NOT a hurricane lantern: Appuman playfully imitates a temple oracle for the children. Mid-roar, eyes wide and blazing in mock fury, he raises the sharpened coconut-frond stalk high like a sword and points it at one child as if commanding them; faint tremble lines around him show his shaking. The children, the village boy and his cousins plus the two modern children, are frozen between awe and giggles; the little girl peeks through her fingers. Playful and affectionate, not scary. No goddess image, no red silk, no real sword.",
+      "extras": "the village boy's brothers and cousins (a few boys and one girl), the same children as in the previous panel"
+    },
+    {
+      "n": 12,
+      "aspect": "16:9",
+      "cast": [
+        "appuman:home",
+        "nephew",
+        "niece",
+        "young_achan"
+      ],
+      "scene": "Wide shot, evening in the front yard of Sankaramponnath (the wide low house with its small attic room raised in the middle of the roof, the barn to the right): Appuman sings a farm song with big hand gestures; his poses clearly mime the work: bending to scatter seed from a cloth bundle at his hip, then pushing rice seedlings into the ground. The children in a row (the village boy, his brothers and cousins including one girl, and the two modern children) copy his moves, laughing.",
+      "extras": "the village boy's brothers and cousins (a few boys and one girl)"
+    },
+    {
+      "n": 13,
+      "aspect": "4:5",
+      "cast": [
+        "appuman:cart",
+        "young_achan",
+        "nephew",
+        "niece"
+      ],
+      "scene": "Morning, two days later, on the long unpaved pathway of Sankaramponnath: the children stand in front of the padippura gatehouse archway, with the wide low house and its small attic room visible through and above it behind them. Appuman, carrying a cloth bundle, walks AWAY from them down the path towards the front gate and the village lane, turning back to wave. The village boy, his brothers and cousins wave goodbye, a little sad. Golden ink-like ribbons of light begin to swirl around the two modern children as they wave too.",
+      "extras": "the village boy's brothers and cousins (a few boys and one girl)"
+    }
+  ],
+  "convoy": "EXACTLY THREE bullock carts, no more, no fewer. Each cart is a traditional wooden Kerala cart with two big spoked wheels and an open flat wooden bed piled with jute sacks of paddy, pulled by EXACTLY TWO humped white Kerala bullocks under one yoke. Appuman walks at the head of the FIRST cart, holding its bullocks' rope; the two helpers each lead one of the other two carts in the same way. The two modern children ride on top of the sacks on Appuman's cart, the first one.",
+  "houses": {
+    "kandassankadavu": "Grandpa's house at Kandassankadavu: a two-storey traditional Kerala house like the photo reference: steep terracotta-tiled roofs, white lime-washed walls, a long open ground-floor verandah with round pillars and red-oxide steps, and an upper-floor wooden balcony with a lattice railing. About three-quarters the size of the big Korappath Kalappurakkal tharavadu of Chapter 1, so clearly smaller than it. The ground all round is clean pale SAND, not soil or grass, with many tall coconut palms planted around the property. It is NOT on the waterside: the canal is only glimpsed far off in the distance through the palms.",
+    "sankaramponnath": "Sankaramponnath, the house in Chiyyaram about 200 yards from the Korappath Kalappurakkal tharavadu: the SAME look as the tharavadu (wide and low, a long single-storey body under a sloping terracotta-tiled roof, a small attic-like upper room raised in the MIDDLE of the roof under its own little tiled roof, white walls with a red-oxide base, a front verandah with a polished red-oxide floor and carved wooden pillars painted black) but about THREE-QUARTERS of the tharavadu's size. NO barn or cattle shed, NO gatehouse or archway: a broad, prominent double wooden gate between sturdy plastered gateposts in a low compound wall that is cement-plastered and lime-washed (not bare laterite stones) and an unpaved earthen walkway of moderate length (about twice a few paces, not a long yard) straight to the front steps. The ground is ordinary Chiyyaram reddish-brown earth (NOT sand), with village greenery around it, like Chapter 1.",
+    "korappath_kalappurakkal": "Korappath Kalappurakkal, the ancestral tharavadu in Chiyyaram (Valiyammavan's house in Chapter 1): an old-pattern, almost naalukettu-style house. It is mostly WIDE and LOW: a long single-storey body under a sloping terracotta-tiled roof, with only a small attic-like upper room raised in the MIDDLE of the roof, under its own little tiled roof. A barn (cattle shed and grain store) stands to the RIGHT of the house as you face it. From the front gate a long UNPAVED earthen pathway leads to an old-style gatehouse (padippura): a small tiled-roof storage chamber with an archway through its middle; the path passes through that archway and on to the house's front entrance. The ground is ordinary Chiyyaram reddish-brown earth (NOT sand), with village greenery around it, like Chapter 1. The padippura stands only slightly higher than the house, just FIVE steps up: between them is a LONG, mostly FLAT front yard of red earth with flat grass on either side (no mounds or banks). The padippura is a gatehouse building with built-in provision storage rooms on both sides of the arched passage. On its house-facing side there is a small raised platform about 5 ft deep on both sides of the archway, edged by a low red-oxide half wall you can sit on, and COVERED by the same broad tiled roof as the archway and storage rooms, which extends forward over it on wooden pillars standing on the half wall (all one unit), reached by EXACTLY FIVE red-oxide steps that rise straight from the flat yard to the gap in the half wall (no landing, no terrace wall); you then step over the raised wooden threshold of the archway door frame. From the gate side you see the padippura with only the house's roof and attic room rising behind and below it. The house's front verandah has a polished red-oxide floor, and its roof rests on ornate turned wooden pillars painted glossy black, one on EACH side of the front steps. Approved look: review/house-korappath-gate.jpg and review/house-korappath-yard.jpg (17 Nov 2026)."
+  }
+}

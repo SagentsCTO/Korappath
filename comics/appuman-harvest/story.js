@@ -1,0 +1,61 @@
+// Shared by index.html (the comic reader, via ../viewer.js) and sheet.html (the one-page share image).
+// wide: true marks the 16:9 panels that span two columns on the page.
+var GRANDPA = 'Achachan';
+var APPU = 'Appu';
+var ACHU = 'Achu';
+
+// Captions (ml / en) are VERBATIM from stories/appuman-harvest.html. "…" marks words left out; nothing is reworded.
+// Bubbles are invented for the comic. Achachan's bedtime lines (panels 1-2) are our wording of facts Achan gave the family (16 Nov 2026).
+var PANELS = [
+  { alt: "Present day, night: Achachan in a white vest lies propped on pillows, telling a story, with Appu and Achu tucked in on either side.",
+    bubbles: [[ACHU, "Achachan, tell us about Appuman!"], [GRANDPA, "Appuman lived at Kandassankadavu, by the canal, with my grandfather and his sisters. His mother was Devi chechi. He looked after all my grandfather's paddy fields."], [GRANDPA, "At the end of every season he brought the harvest to us at Sankaramponnath, where my Achamma lived. That was two or three bullock carts, about 25 km!"], [APPU, "Was he big and strong?"], [GRANDPA, "Tall, about six feet!"]] },
+  { alt: "Achachan, still in bed, throws up his arms in a pretend roar; Achu squeals behind the blanket and Appu laughs.",
+    bubbles: [[GRANDPA, "And sometimes he played the temple oracle! First he sat very still… then he began to tremble, slowly… then a great ROAR! As if Durga Bhagavathy had come into him!"], [GRANDPA, "Then he gave each of us a command in 'divine language'. And his sword was a coconut-frond stalk!"], [ACHU, "Again! Do it again!"], [GRANDPA + ' (yawning)', "Tomorrow. Now, sleep."]] },
+  { alt: "Later that night, Appu opens the handwritten book in the moonlit study while Achu puts a finger to her lips; Achachan sleeps in the next room.",
+    bubbles: [[APPU + ' (whispering)', "It's all in here, Achu. The whole story.", 'aside'], [ACHU + ' (whispering)', "Shhh! Don't wake Achachan!", 'aside']] },
+  { alt: "Golden ribbons of light rise from the book and swirl round the children as the study dissolves into palms and a two-storey house at dawn." },
+  { alt: "Dawn at Kandassankadavu: Appuman lifts the last sack onto the first of three bullock carts in a sandy yard, Grandpa and Devi chechi watch from the steps, and the children peek from behind a wheel.",
+    ml: "അപ്പുമാൻ മുത്തശ്ശന്റെ മരുമകനായിരുന്നു.",
+    en: "Appuman was grandfather's nephew.",
+    bubbles: [[ACHU, "Look at all those sacks!"], [APPU + ' (whispering)', "That must be Appuman! White mundu, sleeveless shirt, just like Achachan said.", 'aside']] },
+  { wide: true,
+    alt: "Three bullock carts travel in single file along one long country road between paddy fields, Appuman leading the first with the children on its sacks.",
+    ml: "…ഓരോ പൂവലും കൃഷി കഴിഞ്ഞാൽ രണ്ടോ മൂന്നോ കാളവണ്ടികൾ നിറയെ നെല്ല് കയറ്റി ചിയ്യാരത്ത് 'ശങ്കരംപൊന്നത്തേക്കു', അച്ഛന്റെ വീട്ടിലേക്കു അപ്പുമാൻ നയിച്ചു കൊണ്ടുവരുമായിരുന്നു.",
+    en: "…After each harvest, two or three bullock carts loaded full of grain would be brought to Chiyyaram, to \"Sankaramponnath\" — my father's house — led by Appuman.",
+    bubbles: [[ACHU, "Are we there yet?"], [APPU, "It's a long way to Chiyyaram!"]] },
+  { alt: "Evening at Sankaramponnath: Appuman's cart turns in through a broad gate in a white wall, the children on the sacks, as young Achan runs down the path to meet them.",
+    ml: "എന്റെ അച്ഛന്റെ വീടും ഞങ്ങളുടെ തറവാടിന്റെ അഞ്ചാറ് വീട് വടക്കുമാറി ചിയ്യാരം ഗ്രാമത്തിൽ തന്നെ ആയിരുന്നു.",
+    en: "My father's house was also in Chiyyaram village itself, just five or six houses north of our ancestral home.",
+    bubbles: [['Young Achan', "Appuman's here!"]] },
+  { alt: "In the yard by a jackfruit tree, Appuman ruffles young Achan's hair while the helpers lead the bullocks away and the children slide off the sacks.",
+    ml: "അപ്പുമാൻ കാളവണ്ടികളും തെളിച്ചു ശങ്കരംപൊന്നത്ത് എത്തുമ്പോൾ വൈകുന്നേരമാകും വെളുപ്പിനെ പുറപ്പെട്ടതാണെന്നു പറയും.",
+    en: "By the time Appuman drove the bullock carts and reached Sankaramponnath, it would be evening, though he'd say he had set out at dawn.",
+    bubbles: [['Appuman', "Set out at dawn!"], [APPU, "He really did. We were there!"]] },
+  { alt: "On the red-oxide veranda Achamma offers a tray of four coffee tumblers to Appuman and the two helpers; Appu points hopefully at one.",
+    ml: "അച്ഛമ്മ ശങ്കരംപൊന്നത്ത് അപ്പുമാനും വണ്ടിക്കാർക്കും വയറുനിറച്ചു കാപ്പിയും പലഹാരവും കൊടുക്കും.",
+    en: "Grandmother at Sankaramponnath would feed Appuman and the cart-drivers a full meal of coffee and snacks.",
+    bubbles: [[APPU, "Can I have one too?"]] },
+  { alt: "At dusk the helpers water the bullocks at a stone trough beside three empty carts; Appu pats a bullock's neck.",
+    ml: "വണ്ടിക്കാർ കാളകളെ അഴിച്ചുകെട്ടി വെള്ളം കൊടുത്തു മടങ്ങും എങ്കിലേ പിറ്റേന്ന് വെളുപ്പിനെ നാടെത്തൂ.",
+    en: "The cart-drivers would only head back once they had untied the bulls and given them water — only then would they reach home by the following dawn.",
+    bubbles: [[APPU, "They'll be walking all night!"]] },
+  { alt: "In the storeroom, the two helpers stack sacks of paddy while Appuman points to where they go; young Achan, Appu and Achu watch from the doorway.",
+    ml: "…കൃഷികാര്യങ്ങൾ എല്ലാം നോക്കി നടത്താൻ അപ്പുമാനെ ആണ് മുത്തശ്ശൻ ഏൽപ്പിച്ചുരുന്നത്. അക്കാര്യങ്ങളിൽ അദ്ദേഹം ബഹുമിടുക്കനും ആയിരുന്നു.",
+    en: "…grandfather entrusted him with overseeing all the farming affairs — and in those matters, he was extremely capable." },
+  { alt: "At night by a tall brass oil lamp, Appuman, in his head cloth, tells a story to the children on mats while Achamma and Achan's father laugh.",
+    ml: "അപ്പുമാൻ വന്നാൽ ഞങ്ങൾ കുട്ടികൾക്കൊക്കെ വലിയ സന്തോഷമാണ്. അപ്പുമാന്റെ കഥകളും നാടൻ പാട്ടുകളും തമാശകളും പ്രായഭേദമന്യേ ഏവർക്കും രസിക്കും. അഛനും അച്ഛമ്മയും നേരം വൈകിയാലും എണീക്കില്ല രസിച്ചിരിക്കും.",
+    en: "Whenever Appuman came, we children were overjoyed. His stories, folk songs, and jokes delighted everyone, regardless of age. Even father and grandmother wouldn't get up though it grew late — they'd sit enjoying it.",
+    bubbles: [[ACHU, "He's wearing his head cloth now!"], [APPU, "And these must be Achachan's brothers and cousins."]] },
+  { alt: "By the lamp, Appuman acts out the temple oracle mid-roar, a coconut-frond stalk raised like a sword, pointing at a child; the children giggle and gasp.",
+    ml: "അപ്പുമാൻ മുറ്റിച്ചൂർ അമ്പലത്തിലെ കോമരത്തിനെ അനുകരിച്ചു തുള്ളലും അട്ടഹാസങ്ങളും ഒക്കെ ചെയ്യും. ബഹു തമാശക്കാരനാണ് ഞങ്ങളുടെ അപ്പുമാൻ.",
+    en: "Appuman would imitate the temple oracle of Muttichoor, leaping about and shouting. Our Appuman was a great joker.",
+    bubbles: [[APPU, "The oracle! Just like Achachan told us!"], [ACHU, "Again! Again!"]] },
+  { wide: true,
+    alt: "In the front yard, Appuman mimes sowing and planting as he sings, and a row of children copies his moves, laughing.",
+    ml: "കൃഷിയിറക്കുമ്പോഴും ഞാറുനടുമ്പോഴും കൊയ്ത്തു കഴിഞ്ഞു കറ്റമെതിക്കുമ്പോഴും പ്രത്യേകം പ്രത്യേകം പാട്ടുകൾ ആണ് പാടുക.",
+    en: "There were distinct songs for sowing, for planting saplings, and for threshing the sheaves after harvest.",
+    bubbles: [[APPU, "This one's the planting song!"]] },
+  { alt: "Two days later Appuman walks away down the lane with a bundle, waving; the children wave from the gate as golden light swirls round Appu and Achu.",
+    ml: "രണ്ടു ദിവസം കഴിഞ്ഞു അദ്ദേഹം തിരിച്ചുപോകുമ്പോൾ ഞങ്ങൾ കുട്ടികൾ വിഷമത്തോടെയും വിഷാദത്തോടെയും ആകും യാത്ര അയക്കുക.",
+    en: "After two days, when he went back, we children would see him off with sadness and heaviness of heart." }
+];

@@ -90,7 +90,7 @@ Golden ink-light lifts off the open page in the moonlit study. The room dissolve
 A traditional house by the water at first light. Appuman, tall and well built, in a clean white mundu and sleeveless shirt, heaves the last sack of paddy onto one of two or three bullock carts. Grandpa and Devi chechi stand at the gate seeing him off. Appu and Achu, just landed, peek out from behind a cart wheel.
 - **Caption (ml):** അപ്പുമാൻ മുത്തശ്ശന്റെ മരുമകനായിരുന്നു.
 - **Caption (en):** Appuman was grandfather's nephew.
-- **Achu:** "Look at all those sacks!"
+- **Achu:** "Appu, look! Big white cows!" (Raju, 18 Nov 2026)
 - **Appu** (whispering): "That must be Appuman! White mundu, sleeveless shirt, just like Achachan said."
 
 **Setting notes for panel 5 (researched 16 Nov 2026):**

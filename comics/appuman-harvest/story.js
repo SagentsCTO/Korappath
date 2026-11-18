@@ -18,7 +18,7 @@ var PANELS = [
   { alt: "Dawn at Kandassankadavu, golden sparkles still round the newly arrived children: Appuman lifts the last sack onto the first of three bullock carts in a sandy yard, Grandpa and Devi chechi watch from the steps, and the children peek from behind a wheel.",
     ml: "അപ്പുമാൻ മുത്തശ്ശന്റെ മരുമകനായിരുന്നു.",
     en: "Appuman was grandfather's nephew.",
-    bubbles: [[ACHU, "Look at all those sacks!"], [APPU + ' (whispering)', "That must be Appuman! White mundu, sleeveless shirt, just like Achachan said.", 'aside']] },
+    bubbles: [[ACHU, "Appu, look! Big white cows!"], [APPU + ' (whispering)', "That must be Appuman! White mundu, sleeveless shirt, just like Achachan said.", 'aside']] },
   { wide: true,
     alt: "Three bullock carts travel in single file along one long country road between paddy fields, Appuman leading the first with the children on its sacks.",
     ml: "…ഓരോ പൂവലും കൃഷി കഴിഞ്ഞാൽ രണ്ടോ മൂന്നോ കാളവണ്ടികൾ നിറയെ നെല്ല് കയറ്റി ചിയ്യാരത്ത് 'ശങ്കരംപൊന്നത്തേക്കു', അച്ഛന്റെ വീട്ടിലേക്കു അപ്പുമാൻ നയിച്ചു കൊണ്ടുവരുമായിരുന്നു.",

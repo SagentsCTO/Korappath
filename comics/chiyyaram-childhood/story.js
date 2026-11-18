@@ -20,7 +20,7 @@ var PANELS = [
     bubbles: [[ACHU, 'Where are we?'], [APPU, 'I think… inside ' + GRANDPA + "'s book!"]] },
   { alt: 'A bare-chested village boy in half-trousers stops on the ridge, staring at the two children.',
     bubbles: [['Village boy', "Who are you? I've never seen you in Chiyyaram!"], [APPU + ' (whispering)', ACHU + '… I think that\'s ' + GRANDPA + '!', 'aside']] },
-  { alt: 'The village boy leads the children along the red-earth path; behind them, the tiled gatehouse of the ancestral home, with the house roof beyond.',
+  { alt: 'Seen from behind, the village boy points ahead as the three children walk up the red-earth path towards the tiled gatehouse of the ancestral home, the house roof beyond.',
     ml: '…എന്റെ തറവാട് "കോരപ്പത്തു കളപ്പുരക്കൽ" ഞങ്ങളുടെ ഗ്രാമത്തിലും തൃശ്ശൂർ പരിസര പ്രദേശത്തും സാമാന്യം അറിയപ്പെട്ടിരുന്നതും…',
     en: '…my ancestral home, "Korappath Kalappurakkal," was reasonably well known in our village and the surrounding Thrissur area…',
     bubbles: [[APPU, 'Look at that big house!'], [ACHU, 'Is that where little ' + GRANDPA + ' lives?']] },

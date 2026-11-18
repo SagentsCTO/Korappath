@@ -58,6 +58,26 @@
          (C.nextUrl ? '<a href="' + esc(C.nextUrl) + '">' + esc(C.nextLink) + '</a>' : '') + '</div>';
     page.innerHTML = '<div class="cgrid">' + h + '</div>';
     cells = Array.prototype.slice.call(page.querySelectorAll('.cc'));
+    if (C.twoUp) { page.classList.add('two-up'); placeTwoUp(cells); }
+  }
+
+  // COMIC.twoUp: two panels to a row (a portrait panel or the end card spans 2 of the 4 columns, a wide panel all 4),
+  // pictures uncropped. Panels stay in reading order; a row that can't be filled is centred.
+  function placeTwoUp(list) {
+    var rows = [[]], used = 0;
+    list.forEach(function (el) {
+      var u = el.classList.contains('wide') ? 4 : 2;
+      if (used + u > 4) { rows.push([]); used = 0; }
+      rows[rows.length - 1].push([el, u]); used += u;
+    });
+    rows.forEach(function (row, r) {
+      var total = row.reduce(function (n, x) { return n + x[1]; }, 0), col = 1 + (4 - total) / 2;
+      row.forEach(function (x) {
+        x[0].style.gridColumn = col + ' / span ' + x[1];
+        x[0].style.gridRow = (1 + 3 * r) + ' / span 3';
+        col += x[1];
+      });
+    });
   }
 
   function setTransform(tx, ty, s) {

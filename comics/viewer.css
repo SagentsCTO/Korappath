@@ -91,4 +91,12 @@ h1{ font-family:'Fraunces', serif; font-weight:500; font-size:clamp(1.6rem, 5vw,
 .tapzone:focus-visible{ outline:2px solid var(--brass-light); outline-offset:-4px; }
 
 footer{ text-align:center; padding:2rem 1rem; font-size:0.8rem; color:var(--ivory-dim); border-top:1px solid rgba(198,149,47,0.2); }
+/* COMIC.twoUp (set in a comic's index.html): two panels per row, pictures uncropped, compact speech bubbles. */
+.two-up .cc img{ height:auto; aspect-ratio:4 / 5; }
+.two-up .cc.wide img{ aspect-ratio:16 / 9; align-self:start; }
+.two-up .cb{ padding:8px 10px 4px; }
+.two-up .bub{ border-radius:12px; padding:4px 9px 5px; margin:0 0 5px 7px; max-width:96%; font-size:12.5px; line-height:1.35; }
+.two-up .bub::before{ left:-6px; top:7px; border-width:6px; }
+.two-up .bub .who{ display:inline; margin-right:5px; }
+
 @media (prefers-reduced-motion: reduce){ .comic-view.guided .comic-page, .cc{ transition:none !important; } }

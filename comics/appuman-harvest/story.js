@@ -43,7 +43,7 @@ var PANELS = [
   { alt: "In the storeroom, the two helpers stack sacks of paddy while Appuman points to where they go; young Achachan, Appu and Achu watch from the doorway.",
     ml: "…കൃഷികാര്യങ്ങൾ എല്ലാം നോക്കി നടത്താൻ അപ്പുമാനെ ആണ് മുത്തശ്ശൻ ഏൽപ്പിച്ചുരുന്നത്. അക്കാര്യങ്ങളിൽ അദ്ദേഹം ബഹുമിടുക്കനും ആയിരുന്നു.",
     en: "…grandfather entrusted him with overseeing all the farming affairs — and in those matters, he was extremely capable.",
-    bubbles: [[ACHU, 'Appuman is the boss!'], ['Young ' + GRANDPA, 'Grandfather lets him run all the farms.'], [APPU, 'He is so awesome!']] },
+    bubbles: [[APPU, 'Appuman is the boss!'], ['Young ' + GRANDPA, 'Grandfather lets him run all the farms.'], [APPU, 'He is so awesome!']] },
   { alt: "At night by a tall brass oil lamp, Appuman, in his head cloth, tells a story to the children on mats while Achamma and Achan's father laugh.",
     ml: "അപ്പുമാൻ വന്നാൽ ഞങ്ങൾ കുട്ടികൾക്കൊക്കെ വലിയ സന്തോഷമാണ്. അപ്പുമാന്റെ കഥകളും നാടൻ പാട്ടുകളും തമാശകളും പ്രായഭേദമന്യേ ഏവർക്കും രസിക്കും. അഛനും അച്ഛമ്മയും നേരം വൈകിയാലും എണീക്കില്ല രസിച്ചിരിക്കും.",
     en: "Whenever Appuman came, we children were overjoyed. His stories, folk songs, and jokes delighted everyone, regardless of age. Even father and grandmother wouldn't get up though it grew late — they'd sit enjoying it.",

@@ -147,7 +147,7 @@ In the yard at dusk, **the same two helpers** water the bulls by the cattle shed
 Appuman checks the paddy sacks being stacked, confident and in charge. **Only the same two helpers** do the stacking (Raju, 17 Nov 2026), while young Achachan, Appu and Achu watch from the doorway.
 - **Caption (ml):** …കൃഷികാര്യങ്ങൾ എല്ലാം നോക്കി നടത്താൻ അപ്പുമാനെ ആണ് മുത്തശ്ശൻ ഏൽപ്പിച്ചുരുന്നത്. അക്കാര്യങ്ങളിൽ അദ്ദേഹം ബഹുമിടുക്കനും ആയിരുന്നു.
 - **Caption (en):** …grandfather entrusted him with overseeing all the farming affairs — and in those matters, he was extremely capable.
-- **Achu:** "Appuman is the boss!" (18 Nov 2026)
+- **Appu:** "Appuman is the boss!" (18 Nov 2026; Achu just watches quietly)
 - **Young Achachan:** "Grandfather lets him run all the farms."
 - **Appu:** "He is so awesome!" (Raju, 18 Nov 2026)
 

@@ -82,7 +82,9 @@ Later that night. Achachan is fast asleep in the background, glasses on the beds
 
 ### 4. The swirl (4:5)
 Golden ink-light lifts off the open page in the moonlit study. The room dissolves into misty dawn light over a riverside village.
-- Uses the existing swirl image (old panel 2) if it fits the night scene; otherwise it's redrawn with the moonlit study.
+- Redrawn in the moonlit study.
+- **Appu:** "Here we go again!" (Raju, 17 Nov 2026)
+- **Achu:** "Yay! We're going to see Appuman!"
 
 ### 5. Dawn at Kandassankadavu (4:5), NEW
 A traditional house by the water at first light. Appuman, tall and well built, in a clean white mundu and sleeveless shirt, heaves the last sack of paddy onto one of two or three bullock carts. Grandpa and Devi chechi stand at the gate seeing him off. Appu and Achu, just landed, peek out from behind a cart wheel.

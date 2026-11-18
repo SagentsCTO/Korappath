@@ -38,8 +38,18 @@
     if (p.narration) h += '<p class="narr">' + esc(p.narration) + '</p>';
     return h;
   }
+  // In the two-up layout a speaker's back-to-back lines share one bubble (same words, same order).
+  function lines(p) {
+    var out = [];
+    (p.bubbles || []).forEach(function (b) {
+      var last = out[out.length - 1];
+      if (C.twoUp && last && last[0] === b[0] && (last[2] || '') === (b[2] || '')) last[1] += ' ' + b[1];
+      else out.push(b.slice());
+    });
+    return out;
+  }
   function bubbles(p) {
-    return (p.bubbles || []).map(function (b) {
+    return lines(p).map(function (b) {
       return '<div class="bub' + (b[2] ? ' ' + b[2] : '') + '"><span class="who">' + esc(b[0]) + '</span>' + esc(b[1]) + '</div>';
     }).join('');
   }
@@ -87,6 +97,7 @@
   // Page view: the whole page scaled to the column width. Guided view: zoom so one panel fills the screen.
   function layout() {
     if (!guided) {
+      cells.forEach(function (c) { c.style.removeProperty('--tk'); });
       pageScale = Math.min(1, view.clientWidth / PAGE_W);
       view.style.height = Math.ceil(page.offsetHeight * pageScale) + 'px';
       setTransform(0, 0, pageScale);
@@ -95,6 +106,21 @@
     var el = cells[cur], target = el;
     var vw = window.innerWidth, vh = window.innerHeight - TOP_BAR - BOTTOM_BAR;
     var s = fit(el, vw, vh);
+    if (C.twoUp) {
+      // No reading strip: keep the whole panel on screen and enlarge just this panel's text until it is readable.
+      cells.forEach(function (c) { if (c !== el) c.style.removeProperty('--tk'); });
+      var k = 1;
+      el.style.setProperty('--tk', k);
+      for (var n = 0; n < 6 && s * TEXT_PX * k < MIN_TEXT_PX; n++) {
+        k = Math.min(3, k * MIN_TEXT_PX / (s * TEXT_PX * k) * 1.05);
+        el.style.setProperty('--tk', k);
+        s = fit(el, vw, vh);
+      }
+      readCard.hidden = true;
+      setTransform((vw - el.offsetWidth * s) / 2 - el.offsetLeft * s,
+                   TOP_BAR + (vh - el.offsetHeight * s) / 2 - el.offsetTop * s, s);
+      return;
+    }
     // If this panel's text would come out too small (wide panels on a phone), zoom on the picture
     // alone and show the text full-size in a reading card under it.
     var p = P[cur], img = el.querySelector('img');

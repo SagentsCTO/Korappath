@@ -94,8 +94,14 @@ footer{ text-align:center; padding:2rem 1rem; font-size:0.8rem; color:var(--ivor
 /* COMIC.twoUp (set in a comic's index.html): two panels per row, pictures uncropped, compact speech bubbles. */
 .two-up .cc img{ height:auto; aspect-ratio:4 / 5; }
 .two-up .cc.wide img{ aspect-ratio:16 / 9; align-self:start; }
-.two-up .cb{ padding:8px 10px 4px; }
-.two-up .bub{ border-radius:12px; padding:4px 9px 5px; margin:0 0 5px 7px; max-width:96%; font-size:12.5px; line-height:1.35; }
+/* Bubbles flow side by side across the panel, so the speech is wide and short. --tk enlarges one panel's text in the guided view. */
+.two-up .cc{ --tk:1; }
+.two-up .cb{ display:flex; flex-wrap:wrap; align-items:flex-start; column-gap:6px; padding:8px 10px 4px; }
+.two-up .bub{ border-radius:12px; padding:4px 9px 5px; margin:0 0 6px 7px; max-width:calc(100% - 7px); font-size:calc(12.5px * var(--tk)); line-height:1.35; }
+.two-up .bub .who{ font-size:calc(8px * var(--tk)); }
+.two-up .cap{ font-size:calc(13px * var(--tk)); }
+.two-up .cap.ml{ font-size:calc(12.5px * var(--tk)); }
+.two-up .cap .lbl{ font-size:calc(7.5px * var(--tk)); }
 .two-up .bub::before{ left:-6px; top:7px; border-width:6px; }
 .two-up .bub .who{ display:inline; margin-right:5px; }
 

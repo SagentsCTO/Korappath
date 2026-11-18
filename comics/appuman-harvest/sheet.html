@@ -33,7 +33,7 @@
   .top{ padding:9px 12px 10px; align-self:end; }
   .top .cap{ margin-bottom:0; }
   .top .narr{ margin:6px 0 0; }
-  .body{ padding:8px 12px 6px; }
+  .body{ padding:8px 12px 6px; display:flex; flex-wrap:wrap; align-items:flex-start; column-gap:6px; align-content:flex-start; }
   .num{ font-family:'Space Mono', monospace; font-size:10px; letter-spacing:0.12em; color:var(--brass-light); margin-bottom:6px; }
   .cap{ background:var(--ivory); color:var(--teak); padding:7px 9px; border-radius:2px; box-shadow:2px 2px 0 var(--brass); font-family:'Fraunces', serif; font-size:13px; line-height:1.45; margin-bottom:8px; }
   .cap.ml{ font-family:'Noto Serif Malayalam', serif; font-size:12.5px; line-height:1.75; }
@@ -84,7 +84,13 @@ PANELS.forEach(function (p, i) {
   }
   if (p.narration) top += '<div class="narr">' + esc(p.narration) + '</div>';
   (p.story || []).forEach(function (t) { top += '<div class="story"><b>' + esc(t[0]) + '</b>' + esc(t[1]) + '</div>'; });
+  // A speaker's back-to-back lines share one bubble (same words, same order).
+  var merged = [];
   (p.bubbles || []).forEach(function (b) {
+    var last = merged[merged.length - 1];
+    if (last && last[0] === b[0] && (last[2] || '') === (b[2] || '')) last[1] += ' ' + b[1]; else merged.push(b.slice());
+  });
+  merged.forEach(function (b) {
     body += '<div class="say' + (b[2] ? ' ' + b[2] : '') + '"><b>' + esc(b[0]) + '</b>' + esc(b[1]) + '</div>';
   });
   html += '<div class="cell' + (WIDE[n] ? ' wide' : '') + '">' +

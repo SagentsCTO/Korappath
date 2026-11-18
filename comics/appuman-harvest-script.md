@@ -149,7 +149,7 @@ Appuman checks the paddy sacks being stacked, confident and in charge. **Only th
 - **Caption (en):** …grandfather entrusted him with overseeing all the farming affairs — and in those matters, he was extremely capable.
 - **Achu:** "Appuman is the boss!" (18 Nov 2026)
 - **Young Achachan:** "Grandfather lets him run all the farms."
-- **Appu:** "He knows exactly where every sack goes."
+- **Appu:** "He is so awesome!" (Raju, 18 Nov 2026)
 
 ### 12. Night stories (4:5)
 By an oil lamp on the veranda, everyone sits round Appuman: children in front, with Achan's father and Achamma laughing too.

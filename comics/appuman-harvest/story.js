@@ -11,7 +11,7 @@ var PANELS = [
     bubbles: [[ACHU, "Achachan, tell us about Appuman!"], [GRANDPA, "Appuman lived at Kandassankadavu, by the canal, with my grandfather and his sisters. His mother was Devi chechi. He looked after all my grandfather's paddy fields."], [GRANDPA, "At the end of every season he brought the harvest to us at Sankaramponnath, where my Achamma lived. That was two or three bullock carts, about 25 km!"], [APPU, "Was he big and strong?"], [GRANDPA, "Tall, about six feet!"]] },
   { alt: "Achachan, still in bed, throws up his arms in a pretend roar; Achu squeals behind the blanket and Appu laughs.",
     bubbles: [[GRANDPA, "And sometimes he played the temple oracle! First he sat very still… then he began to tremble, slowly… then a great ROAR! As if Durga Bhagavathy had come into him!"], [GRANDPA, "Then he gave each of us a command in 'divine language'. And his sword was a coconut-frond stalk!"], [ACHU, "Again! Do it again!"], [GRANDPA + ' (yawning)', "Tomorrow. Now, sleep."]] },
-  { alt: "Later that night, Appu opens the handwritten book in the moonlit study while Achu puts a finger to her lips; Achachan sleeps in the next room.",
+  { alt: "Later that night, Achachan sleeps in the moonlit bedroom while, through the open doorway, Appu opens the handwritten book in the study and Achu puts a finger to her lips.",
     bubbles: [[APPU + ' (whispering)', "It's all in here, Achu. The whole story.", 'aside'], [ACHU + ' (whispering)', "Shhh! Don't wake Achachan!", 'aside']] },
   { alt: "Golden ribbons of light rise from the book and swirl round the children as the study dissolves into palms and a two-storey house at dawn.",
     bubbles: [[APPU, "Here we go again!"], [ACHU, "Yay! We're going to see Appuman!"]] },
